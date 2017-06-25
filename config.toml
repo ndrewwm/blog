@@ -1,0 +1,26 @@
+baseurl = "https://mooreaw.github.io/"
+title = "semi documented life"
+author = "Andrew Moore"
+canonifyurls = true
+languagecode = "en"
+theme = "hugo-black-and-light-theme"
+publishDir = "../mooreaw.github.io/"
+
+pygmentsstyle       = "bw"
+pygmentscodefences  = true
+
+[params]
+  sitename = "semi documented life"
+
+[[menu.main]]
+    name = "about"
+    url  = "about"
+[[menu.main]]
+    name = "github"
+    url  = "https://github.com/mooreaw/"
+[[menu.main]]
+    name = "twitter"
+    url  = "https://twitter.com/theysayHeyDrew/"
+[[menu.main]]
+    name = "cv"
+    url  = "https://github.com/mooreaw/cv/"

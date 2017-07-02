@@ -20,6 +20,7 @@ library(magrittr)
 library(plotly)
 library(forcats)
 library(broom)
+library(stringr)
 library(glue)
 library(modelr)
 library(leaflet)
@@ -61,21 +62,6 @@ us$season <- us %$%
 us <- filter(us, year_sighted < 2014)
 ```
 
-```{r sightings-by-pop, eval = FALSE}
-sightings_by_pop <- us %>% 
-  count(year_sighted, state) %>% 
-  inner_join(pops, by = c("state" = "abb", "year_sighted" = "year")) %>% 
-  mutate(sighting_ratio = n %>% divide_by(estimate) %>% multiply_by(1000000)) %>% 
-  arrange(year_sighted, desc(sighting_ratio)) %>% 
-  slice(1:5) %>% 
-  ungroup
-
-p1 <- ggplot(sightings_by_pop, aes(x = year_sighted, y = sighting_ratio, color = names, group = names)) +
-  geom_line()
-
-ggplotly(p1)
-```
-
 *Code & data from this post are available [here.](https://github.com/mooreaw/ufo-sightings)*
 
 When my dad took me to the library as a kid, I used to love hanging out in the UFOlogy section, reading about classified military aircraft and stories of close encounters. I'm less convinced now that hooting tentacle monsters will be landing in our backyards anytime soon, but I was super excited to see that Kaggle had posted a dataset compiling UFO sightings across the US.
@@ -88,23 +74,6 @@ The data comes from individually reported sightings, archived by [NUFORC](http:/
 ### How have UFO sightings changed over time?
 
 One of my first questions had one of the most unexpected answers, at least for me. Looping back to my grade-school reading habits, I was looking at books written in the 80s and 90s, and most of the highlighted and exciting accounts were from the 60s and 70s, during the cold war. [Project Blue Book](https://en.wikipedia.org/wiki/Project_Blue_Book) was set up by the US Airforce in the 50s, and aimed to collect evidence and explain different sightings that were occurring during that time. It was ultimately shut down by discontinued funding and inconclusive findings, but I expected to see higher reported sightings during this period. NUFORC was started in 1974, so it's possible the archiving of events prior to then hasn't been pursued as closely. Overall, since about 2000 the number of sightings for your average state in the US has seen a steady climb. My thinking is that more people are on the lookout for UFOs these days, but there's probably a fair amount of underreporting. Given the prominence of search engines, the likelihood of someone being able to look up and report a sighting to NUFORC has maybe gotten higher.
-
-```{r n over time, fig.height=3.5, fig.width=6.5, fig.align="center", eval = FALSE}
-per_year <- us %>% 
-  count(year_sighted) %>% 
-  mutate(cumn = cumsum(n)) %>% 
-  ggplot(aes(x = year_sighted, y = n)) +
-  geom_line(size = 1) +
-  theme_minimal() +
-  scale_y_continuous(labels = comma) +
-  theme(
-    panel.grid.minor   = element_blank(),
-    panel.grid.major.x = element_blank() 
-  ) +
-  labs(x = "", y = "Sightings", title = "USA: UFO Sightings per Year, 1910 - 2014")
-
-per_year
-```
 
 ```{r medians-over-time}
 by_year_boxplot <- us %>% 
@@ -253,73 +222,105 @@ ggplotly(p2)
 ```
 
 ### What's the deal with Vermont?
+ 
+```{r build-bv-map}
+library(tidycensus)
+library(sf) 
 
-We've gone through the what/when as far as UFO sightings in the US. Now we'll dig down even a bit to see how the rate we used above varies by state. 2013 is the last complete year of data, so I linked ACS estimates to the total number of encounters in 2013 across each state, and put it together as a choropleth below. Vermont definitely has the most sightings per capita (Maine and the Pacific northwest aren't doing too bad either), whereas Texas and the south seem to have the least.
+source("../../../census-api-key.R")
 
-```{r map, fig.height=5.5, fig.width=10, include = FALSE}
-state_rates <- us %>% 
-  filter(year_sighted == 2010) %>% 
-  count(state) %>% 
-  left_join(pops, by = c("state" = "abb")) %>% 
-  filter(year == 2010) %>% 
+us$geometry <- 1:nrow(us) %>% 
+  lapply(function(x) st_point(c(us$longitude[x], us$latitude[x]))) %>% 
+  st_sfc(crs = 4269)
+
+us2 <- st_sf(us)
+
+countydat <- 
+  get_acs(
+    geography = "county",
+    variables = c("B17006_001", "B17006_002"),
+    output    = "wide",
+    geometry  = TRUE
+  ) %>%
+  mutate(area = st_area(geometry)) %>% 
+  st_transform(4269) %>% 
+  st_join(us2, join = st_contains)
+
+rates <- countydat %>% 
+  as.data.frame %>%
+  count(`NAME`) %>% 
+  right_join(
+    countydat %>% 
+      select(NAME, B17006_001E, area, geometry) %>% 
+      distinct
+  ) %>% 
   mutate(
-    Rate  = n %>% divide_by(estimate) %>% multiply_by(1000000) %>% round(2),
-    state = tolower(names)
+    d = B17006_001E / as.numeric(area / 1000000),
+    dm = Hmisc::cut2(d, g = 3, levels.mean = TRUE),
+    nm = Hmisc::cut2(n, g = 3, levels.mean = TRUE)
   )
 
-state_rates <- left_join(
-  state_rates,
-  pops %>% 
-    select(names, abb) %>% 
-    distinct %>% 
-    mutate(abb = toupper(abb))
+levels(rates$dm) <- 1:3
+levels(rates$nm) <- 1:3
+
+rates$bin <- str_c(rates$dm, "-", rates$nm) %>% 
+  factor(levels = c(
+    "3-1", "2-1", "1-1",  # col 1 -->
+    "3-2", "2-2", "1-2",  # col 2 -->
+    "3-3", "2-3", "1-3"   # col 3 -->
+  ))
+
+vals <- c(
+  "#8c510a", "#bf812d", "#dfc27d", # col 1 -->
+  "#f6e8c3", "#f5f5f5", "#c7eae5", # col 2 -->
+  "#80cdc1", "#35978f", "#01665e"  # col 3 -->
 )
 
-# crosswalk
-state_xover <- data_frame(
-  region = tolower(state.name),
-  state  = tolower(state.abb)
-)
+bv_choro <- rates %>% 
+  filter(!str_detect(NAME, "Alaska|Hawaii|Puerto")) %>% 
+  st_sf %>% 
+  ggplot(aes(fill = bin)) +
+  geom_sf() +
+  coord_sf(crs = 5070) +  # albers continental USA
+  scale_fill_manual(name = "", values = rev(vals), drop = FALSE, labels = NULL) +
+  # guides(fill = guide_legend(ncol = 3, bycol = TRUE, title.position = "bottom")) +
+  theme_minimal() +
+  labs(x = "", y = "") +
+  theme(
+    panel.grid = element_blank(),
+    axis.text  = element_blank(),
+    legend.position = "none"#c(.55, .15)
+  )
 
-state_rates <- us %>% 
-  filter(year_sighted == 2013) %>% 
-  count(state) %>% 
-  left_join(state_xover, by = "state") %>% 
-  left_join(
-    read_csv("../../static/data/ufo-sightings/census-us-state-populations-2013.csv") %>% 
-      rename(region = state) %>% 
-      mutate(region = tolower(region) %>% gsub("^\\s+|\\s+$", "", .)),
-    by = "region"
-  ) %>% 
-  mutate(Rate = n %>% divide_by(pop13) %>% multiply_by(1000000) %>% round(2)) %>% 
-  mutate(abb = toupper(state))
+legend_p <- rates %>% 
+  select(dm, nm, bin) %>% 
+  distinct %>% 
+  arrange(bin) %>% 
+  ggplot(aes(x = nm, y = dm, fill = bin)) +
+  geom_tile() +
+  scale_fill_manual(values = rev(vals)) +
+  theme_minimal() +
+  labs(x = sprintf("Sightings \u2192"), y = sprintf("Density \u2192")) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text  = element_blank(),
+    legend.position = "none"
+  )
 
-states_map <- map_data("state")
+# rates %>% 
+#   group_by(bin) %>% 
+#   arrange(desc(n), desc(d)) %>% 
+#   slice(1) %>%  
+#   select(bin, n, d) %>% 
+#   arrange(bin)
 ```
 
-```{r map2, fig.height=5.5, fig.width=10}
-# specify some map projection/options
-g <- list(
-  scope = 'usa',
-  projection = list(type = 'albers usa'),
-  lakecolor = toRGB('white')
-)
+```{r print-map, fig.height=5.5, fig.width=10}
+bv_choro
+```
 
-choro <- 
-  plot_ly(
-    z            = state_rates$Rate,
-    # text         = state_rates$names,
-    locations    = state_rates$abb,
-    type         = "choropleth",
-    locationmode = "USA-states"
-  ) %>% 
-  colorbar(title = "Per Million People") %>% 
-  layout(
-    title = "UFO Sightings by State, US 2013<br>(Hover for exact value)",
-    geo   = g
-  )
-
-choro
+```{r print-legend, fig.height=1.5, fig.width=1.5}
+legend_p
 ```
 
 In the Economist article I mentioned earlier, they suggest that sightings tend to spurn big cities, rationale being that light pollution drives down reports.

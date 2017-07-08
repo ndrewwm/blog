@@ -1,7 +1,7 @@
 ---
 title: exploring NUFORC sightings
 author: Andrew
-date: '2017-06-10'
+date: '2017-07-08'
 slug: exploring-nuforc-sightings
 categories: ["R"]
 tags: ["R", "data analysis", "data viz", "UFOs", "kaggle"]
@@ -53,7 +53,7 @@ us$season <- us %$%
 us <- filter(us, year_sighted < 2014)
 ```
 
-*R code used for each of the graphics is available [here.](https://github.com/mooreaw/blogdown_source/blob/master/content/post/2017-06-09-exploring-ufo-sightings.Rmd)*
+*R code used for each of the graphics is available [here.](https://github.com/mooreaw/ufo-sightings)*
 
 <!-- https://www.kaggle.com/NUFORC/ufo-sightings -->
 
@@ -201,10 +201,13 @@ ggplotly(p2)
 ```
 
 ### Where are sightings most likely to happen?
+
+As I mentioned above, the *Economist* piece suggests that sightings tend to spurn big cities, rationale being that light pollution drives down reports. They also suggested that sightings favor the US/Canada border, and other rural areas. I'm not sure if I've reached the same conclusions... The map below reflects two pieces of data for each county in the US during 2013: population density (people/km^2), and sightings reported. The little grid below reflects how I've categorized each county. The top-left (dark-grey) represents counties with a really high population density but low numbers of sightings. The bottom right (deep brown) represents counties with a low population density but really high sighting count. Up in the top right we have counties whose number of sightings tracks well with their population size. 
  
-```{r build-bv-map}
+```{r build-bv-map, cache=TRUE}
 library(tidycensus)
-library(sf) 
+library(sf)
+library(glue)
 
 source("../../../census-api-key.R")
 
@@ -264,7 +267,7 @@ bv_choro <- rates %>%
   leaflet() %>%
   addPolygons(
     color = "black",
-    popup = ~ NAME,
+    popup = ~glue_data(., "{NAME}; Sightings: {n}, Density: {round(d, 2)}"),
     stroke = TRUE,
     weight = 1,
     smoothFactor = 0.2,
@@ -303,8 +306,6 @@ bv_choro
 ```{r print-legend, fig.height=1.5, fig.width=1.5}
 legend_p
 ```
-
-As I mentioned above, the *Economist* piece suggests that sightings tend to spurn big cities, rationale being that light pollution drives down reports. They also suggested that sightings favor the US/Canada border, and other rural areas. I'm not sure if I've reached the same conclusions... The map above reflects two pieces of data for each county in the US during 2013: population density (people/km^2), and sightings reported. The little grid below reflects how I've categorized each county. The top-left (dark-grey) represents counties with a really high population density but low numbers of sightings. The bottom right (deep brown) represents counties with a low population density but really high sighting count. Up in the top right we have counties whose number of sightings tracks well with their population size. 
 
 The thing I find striking is that there are a few really urban counties that still show a large number of sightings. Cook (Chicago, IL), Wayne (Detroit, MI), King (Seattle, WA), New York, and San Francisco all follow this pattern. We do see a fair amount of rural counties with disproportionate levels of sightings in the west and northeast, but I'm not sold on the "shunning" asserted in the *Economist* piece. Additionally, the central US (including the borders) appears fairly neglected as far as sightings go. This makes me feel the urban/ruralilty relationship isn't super straightforward.
 
@@ -487,7 +488,7 @@ sightings_lm <- lm(
 )
 ```
 
-What about other local characteristics? The author in the *Economist* piece seemed to enjoy the wry assertion that drunk (and probably rural) people are the ones stumbling around and reporting these things. I'm not inclined think alcohol consumption wouldn't be related to a person experiencing a "sighting", but I wanted to look closer at that assertion. At the same time, states and regions are obviously not reducible to their drinking habits, and I wanted to bring some other features to bear. In order to examine these relationships, I built a regression model with state-based counts of sightings from 2013. In order to measure the relationships accurately, I used a Poisson regression rather than a standard linear model, given what the data looked like (`r sparkline::sparkline(demog$sightings, type = "bar")` Mean: `r mean(demog$sightings, na.rm = TRUE) %>% round(2)`, SD: `r sd(demog$sightings, na.rm = TRUE) %>% round(2)`). With our dependent variable set, I looked at the following group of predictors:
+What about other local characteristics? The author in the *Economist* piece seemed to enjoy the wry assertion that drunk (and probably rural) people are the ones stumbling around and reporting these things. I'm not inclined think alcohol consumption wouldn't be related to a person experiencing a "sighting", but I wanted to look closer at that assertion. At the same time, states and regions are obviously not reducible to their drinking habits, and I wanted to bring some other features to bear. In order to examine these relationships, I built a regression model with state-based counts of sightings from 2013. In order to measure the relationships accurately, I used a Poisson regression rather than a standard linear model, given what the data looked like (Mean: `r mean(demog$sightings, na.rm = TRUE) %>% round(2)`, SD: `r sd(demog$sightings, na.rm = TRUE) %>% round(2)`). With our dependent variable set, I looked at the following group of predictors:
 
 1. *US Census Estimates:* 
     - population size, median income, and median cost of rent (converted to Z-scores)
@@ -589,7 +590,7 @@ marginal_fx <- margins::margins(sightings_pois) %>%
 marginal_fx
 ```
 
-Okay, last plot, I promise! The main benefit of a regression model is that it lets us understand how an individual variable in our data contributes to the outcome we're interested in. The plot above show the average marginal effects from each variable in our model, allowing us to estimate how the count of sightings rises or falls as we increase the values of our predictors. What we're seeing is that income, rent, and population size appear to be fairly related with our outcome. If we imagine we could pluck out an "average" state, and magically increase its population size by a standard-deviation above the country's average (holding the other variables constant), we'd expect to see around 72 additional sightings. Alternatively, if we did the same for the median rent, we'd expect to see 33 fewer sightings. Considering the average number of sightings was around 120, that's a fairly substantial impact.
+Okay, last plot, I promise! The main benefit of a regression model is that it lets us understand how an individual variable in our data contributes to the outcome we're interested in. The plot above shows the average marginal effects from each variable in our model, allowing us to estimate how the count of sightings rises or falls as we increase the values of our predictors. What we're seeing is that income, rent, and population size appear to be fairly related with our outcome. If we imagine we could pluck out an "average" state, and magically increase its population size by a standard-deviation above the country's average (holding the other variables constant), we'd expect to see around 72 additional sightings. Alternatively, if we did the same for the median rent, we'd expect to see 33 fewer sightings. Considering the average number of sightings was around 120, that's a fairly substantial impact.
 
 All said and done, it's easier to say what's *not* related to the number of reported sightings than to explain *why* certain state characteristics appear correlated. At the very least, more reports are coming from areas where the population tends to be larger, a little older, wealthier, and whose levels of openness and emotional stability are marginally higher. The best picture these results seem to paint is the western US. While minding necessary caveats about our observation level, and the fact that we're only using a single year of data, we might have enough to update our opinions about any obvious relationship between alcohol consumption and UFO sightings. Binge drinking and alcohol consumption in general aren't the same thing, but I would assume are positively related at the state level. Perhaps an index/score looking at binge drinking, state revenue from alcohol sales, and other variables together might clarify this relationship, but I'd argue that a state's level of binge drinking at least gives us a window into the region's permissiveness and attitudes about alcohol use. It could be the case that the population of people logging onto NUFORC's website to report sightings tend to drink more, but absent information about the reporters themselves, there's not enough to go off. By far, the biggest questions I have at this point center around what we don't know about the reporters. The fact that population size is positively related to sightings might be enough to say that reporters are mixed well enough into the population in general, but that isn't much of a starting point. Guess I'll just have to content myself with hopefully dodging the ecological fallacy.
 

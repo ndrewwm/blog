@@ -90,7 +90,7 @@ by_year_boxplot <- us %>%
 
 ggplotly(by_year_boxplot)
 ```
-*(The outliers from each year are reliably include Washington, Vermont, Montana, and Wyoming. More on that later.)*
+*(The outliers from each year reliably include a handful of states from the west, like Washington and California. More on that later.)*
 
 ### What people report seeing
 
@@ -464,6 +464,18 @@ sightings_est <- sightings_pois %>%
   arrange(desc(abs(1 - estimate)))
 ```
 
+```{r sightings-glm2, include = FALSE}
+census_regions <- read_csv("../../data/ufo-sightings/census-regions.csv")
+
+demog <- demog %>% 
+  left_join(census_regions, "state") %>% 
+  mutate(census_region = factor(census_region, c("Northeast", "Midwest", "South", "West")))
+
+sightings_pois_region <- glm(sightings ~ census_region, data = demog, family = poisson)
+
+summary(margins::margins(sightings_pois_region))
+```
+
 ```{r simple-lm}
 sightings_lm <- lm(
   sightings ~
@@ -488,7 +500,7 @@ sightings_lm <- lm(
 )
 ```
 
-What about other local characteristics? The author in the *Economist* piece seemed to enjoy the wry assertion that drunk (and probably rural) people are the ones stumbling around and reporting these things. I'm not inclined think alcohol consumption wouldn't be related to a person experiencing a "sighting", but I wanted to look closer at that assertion. At the same time, states and regions are obviously not reducible to their drinking habits, and I wanted to bring some other features to bear. In order to examine these relationships, I built a regression model with state-based counts of sightings from 2013. In order to measure the relationships accurately, I used a Poisson regression rather than a standard linear model, given what the data looked like (Mean: `r mean(demog$sightings, na.rm = TRUE) %>% round(2)`, SD: `r sd(demog$sightings, na.rm = TRUE) %>% round(2)`). With our dependent variable set, I looked at the following group of predictors:
+What about other local characteristics? The author in the *Economist* piece seemed to enjoy the wry assertion that drunk (and probably rural) people are the ones stumbling around and reporting these things. I'm not inclined think alcohol consumption wouldn't be related to a person experiencing a "sighting", but I wanted to look closer at that assertion. At the same time, states and regions are obviously not reducible to their drinking habits, and I wanted to bring some other features to bear. In order to examine these relationships, I built a regression model with state-based counts of sightings from 2013. Given that we're modeling counts of sightings, I opted to use a Poisson regression instead of a regular OLS model. With our dependent variable set, I looked at the following list of predictors:
 
 1. *US Census Estimates:* 
     - population size, median income, and median cost of rent (converted to Z-scores)
@@ -546,7 +558,7 @@ scatter_facet <- scatter_dat %>%
 scatter_facet
 ```
 
-In each plot, every state is represented as a single dot, with the number of sightings increasing along the y-axis, and the variable of interest along the x-axis. I've added a trend line to each plot to help emphasize the relationships. Flat lines indicates that the relationship is equivocal or basically random. This seems to be largely the case for most of our characteristics, but, population size and cost of rent might be showing a hint of something. Of note, our binge-drinking prevalence variable doesn't appear to be related to the number of sightings at all. We can be a little more specific by letting the regression model simplify some of this for us. 
+In each plot, every state is represented as a single dot, with the number of sightings increasing along the y-axis, and the variable of interest along the x-axis. I've added a trend line to each plot to help emphasize the relationships. Flat lines indicate that the relationship is equivocal or basically random. This seems to be largely the case for most of our characteristics, but, population size and cost of rent might be showing a hint of something. Of note, our binge-drinking prevalence variable doesn't appear to be related to the number of sightings at all. We can be a little more specific by letting the regression model simplify some of this for us. 
 
 ```{r model-fit, eval = FALSE}
 # https://onlinecourses.science.psu.edu/stat501/node/377
@@ -590,9 +602,9 @@ marginal_fx <- margins::margins(sightings_pois) %>%
 marginal_fx
 ```
 
-Okay, last plot, I promise! The main benefit of a regression model is that it lets us understand how an individual variable in our data contributes to the outcome we're interested in. The plot above shows the average marginal effects from each variable in our model, allowing us to estimate how the count of sightings rises or falls as we increase the values of our predictors. What we're seeing is that income, rent, and population size appear to be fairly related with our outcome. If we imagine we could pluck out an "average" state, and magically increase its population size by a standard-deviation above the country's average (holding the other variables constant), we'd expect to see around 72 additional sightings. Alternatively, if we did the same for the median rent, we'd expect to see 33 fewer sightings. Considering the average number of sightings was around 120, that's a fairly substantial impact.
+Okay, last plot, I promise! The main benefit of a regression model is that it lets us understand how an individual variable in our data contributes to the outcome we're interested in. The plot above shows the average marginal effects from each variable in our model, allowing us to estimate how the count of sightings rises or falls as we increase the values of our predictors. What we're seeing is that income, rent, and population size appear to be fairly related with our outcome. If we imagine that we could pluck out an "average" state, and magically increase its population size by a standard-deviation above the country's average (holding the other variables constant), we'd expect to see around 72 additional sightings. Alternatively, if we did the same for the median rent, we'd expect to see 33 fewer sightings. Considering the average number of sightings was around 120, that's a fairly substantial impact.
 
-All said and done, it's easier to say what's *not* related to the number of reported sightings than to explain *why* certain state characteristics appear correlated. At the very least, more reports are coming from areas where the population tends to be larger, a little older, wealthier, and whose levels of openness and emotional stability are marginally higher. The best picture these results seem to paint is the western US. While minding necessary caveats about our observation level, and the fact that we're only using a single year of data, we might have enough to update our opinions about any obvious relationship between alcohol consumption and UFO sightings. Binge drinking and alcohol consumption in general aren't the same thing, but I would assume are positively related at the state level. Perhaps an index/score looking at binge drinking, state revenue from alcohol sales, and other variables together might clarify this relationship, but I'd argue that a state's level of binge drinking at least gives us a window into the region's permissiveness and attitudes about alcohol use. It could be the case that the population of people logging onto NUFORC's website to report sightings tend to drink more, but absent information about the reporters themselves, there's not enough to go off. By far, the biggest questions I have at this point center around what we don't know about the reporters. The fact that population size is positively related to sightings might be enough to say that reporters are mixed well enough into the population in general, but that isn't much of a starting point. Guess I'll just have to content myself with hopefully dodging the ecological fallacy.
+All said and done, it's easier to say what's *not* related to the number of reported sightings than to explain *why* certain state characteristics appear correlated. At the very least, more reports are coming from areas where the population is probably larger, a little older, wealthier, and whose levels of openness and emotional stability are marginally higher. The best picture these results seem to paint is the western US. While minding necessary caveats about our observation level, and the fact that we're only using a single year of data, we might have enough to update our opinions about any obvious relationship between alcohol consumption and UFO sightings. Binge drinking and alcohol consumption in general aren't the same thing, but I would assume are positively related at the state level. Perhaps an index/score looking at binge drinking, state revenue from alcohol sales, and other variables together might clarify this relationship, but I'd argue that a state's level of binge drinking at least gives us a window into the region's permissiveness and attitudes about alcohol use. It could be the case that the population of people logging onto NUFORC's website to report sightings tend to drink more, but absent information about the reporters themselves, there's not enough to go off. By far, the biggest questions I have at this point center around what we don't know about the reporters. The fact that population size is positively related to sightings might be enough to say that reporters are mixed well enough into the population in general, but that isn't much of a starting point. Guess I'll just have to content myself with hopefully dodging the ecological fallacy.
 
 <br>
 <br>

@@ -81,7 +81,7 @@ by_year_boxplot <- us %>%
 
 ggplotly(by_year_boxplot)
 ```
-*(The outliers from each year are reliably include Washington, Vermont, Montana, and Wyoming. More on that later.)*
+*(The outliers from each year reliably include a handful of states from the west, like Washington and California. More on that later.)*
 
 ### What people report seeing
 
@@ -396,7 +396,6 @@ demog <- medians %>%
   left_join(yr13, "state") %>% 
   filter(!is.na(sightings))
 
-# mean/sd should be close if the distribution is poisson
 sight_desc <- summarise(demog, avg = mean(sightings), sd = sd(sightings))
 
 demog <- demog %>%
@@ -451,6 +450,18 @@ sightings_est <- sightings_pois %>%
   select(term, estimate, contains("conf")) %>%
   mutate_each(funs(roundy(exp(.))), -term) %>%
   arrange(desc(abs(1 - estimate)))
+```
+
+```{r sightings-glm2, include = FALSE}
+census_regions <- read_csv("../../data/ufo-sightings/census-regions.csv")
+
+demog <- demog %>% 
+  left_join(census_regions, "state") %>% 
+  mutate(census_region = factor(census_region, c("Northeast", "Midwest", "South", "West")))
+
+sightings_pois_region <- glm(sightings ~ census_region, data = demog, family = poisson)
+
+summary(margins::margins(sightings_pois_region))
 ```
 
 ```{r simple-lm}
@@ -535,7 +546,7 @@ scatter_facet <- scatter_dat %>%
 scatter_facet
 ```
 
-In each plot, every state is represented as a single dot, with the number of sightings increasing along the y-axis, and the variable of interest along the x-axis. I've added a trend line to each plot to help summarize the relationships. Flat lines indicate that the relationship is basically random. This seems to be largely the case for most of our characteristics, but, population size and cost of rent might be showing a hint of something. Of note, our binge-drinking prevalence variable doesn't appear to be related to the number of sightings at all. We can be a little more specific by letting the regression model simplify some of this for us. 
+In each plot, every state is represented as a single dot, with the number of sightings increasing along the y-axis, and the variable of interest along the x-axis. I've added a trend line to each plot to help summarize the relationships. Flat lines indicate that the relationship is basically random. This seems to be largely the case for most of our characteristics, but, population size and cost of rent might be showing a hint of something. Of note, our binge-drinking prevalence variable doesn't appear to be related to the number of sightings at all. We can be a little more specific by letting the regression model simplify some of this for us.
 
 ```{r model-fit, eval = FALSE}
 # https://onlinecourses.science.psu.edu/stat501/node/377

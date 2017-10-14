@@ -1,13 +1,15 @@
-baseurl = "https://mooreaw.github.io/"
+baseurl = "https://www.semidocumentedlife.com/"
 title = "semi documented life"
 author = "Andrew Moore"
 canonifyurls = true
 languagecode = "en"
 theme = "hugo-black-and-light-theme"
-publishDir = "../mooreaw.github.io/"
+publishDir = "public/"
 
 pygmentsstyle       = "bw"
 pygmentscodefences  = true
+
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [params]
   sitename = "semi documented life"

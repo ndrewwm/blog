@@ -6,7 +6,7 @@ languagecode = "en"
 theme = "hugo-black-and-light-theme"
 publishDir = "public/"
 
-googleAnalytics = "UA-108115849-1"
+# googleAnalytics = "UA-108115849-1"
 
 pygmentsstyle       = "bw"
 pygmentscodefences  = true

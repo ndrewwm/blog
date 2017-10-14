@@ -13,9 +13,9 @@ Matt Bruenig at the [People's Policy Project](http://peoplespolicyproject.org/) 
 
 A fair amount of the responses seemed to be complaining that line graphs should be restricted to displaying a quantitative variable against an axis representing time. This seems to be an argument based on convention, and I don't really find it persuasive. The quantity we're interested in is the distance between the baseline (0) and the mark indicating the estimate at a given percentile. Bruenig could've easily represented the values as bars (or switched to a [lollipop chart](http://datavizproject.com/data-type/lollipop-chart/)), but in all of these cases, the viewer still needs to look at the axis labels to make sure they're reading the graphic correctly. Elegant visualizations contain enough context and information to ultimately stand on their own, but there's still an active process of consuming them. Pure convention isn't really enough of a justification for me, at least. Bars take up a lot of space/ink on a plot, and feel like a heavy-handed way of expressing the measure's property of *distance from a baseline.*
 
-However, buried in the responses, I think there were a few more substantive questions that could maybe be addressed with some additional data. Criticisms largely centered on the choice of two particular waves in the SCF, 2007 and 2016. Many studious folks in the comments pointed out that Barack Obama wasn't in office at the time of the first wave, and that any observed declines need to account for the financial crisis that would kick into effect between 2008-2009. My read of Bruenig's presentation was that the choice of these two points was meant to provide a sort of pre/post-Obama comparison, as far as the success/failures of his policies over two terms. I don't think this overlooks the recession at all. Given that the recession occurred during Obama's presidency, it's difficult to think of any domestic economic policies his administration pursued or supported that weren't colored by the crisis. Thus, I think a pre/post comparison (as rough as this is) is worthwhile in evaluating the effectiveness of the administration's response. The extent to which a president can truly affect the course of the economy (or within a certain period of time, such as the length of a presidential term) is a separate issue, but it doesn't seem controversial to say that their impact is significant in some meaningful domains.
+However, buried in the responses, there were a few substantive questions that could be addressed with some additional data. Criticisms largely centered on the choice of two particular waves in the SCF: 2007 and 2016. Many studious folks pointed out that Barack Obama wasn't in office at the time of the first wave, and that any observed declines need to account for the financial crisis that would kick into effect between 2008-2009. My read was that Bruenig's choice of these two points was meant to provide a sort of pre/post-Obama comparison, providing a really zoomed-out view of successes and failures of his government's policies over two terms. I don't think this overlooks the recession at all. Given that the recession occurred during Obama's presidency, it's difficult to think of any economic policies his administration pursued or supported that weren't colored by the crisis. The extent to which a president can truly affect the course of the economy (or within a certain period of time, such as the length of a presidential term) is a broader question, and seems unlikely to be answered with the SCF alone. Based on these datasets, which represent only one method of looking at net worth, we're posing the basic question of how different racial/ethnic groups in the US fared under Barack Obama's presidency. This is different from claiming that Obama's administration is solely responsible for an incomplete recovery (across any group); it's obvious this isn't the case. However, I'm not prepared to endorse the idea that the policies his government pursued had no impact on its trajectory-- that's a question of degree I'm not confident I can answer here.
 
-Yet, given that more waves are available, we don't have to look at a single comparison between 2007 and 2016, if we want to answer the question laid out above. The SCF is conducted every 3 years (typically), so we can add two more lines to Bruenig's graphs to look at 2010 and 2013 as well. Bruenig mentioned on Twitter that the overall patterns came out the same, but I wanted to dig into this on my own as a learning exercise. Looking at all the waves together will also help us understand if the estimates are stable across time. I've downloaded each of the typical waves of SCF data (Summary Extract Public Data Files from 07-16), and pulled out the relevant variables to recreate Bruenig's plots. I present the code I used to analyze them in R below if you want to follow along, but if uninterested you can skip down to the graphs below. 
+Anyways, given that more waves are available, we don't have to look at a single comparison between 2007 and 2016, if we want to push Bruenig's work a little further. The SCF is conducted every 3 years (typically), so we can add two more lines to Bruenig's graphs to look at 2010 and 2013 as well. Bruenig mentioned on Twitter that the overall patterns came out the same, but I wanted to dig into this on my own as a learning exercise. Looking at all the waves together will also help us understand if the estimates are stable across time. I've downloaded each of the typical waves of SCF data (Summary Extract Public Data Files from 07-16), and pulled out the relevant variables to recreate Bruenig's plots. I present the code I used to analyze them in R below if you want to follow along, but if uninterested you can skip down to the graphs below.
 
 ### drawing some additional lines
 
@@ -64,7 +64,7 @@ pctles <- pctles %>%
   ungroup
 ```
 
-Now that we've generated the percentile values for each $group * year$ combination, we can move on to generating the values being displayed in each plot. We're looking at the difference between a given year's percentile values to its corresponding estimate in 2007. Thus, we're not looking at a year-by-year change, but we're comparing each year's position relative to what was recorded in 2007 (just prior to the onset of the Great Recession). The code is accomplishing this somewhat differently, but you could imagine having a spreadsheet with exactly 100 rows, and a column for each year. Each row would contain the value for net worth at a given percentile, and the quantities of interest will be represented as 3 additional columns: column 2007 - column 2010; column 2007 - column 2013; and column 2007 - column 2016.
+Now that we've generated the percentile values for each _group * year_ combination, we can move on to generating the values being displayed in each plot. We're looking at the difference between a given year's percentile values to its corresponding estimate in 2007. Thus, we're not looking at a year-by-year change, but we're comparing each year's position relative to what was recorded in 2007 (just prior to the onset of the Great Recession). The code is accomplishing this somewhat differently, but you could imagine having a spreadsheet with exactly 100 rows, and a column for each year. Each row would contain the value for net worth at a given percentile, and the quantities of interest will be represented as 3 additional columns: column 2007 - column 2010; column 2007 - column 2013; and column 2007 - column 2016.
 
 ```{r pctiles-2}
 # now we want to take the difference between each wave's values from the 2007
@@ -115,7 +115,8 @@ p1 <- pctles %>%
   labs(
     x = "Wealth Percentile",
     y = "Change from 2007 (2016 dollars)",
-    title = "Change In White Wealth By Percentile"
+    title = "Change In White Wealth By Percentile",
+    caption = "Source: Survey of Consumer Finance"
   )
 
 p2 <- pctles %>%
@@ -130,7 +131,8 @@ p2 <- pctles %>%
   labs(
     x = "Wealth Percentile",
     y = "Change from 2007 (2016 dollars)",
-    title = "Change In Black Wealth By Percentile"
+    title = "Change In Black Wealth By Percentile",
+    caption = "Source: Survey of Consumer Finance"
   )
 
 p3 <- pctles %>%
@@ -145,7 +147,8 @@ p3 <- pctles %>%
   labs(
     x = "Wealth Percentile",
     y = "Change from 2007 (2016 dollars)",
-    title = "Change In Hispanic/Latino Wealth By Percentile"
+    title = "Change In Hispanic/Latino Wealth By Percentile",
+    caption = "Source: Survey of Consumer Finance"
   )
 ```
 
@@ -155,7 +158,7 @@ Next, we can rebuild the plots. Let's start by looking at the change in white we
 ggplotly(p1, tooltip = "Label")
 ```
 
- My expectation was that we'd see a fairly strong correlation between the waves, which mostly plays out for the bulk of the distribution. The basic curve/shape of the lines seem consistent, except when you creep up to the 97-99th percentiles. As best I can tell, it seems like recovery for the top 3% didn't really start to pick up until after 2013. This feels sort of surprising to me; my expectation was that the super high percentiles (96-99) would have ridden things out a little better. It looks as if upper-class white families experienced the sharpest downturn closest to the 2007, but we start to see some recovery between the waves in 2013. Lower- and middle-class whites (i.e. percentiles 0-65~) generally dropped about as far as they would by 2010, where they continued to sit until 2016. 
+My expectation was that we'd see a fairly strong correlation between the waves, which mostly plays out for the bulk of the distribution. The basic curve/shape of the lines seem consistent, except when you creep up to the 97-99th percentiles. As best I can tell, it seems like recovery for the top 3% didn't really start to pick up until after 2013. This feels sort of surprising to me; my expectation was that the super high percentiles (96-99) would have ridden things out a little better. It looks as if upper-class white families experienced the sharpest downturn closest to the 2007, but we start to see some recovery between the waves in 2013. Lower- and middle-class whites (i.e. percentiles 0-65~) generally dropped about as far as they would by 2010, where they continued to sit until 2016.
 
 Shifting to black families, we see a slight difference in that the worst declines for families above the median are observed between 2010 and 2013. It looks as if families above the median only really recover to a little above where they were in 2010. The top-10% in this group appears more like what I expected, in that the 98-99th percentiles seem to fair better than those between 90-97.
 
@@ -207,7 +210,8 @@ p1 <- pctles %>%
   labs(
     x = "Wealth Percentile",
     y = "% Difference from 2007 (2016 dollars)",
-    title = "Change In White Wealth By Percentile"
+    title = "Change In White Wealth By Percentile",
+    caption = "Source: Survey of Consumer Finance"
   )
 
 p2 <- pctles %>%
@@ -222,7 +226,8 @@ p2 <- pctles %>%
   labs(
     x = "Wealth Percentile",
     y = "% Difference from 2007 (2016 dollars)",
-    title = "Change In Black Wealth By Percentile"
+    title = "Change In Black Wealth By Percentile",
+    caption = "Source: Survey of Consumer Finance"
   )
 
 p3 <- pctles %>%
@@ -237,7 +242,8 @@ p3 <- pctles %>%
   labs(
     x = "Wealth Percentile",
     y = "% Difference from 2007 (2016 dollars)",
-    title = "Change In Hispanic/Latino Wealth By Percentile"
+    title = "Change In Hispanic/Latino Wealth By Percentile",
+    caption = "Source: Survey of Consumer Finance"
   )
 ```
 
@@ -255,10 +261,47 @@ The switched measure also allows us to look closer at some of the patterns we sa
 ggplotly(p2, tooltip = "Label")
 ```
 
-But when you look at black and Hispanic/Latino families, we get a clearer look at this sort of delayed decline that we pick up in the 2013 wave, which is more pronounced for black families. From what I've read, housing forclosures peaked in 2010, and while declining, were still high up to the 2013 wave. [A lot](https://twitter.com/alexnpress/status/850122567826513921) of research has already been done about how black families were especially affected by forclosures, and this is one way of capturing its impact in aggregate. Something we can see more clearly here is how relatively worse off black families are compared to whites and Hispanics/Latinos; both of these groups appear to have turned a corner in 2016, even if they aren't all improving from where they were in 2007. 
+But when you look at black and Hispanic/Latino families, we get a clearer look at this sort of delayed decline that we pick up in the 2013 wave, which is more pronounced for black families. From what I've read, housing forclosures peaked in 2010, and while declining, were still high up to the 2013 wave. [A lot](https://twitter.com/alexnpress/status/850122567826513921) of research has already been done about how black families were especially affected by forclosures. I don't have the variables needed to really investigate this in front of me, but I'm wondering how much of the drop during 2013 is explained by this. Homes have historically been one of the most reliable repositories for American wealth. Something else we can see more clearly is how relatively worse off black families are compared to whites and Hispanics/Latinos; both of these groups appear to have turned a corner in 2016, even if they aren't all improving from where they were in 2007. 
 
 ```{r p3-2, echo = FALSE}
 ggplotly(p3, tooltip = "Label")
+```
+
+### the traditional approach
+
+Lastly, after chatting with friends with bonified number school degrees, I decided to loop back and lay out the more traditional presentation. Their criticism generally fell on the fact these percentiles don't work as a continuous scale; the space between each rank isn't regular, and thus using a line might misleadingly imply regular progression. Based on the data we have, it's simple to invert the presentation, and use the multiple waves of the survey to reflect change over time. Yet, it seems we have a new problem: can we still show the variability across all the percentiles? Including 100 individual lines in each panel feels way too busy. I opted for plucking out a handful of deciles (dropping the 10/20th percentiles, given their drops fall below the y-axis's limits), as well as the 25th, 95th, and 99th percentiles. Having looked at 3 different ways of approaching these data, I feel like the claim in the title of Bruenig's post generally holds up. This last presentation might be most respectful to the fundamentals, but feels a little disappointing, given we're stuck leaving a good amount of the data out in order to be concise. 
+
+```{r inverted time and change, echo = FALSE}
+pctles$Label <- glue_data(
+  pctles,
+  sep = "",
+  "Percentile: {pctle}<br>",
+  "Year: {year}<br>",
+  "Net-worth (2007): {comma(round(nw07))}<br>",
+  "Net-worth ({year}): {comma(round(networth))}<br>",
+  "% Difference: {round(pct_diff * 100, 2)}"
+)
+
+p4 <- pctles %>%
+  filter(
+    race != "Other",
+    pctle %in% c(25, 30, 40, 50, 60, 70, 80, 90, 95, 99)
+  ) %>%
+  mutate(pctle = factor(pctle)) %>%
+  ggplot(aes(x = year, y = pct_diff, color = pctle, group = pctle, label = Label)) +
+  geom_line() +
+  geom_point() +
+  scale_y_continuous(labels = percent, limits = c(-1, .5)) +
+  theme(legend.position = "none") +
+  facet_wrap(~race, nrow = 1) +
+  labs(
+    x = "Wave",
+    y = "% Difference from 2007 (2016 dollars)",
+    title = "Change in Family Net Worth from 2007",
+    caption = "Source: Survey of Consumer Finance"
+  )
+
+ggplotly(p4, tooltip = "Label")
 ```
 
 ### wrap up
@@ -269,6 +312,6 @@ As far as I can tell, I think I've matched the spirit of Bruenig's approach, and
 
 2. This leads me to put a more critical eye on my code and the data I've been using. Perhaps I'm using the weights incorrectly, missed a crucial command, or otherwise mishandled the data, and someone can [open an issue](https://github.com/mooreaw/scf-networth-44/issues/new) to help me fix it. Ultimately this highlights something I hope I could see from PPP in the future: transparency through reproducible findings.
 
-I'm not an economist, and haven't worked with SCF data before this weekend when I wrote this up, so I'm probably not fully equipped to dive into the findings that Bruenig posted. But, as an observer, I really like seeing research or reports that make the data they use/present available, as well as the code that's used to draw their graphs or compute the estimates they discuss. It's helpful for novices that are new to an issue, and it's also a way to help clear up ambiguities about data that's being consumed. I'm used to seeing people in various fields doing that amongst themselves online, but I sometimes download materials to take a closer look at things that interest me. 
+I'm not an economist, and haven't worked with SCF data before the weekend when I wrote this up, so maybe I'm not fully equipped to dive into the findings that Bruenig posted. But, as an observer, I really like seeing research or reports that make the data they use/present available, as well as the code that's used to draw their graphs or compute the estimates they discuss. It's helpful for novices that are new to an issue, and it's also a way to help clear up ambiguities about data that's being consumed. I'm used to seeing people in various fields doing that amongst themselves online, but I sometimes download materials to take a closer look at things that interest me.
 
 I really like the ethos that PPP has set up for itself, i.e. attempting to be a progressive policy group that's supported mainly through grassroots donations from individuals. Implicit in that approach, I feel there's an intention to be accountable to its supporters. In addition to shining light on issues that aren't being taken up by more established groups, I would argue that providing access to the steps and methods used to provide its product would be a way of further democratizing the work that PPP is doing. I can think of a handful of organizations that have taken steps in this respect, such as the [Urban Institute,](https://github.com/UrbanInstitute) and [FiveThirtyEight.](https://github.com/fivethirtyeight) Both have areas that they could improve in (as far as documentation and curation), but I think the opportunities for engagement and positive benefits are there. For what I've said in support of PPP thus far, I've been considering kicking in some dollars, but if Matt was to document what he did to produce the graphics for the original post, that might push me over the edge.

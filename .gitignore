@@ -1,5 +1,8 @@
+*.DS_Store
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 public
+blogdown
+census-api-key.R

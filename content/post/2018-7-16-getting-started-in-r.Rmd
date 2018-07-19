@@ -1,0 +1,47 @@
+---
+title: "how should I get started with R?"
+author: Andrew
+date: '2018-07-15'
+slug: starting-with-r
+tags: ["R", "self teaching"]
+---
+
+Here's some evergreen advice from David Robinson:
+
+```{r echo = FALSE}
+blogdown::shortcode("tweet", "928447584712253440")
+```
+
+In a world overflowing with data science blogs, I've decided to write some notes about getting started in R. I recently crossed Robinson's threshold, and want to write down my basic advice (so, hi! if you're a friend/colleague, and I've pointed you here). I work in an academic research environment, and while I've used R for 4+ years, my initial exposure to working with data was in SPSS. My experience talking about R has often been in this community, speaking to SPSS/STATA users looking to expand their skills in a new software environment. The audience for this post is those who've decided to make the jump, and want to get started (rather than convincing you why R is a good choice). <!-- link to good posts about this? --> Aside from having this group in mind, I also want to provide a resource that's somewhat current for 2018. R as a language is moving fast, and new(er) packages have given R a lot of strengths that I think are important to be aware of early.
+
+# building fundamentals
+
+Many of the folks I talk to about learning R have little or no experience with "real" programming languages, which described myself when I first installed the language. If you're in this camp, I have a few recommendations to get started.
+
+### 1. don't just install the R language-- install RStudio
+
+[RStudio](https://www.rstudio.com/products/RStudio/) is an *integrated development environment (IDE);* it provides a sort of look and feel for how you'll work with R. When programming, you'll be writing code in a console, and a text editor. IDEs are sensitive to how code is written and help the user by highlighting parts of the syntax, even auto-completing commands when prompted. RStudio also has tools for data visualization and report writing, among many other useful features. RStudio's desktop version is *free,* so definitely take advantage of the standard setup for most people working with the language.
+
+### 2a. something to read
+
+Once you've got the language and RStudio installed, I would point you to a book by Garrett Grolemund and Hadley Wickham, [R for Data Science.](http://r4ds.had.co.nz/) As a resource, it's a little over a year old, so the topics and packages utilized are current (in my opinion). To my continued amazement, the book exists *for free* as a website, and the material is of high quality. I wasn't aware of a resource like this when I first started, and it's the text I wish I'd had in the beginning. The chapters cover importing data, transforming & cleaning data, and creating visualizations, in addition to sections on modeling and communicating analysis results. These initial 3 sections are the bread and butter of using R, and will teach you how to accomplish them using packages from the [tidyverse.](https://www.tidyverse.org/packages/) Very few scripts I write don't include `library(tidyverse)` at the top of the file, so I think this is an important place to start in 2018.
+
+### 2b. something to watch
+
+If you're looking for something a little more interactive or perhaps lecture-esque, I would suggest looking at [DataCamp](https://www.datacamp.com/courses/free-introduction-to-r), and trying some of the introductory courses offered. DataCamp is an online learning platform in which learners can run code in an online prompt alongside exercises. Courses include lectures and other components. They're self-paced, and each individual course can be completed over a few days. Some content is free, but a subscription might be needed to finish certain courses. Students are typically offered discounts (or maybe even free memberships?), otherwise you're looking at around $29/month.
+
+Alternatively, the first serious steps I took learning R were through the JHDS MOOCs offered through [Coursera](https://www.coursera.org/specializations/jhu-data-science). These courses are still being taught, but I don't personally know if their materials have been keeping pace with the R ecosystem. However, their materials were fine in terms of building fundamentals.
+
+# building confidence
+
+If you have a grasp of the basics, have run some code in RStudio, and are getting ready to embark on a project, I'll give a quick nod to the open secret of programming today. Your google-fu and ability to use [StackOverflow](https://stackoverflow.com/) will both complement and reinforce your grasp of R as a language. In advising beginners, I always tell them to roll with the error messages they receive, and push themselves a little before consulting a more experienced user. I don't like seeing people struggle and am always happy to help those I'm working with, but struggling with a problem helps build your skills to 1) describe the challenge you're currently facing, and 2) your ability to address and solve it. I personally haven't reached a point where I've written error-free code on the first iteration of a non-trival project. Finding bugs doesn't mean you're failing, it just means that you're programming.
+
+Next, I'd give a plug for something I've found valuable in my own learning and development: meetups. This recommendation is unfortunately location-dependent, but if you're in a larger city or college-town, it's fairly likely that there's an R User group that meets somewhat regularly. Most meetups I'm aware of are focused around talks on how to do something in R, or how R was applied to solve a given problem. For example, you might see overviews and demonstrations of new packages, or discussions of different statistical/visualization techniques and how they're implemented in R. I don't do a ton of machine learning in my day-to-day work, but I've found it very helpful to be plugged into the community of people in my city who do. That last point underscores another benefit of meetups: you'll get to meet and talk to a lot of people you can learn from. I think this kind of experience is great for a beginner, or those early in their careers (this was and still is true for me).
+
+# building experience
+
+If I was to place myself in one of the sections I'm covering, it would be here. Hopefully, you're at a point where you're able to use your skills as part of your work, but (based on your duties and project demands), this may or may not be happening. In any case, there are some things I've found myself doing to keep sharpening my skills. The first resource I would point you to is [Kaggle](https://www.kaggle.com/). Kaggle is another online platform, but is a popular site used to host competitions around statistical model-building. Companies or non-profits will host data they want analyzed, and individuals or teams can compete to build models that can best predict an outcome or solve a problem of interest. You can write code in the cloud-- no local environment is required, but you can download data to work with locally (if that's your thing). It's especially helpful to practice on real world problems, and gain experience with datasets that you wouldn't normally encounter in your field/discipline. A useful feature is that you'll often be able to see how others have approached solving the same problem-- "kernels" or scripts that others have written are often public, and are linked to competitions/datasets. Even though organized teams and ML experts can net some hefty prize purses from competitions, using the site is low-stakes for the average person, and I think it's worth looking at.
+
+The second thing I'd suggest is starting a GitHub account, and to begin curating some of your projects. Most people approach R with a purpose in mind, so it makes sense to have a platform for sharing your work's results. I'm placing this note in this section given that "maturity" in R probably means you'll have some projects to showcase, but you can (and should) start using version control early. I think I still have a few of the repositories I set up as part of my initial lessons with the language. Similar to learning how to frame questions and problems, version control systems (like Git) were things I had to gather knowledge around, but have really helped me build discipline in the projects I've worked on.
+
+Not a lot of this advice is original, but it's a good combination of things I've done or used personally, and have recognized as valuable in my learning. I always tell people in describing my appreciation for learning R that the experience both empowers and humbles. The flexibility of the skills and tools give you a chance to ask the world some of your questions. At the same time, being part of the community shows exactly how much your work depends on the prior labor of others. It's liberating to see how much there is to learn-- I hope you find the language useful!

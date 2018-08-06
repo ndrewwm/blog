@@ -1,30 +1,37 @@
 baseurl = "https://www.semidocumentedlife.com/"
 title = "semi documented life"
 author = "Andrew Moore"
-canonifyurls = true
-languagecode = "en"
-theme = "hugo-black-and-light-theme"
+languageCode = "en"
+theme = "kiss"
 publishDir = "public/"
+googleAnalytics = "UA-108115849-1"
 
-# googleAnalytics = "UA-108115849-1"
-
-pygmentsstyle       = "bw"
-pygmentscodefences  = true
+enableRobotsTXT = true
 
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
-[params]
-  sitename = "semi documented life"
+[params.assets]
+customCSS = ["css/custom.css"]
 
-[[menu.main]]
-    name = "about"
-    url  = "about"
-[[menu.main]]
-    name = "github"
-    url  = "https://github.com/mooreaw/"
-[[menu.main]]
-    name = "twitter"
-    url  = "https://twitter.com/theysayHeyDrew/"
-[[menu.main]]
-    name = "cv"
-    url  = "https://github.com/mooreaw/cv/"
+[params.info]
+adsense = "" # Adsense ID (ID only, without ca-pub-)
+enableSocial = true # Adds OpenGraph and Twitter cards
+homeTitle = "" # Title for home page
+poweredby = true # Adds powered by hugo and kiss below Copyright
+related = true # Includes related articles at the bottom of the article
+
+[params.opengraph.twitter]
+page = "" # Twitter Page username. If not set, params.social.twitter will be used.
+
+[params.social]
+twitter = "mooreaw_"
+github = "mooreaw"
+email = "moore.andrew09@gmail.com"
+instagram = "amateurthoughts"
+
+[blackfriday]
+hrefTargetBlank = true
+
+[params.sections_right]
+"/about/" = "about"
+"https://github.com/mooreaw/cv/" = "cv"

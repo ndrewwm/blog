@@ -10,5 +10,3 @@ Most of my day-to-day work involves the `R` language and other open-source softw
 Aside from my academic interests, I like looking at analog/handmade data visualizations and maps, collecting unique beers on [untappd](https://untappd.com/user/B33rz4y33rz) with my partner, traveling, playing strategy games (like Go), and feeding an expanding reading list. I also occasionally sit in on a [college friend's podcast](https://www.petty-cache.com/podcast-talking-screens/) about movies as a co-host.
 
 I've started this page/blog as a way to curate thoughts, and explore different datasets and methods that I'm trying to learn about. I hope at the very least I'll have some interesting (if not useful) things for you to read. In that vein, any views expressed here are solely mine, and not those of my employer or colleagues.
-
-*This site was built using [Blogdown](https://github.com/rstudio/blogdown) with the light & dark Hugo theme by [David Hamp-Gonsalves](https://github.com/davidhampgonsalves), and is hosted/served by [Netlify.](www.netlify.com)*

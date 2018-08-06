@@ -8,7 +8,7 @@ googleAnalytics = "UA-108115849-1"
 
 enableRobotsTXT = true
 
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+#ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [params.assets]
 customCSS = ["css/custom.css"]

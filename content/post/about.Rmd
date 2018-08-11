@@ -1,7 +1,8 @@
-+++
-title = "about me"
-date = "2017-06-09"
-+++
+---
+title: "about me"
+date: "2017-06-09"
+hidden: true
+---
 
 Hi! I'm Andrew. I live in Ann Arbor MI, and currently work at the University of Michigan's School of Social Work. I'm attached to the [Child & Adolescent Data Lab](https://ssw-datalab.org) as a data analyst where my work focuses on cleaning and analyzing administrative data from child welfare and juvenile justice systems. Our research focuses largely on integrating and linking allied service systems to study family and youth outcomes to inform practice and policy. Some of the publications and projects I've worked on can be found in [my CV](https://www.github.com/mooreaw/cv/), and other information can be found on the lab's website.
 

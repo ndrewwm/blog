@@ -2,7 +2,7 @@
 title: "comparing audio features from my monthly playlists, using spotifyr"
 author: Andrew
 date: '2018-08-11'
-slug: song-features
+slug: monthly-audio-features-spotifyr
 tags: ["spotifyr", "R"]
 ---
 
@@ -198,4 +198,4 @@ p_tempo
 
 ### wrap-up
 
-I think this is where I'm going to leave things for the moment. The main question I had going in was to see if there were any patterns in some of the features from month-to-month. Based on the brief progress here, it seems like there's variation within and across years. I sort-of wondered if there would be any regular seasonal patterns, but maybe this isn't really surprising. The universe of music I typically browse might have some overarching patterns that can't be succinctly reduced to these features. At the same time, I only tried one summary, and there's more metadata to be looked at. Perhaps there's something to be learned in looking at how I go about adding tracks each day during a month. Time to let things sit for a bit, and revisit this data with some more specific questions.
+I think this is where I'm going to leave things for the moment. The main question I had going in was to see if there were any patterns in some of the features from month-to-month. Based on the brief progress here, it seems like there's variation within and across years. I sort-of wondered if there would be any regular seasonal patterns, but maybe this isn't really surprising. The universe of music I typically browse might have some overarching patterns that aren't immediately clear from these features. At the same time, I only tried one summary, and there's more metadata to be looked at. Perhaps there's something to be learned in looking at how I go about adding tracks each day during a month. Time to let things sit for a bit, and revisit this data with some more specific questions.

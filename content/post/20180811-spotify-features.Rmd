@@ -1,0 +1,201 @@
+---
+title: "comparing audio features from my monthly playlists, using spotifyr"
+author: Andrew
+date: '2018-08-11'
+slug: song-features
+tags: ["spotifyr", "R"]
+---
+
+```{r opts, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, warning = FALSE, echo = FALSE
+)
+```
+
+The NYT has a fun [interactive](https://www.nytimes.com/interactive/2018/08/09/opinion/do-songs-of-the-summer-sound-the-same.html) up this week, looking at audio features to see if popular summer songs have the same sort of "signature". After attending a presentation earlier this year, I discovered that these same sorts of features are accessible through Spotify's API! How people curate their collections and approach listening to music usually tells you something about them, and since seeing the presentation I've been wanting to take a dive into my own listening habits. After getting inspired by the NYT's piece, I felt like I knew how I could get started. Plus, there's an [R package](https://github.com/charlie86/spotifyr) now on CRAN that serves as a wrapper for Spotify's API, making the data collection process easy. 
+
+```{r setup, echo = FALSE}
+library(tidyverse)
+
+theme_set(
+  theme_minimal(base_size = 18) +
+    theme(panel.grid.minor = element_blank())
+)
+```
+
+Spotify's API functionality seems pretty straightforward. Tracks are curated as playlists by users, and tracks have a bunch of metadata (artist, album, etc.). Each of these entities (tracks, albums, artists, users) has an ID, allowing you to organize and jump between them. The first thing I need are all the tracks from each playlist I've created. Once I have them, it's just one more line of code to get the audio features that Spotify makes available.
+
+```{r start, echo = TRUE, eval = FALSE}
+library(tidyverse)
+library(spotifyr)
+
+# fetch the public playlists/tracks & features from my account
+my_lists  <- get_user_playlists("amateurthoughts")
+my_tracks <- get_playlist_tracks(my_lists)
+audiofeat <- get_track_audio_features(my_tracks)
+
+feats <- my_tracks %>%
+  select(playlist_name, track_name, artist_name, track_uri) %>%
+  left_join(audiofeat, by = "track_uri")
+```
+
+```{r save-results, eval = FALSE}
+lst(playlists = my_lists, tracks = my_tracks, audiofeat, `joined-feats` = feats) %>%
+  map2(
+    names(.),
+    ~write_csv(.x, path = str_glue("../../static/data/spotify-features/{.y}.csv"))
+  )
+```
+
+```{r import-if-needed}
+# ensure the script runs smoothly, after I've already queried the API
+objnames <- c("audiofeat", "feats", "my_lists", "my_tracks")
+
+data_path <- "../../static/data/spotify-features/"
+
+if (!all(objnames %in% ls())) {
+  audiofeat <- read_csv(str_c(data_path, "audiofeat.csv"))
+  my_tracks <- read_csv(str_c(data_path, "tracks.csv"))
+  my_lists  <- read_csv(str_c(data_path, "playlists.csv"))
+  feats     <- read_csv(str_c(data_path, "joined-feats.csv"))
+}
+```
+
+Since I started using Spotify actively around 3 years ago, I've been creating a new playlist for each month. I'm interested in comparing my most recent listening habits to what I was doing last year. So, I'll pull out all the tracks up through August of this year, and grab the corresponding playlists from 2017. I've named them in the same way each time: "January '18", "February '18", etc. This should make working with the features I collected a little easier. 
+
+```{r clean the monthly playlists, echo = TRUE}
+feats <- feats %>%
+  filter(str_detect(playlist_name, "'")) %>%
+  separate(playlist_name, into = c("month", "year"), sep = " '") %>%
+  mutate(month = str_trim(month))
+
+# pluck out only the months we've run through in 2018
+feats <- feats %>%
+  filter(
+    year %in% c(17, 18),
+    !month %in% c("September", "October", "November", "December")
+  )
+
+feats$month <- factor(feats$month, levels = month.name[1:8], labels = month.abb[1:8])
+```
+
+```{r summarize}
+library(knitr)
+library(scales)
+
+avg_len <- feats %>%
+  group_by(month, year) %>%
+  summarise(
+    songs = n(),
+    minutes = sum(duration_ms) / 1000 / 60
+  )
+```
+
+Now we have a little dataset with a row for each track. Each month, I get up to about `r round(mean(avg_len$minutes), 0)` minutes, which is around `r median(avg_len$songs)` songs. Let's see what Spotify has available for us to look at.
+
+```{r peek, echo = TRUE}
+glimpse(feats)
+```
+
+```{r, eval = FALSE}
+feats %>%
+  select(track_uri, key_mode) %>%
+  distinct() %>%
+  count(key_mode) %>%
+  mutate(pct = percent(n / sum(n))) %>%
+  arrange(desc(pct)) %>%
+  kable(col.names = c("Key", "N", "%"), align = c("lrr"))
+```
+
+The NYT piece highlighted 5 features that we can look at:
+
+  - *Acousticness:* likelihood the song features acoustic instruments
+  - *Danceability:* strength and regularity of the beat
+  - *Energy:* how fast and noisy the song sounds
+  - *Loudness:* the average volume of a song
+  - *Valence:* how cheerful the song sounds
+
+These seem like a reasonable place to start. I'm not really sure how each track receives a given value for one of these features, or exactly what their increments mean. For 4 of the 5 features, it looks like they're measured from 0 to 1, but *loudness* ranges from -36 to -1.34 in the tracks I've pulled out.
+
+```{r}
+# pluck out the features highlighted by the NYT
+# scale the variables over my "population" of tracks
+nyt <- feats %>%
+  select(
+    month:track_uri,
+    loudness,
+    acousticness,
+    danceability,
+    energy,
+    valence
+  ) %>%
+  mutate_at(vars(loudness:valence), scale) %>%
+  gather(feature, value, loudness:valence)
+```
+
+```{r}
+list_avg <- nyt %>%
+  group_by(month, year, feature) %>%
+  summarise(value = mean(value)) %>%
+  ungroup()
+```
+
+The NYT piece used spider/radar plots to show how individual songs have their own unique combination of the different audio features. I tried this approach out, but instead of putting the features on each of the points, I've placed the months there instead. For each month, I computed an average for each of the features. As you move clockwise around each ring, you can see whether average value for the songs of from that month were high or low. The dashed grey line is a visual reference. If the solid line is inside it, the month's average was below what's typical for songs in this collection. If the solid line is outside the dashed circle, the month's average is above what's typical.
+
+```{r, fig.width=12, fig.width=12}
+p_mofeat_spider <- list_avg %>%
+  mutate(
+    year    = str_c("20", year),
+    feature = str_to_title(feature)
+  ) %>%
+  ggplot(aes(x = month, y = value, color = year, group = year)) +
+  geom_hline(yintercept = 0, color = "lightgrey", lty = "dashed") +
+  scale_color_manual(values = c("black", "black")) +
+  geom_polygon(fill = NA) +
+  facet_grid(year ~ feature) +
+  coord_polar() +
+  labs(x = "", y = "") +
+  theme(
+    legend.position = "none",
+    panel.grid.major.y = element_blank(),
+    axis.text.y = element_blank()
+  )
+
+p_mofeat_spider
+```
+
+Although this style of plotting has some limitations, I really like how it highlights differences for comparison. If my listening habits were the same across both years, the shapes in each column would look the same. Let's take *energy* as an example. In 2017 (top row), the line was above the reference during 4 of 8 months. To illustrate, here are two tracks, one from July (0.95) and one from August (0.93), respectively.
+
+<iframe src="https://open.spotify.com/embed/track/63mnZ0zF5fBwJzYg2pDo9e" width="600" height="82" frameborder="0" allowtransparency="true"></iframe>
+
+<iframe src="https://open.spotify.com/embed/track/0gfxgjq6KUtVUNTRnAgX5M" width="600" height="82" frameborder="0" allowtransparency="true"></iframe>
+
+Contrast these to two tracks from May of this year. The first scoring at 0.18, and the other sitting closer to the middle at 0.35. Aside from breaking things apart by month, I don't think I really have a system for deciding what goes on each playlist. I guess this May was sleepier than last year's.
+
+<iframe src="https://open.spotify.com/embed/track/3cIG78oBauowzEbkBwWADN" width="600" height="82" frameborder="0" allowtransparency="true"></iframe>
+
+<iframe src="https://open.spotify.com/embed/track/4thSyFvS3TQp5lt4x4aG4t" width="600" height="82" frameborder="0" allowtransparency="true"></iframe>
+
+Based on these tracks and the description of Spotify's features, I figured that *energy* or *danceability* would be pretty strongly related to tempo, but it doesn't seem this is the case for tracks in my collection. The relationships are, um, noisy; maybe tempo should be transformed or rescaled somehow?
+
+```{r}
+p_tempo <- feats %>%
+  transmute(
+    danceability = danceability,
+    Tempo = tempo,# = scale(tempo),
+    energy = energy
+  ) %>%
+  gather(var, val, -Tempo) %>%
+  mutate(var = str_to_title(var)) %>%
+  ggplot(aes(x = Tempo, y = val)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  ylab("Score") +
+  facet_wrap(~var)
+
+p_tempo
+```
+
+### wrap-up
+
+I think this is where I'm going to leave things for the moment. The main question I had going in was to see if there were any patterns in some of the features from month-to-month. Based on the brief progress here, it seems like there's variation within and across years. I sort-of wondered if there would be any regular seasonal patterns, but maybe this isn't really surprising. The universe of music I typically browse might have some overarching patterns that can't be succinctly reduced to these features. At the same time, I only tried one summary, and there's more metadata to be looked at. Perhaps there's something to be learned in looking at how I go about adding tracks each day during a month. Time to let things sit for a bit, and revisit this data with some more specific questions.

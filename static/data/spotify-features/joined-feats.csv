@@ -1,0 +1,1312 @@
+playlist_name,track_name,artist_name,track_uri,danceability,energy,key,loudness,mode,speechiness,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature,key_mode
+sad/moody things,Don't Swallow the Cap,The National,0QEHU0ZccfSXYUpF2iVUab,0.454,0.663,F,-8.54,major,0.0415,0.407,0.0466,0.0913,0.463,173.988,285533,4,F major
+sad/moody things,Day I Die,The National,3ysiD7ZgsPc3xgGJ59DpS7,0.432,0.947,D,-5.442,major,0.0945,0.00389,0.711,0.0777,0.382,147.97,271533,4,D major
+sad/moody things,Good Arms vs Bad Arms,Frightened Rabbit,49sm72U5rx2JAj9nI7SxEx,0.365,0.797,A#,-5.864,major,0.0339,0.13,0.00594,0.292,0.208,153.25,306560,3,A# major
+sad/moody things,They Move on Tracks of Never-Ending Light,This Will Destroy You,3cIG78oBauowzEbkBwWADN,0.645,0.188,F#,-19.37,major,0.0377,0.546,0.836,0.0952,0.0748,119.999,416333,4,F# major
+sad/moody things,Hands - Pool Cosby Remix,Tiger Darrow,4thSyFvS3TQp5lt4x4aG4t,0.684,0.35,D,-10.939,major,0.039,0.809,0.0837,0.093,0.341,89.997,167539,4,D major
+sad/moody things,Possible Deaths,Typhoon,7xcNyuhyx9Wdtdltu96t7J,0.602,0.597,G,-8.638,major,0.0276,0.337,0.139,0.0854,0.492,129.964,129914,4,G major
+sad/moody things,Rorschach,Typhoon,1rjZcJaoQMXY2sGfPAZ7K8,0.607,0.455,E,-6.635,major,0.0335,0.307,0.0864,0.592,0.316,96.929,256934,4,E major
+sad/moody things,Remember,Typhoon,6mQCqK9peWQLiCtie0kGiV,0.375,0.711,A,-4.574,major,0.0373,0.0739,1.49e-4,0.157,0.424,123.412,270016,4,A major
+sad/moody things,Sleeping Sickness,City and Colour,2SBFyml6gSXByXMRfW6UYi,0.642,0.623,E,-5.217,minor,0.0292,0.691,0,0.0706,0.327,134.932,248e3,4,E minor
+sad/moody things,Harvard,Diet Cig,2eTioKDu4klzCrcceLOn5d,0.306,0.763,G,-5.768,major,0.0471,0.0345,0.0152,0.182,0.18,101.154,147502,4,G major
+sad/moody things,The Gravel Road - Score,James Newton Howard,5ynPIIbdGo2OBoX9vcnUo5,0.149,0.124,G,-22.607,minor,0.041,0.811,0.311,0.211,0.103,86.906,271480,4,G minor
+sad/moody things,The Oil Slick,Frightened Rabbit,1rBO7O2kX5FZPMCOlXHMaH,0.58,0.842,D,-6.406,major,0.0487,0.074,0.239,0.0746,0.383,106.966,279827,4,D major
+August '18,Goodnight Moon,Boogie Belgique,2rvo9Ddv18aRV0OJldhWTf,0.788,0.675,G,-8.591,minor,0.0318,0.0616,0.711,0.1,0.525,107.993,264736,4,G minor
+August '18,Lullaby,Proleter,4eQKQ5ZO4UlSUzskVqFU0d,0.893,0.582,G#,-8.087,major,0.15,0.2,0.0248,0.0749,0.761,99.988,280413,4,G# major
+August '18,Imaginary Folklore,clammbon,7xNpCuqDKASx2f64nkhzNm,0.602,0.792,D,-8.463,major,0.0331,0.146,0.887,0.118,0.345,93.743,318027,4,D major
+August '18,Source,Tycho,1Z5GCYgzsBxb9VUUVQRG2E,0.689,0.642,E,-11.697,minor,0.045,0.292,0.87,0.173,0.173,136.977,258510,4,E minor
+August '18,Field,Tycho,3ozCQsJ9IA0v3ZlpE21UzK,0.25,0.288,C,-14.341,major,0.0323,0.693,0.824,0.102,0.324,147.243,160108,4,C major
+August '18,Birds & Planes,Girls Who Care,3T3Q1rJEms0FbFujPcjiP7,0.488,0.872,A,-7.642,minor,0.034,0.00148,0.338,0.0885,0.529,131.207,235691,4,A minor
+August '18,Cruel World,Active Child,0iByHgOtRyd96SFdlXP2Xc,0.48,0.52,D#,-9.529,major,0.0419,0.164,0.00168,0.102,0.114,75.493,306773,4,D# major
+August '18,The Times I'm Not There,NE-HI,30lXd6GBXld0XQyOKE1Ku9,0.52,0.49,D,-7.144,major,0.0455,0.229,0.234,0.0886,0.428,190.378,160821,4,D major
+August '18,Day I Die,The National,3ysiD7ZgsPc3xgGJ59DpS7,0.432,0.947,D,-5.442,major,0.0945,0.00389,0.711,0.0777,0.382,147.97,271533,4,D major
+August '18,April Showers,Proleter,04KsMCb9PZE2S0AtUU8Jhb,0.801,0.546,B,-7.256,major,0.132,0.28,0.929,0.141,0.902,94,275751,4,B major
+August '18,Every Time,Boogie Belgique,3MDkws8QGzLrMrWVAbzoXO,0.675,0.603,G,-6.985,major,0.0413,0.0754,0.319,0.165,0.169,79.003,241743,4,G major
+August '18,Sooner or Later,Arms and Sleepers,3Y882N5fmoDUlLmsxKC13G,0.548,0.509,F#,-10.392,minor,0.0501,0.0491,0.0659,0.199,0.145,172.008,245581,4,F# minor
+August '18,Kepesh,Arms and Sleepers,0ILSCyzNLMeLTegxt0joQX,0.678,0.663,C#,-10.035,major,0.0535,0.151,0.96,0.0666,0.338,87.99,328125,4,C# major
+August '18,Marta,il:lo,5tFslwgjPUgLYPl1AlhVSI,0.561,0.659,C,-9.414,minor,0.0267,0.00734,0.94,0.123,0.106,119.992,336142,4,C minor
+August '18,Found You,Django Django,3AQWlrP7KVq9LIsO0vd0cm,0.575,0.716,F,-5.298,major,0.0254,2.03e-5,0.00234,0.0819,0.429,93.287,283132,4,F major
+August '18,Can't Forget You,RAC,39D1VUkSvM4AqBZawjkQZz,0.643,0.78,D#,-5.027,major,0.0351,0.0146,0.0102,0.163,0.728,129.967,189040,4,D# major
+August '18,Peaches (RAC Mix),CRAY,0bLtxdxgNui9sLZKkk2sou,0.711,0.728,F,-7.944,minor,0.0839,0.354,2.37e-4,0.156,0.605,112.004,195e3,4,F minor
+August '18,Better Views,Yellow House,5PE2TkQKrgcLZupVGe5Pxu,0.456,0.611,F,-8.952,major,0.0382,0.661,8.22e-4,0.0996,0.078,88.881,239640,4,F major
+August '18,Hymn for the Greatest Generation,Caspian,3ofrLJrQjMPuEBQddeAbZn,0.363,0.32,A,-9.225,major,0.0306,0.161,0.672,0.081,0.0898,134.972,457227,3,A major
+August '18,Halls of the Summer - Lazerbeak Remix,Caspian,1xxfjPQ3QUeL15krGncaqb,0.421,0.638,A,-9.05,major,0.0587,0.0555,0.921,0.127,0.115,144.948,242427,4,A major
+August '18,Signal,Sylvan Esso,7fBRThswHqbzvIwL65hcPx,0.494,0.579,C#,-6.513,major,0.0323,0.126,1.79e-6,0.181,0.181,87.937,209067,4,C# major
+August '18,Everyday Is a New Start,Sun Glitters,1HcosQ3arh4qJnqKwlhTKi,0.575,0.853,G#,-8.872,major,0.0394,0.00224,0.932,0.113,0.285,171.99,224651,4,G# major
+August '18,The High Road,Broken Bells,5cwN1htZyoWqZCc33f3RfE,0.61,0.637,C,-6.574,major,0.0238,0.0682,6.12e-6,0.284,0.609,79.955,232200,4,C major
+August '18,Scud Running,Prawn,43jdGe5Yw9gHhcm0wBzZ2o,0.501,0.93,F,-4.471,major,0.048,0.00314,0.11,0.46,0.411,142.025,278153,4,F major
+July '18,Sittin Here,Supermassive,0eEtvptSMs3Ib3llWU7FEg,0.651,0.855,A,-6.086,minor,0.0447,0.00598,0.0136,0.0753,0.621,140.015,210746,4,A minor
+July '18,itsallwaves,Enemies,7BYeUTiDitsr6H7FFzuRJL,0.485,0.875,E,-7.403,major,0.0438,0.577,0.796,0.0986,0.306,117.644,267852,4,E major
+July '18,Midway,Bad Bad Hats,4RFQqoOFw0pdropkjrPnh3,0.747,0.711,G,-4.27,major,0.0354,0.0291,4.65e-4,0.101,0.353,113.007,184871,4,G major
+July '18,Lines,The Hics,268V0Smf1rkcfKH40eVlHt,0.535,0.394,D,-7.022,minor,0.042,0.767,0.00178,0.104,0.268,127.212,376486,4,D minor
+July '18,Suddenly,Drugdealer,77iRifbhkJGvGBBRNykUwN,0.651,0.465,E,-7.538,major,0.0328,0.503,0.0455,0.495,0.585,107.75,197040,4,E major
+July '18,The Gravel Road - Score,James Newton Howard,5ynPIIbdGo2OBoX9vcnUo5,0.149,0.124,G,-22.607,minor,0.041,0.811,0.311,0.211,0.103,86.906,271480,4,G minor
+July '18,We'll Never Know the Place,Fever the Ghost,7gUVFFMWw9NPCLjir0zb7r,0.484,0.452,A,-13.576,major,0.034,0.102,0.495,0.114,0.237,159.9,242973,3,A major
+July '18,Kith and Kin,Brontide,1NLpIKoNSE3bcbAzfU5h56,0.392,0.533,D,-8.262,major,0.0316,0.0481,0.807,0.105,0.194,134.597,403281,4,D major
+July '18,sHOULD hAvE kNOwN,Nnamdi Ogbonnaya,1K5E4XSQORK2DfeXp0liK9,0.435,0.748,C#,-7.412,minor,0.0839,0.0214,0.0123,0.265,0.548,160.915,241281,4,C# minor
+July '18,Bone Dance - Audiotree Live Version,Oketo,4xY2NrwIyXByT8x0EIgh1Y,0.456,0.477,E,-10.718,major,0.0396,0.0794,0.416,0.109,0.337,106.981,334745,4,E major
+July '18,Ornette's Swan Song,Milo,3oU1zcfMeDUGKU3fI3ENpK,0.66,0.704,G,-6.254,major,0.373,0.856,4.46e-5,0.129,0.504,92.39,148530,4,G major
+July '18,Never Cry Wolf (feat. Reva DeVito),Dark Time Sunshine,0YCzM8xRb7AASZSfHnHtSc,0.624,0.771,D,-5.88,major,0.0946,0.495,0,0.2,0.436,94.953,194480,4,D major
+July '18,Sentimental Trash,Sweet Valley,1HfxvQqTm3T3FfMH5otcMg,0.557,0.607,C,-10.088,major,0.0578,0.00266,0.771,0.33,0.235,73.061,186397,4,C major
+July '18,Everyone's Asleep in the House but Me,Owen,4yPST7G2hLaKRAQmrrCvMr,0.569,0.5,C#,-9.266,major,0.024,0.133,0.0465,0.0914,0.295,89.951,240840,5,C# major
+July '18,Tibetan Pop Stars,Hop Along,3MVL733KX2m9G76qPnTttk,0.561,0.707,E,-7.038,major,0.0397,0.0719,0,0.0782,0.559,122.816,261122,4,E major
+July '18,Rose's Thorn,TOKiMONSTA,2hlqCFahLVgdBIbY3yTrAb,0.537,0.859,E,-5.487,minor,0.039,0.0694,0.77,0.13,0.21,157.98,264734,4,E minor
+July '18,Parking Lot,Anderson .Paak,5zyySSTcBpXQ8gSbuONRH7,0.639,0.907,A,-7.85,major,0.0409,0.0128,0.328,0.704,0.696,97.019,234333,4,A major
+July '18,6 & 5,Vasudeva,1sNurSzezRs4DT8icqzQXl,0.57,0.77,B,-7.859,minor,0.0274,4.91e-5,0.833,0.12,0.478,141.014,236470,4,B minor
+July '18,Clasped Hands,Blithe Field,7yk5D0dL772D2gWePica6W,0.411,0.272,B,-15.062,major,0.0417,0.85,0.575,0.0727,0.118,87.853,228499,4,B major
+July '18,Day I Die,The National,3ysiD7ZgsPc3xgGJ59DpS7,0.432,0.947,D,-5.442,major,0.0945,0.00389,0.711,0.0777,0.382,147.97,271533,4,D major
+July '18,You and Me,Shallou,2RuOeqFMhuYLVGbgGPQx2l,0.642,0.551,B,-8.411,minor,0.13,0.26,0.147,0.115,0.145,113.079,234228,4,B minor
+July '18,Brazil,Declan McKenna,4sNG6zQBmtq7M8aeeKJRMQ,0.687,0.617,E,-5.213,major,0.0287,0.0941,1.32e-5,0.0898,0.665,121.08,252307,4,E major
+July '18,Just A Boy,Angus & Julia Stone,04WIwudlhPrExXuOAx9n3d,0.646,0.703,C,-9.156,major,0.049,0.258,0.00552,0.364,0.344,161.092,241227,4,C major
+July '18,Out of Mind,DIIV,5Jl1QnoXsEsRJOOoXHApab,0.478,0.955,B,-5.342,minor,0.0542,4.45e-4,0.892,0.0541,0.546,154.896,188050,4,B minor
+July '18,All Our Weekends,French Kicks,4IZgTEyVR8LI5crzemv22l,0.512,0.539,C#,-6.78,major,0.0276,0.46,0.121,0.0988,0.141,136.011,245520,4,C# major
+July '18,April Showers,Proleter,04KsMCb9PZE2S0AtUU8Jhb,0.801,0.546,B,-7.256,major,0.132,0.28,0.929,0.141,0.902,94,275751,4,B major
+June '18,Hands - Pool Cosby Remix,Tiger Darrow,4thSyFvS3TQp5lt4x4aG4t,0.684,0.35,D,-10.939,major,0.039,0.809,0.0837,0.093,0.341,89.997,167539,4,D major
+June '18,Redshift,Darwin Deez,2Xw1FwiZDOpXLXtGDqDif1,0.624,0.52,E,-4.4,major,0.0362,0.00197,5.22e-6,0.126,0.498,73.003,238787,4,E major
+June '18,I Like Van Halen Because My Sister Says They Are Cool,El Ten Eleven,0k3oiDzRA2ULlbBQKWImKD,0.586,0.584,A,-9.235,major,0.0253,0.00894,0.848,0.11,0.728,150.059,234560,4,A major
+June '18,Lovely Day (Bonus Track),alt-J,4OxtqhSBnOsgGc1yfYAfOn,0.465,0.487,B,-8.743,major,0.0399,0.0483,0.344,0.0951,0.203,97.847,241546,4,B major
+June '18,Sleight Orchestra,Dawn Golden,2epl95PhpQWQqxngmhYw6u,0.496,0.711,C#,-6.068,major,0.0395,0.238,0,0.153,0.278,134.993,232680,4,C# major
+June '18,Magnolia,Lushlife,0cXqOcX9uxL0KU9YXvfDFZ,0.423,0.551,G#,-7.91,major,0.326,0.938,0,0.284,0.37,92.83,287413,4,G# major
+June '18,Cream On Chrome,Ratatat,3s25iX3minD5jORW4KpANZ,0.794,0.687,G,-5.028,minor,0.0746,0.0395,0.4,0.115,0.787,100.253,255984,4,G minor
+June '18,Photograph,Cataldo,4bCmqEqtWKdeZo299Uw6zD,0.65,0.791,C#,-5.775,minor,0.0311,0.284,0.491,0.0668,0.89,120.048,242093,4,C# minor
+June '18,The After Party,Bad Books,0gZd7R6Mdy9bps8d8qv1IV,0.591,0.474,A,-6.927,major,0.0288,0.0355,0.00612,0.228,0.137,137.053,213333,4,A major
+June '18,21st Century Pop Song,Hymie's Basement,3EOIiQyhKA0ehAeia7pdcB,0.54,0.803,G,-8.663,major,0.0417,7.24e-4,6.6e-6,0.207,0.416,159.98,269760,4,G major
+June '18,To Kelly Lee,The Speed of Sound in Seawater,5zUCUKp6zPDHDYpp9PQHjE,0.46,0.575,E,-8.066,major,0.041,0.2,1.05e-6,0.142,0.629,120.056,267160,4,E major
+June '18,Didn't Sell My Soul to Shoreditch,Star Slinger,3HuxezAhMoZoGkq3m0gbLd,0.837,0.422,E,-8.165,major,0.0429,0.0352,1.76e-5,0.0737,0.691,120.058,21e4,4,E major
+June '18,Overboard,Lo Tom,7eczQ1fhZT4Ie7YBcqY2vw,0.46,0.744,A,-3.977,minor,0.0261,0.00153,0.00369,0.295,0.574,180.082,176320,4,A minor
+June '18,Love Is Everywhere - Summer Edit,Arms and Sleepers,6kw5lItk91eQBIjRKzWRaq,0.545,0.944,C#,-6.722,major,0.051,0.00983,3.47e-5,0.104,0.465,94.019,349787,4,C# major
+June '18,I Never Wanted You,Headphones,7M6dCG6b4wHuJttIoa0klT,0.603,0.648,C#,-10.31,major,0.0255,0.325,0.877,0.115,0.355,102.041,257373,4,C# major
+June '18,Whole Wide World,Big Tree,3fnwGzMvP1nhhickgRS8RQ,0.39,0.366,C,-9.858,major,0.0336,0.76,1.49e-4,0.257,0.232,122.196,322973,3,C major
+June '18,Lost Stars,Faded Paper Figures,3SE4Wd2lnk8Y0U0UkHWNug,0.662,0.581,D,-6.519,major,0.0273,0.229,0.012,0.0813,0.289,100.985,291547,4,D major
+June '18,Dark Red,Steve Lacy,37y7iDayfwm3WXn5BiAoRk,0.603,0.783,F#,-4.023,major,0.062,0.449,7.96e-6,0.119,0.775,172.041,173104,4,F# major
+June '18,Nazis On the Northern Line,L.A. Salami,7mpZ72JnzbEZFRSVK8i9zA,0.539,0.685,C#,-6.999,major,0.0444,0.559,1.35e-5,0.132,0.627,129.709,276e3,4,C# major
+June '18,Sarah (Bonus Track),(Sandy) Alex G,3NzLIbvq342cvzDlDH33RV,0.65,0.686,E,-5.198,minor,0.0314,0.514,1.88e-4,0.138,0.497,124.023,176147,4,E minor
+June '18,This Fall,Big Tree,3AwGnV8kQXpLuVo7sbHG7e,0.235,0.518,C,-9.083,major,0.0346,0.393,2.7e-4,0.15,0.175,76.245,304893,4,C major
+June '18,Dissolve Me,alt-J,2Dv7PTwSoB17f3VFDIKw8m,0.575,0.603,D,-8.2,major,0.0376,0.101,0.0381,0.0858,0.12,107.947,239013,4,D major
+June '18,Apollo Throwdown (Star Slinger Remix),The Go! Team,1uC6v7az1icYGdhsmqr57M,0.71,0.959,C#,-6.697,minor,0.209,0.149,2.1e-5,0.336,0.485,108.006,255333,4,C# minor
+June '18,Chain Link Fence,The Go! Team,4Vi33xcMvd73nJzH2muX1a,0.516,0.858,F,-3.702,major,0.0316,0.00125,0.00166,0.0806,0.747,89.967,220690,4,F major
+June '18,Stranger,Paul Simon,1RkASGekurX1rRNucZYwI3,0.547,0.345,A#,-11.265,major,0.0501,0.479,0.00598,0.0857,0.113,70.014,317143,4,A# major
+June '18,Stevie Knicks,Girlyboi,3EuSjRC1jKGe6h3Nc9haWn,0.82,0.505,E,-7.481,minor,0.0667,0.0121,2.6e-5,0.222,0.63,117.94,176639,4,E minor
+June '18,Where Do We Go from Here (feat. Kool A.D.),Pool Cosby,4QbPrLWca2IT0X2eG1b82Q,0.537,0.533,F,-7.867,minor,0.344,0.494,0,0.099,0.526,79.744,258797,4,F minor
+June '18,When The War Ends,Portugal. The Man,6onGPPlA3MuXZdWqE5YBcX,0.632,0.799,D,-7.344,major,0.027,0.165,0.274,0.2,0.961,97.017,210907,4,D major
+June '18,Show Me Your Hands,Bond St. District,2EqEV5sJA5dtoLZFOrGuyg,0.581,0.951,F#,-4.113,minor,0.0998,0.213,5.77e-4,0.763,0.908,154.728,240521,4,F# minor
+June '18,Clunky Heavy Raunchy Gritty,Eclectic Method,1H1fBVS38oaNGSyAdY2P24,0.798,0.528,B,-9.866,minor,0.17,0.021,0.0112,0.0806,0.868,125.005,146400,4,B minor
+June '18,Breathe,"Sheep, Dog & Wolf",4txlcEq8XuZfJHdgCYffLK,0.434,0.502,F#,-7.343,minor,0.042,0.233,0.00966,0.0261,0.665,149.455,340773,4,F# minor
+June '18,I Want Wind to Blow,The Microphones,1bAZV1EBTRi9t1cVg75i8t,0.402,0.406,F,-15.119,major,0.0652,0.75,0.791,0.114,0.243,109.946,332880,4,F major
+June '18,Purple Mess,Johnny Polygon,18MAV6Bjv5S06oz8hNMtWt,0.437,0.321,D#,-14.36,major,0.0314,0.657,0.241,0.132,0.231,142.162,171114,4,D# major
+June '18,The Glow (feat. Kimbra),Big Data,11tyPK6BsOHJAQtRDO74NV,0.476,0.861,G#,-4.165,minor,0.05,0.0135,0.561,0.258,0.582,77.034,264040,4,G# minor
+June '18,DragonFly (feat. Coyle Girelli),Blended Babies,49iNmEho4raSFPfEh1vSax,0.55,0.673,D#,-6.49,minor,0.0366,0.447,0.714,0.585,0.596,142.034,203651,4,D# minor
+June '18,Sore Spores,BOBBY,6emolBBovdwCOZAnjxEG6r,0.611,0.707,F#,-8.363,major,0.0287,0.32,0.911,0.0851,0.534,140.003,282093,4,F# major
+June '18,Drivers,Nick Leng,0KJAen5CpEWnk0721d5Q4P,0.651,0.811,D,-8.132,major,0.0553,0.225,0.00268,0.0877,0.395,102.033,297589,4,D major
+June '18,Echo Chamber,That Handsome Devil,2egla41qfBZCAE0fWUzKM3,0.701,0.665,D,-8.239,major,0.0357,0.228,5.27e-4,0.106,0.743,106.975,168828,4,D major
+June '18,Lavender Chunk,Scallops Hotel,5igkLLTiaLm5MMUe7AZpYN,0.589,0.815,F#,-6.612,major,0.316,0.478,0,0.302,0.671,91.538,165919,4,F# major
+June '18,A Method (JAW GEMS book a bender at the scallops hotel),Scallops Hotel,1BxfyLcmrySMwjhV3uJRQ6,0.508,0.456,D,-13.441,major,0.842,0.714,7.43e-4,0.433,0.545,70.631,119073,1,D major
+June '18,The Warning,Hot Chip,5RrWu7ddslbnrRImeW7LOs,0.728,0.612,G,-10.106,major,0.0499,0.0941,0.188,0.399,0.437,130.016,291600,4,G major
+June '18,Midway,Bad Bad Hats,4RFQqoOFw0pdropkjrPnh3,0.747,0.711,G,-4.27,major,0.0354,0.0291,4.65e-4,0.101,0.353,113.007,184871,4,G major
+June '18,Madeline,Yoni & Geti,2bHiC5Bd7ZxB97U0ac7zG3,0.563,0.66,B,-6.493,major,0.0401,0.0303,0.0149,0.117,0.285,76.004,206467,4,B major
+June '18,Folk-Metaphysics,Milo,1pXmvZA7hdVGtvaAKy9JGJ,0.687,0.529,A,-11.067,minor,0.344,0.334,0,0.0858,0.166,108.966,281854,4,A minor
+May '18,Marble Machine,Wintergatan,3kBPnItITm3Od2IVhuJPxf,0.706,0.808,E,-9.199,minor,0.123,0.116,0.667,0.235,0.673,146.947,243783,4,E minor
+May '18,Sommarfågel - Bassnectar Remix,Wintergatan,33m0aVQvsfvanuwG6rByrd,0.327,0.844,C,-5.269,minor,0.0384,0.00396,0.758,0.151,0.0365,180.053,136667,3,C minor
+May '18,If You Met Her,Palehound,5azYPsLCPQXetrJJVIp544,0.638,0.694,G,-5.591,major,0.0256,0.0355,0.0174,0.109,0.179,98.984,229611,4,G major
+May '18,He Was a Good Friend,Francis and the Lights,0LEegijpwlxZMjmRtFXPZt,0.427,0.539,D,-6.183,major,0.0324,0.474,0.0229,0.126,0.118,84.908,234973,4,D major
+May '18,You Stood Me Up,Benji Hughes,39hTX6ufRqD7YOgsrIxxLL,0.375,0.651,F,-7.999,minor,0.0556,0.0292,3.02e-5,0.185,0.361,203.331,212973,4,F minor
+May '18,Everything Is Happening Today,Flock of Dimes,0tHrNKbNzWJ2nXQOszImjQ,0.506,0.607,G#,-10.671,major,0.0366,0.499,5.92e-4,0.106,0.724,155.026,240253,1,G# major
+May '18,The Storm,Wild Spells,5LmEkYrFigBxVRp9XJ8vSO,0.298,0.569,C,-7.952,major,0.0415,0.0251,1.27e-5,0.107,0.199,128.486,369230,3,C major
+May '18,They Move on Tracks of Never-Ending Light,This Will Destroy You,3cIG78oBauowzEbkBwWADN,0.645,0.188,F#,-19.37,major,0.0377,0.546,0.836,0.0952,0.0748,119.999,416333,4,F# major
+May '18,Pale Lights (This Will Destroy You Remix),This Patch of Sky,7nYuwtCCU607EBPSAC0b1w,0.12,0.167,D#,-19.474,major,0.0371,0.876,0.929,0.103,0.0343,77.28,328213,4,D# major
+May '18,I Get Overwhelmed,Dark Rooms,3c30F9x3reFdO9e8M9BoCh,0.318,0.497,C,-9.613,major,0.0533,0.637,6.43e-4,0.084,0.244,118.091,288573,4,C major
+May '18,Nightmare,Artie Shaw,2Z3ZqLsK5YxY756378DOEM,0.468,0.195,A,-10.477,minor,0.0295,0.866,0.509,0.109,0.0789,67.586,168160,4,A minor
+May '18,Good Arms vs Bad Arms,Frightened Rabbit,49sm72U5rx2JAj9nI7SxEx,0.365,0.797,A#,-5.864,major,0.0339,0.13,0.00594,0.292,0.208,153.25,306560,3,A# major
+May '18,This Is America,Childish Gambino,0b9oOr2ZgvyQu88wzixux9,0.854,0.463,F,-6.159,major,0.137,0.117,0,0.354,0.549,120.024,225773,4,F major
+May '18,Underwater,Porches,47RDzk3uT014BXqc4oevq5,0.521,0.519,D,-7.757,minor,0.0857,0.697,7.77e-4,0.0633,0.253,84.812,240813,4,D minor
+May '18,Weird Honey,Elvis Depressedly,4jGEOzd4KKiXmkks3YKvhl,0.573,0.499,F#,-7.912,major,0.0258,0.109,0.854,0.15,0.519,89.977,155937,4,F# major
+May '18,Superfast Jellyfish (feat. Gruff Rhys and De La Soul),Gorillaz,1UJNbgfTzG1gZZTWFJdMf1,0.705,0.751,G,-4.767,major,0.287,0.0598,2.51e-6,0.907,0.819,80.727,174867,4,G major
+May '18,Latitude -remix (feat. Five Deez),Nujabes,65u7IbuZ4viAlVBHxnpos1,0.823,0.814,G,-5.611,minor,0.177,0.644,0.687,0.117,0.649,102.619,236533,4,G minor
+May '18,Highs 2 Lows (feat. Cise Starr from CYNE),Nujabes,3yKLskgaU2py5ET4OBDQmg,0.766,0.848,G,-7.296,major,0.111,0.541,1.08e-5,0.0851,0.676,100.995,277960,4,G major
+May '18,Horn in the middle,Nujabes,2rnAYh7REAMGYqJUXJKZZK,0.79,0.943,G,-8.631,major,0.0398,0.0778,0.896,0.0855,0.581,114.1,248600,4,G major
+May '18,flowers,Nujabes,69jGxyfw3lzGGYf78jdkpF,0.669,0.612,C,-5.768,minor,0.0293,0.846,0.233,0.16,0.612,98.475,239667,4,C minor
+May '18,Don't Call Me (feat. Yuna) (Guy Gerber Remix) [Radio Edit],Guy Gerber,4NSEHH8ceajzrJy5RKt2Bg,0.587,0.587,E,-9.052,minor,0.0506,0.00268,0.508,0.131,0.467,161.981,233955,4,E minor
+May '18,"O.K., Meet Me Underwater",Jay Som,31jOab6BH7E3jJFfFbYprr,0.705,0.487,C,-8.009,minor,0.0312,0.0323,0.276,0.104,0.328,104.981,180163,4,C minor
+May '18,Birdsong,They Dream By Day,0rchcA4mkjp4jyGx08BOFs,0.187,0.0115,F,-16.375,major,0.0591,0.858,0.464,0.0886,0.0331,72.711,256987,1,F major
+May '18,Sleepless Nights,.anxious.,77BFqHfi7EneHm9Q9w7Quk,0.386,0.199,F,-15.084,minor,0.25,0.889,0.752,0.0856,0.181,74.999,134400,4,F minor
+May '18,tired,chief.,3GzgFexTzBASwRGPuMIzcc,0.589,0.229,F#,-14.37,minor,0.0583,0.682,0.867,0.0963,0.0399,77.89,87164,4,F# minor
+May '18,Tired Boy,Joey Pecoraro,4SkTfsjWUy2rp40d2Ayfmv,0.661,0.391,E,-4.24,major,0.0413,0.616,0.856,0.0878,0.256,82.819,255049,4,E major
+May '18,Roll Over Beethoven,Chuck Berry,1CQWIpYzU0fk0DT4oXsrkd,0.707,0.78,D#,-10.142,major,0.235,0.83,0,0.199,0.808,92.653,144600,4,D# major
+May '18,中途,Elephant Gym,36ubIl1r1fKTryLNIGHocj,0.379,0.657,B,-6.621,major,0.0535,0.0356,0.447,0.0939,0.793,184.341,239716,1,B major
+May '18,My Old Man,Mac DeMarco,6NxkpxmxVKrljCGs24qrf2,0.665,0.568,C#,-11.514,major,0.0352,0.693,0.489,0.0986,0.82,149.369,221653,4,C# major
+May '18,Atlanta Girls,Trash Panda,2JiOQUqMlUkwcbvv3rtSC9,0.66,0.582,G,-7.769,major,0.0602,0.501,6.03e-4,0.257,0.403,117.895,263192,4,G major
+May '18,Redshift,Darwin Deez,2Xw1FwiZDOpXLXtGDqDif1,0.624,0.52,E,-4.4,major,0.0362,0.00197,5.22e-6,0.126,0.498,73.003,238787,4,E major
+May '18,Shake,Yeek,0GDVDKFLPTGWTh77HoOf6T,0.751,0.533,A,-6.505,minor,0.317,0.0124,0.653,0.178,0.447,69.999,188238,4,A minor
+May '18,At the Turf Field Behind My Parents' House,Giraffes? Giraffes!,3iocoJZ2lcErqIts69KiIY,0.563,0.648,A,-13.441,major,0.0284,0.529,0.882,0.342,0.685,80.002,273782,4,A major
+May '18,Song Silly,toe,7roEnuyAZ1bXKNQT3QWuHv,0.72,0.264,G,-13.163,major,0.0388,0.637,0.24,0.0935,0.387,149.972,302272,4,G major
+May '18,Little Do They Know,Pool Cosby,2UBQL3IbQhIEQVoXqWDrwu,0.441,0.48,B,-8.94,minor,0.0688,0.86,0.00346,0.656,0.138,82.884,164389,4,B minor
+May '18,The Left,Yeek,57odIsNox07FjETxo2SyPR,0.803,0.695,G,-7.768,major,0.0465,0.0668,0.0013,0.133,0.421,89.999,263941,4,G major
+May '18,Hands - Pool Cosby Remix,Tiger Darrow,4thSyFvS3TQp5lt4x4aG4t,0.684,0.35,D,-10.939,major,0.039,0.809,0.0837,0.093,0.341,89.997,167539,4,D major
+May '18,All-Nighter,Bad Bad Hats,1e2VIo91EsOuS51YDfVJwY,0.596,0.683,C,-4.168,minor,0.0419,0.0337,0,0.0912,0.441,91.024,152567,4,C minor
+May '18,My Ladies Can't Remember The Eighties,Euphone,3Mds1RLQmALDdGlRPU2sEb,0.625,0.477,B,-14.866,major,0.0381,0.414,0.887,0.107,0.251,101.631,154800,4,B major
+May '18,Thrive (Aple Remix) [feat. Tiger Darrow],Pool Cosby,2BYQdKiV19MQHWmwYoXHEN,0.649,0.425,E,-7.478,minor,0.0563,0.167,1.36e-4,0.131,0.182,86.018,249927,4,E minor
+May '18,Please (feat. Kool a.D & Mr. Muthafuckin' exquire),Pool Cosby,7cl6ok9CMpIux7bjCDm2Kg,0.584,0.633,C#,-8.678,major,0.423,0.205,0,0.0702,0.493,93.986,151371,3,C# major
+May '18,Now & Then,Sjowgren,41oqThgUF4yiNz77TazXtl,0.543,0.549,C,-6.497,major,0.0306,0.149,0.082,0.114,0.404,80.079,205893,4,C major
+May '18,Goodbye,Porches,0Cf8Juik1Rp1J7iFqxTUGK,0.452,0.527,D,-8.478,major,0.0375,0.29,0.00214,0.102,0.363,115.052,166795,5,D major
+May '18,World On Fire,Louis The Child,22wcNdDej7sJO0UnaerFN7,0.711,0.258,A#,-8.956,minor,0.0693,0.791,8.79e-4,0.101,0.423,75.007,174400,4,A# minor
+May '18,Unusable Love (feat. Emile Mosseri),El Ten Eleven,1tgeL9uNc6HuVpbDVuWZgP,0.478,0.88,D,-4.548,major,0.0407,0.0136,0.0869,0.148,0.289,77.018,205678,4,D major
+May '18,Blingblingbling,"quickly, quickly",35qlk8sTjO4xHAVilmMjli,0.54,0.457,A,-6.6,major,0.317,0.335,0.706,0.118,0.642,167.77,104096,4,A major
+May '18,I'm Right Here (feat. Emile Mosseri),El Ten Eleven,64Olnc2tGyrZI1Zb8hyoCo,0.53,0.777,A,-5.708,major,0.0317,0.355,0.112,0.127,0.318,72.995,281111,4,A major
+May '18,Free (The Editorial Me),Darwin Deez,6kx5ABLlFKUJ4EbiPhT8aL,0.596,0.832,D,-4.776,major,0.0418,0.0339,0.00236,0.396,0.419,92,275840,4,D major
+May '18,Lovely Day (Bonus Track),alt-J,4OxtqhSBnOsgGc1yfYAfOn,0.465,0.487,B,-8.743,major,0.0399,0.0483,0.344,0.0951,0.203,97.847,241546,4,B major
+April '18,Possible Deaths,Typhoon,7xcNyuhyx9Wdtdltu96t7J,0.602,0.597,G,-8.638,major,0.0276,0.337,0.139,0.0854,0.492,129.964,129914,4,G major
+April '18,Dreams Of Cannibalism,Typhoon,2iLpAz1XOSmywKGf0Nsz2E,0.259,0.669,G,-5.991,major,0.0407,0.17,9.94e-4,0.064,0.3,185.04,204295,4,G major
+April '18,Remember,Typhoon,6mQCqK9peWQLiCtie0kGiV,0.375,0.711,A,-4.574,major,0.0373,0.0739,1.49e-4,0.157,0.424,123.412,270016,4,A major
+April '18,Rorschach,Typhoon,1rjZcJaoQMXY2sGfPAZ7K8,0.607,0.455,E,-6.635,major,0.0335,0.307,0.0864,0.592,0.316,96.929,256934,4,E major
+April '18,Look at Me,Rogue Wave,5rPP9ADi0t1ZmBLyZiy82A,0.451,0.685,D#,-7.752,minor,0.0276,0.0194,0.757,0.0947,0.477,82.736,213747,4,D# minor
+April '18,Oblivion,David Bazan,48592nrA5uejb7me5qaX3s,0.632,0.654,C,-7.763,major,0.0296,0.367,0.106,0.11,0.585,119.992,238334,4,C major
+April '18,Care,David Bazan,5dnmgajyW9hOYEYSSpyvmx,0.657,0.581,A#,-11.322,major,0.0261,0.237,0.957,0.197,0.423,98.018,264587,4,A# major
+April '18,Wolves At The Door,David Bazan,4zGUmPy29cOpbBb84TOrL5,0.653,0.777,D,-7.484,minor,0.0304,5.98e-4,0.0676,0.0858,0.436,126.985,218720,4,D minor
+April '18,Bitter,Palace,2DkZisoN9h1dLa8Sn5sx0n,0.2,0.742,A,-5.415,major,0.0517,0.052,4.88e-4,0.0491,0.35,77.144,233360,4,A major
+April '18,Aminals,Baths,1depKpsqGCvr8wtjFFaFoO,0.74,0.698,G#,-6.444,major,0.136,0.021,0.751,0.274,0.715,95.003,198400,4,G# major
+April '18,Prove It,KOOL A.D.,5PqVfnLTxGuqsLNxteeWRs,0.324,0.816,E,-5.151,minor,0.402,0.0384,0.101,0.14,0.451,124.212,260179,1,E minor
+April '18,Stilts,Febueder,6X7bvudfFVzjhuaj9OHPVP,0.676,0.544,A#,-8.795,major,0.0302,0.0418,3.4e-5,0.125,0.151,118.019,144417,4,A# major
+April '18,Skin,WebsterX,5AggBpw0ro0Vm9sUBFL2JM,0.368,0.567,C#,-7.849,major,0.0559,0.0882,0,0.087,0.0667,132.007,235929,3,C# major
+April '18,Dawn / Sea,Dem Yuut,4n5IOgZgKqqcUnjxLDIerr,0.397,0.629,G,-6.59,major,0.0389,0.0194,0.0292,0.231,0.447,84.585,171982,4,G major
+April '18,Friends,Delicate Steve,11QhoSQKHK5RMPr1pas9e6,0.619,0.921,C,-6.258,major,0.0342,0.00497,0.811,0.111,0.533,119.991,246493,4,C major
+April '18,fuck these foolz that are making valencia street unchill,Field Medic,1Vb9ic3vxp2is0nouMZjCe,0.327,0.694,D,-1.348,major,0.0399,0.26,4.38e-4,0.307,0.204,122.633,218099,4,D major
+April '18,Do You Really?,Wild Ones,67JMZOn4bu5GvW7UyRJYBG,0.557,0.659,A,-4.085,minor,0.0243,0.24,0.00946,0.0928,0.679,87.957,196840,4,A minor
+April '18,Everfeel,WebsterX,23n34Xj4lV5M9ZqEVl7kIw,0.658,0.658,G,-7.135,major,0.232,0.0294,0,0.109,0.337,136.133,208746,4,G major
+April '18,In Gaol,Milo,4dyGS868sbyKQ0A21HeHH4,0.399,0.693,B,-7.626,major,0.456,0.155,0,0.0592,0.408,75.189,207083,4,B major
+April '18,You Are Go(o)d to Me,Milo,0Bv5esoQfy1E6DkhsCNu3d,0.665,0.317,G#,-12.803,minor,0.0705,0.64,3.1e-4,0.188,0.0406,115.579,197929,4,G# minor
+April '18,Magnetism,Vacationer,7FDqdRXOJc76D0UXUyYuvm,0.762,0.802,F,-3.967,minor,0.0374,0.422,0.001,0.425,0.884,115.014,209040,4,F minor
+April '18,Sunlight Daze,Mimicking Birds,4GLUDL5VD0AepQCQGT8WuF,0.524,0.843,E,-6.877,minor,0.0321,0.086,0.818,0.491,0.553,110.998,189720,4,E minor
+April '18,Animal,King Washington,6TTuSgfpcHCcSpyo9uUXI1,0.435,0.57,D,-8.203,major,0.039,0.105,0.0572,0.109,0.119,82.04,231853,4,D major
+April '18,Floating in the Dark,Palmas,2SDsEZP7175EpoxLMv75YK,0.474,0.627,C,-8.889,major,0.0306,0.095,0.0139,0.101,0.533,134.982,248233,4,C major
+April '18,Goalkeeper,Chinese Football,0xmqkQSRbdmHv4ALaGsCTe,0.625,0.771,A,-4.339,major,0.027,5.24e-4,0.121,0.123,0.409,128.068,251855,4,A major
+April '18,Alguien Como Tu,The Musket Vine,4l0JtXF56uTvhtqjhtwl3J,0.863,0.793,G,-4.679,major,0.082,0.37,0,0.0589,0.359,124.02,239073,4,G major
+April '18,Memory,(Sandy) Alex G,0iyXQ7fk9suJXLzZ4QBeA1,0.489,0.407,G#,-9.66,major,0.0245,0.55,0.87,0.11,0.254,102.563,172813,4,G# major
+April '18,Ziggy Starfish (Anxiety Raps) [feat. Gold Panda],Open Mike Eagle,7fjLBPTsQrbkV2WRedi2bw,0.683,0.86,G,-7.317,major,0.31,0.0117,3.79e-4,0.356,0.298,143.311,175357,4,G major
+April '18,Aquarium,Nosaj Thing,4ZOv9mx6Lz7RRaBFi5UNaE,0.635,0.655,C,-9.521,major,0.0484,0.15,0.553,0.129,0.271,91.026,184e3,4,C major
+April '18,Wen Uuu,Shlohmo,7thpkmYQjsmilZSddZQZOg,0.67,0.652,A#,-6.565,major,0.0454,0.456,0.816,0.0953,0.057,174.049,233793,4,A# major
+April '18,The Way U Do,Shlohmo,4xl7p1wHcDAihFHudcfn25,0.684,0.737,E,-6.46,minor,0.0485,0.41,0.869,0.0943,0.135,127.963,318750,4,E minor
+April '18,Moon,Blood Cultures,5DmhjZlwaJvUbQBTAIAX1i,0.513,0.55,C,-7.342,major,0.0295,0.173,0.86,0.438,0.319,93.055,295e3,4,C major
+April '18,Getting It On,SALES,2HFLh8qlNfW4EPpHVHz7Ej,0.747,0.538,B,-9.664,minor,0.033,0.877,0.766,0.0877,0.3,136.948,180438,4,B minor
+April '18,Sorry Bro,SALES,4ANZKZkg74qHyVgd0gwO32,0.677,0.479,A,-11.532,minor,0.0344,0.804,0.767,0.105,0.4,98.026,151837,4,A minor
+April '18,Candy (Know Wat Can Be),Dem Atlas,4OJ1YFmoODiCC9wEH9ATvY,0.511,0.617,D#,-5.493,major,0.0331,7.46e-4,0,0.167,0.29,147.971,260950,4,D# major
+April '18,Prom Quiz,Grayskul,6W9OFLPDISioluZonsXGMg,0.726,0.717,F#,-5.291,major,0.263,0.112,0,0.541,0.436,92.933,189293,4,F# major
+April '18,Kiln,Hail Mary Mallon,0QJuFUJKx7ppendrbpAK4r,0.611,0.834,A#,-5.759,minor,0.0648,0.0112,0.549,0.651,0.668,82.928,212760,4,A# minor
+April '18,Holding on for Life,Broken Bells,757PJjXAgywxrYkdhMkEV9,0.342,0.587,B,-7.273,minor,0.0537,0.00648,0.0995,0.207,0.484,168.847,236867,4,B minor
+April '18,Little Secrets,Passion Pit,3kb38wezoUA8ki5jPYy3t5,0.597,0.786,F,-4.248,major,0.0419,0.00345,0,0.0909,0.666,99.888,238973,4,F major
+April '18,Morocco,Moon Taxi,30lgD1UuHczwlxa7NZFeSQ,0.616,0.894,C#,-3.209,minor,0.0508,0.0178,1.03e-4,0.153,0.542,115.077,208080,4,C# minor
+April '18,Smile,Eyedea & Abilities,35v12v3E5bTVm0o5vdddVS,0.648,0.931,A,-4.19,major,0.0613,0.275,0.00247,0.114,0.337,131.033,242467,4,A major
+April '18,Punching In A Dream,The Naked And Famous,5PtEpuVX03k9bOUwilL5EO,0.473,0.883,F#,-3.65,major,0.047,0.00201,9.67e-4,0.142,0.164,115.048,238133,4,F# major
+April '18,Duckpond,Midwest Product,3oaWlxqvuCDNc9snpZkgvK,0.573,0.75,C#,-9.145,major,0.0272,0.0419,0.648,0.117,0.0396,101.979,296947,4,C# major
+April '18,Alternator,Midwest Product,0Qsv2RrJ8CaQERBKSvMn8H,0.675,0.772,F,-9.777,major,0.0334,0.0318,0.835,0.098,0.28,127.989,319560,4,F major
+April '18,Paul,Big Thief,4PLuYTuKeW3yC9sLgwtFTm,0.471,0.254,B,-12.319,major,0.0391,0.218,4.53e-4,0.109,0.153,123.356,183895,4,B major
+April '18,Strange Overtones,We Barbarians,2LqDcjc3LqNlWYUUyMTxib,0.533,0.803,C#,-5.452,major,0.0321,0.0026,4.36e-4,0.0867,0.321,109.981,263986,4,C# major
+April '18,American Eyes,Promises Ltd.,0X3AfZXCqnfZUX7NmXUoG7,0.343,0.561,A#,-8.738,minor,0.0394,0.45,0.0251,0.0916,0.198,143.421,293750,4,A# minor
+April '18,Wolf Like Me,TV On The Radio,03wKMRNYVvw6s9nm4I4jUS,0.22,0.8,G,-5.11,major,0.0504,0.00175,0.00916,0.492,0.213,176.047,279293,4,G major
+April '18,Staring at the Sun,TV On The Radio,14R2hUgIr8eu1VogXoLqUk,0.211,0.637,G#,-7.817,major,0.0515,0.00304,0.00185,0.107,0.148,119.224,241213,4,G# major
+April '18,let freedom ring 2,Field Medic,3WxOtGjfZqejNgvyPWbdwa,0.354,0.578,F#,-2.389,major,0.034,0.666,5.43e-4,0.161,0.136,116.292,184675,3,F# major
+April '18,Swim,Mating Ritual,4VTO4g2C9uTI6omVI7pjlq,0.575,0.414,A,-7.01,minor,0.0289,0.0196,4.33e-4,0.238,0.311,126.995,313106,4,A minor
+April '18,Cigarettes out the Window,TV Girl,5GKekzF1YcR2DQd9c3DI8y,0.626,0.659,C,-5.669,major,0.0337,0.121,0,0.17,0.594,113.551,198961,4,C major
+April '18,I'm Fine,Hazel English,0w9BogmsQSklaERVHIF9e1,0.362,0.463,D,-4.68,major,0.0285,0.326,0.0349,0.0994,0.18,139.986,198600,4,D major
+April '18,Inside Out,Spoon,7qCZgvV98j6RjUULW1s1it,0.637,0.618,C,-4.746,major,0.0296,0.427,0.0971,0.0704,0.499,176.141,301960,4,C major
+March '18,All The Stars (with SZA),Kendrick Lamar,3GCdLUSnKSMJhs4Tj6CV3s,0.698,0.633,G#,-4.946,major,0.0597,0.0605,1.94e-4,0.0926,0.552,96.924,232187,4,G# major
+March '18,Rorschach,Typhoon,1rjZcJaoQMXY2sGfPAZ7K8,0.607,0.455,E,-6.635,major,0.0335,0.307,0.0864,0.592,0.316,96.929,256934,4,E major
+March '18,Creepin',Small Leaks Sink Ships,3RLdY5TDtlFDrnq870BBFz,0.686,0.664,B,-9.1,minor,0.0291,0.407,0.0337,0.122,0.565,124.027,264453,4,B minor
+March '18,Saturday,Real Estate,50wiHcvfcpQSo5P5rbyozc,0.525,0.717,C,-6.06,major,0.0339,0.0716,0.575,0.121,0.211,130.898,283027,4,C major
+March '18,Gold Angel,Minke,6NaRzSvVxqv2DC2eg039gB,0.723,0.539,G,-9.385,minor,0.038,0.64,0.526,0.0819,0.123,99.996,261693,4,G minor
+March '18,For the Birds,Hot Sugar,6h28aq5Z0opp5gbiR56P81,0.72,0.397,F,-9.427,major,0.0361,0.238,0.0474,0.105,0.254,108.032,195508,4,F major
+March '18,Kihei,Mesita,5gIfBy3gICsordBdz959bt,0.629,0.972,C,-3.305,major,0.0711,0.131,0.00326,0.386,0.496,122.677,177963,4,C major
+March '18,St.Paul,Richy Mitch & The Coal Miners,29jmagcZbBFFJ7jDcsbfCW,0.295,0.329,C,-12.618,major,0.0325,0.974,0.721,0.086,0.255,186.411,257e3,3,C major
+March '18,What Fiction Is For,DYAN,5etacX29P2TI1oIg3rhmB3,0.58,0.716,G,-7.211,major,0.0536,0.599,0.328,0.0934,0.305,187.964,276240,4,G major
+March '18,Iditarod,Cape Francis,341Fpg8GJlL7e1f4y81UaY,0.401,0.22,E,-11.668,major,0.036,0.684,0.00788,0.311,0.127,146.443,268342,4,E major
+March '18,Waiting Room,Sjowgren,0TA4r8kEKQz0one72rIv7f,0.606,0.428,G,-8.435,major,0.0391,0.127,0.614,0.131,0.292,145.992,292440,4,G major
+March '18,Granfalloons V,Yardsss,1GlmNxdZOnrLXoUfBLwbqC,0.0836,0.309,D,-11.257,major,0.0479,0.00488,0.907,0.0719,0.0389,84.211,420533,4,D major
+March '18,Drink You Dry,Minihorse,1Z2OROADsEl5LJgPLFzF59,0.632,0.445,D,-6.001,major,0.0353,1.17e-4,0.0426,0.0734,0.452,128.135,261756,4,D major
+March '18,Pinstripe Web,Minihorse,4LBDhmrbuYD2FIqd1eSJuG,0.578,0.915,F,-6.61,minor,0.0367,0.00499,0.475,0.16,0.803,152.98,140237,4,F minor
+March '18,Bird,Imaginary Tricks,1wbrpLU4BXqp2uabBC3zNb,0.708,0.54,G#,-8.218,major,0.0293,0.111,6.23e-6,0.185,0.315,109.604,259317,4,G# major
+March '18,Sun Chasers,Helvetia,0QpEaa9CvAHeFv7g8gtUbb,0.647,0.785,E,-7.536,major,0.0371,0.285,0.939,0.121,0.533,128.176,144797,4,E major
+March '18,Forgetting Rock n Roll,Wild Ones,75Oc4KX7lZkUNJ19bLO2vS,0.591,0.727,A,-5.903,major,0.0375,0.191,0.0416,0.129,0.129,108.016,255627,4,A major
+March '18,Rivals (Trails and Ways Remix),Wild Ones,69KM34rGezsFpsqBowAnIf,0.46,0.58,D#,-6.07,major,0.036,0.0648,0.733,0.0955,0.538,173.759,171625,4,D# major
+March '18,Only You,Yoke Lore,6P4zikcL6LoBzh8OB7RSsR,0.387,0.468,C,-7.652,major,0.0421,0.547,0.00121,0.292,0.141,124.927,234078,4,C major
+March '18,Drunk,Mating Ritual,4IXZ78yEAAttxA7r7mwPF4,0.484,0.745,C,-5.856,major,0.0365,0.0039,0.163,0.0804,0.34,124.011,381359,4,C major
+March '18,They're Not Me,Wild Ones,4okYsI11nu2IeOZazJZZrm,0.67,0.804,D,-6.691,major,0.0389,0.0922,0.533,0.0632,0.659,107,212667,4,D major
+March '18,Young Fathers,Typhoon,1B3xfK5jOHtS3jhvntYaKW,0.486,0.582,G,-6.838,major,0.139,0.292,0.00064899999999999995,0.107,0.352,88.061,267392,4,G major
+March '18,Remember,Typhoon,0tUQwCBsiYjzEZ0ZZVMASZ,0.375,0.711,A,-4.574,major,0.0373,0.0739,1.49e-4,0.157,0.424,123.412,270016,4,A major
+March '18,The Sickness Unto Death,Typhoon,6SPPD7B1BuXQ98hPtJMnUE,0.5,0.075,D,-19.3,major,0.0399,0.919,7.78e-6,0.133,0.306,104.687,199947,4,D major
+March '18,Dreams Of Cannibalism,Typhoon,2iLpAz1XOSmywKGf0Nsz2E,0.259,0.669,G,-5.991,major,0.0407,0.17,9.94e-4,0.064,0.3,185.04,204295,4,G major
+March '18,Calm Down Baby,Mac Lethal,6tqQfCbXokmSfTulWIfYf8,0.416,0.804,F#,-6.58,major,0.376,0.133,0,0.127,0.753,82.905,229547,4,F# major
+February '18,Shaken Tight,NÄM,7nAshFQgRgLmryFo8Pj0rj,0.532,0.514,G,-7.423,major,0.0489,0.653,0.00398,0.0751,0.179,139.976,212637,4,G major
+February '18,In Time,Pickwick,0TmR38AyORB5dDqN6CxgTx,0.663,0.852,A,-6.245,minor,0.0269,0.00692,0.0199,0.097,0.589,100.09,176426,4,A minor
+February '18,Matinee,REYNA,6nHlyZVo01hwAA15M8GSKh,0.586,0.818,F,-5.566,major,0.0283,0.0443,0.0021,0.233,0.359,110.997,221920,4,F major
+February '18,Crying in the Sunshine,Miniature Tigers,6vOwaiFShRCCwiUDILRaRP,0.518,0.934,C,-2.845,major,0.233,0.00176,3.83e-4,0.104,0.729,156.986,198875,4,C major
+February '18,I Saw The End,Ardency,1WsxqT4mCujD14EVrFQSEn,0.513,0.647,F,-6.392,minor,0.0314,0.795,0.449,0.149,0.0795,119.97,231e3,3,F minor
+February '18,Young Blood,The Districts,2zRKPKF78qFoG0c4R6KNlG,0.273,0.786,E,-5.535,major,0.116,0.0117,0.111,0.0364,0.476,149.379,520813,4,E major
+February '18,Sugar River,Matt Pond PA,64Z8XC4vtRf49R4B4d9HVo,0.681,0.48,A,-12.58,major,0.0362,0.366,0.0739,0.104,0.555,93.997,203077,4,A major
+February '18,Le printemps arrivera,De la Reine,6N4c5fGATMbEGSgrwlwJ5O,0.551,0.473,D,-13.741,minor,0.0434,0.176,0.0704,0.105,0.049,109.908,276284,4,D minor
+February '18,Tes,Bogan Via,4J9ycrHUnpLaXiUebT3xas,0.688,0.51,F,-5.804,major,0.0273,0.254,0.0849,0.0928,0.443,160.028,228867,4,F major
+February '18,Basically,STRFKR,1QEoGdSXX8XEcZCk8P8UNy,0.711,0.536,F#,-12.403,major,0.0451,0.218,0.688,0.0658,0.582,120.011,167493,4,F# major
+February '18,This Afternoon,Van Common,5dmw7aqRnlmlE4HVidQpSs,0.383,0.62,A#,-8.986,major,0.0338,0.0114,0.947,0.115,0.208,169.873,283238,4,A# major
+February '18,Spectrolite,Bayonne,76tMh6mPE9dFhahRPzn1ip,0.352,0.757,C#,-8.39,major,0.046,0.588,0.4,0.126,0.258,130.221,282583,4,C# major
+February '18,Fallss,Bayonne,50qNZb4uwtmpa2zn0DUV2U,0.475,0.751,A#,-4.806,major,0.0271,0.643,0.855,0.129,0.142,81.532,240108,4,A# major
+February '18,Lovers Do,Nick Monaco,6UTlf15qXusVrKTapfX8jm,0.884,0.449,C,-8.435,minor,0.0295,0.712,0.152,0.103,0.529,103.976,233111,4,C minor
+February '18,Lagoon,Favored Nations,2xqasjvIUwW8wbFvx5Ms50,0.826,0.671,F,-8.429,minor,0.041,0.0195,0,0.0808,0.903,123.967,226478,4,F minor
+February '18,The First Emanation,Deca,41lJ2xEJZiWDUGEDhEULhG,0.615,0.871,G,-6.321,major,0.279,0.276,0.00271,0.129,0.554,151.898,94129,4,G major
+February '18,Oceanica,San Fermin,6kTGfkJRuLAHCg9IyoFT6B,0.637,0.677,G,-7.474,major,0.0617,0.00174,0.67,0.108,0.376,97.956,215907,4,G major
+February '18,Awe,Helios,2D9e8RR1M7spCbt6HwOoF4,0.566,0.24,F,-16.564,major,0.0359,0.622,0.924,0.0896,0.0395,150.013,362336,4,F major
+February '18,Every Passing Hour,Helios,6twjlw8Pfa7RHO3KT2vlCh,0.513,0.655,C,-11.554,minor,0.0407,0.14,0.841,0.35,0.226,120.013,288042,4,C minor
+February '18,Falling Slowly,Glen Hansard,6EIVLz5xM1xE29r0OmIkWt,0.34,0.209,C,-11.869,major,0.0279,0.679,4.43e-4,0.101,0.151,137.042,244133,4,C major
+February '18,Beyond the Infinite,Brothertiger,7Ewn6Zb20heTqcnaZTRJif,0.577,0.795,G#,-7.259,major,0.0333,0.0152,0.0324,0.313,0.515,95.993,297285,4,G# major
+February '18,All The Stars (with SZA),Kendrick Lamar,3GCdLUSnKSMJhs4Tj6CV3s,0.698,0.633,G#,-4.946,major,0.0597,0.0605,1.94e-4,0.0926,0.552,96.924,232187,4,G# major
+February '18,"Being No One, Going Nowhere",STRFKR,0RT5QxvDakfy5cFg55thUw,0.655,0.506,G,-5.699,major,0.0253,0.101,0.928,0.107,0.207,93.971,279893,4,G major
+February '18,Pain from Love,Rubblebucket,4CwajKyhHp2OI1ZseDVjlo,0.614,0.774,B,-7.727,major,0.0356,0.00778,0.424,0.0877,0.558,102.019,291106,3,B major
+February '18,Asleep On The Train,San Fermin,2kJS6mmwkP7Il4toM7uCn2,0.645,0.598,C,-6.767,major,0.0302,0.0302,0.0495,0.0923,0.412,101.947,228853,4,C major
+February '18,So Low,Geographer,4EemqkYRfTNJZLg2fzVS5E,0.483,0.685,D,-5.604,major,0.0287,0.607,8.5e-4,0.181,0.554,150.025,227626,4,D major
+February '18,Drown,Ardency,4X92FYC11BEnX7bBbGJcHw,0.433,0.646,C#,-5.086,major,0.0326,0.0121,0.00177,0.375,0.0708,139.81,24e4,4,C# major
+February '18,Beige,Yoke Lore,0FfZudphGgQTGeEV6AhmOs,0.438,0.677,A#,-7.535,major,0.135,0.381,0.0686,0.119,0.214,167.989,204209,4,A# major
+February '18,You've Got Me Flush,Future Generations,6W54LsPpaAhknxR7kWArb7,0.353,0.64,G,-5.249,major,0.0341,4.4e-4,0.221,0.619,0.0656,137.874,270064,4,G major
+February '18,The Only Heirs,Local Natives,7FujcuRcRffWiMZsVkYKkk,0.493,0.665,F,-4.805,minor,0.0567,0.0956,8.33e-4,0.191,0.509,145.014,222440,4,F minor
+February '18,Forlornification,Rubblebucket,3VJu2AGrPetl8uUOzQQp63,0.619,0.683,G,-5.014,minor,0.0303,0.0144,0.027,0.292,0.661,120,263293,4,G minor
+February '18,Now & Then,Sjowgren,41oqThgUF4yiNz77TazXtl,0.543,0.549,C,-6.497,major,0.0306,0.149,0.082,0.114,0.404,80.079,205893,4,C major
+February '18,Islands,Zola Blood,0RKWKWxgY14X2nTvxLGeWy,0.608,0.406,A,-10.174,minor,0.0305,0.0933,0.48,0.0752,0.312,139.901,203667,4,A minor
+February '18,Hold Me Down,Yoke Lore,68J311jvo7JD5vldwzvMg3,0.415,0.572,D,-7.069,major,0.0328,0.00793,0.00424,0.285,0.294,145.219,269293,4,D major
+January '18,Corn Field,Walterwarm,4fPElYBRSjlGIjQaaQWClL,0.666,0.353,G#,-10.517,major,0.2,0.239,0.878,0.117,0.45,173.996,99462,4,G# major
+January '18,Short Truth,Yumi Zouma,6mv97R4aVELnk3nxrbjtD7,0.624,0.709,E,-7.993,major,0.0489,0.261,7.15e-4,0.0889,0.537,93.985,228746,4,E major
+January '18,Remember You At All,Yumi Zouma,1OJ5Rq8I1tEbwmxqNU1LRj,0.631,0.523,E,-11.017,minor,0.0311,0.268,0.926,0.069,0.588,139.981,211872,4,E minor
+January '18,Finally Moving,Pretty Lights,3WS7spXVlbeC5kjePmHMQW,0.735,0.555,C#,-8.84,minor,0.0366,0.382,0.856,0.0952,0.523,100.01,277975,4,C# minor
+January '18,Beige,Yoke Lore,0FfZudphGgQTGeEV6AhmOs,0.438,0.677,A#,-7.535,major,0.135,0.381,0.0686,0.119,0.214,167.989,204209,4,A# major
+January '18,You Know Me,Thunder Dreamer,6xQqcLXcm25CifTQ6IJ8Dc,0.359,0.728,A,-5.809,major,0.0311,0.168,0.618,0.0982,0.325,152.364,250440,4,A major
+January '18,Dagger Only Run,Sound of Ceres,2h6FjqJC3n0bLuvdyKbqZa,0.456,0.697,C#,-7.96,major,0.0335,0.145,0.46,0.154,0.294,100.038,304218,4,C# major
+January '18,Peggy,Orchards,15Gu4DIpci3mrpadPsVHWi,0.56,0.869,G,-4.699,major,0.0468,0.00783,0.00201,0.243,0.504,129.94,238596,4,G major
+January '18,More Like You,Brave Shores,42HWf3zyeSdsPvGG6k8WwP,0.608,0.798,D,-5.077,major,0.0244,0.0168,0.00275,0.224,0.592,93.989,245347,4,D major
+January '18,Deep In Yr Mind,James Wyatt Crosby,1TyNrpLTp6ws3x2FmtpWi8,0.699,0.445,C#,-8.362,minor,0.0295,0.0459,0.417,0.275,0.351,75.005,355725,4,C# minor
+January '18,Royal Moon,Ruby Haunt,3aqWMBhQfRlZ9PxNTu8jsR,0.539,0.421,C#,-11.599,major,0.0275,0.256,0.912,0.134,0.204,110.044,270545,4,C# major
+January '18,Pursuer,Sound of Ceres,6aUoy08EPSi5g3EgXRrT73,0.243,0.465,C,-8.638,major,0.0307,0.24,0.869,0.175,0.0343,94.658,326821,4,C major
+January '18,Mary (Alternate),Yellow Ostrich,2WsPW6yawWU8zczAeKk4c0,0.298,0.406,G#,-9.738,major,0.0566,0.228,0.00122,0.122,0.246,199.469,253e3,4,G# major
+January '18,Cracks and Creases,Serengeti,5YStYNF3SxYHqc5b0eubiR,0.736,0.516,C,-6.974,major,0.0449,0.0922,0.00345,0.16,0.664,139.097,203741,4,C major
+January '18,Voyeur,The M Machine,1LHTZuPgmbrC2Ltga2rwGC,0.514,0.854,D,-6.152,major,0.0484,0.0692,3.19e-4,0.113,0.45,173.991,245497,4,D major
+January '18,Kids,The New Division,6nnJHOvrP4dsRjUD5x8Htv,0.369,0.868,C,-4.262,major,0.0444,0.00713,0.401,0.681,0.431,100.984,221543,4,C major
+January '18,French Press,Rolling Blackouts Coastal Fever,3xuTjTxGkMVtxnHCAntxTs,0.397,0.915,D,-5.573,major,0.053900000000000003,0.0412,0.0641,0.348,0.719,81.044,326807,4,D major
+January '18,Lifetime,Straight White Teeth,7kXABFbHyBmzC51fKWIcCZ,0.683,0.182,F#,-18.325,major,0.034,0.379,0.014,0.0918,0.12,129.989,303167,4,F# major
+January '18,Stockholm,Harfang,4Rt0LmnYh4DNf6HgciOeHv,0.589,0.718,A,-8.993,minor,0.0408,0.0869,0.149,0.115,0.523,100.035,198373,4,A minor
+January '18,I Tweaked When I Saw Your Face,Netherfriends,1eLPPU4HycGct2kv66OI3s,0.726,0.639,C,-11.488,major,0.0382,0.522,0.00473,0.162,0.6,110.963,191399,4,C major
+January '18,Los Colores Sin Aroma Son Piedras,Coma Pony,43ZJHqiLU0RgoW1W7s5SeO,0.52,0.619,F,-9.581,major,0.0399,0.824,0.807,0.133,0.591,140.056,205714,4,F major
+January '18,Satellite - JordanXL Remix,Guster,48nUXDU0D3kDKr4ef08tTd,0.655,0.751,F#,-5.711,minor,0.0367,0.0287,0,0.107,0.335,95.001,167507,4,F# minor
+December '17,What We've Got,Manatee Commune,5HEpukkNnxdPAV9zsgDLOx,0.791,0.422,C#,-7.737,minor,0.0707,0.26,0.223,0.395,0.499,150.026,248e3,4,C# minor
+December '17,Lying in the Sun,The Beths,2ZfNavwjk7NBFSsWfAp0QW,0.371,0.758,C,-4.917,major,0.0338,0.00162,0.00296,0.653,0.409,142.324,234107,4,C major
+December '17,Vees and Exes,YUS,7FF0Xv2n6583rrmhDHz501,0.575,0.413,C,-10.06,minor,0.0964,0.552,0.211,0.0891,0.557,90.976,221545,4,C minor
+December '17,Shine,I.Am.Tru.Starr,52fFl4BGwDL23OyP1LOL4Q,0.446,0.511,C#,-9.096,major,0.0445,0.0595,0,0.194,0.0435,109.861,243461,4,C# major
+December '17,Caitlin,Jamaican Queens,0FG2OTObE7gQvX8hXs1kND,0.398,0.635,G,-5.848,major,0.123,0.0554,2.08e-4,0.116,0.307,119.708,381827,4,G major
+December '17,Sheep,Mt. Joy,7412fpVfB2PSSb1nENQczC,0.498,0.502,D,-8.052,major,0.0371,0.891,9.07e-4,0.0716,0.286,81.169,215180,4,D major
+December '17,Stuck,One11Twenty,3c1bQALEQxQP6BdqIX07eg,0.727,0.54,C#,-8.709,major,0.0875,0.376,0,0.0418,0.458,194.029,221753,4,C# major
+December '17,All Along,Nightshifts,4WqXmUH12uDY5Q6tu9yY33,0.512,0.552,C,-6.519,minor,0.031,0.291,1.6e-6,0.31,0.247,77.005,182047,4,C minor
+December '17,The Barely Blur - The Wild Honey Pie Buzzsession,WHY?,2uPiXPELrlNzdjgmlTYtXA,0.378,0.246,A#,-12.877,major,0.0295,0.827,0.306,0.135,0.0598,134.073,222040,4,A# major
+December '17,Easy - The Wild Honey Pie Buzzsession,WHY?,0919xg7szBMJ1o6gvLfMnX,0.559,0.365,G,-13.113,major,0.0417,0.829,5.37e-4,0.103,0.123,126.464,214861,4,G major
+December '17,Rain in Soho,The Mountain Goats,3zmDm22r3qPLX9K91sagh2,0.633,0.796,F#,-9.095,minor,0.0436,0.343,0.826,0.104,0.412,127.685,286213,4,F# minor
+December '17,Youth,"Parks, Squares and Alleys",0RMrqldYnjyoZziGlIvton,0.614,0.645,D,-10.526,major,0.0252,0.818,0.91,0.135,0.289,134.976,176060,4,D major
+December '17,Verona,Lastlings,7sIZcntN4MgDOz36jqJV5o,0.66,0.28,A,-12.764,major,0.0294,0.879,0.704,0.123,0.171,89.996,267471,4,A major
+December '17,You,Lastlings,11WVsrA88TRf9RtSn4b54p,0.583,0.45,A,-9.665,minor,0.0642,0.184,1.67e-4,0.0929,0.0655,100.056,233100,4,A minor
+December '17,Don't Swallow the Cap,The National,0QEHU0ZccfSXYUpF2iVUab,0.454,0.663,F,-8.54,major,0.0415,0.407,0.0466,0.0913,0.463,173.988,285533,4,F major
+December '17,Atrophy,The Antlers,43MrDsDWklcHkY9aEfENJT,0.286,0.247,D,-18.214,major,0.0494,0.782,0.741,0.0652,0.0364,125.022,460267,3,D major
+December '17,I Found The F,Broadcast,3fSps53A2agi4sDU84AEmQ,0.599,0.729,A,-6.182,minor,0.0262,0.00206,0.0205,0.337,0.215,98.078,141840,4,A minor
+December '17,Agoraphobia,Deerhunter,2SpHd4lGMrJMIQDf92V6VP,0.579,0.94,E,-6.89,major,0.0375,0.0309,0.862,0.656,0.401,120.097,202640,4,E major
+December '17,This Year,Beach Fossils,1TFjgmDNqtfw2R0ruYZkUI,0.499,0.791,G,-7.293,minor,0.0268,6.56e-4,0.0545,0.233,0.339,145.083,168093,4,G minor
+December '17,Ceremony,Day Wave,4kTznosUTYfDcHobn3HNn1,0.57,0.821,C,-8.255,major,0.028,0.167,0.145,0.183,0.32,139.513,238099,4,C major
+December '17,Theory of the Crows,The National,04ZsnIwD3NgRLAYnfgMJXZ,0.465,0.426,D,-9.042,major,0.0282,0.00292,0.574,0.11,0.166,134.216,276600,3,D major
+December '17,Silver Lining,Mt. Joy,2fpDrL2Vpee0JnM6AoUFvl,0.486,0.638,C,-6.231,major,0.0323,9.21e-4,0,0.078,0.178,144.458,199827,4,C major
+December '17,Life Wasted,Pearl Jam,4E938GnJH2e4dtImtRpjpX,0.386,0.958,E,-4.297,major,0.0645,0.00134,1.18e-6,0.321,0.497,141.965,232e3,4,E major
+December '17,I Can’t Cope,The Leers,2OWG8mvokDOugFqE0uUuTE,0.69,0.761,A,-6.283,major,0.057,0.0136,2.28e-4,0.128,0.489,90.06,224337,4,A major
+December '17,Spent,Los Angeles Police Department,76TdljWrhOT41e1MjhoX0B,0.593,0.554,C,-8.186,major,0.0253,0.495,0.646,0.0677,0.375,136.036,216811,4,C major
+December '17,Watercolor,UTAH,745NLlN798Uh1CC5qvFhOU,0.693,0.483,D,-6.845,major,0.0445,0.0411,0.95,0.11,0.547,89.999,221704,4,D major
+December '17,Galaxies Will Be Born,Say Hi,4mSBNqIFCaMexwtjD8kAhK,0.596,0.467,C#,-11.275,minor,0.0242,0.264,0.838,0.0882,0.0884,97.019,226960,4,C# minor
+December '17,The Gardener,Tiny Deaths,6xQ24QdiHcN63dxdELtG6F,0.829,0.374,D,-7.407,major,0.0366,0.395,0.107,0.0921,0.578,109.976,198773,4,D major
+December '17,Hold This Tight,I Know Leopard,0UUELooGqHcyi9ktNim4uQ,0.496,0.799,C#,-6.341,major,0.0355,0.0537,0.0862,0.0585,0.471,89.99,239528,4,C# major
+December '17,Charismarithmetic,Technicolor Wolves,0BEnReYyCD5bkuMpcR2Ffj,0.434,0.522,C#,-12.468,major,0.0879,1.24e-4,5.86e-4,0.136,0.965,85.393,162247,4,C# major
+December '17,Crossfire,The Verigolds,2DoOE4w2Ir27P32tsqRibB,0.418,0.595,B,-8.235,minor,0.0334,0.0367,0.187,0.106,0.229,80.951,311700,4,B minor
+December '17,Gloom,The Verigolds,5DcRHQpMJrNl3pgAg6owqZ,0.6,0.675,E,-5.283,minor,0.0293,0.0328,0.317,0.104,0.219,115.943,205670,4,E minor
+December '17,Feels Like We Only Go Backwards - Memory Tapes Remix,Tame Impala,2E1Xdz1V7J5HvJCS0rePdV,0.556,0.834,F,-6.244,major,0.0304,0.0331,0.65,0.38,0.389,80.002,194813,4,F major
+December '17,Forgotten,Tickle Torture,5bJbwqF9Ot9QydC8xrQdUA,0.508,0.911,C,-4.219,major,0.0393,0.0128,0.00476,0.352,0.619,123.994,336573,4,C major
+December '17,Daydream / Wetdream / Nightmare,Saint Motel,3UYFbRnkJlvm4POhrtsEL7,0.292,0.74,F#,-6.444,major,0.0758,0.117,0.00458,0.0938,0.193,91.973,307093,4,F# major
+December '17,Untitled (feat. Scar),Killer Mike,68qkEjGepczQDzuhxH5anO,0.675,0.677,F#,-9.69,minor,0.17,1.13e-4,0.0137,0.0983,0.493,79.981,233960,4,F# minor
+December '17,So Fast,Tape Waves,7CoEiPt9TLNTXEjJnu0KVO,0.623,0.855,D,-8.458,major,0.0279,0.129,0.621,0.122,0.69,113.428,200875,4,D major
+December '17,All4you,The Palms,7pp7ofOZGtELMkn74jLDze,0.666,0.573,C#,-8.369,major,0.0361,0.0074,2.33e-4,0.116,0.438,96.982,220462,4,C# major
+December '17,I Saw You Close Your Eyes,Local Natives,5AKYyNPYhumqKeOMhdEgQO,0.41,0.637,A,-6.673,major,0.0327,0.0729,3.77e-5,0.732,0.238,77.398,216840,4,A major
+December '17,Gold Guns Girls,Metric,5WH2HL7ZrVu9n51viwbdJw,0.49,0.96,A,-5.385,minor,0.0562,9.19e-4,0.0441,0.0768,0.82,179.975,245307,4,A minor
+November '17,Dragg,Honey Bones,5KkMxm27bgLj290lTqFAi2,0.715,0.637,C,-9.442,major,0.0452,0.0629,0.0952,0.118,0.205,120.044,28e4,4,C major
+November '17,Chipmunk,Mr. Scruff,7eplEUMTNbmNGyJCguDVsX,0.8,0.925,E,-7.098,minor,0.0455,0.0208,0.901,0.0879,0.934,139.006,369133,4,E minor
+November '17,Gold,The Shelters,6QE54DdZoeDixQSlxCzQwU,0.557,0.707,G,-3.977,major,0.0254,2.79e-4,0.0016,0.145,0.557,105.067,201347,4,G major
+November '17,More Than Gold,Bronze Nazareth,1v8j8fQsQ04YLXrIYFpDuZ,0.618,0.725,D,-4.271,major,0.14,1.96e-4,0.963,0.0525,0.909,164.897,289840,4,D major
+November '17,An Eagle In Your Mind,Boards of Canada,03zv0Znm7bA7XzWMZ1lEKO,0.825,0.467,F#,-14.055,major,0.0753,0.371,0.845,0.0594,0.249,96.012,385520,4,F# major
+November '17,Positive Contact,Deltron 3030,6mKai3TB6wtorWTX47wHUt,0.862,0.55,C#,-9.586,major,0.183,0.0707,0.00485,0.259,0.385,105.018,282920,4,C# major
+November '17,Follow You Home,Embrace,3Vhf1hwVs3YhKnAVorXGCh,0.499,0.755,C#,-7.708,major,0.0548,0.00137,4.86e-5,0.195,0.532,129.947,243933,4,C# major
+November '17,Tear It Up,Delta Spirit,3tjkJGlb4JqugAuRfc5rgP,0.622,0.803,A#,-6.425,minor,0.049,0.00153,0.0177,0.187,0.52,121.996,202733,4,A# minor
+November '17,Inside Out,Spoon,7qCZgvV98j6RjUULW1s1it,0.637,0.618,C,-4.746,major,0.0296,0.427,0.0971,0.0704,0.499,176.141,301960,4,C major
+November '17,Youth,"Parks, Squares and Alleys",0RMrqldYnjyoZziGlIvton,0.614,0.645,D,-10.526,major,0.0252,0.818,0.91,0.135,0.289,134.976,176060,4,D major
+November '17,Gum (Everybodys My Friend),OYSTER KIDS,4GMHiEsI3ASKrnJbVv3TR4,0.742,0.848,F#,-5.265,major,0.0379,0.139,0.00135,0.304,0.945,120.032,182274,4,F# major
+November '17,A Summer Song,Conner Youngblood,2ro7C9SAg54fL7ribZOt1j,0.626,0.4,C,-11.49,major,0.0417,0.083,0.814,0.116,0.313,79.935,349500,4,C major
+November '17,Counting Sheep,Livingmore,6HfAn6JgYSeKx94qmCTv57,0.562,0.549,D,-9.582,major,0.0369,0.0855,0,0.309,0.219,127.061,254667,4,D major
+November '17,Progression of a Chia Pet,SLUMBERJACK,0reM8zcIdtKAOIAJVtpjme,0.58,0.468,C,-10.821,major,0.0514,0.0434,2.54e-4,0.114,0.565,134.605,195e3,4,C major
+November '17,After Me,Misun,1660mEFehJyuRbt9m2E3R1,0.623,0.823,C,-4.136,major,0.0317,0.0141,0.695,0.197,0.897,193.93,296907,4,C major
+November '17,Hammock,Millionyoung,2igRi4SLvLCGrL5SGcNhv3,0.61,0.954,E,-2.903,minor,0.0628,0.0641,5.51e-5,0.124,0.748,112.007,183224,4,E minor
+November '17,Maintain,VILDE,6VvrVS20DC0EC8ueGEyEyM,0.568,0.942,F,-4.719,minor,0.0433,0.244,0.344,0.1,0.545,169.998,248824,4,F minor
+November '17,i always say the wrong thing (feat. Scott Colcombe),whyetc,46Q1kBJy6jbcLgYXxUVsz2,0.353,0.607,G,-10.547,major,0.0856,0.645,0.0196,0.246,0.453,76.841,217875,4,G major
+November '17,Almost Cut My Hair (for Crosby),Milo,07ShV8CymziYg4gQB1z1S6,0.485,0.586,F#,-9.307,minor,0.291,0.771,0,0.0969,0.231,99.427,192e3,4,F# minor
+November '17,Pistol Pump Funk,Argonaut & Wasp,2Nq82240wBw59D5rY9kUmX,0.71,0.886,B,-4.277,minor,0.0944,0.143,2.05e-5,0.114,0.549,125.994,182857,4,B minor
+November '17,Poet (Black Bean),Milo,688WVkTctGV4Dc7ECyt3ly,0.48,0.434,C#,-10.84,major,0.265,0.875,0,0.351,0.522,79.954,168796,4,C# major
+November '17,Grace,Future Generations,0xYdiaWg1NGEu7QZg4ZmA2,0.628,0.545,E,-6.792,minor,0.0627,0.00865,0.267,0.278,0.338,82.003,279897,4,E minor
+November '17,Blank Slate,Mesita,2DzB2tpu57rK30LQBZBopl,0.616,0.697,C#,-7.494,major,0.0289,0.0165,0.134,0.35,0.668,87.03,209811,4,C# major
+November '17,Fully Fledged,VILDE,3KjqfAVMfUF1fzUYCa2s5q,0.679,0.761,F#,-4.829,minor,0.0298,0.511,0.0654,0.169,0.369,140.028,384e3,4,F# minor
+November '17,Hush,Magic City Hippies,2hup7lQB1vMfVTemkfljLR,0.622,0.752,E,-6.964,minor,0.124,0.189,0.0124,0.0443,0.602,126.047,319125,4,E minor
+November '17,Fences,Magic Bronson,7G5RuFPZMYaGJOC6WndE9b,0.675,0.521,C#,-7.658,major,0.0361,2.71e-4,3.33e-6,0.121,0.448,120.004,219040,4,C# major
+November '17,Such Small Scenes,Lewis Del Mar,1PBp3M4Dh1TO0D6kgL8GqA,0.598,0.841,F,-6.652,minor,0.0563,0.107,8.22e-5,0.154,0.367,116.077,138173,4,F minor
+November '17,Rain,Future Generations,3JxzLbKXkPDmGOXeES7H4K,0.557,0.741,C,-6.488,major,0.032,0.00143,7.37e-5,0.525,0.631,73.999,231029,4,C major
+November '17,Love Machine,The Tazers,4U1MPcc9iEukZfnQN2acAH,0.509,0.853,D,-7.258,minor,0.0468,0.0289,0.456,0.334,0.611,145.368,213104,4,D minor
+November '17,Look the Other Way,Family Friends,4G7unsBpr0B8Fau9QfdQtl,0.566,0.833,C,-6.233,major,0.0316,0.0253,0.0103,0.161,0.542,119.886,180334,4,C major
+November '17,What We've Got,Manatee Commune,5HEpukkNnxdPAV9zsgDLOx,0.791,0.422,C#,-7.737,minor,0.0707,0.26,0.223,0.395,0.499,150.026,248e3,4,C# minor
+November '17,Whatever,The Beths,62XGEnXqaDZKXedlNkfxLj,0.388,0.737,A,-5.038,major,0.0398,0.0273,1.59e-4,0.126,0.705,147.992,263e3,4,A major
+November '17,Lying in the Sun,The Beths,2ZfNavwjk7NBFSsWfAp0QW,0.371,0.758,C,-4.917,major,0.0338,0.00162,0.00296,0.653,0.409,142.324,234107,4,C major
+November '17,Method Acting,Work Drugs,4HAFnf9qKlK0PSzHVvf2HB,0.635,0.676,G,-8.498,minor,0.0291,0.221,0.00929,0.104,0.751,143.006,202293,4,G minor
+November '17,Vees and Exes,YUS,7FF0Xv2n6583rrmhDHz501,0.575,0.413,C,-10.06,minor,0.0964,0.552,0.211,0.0891,0.557,90.976,221545,4,C minor
+November '17,Shine,I.Am.Tru.Starr,52fFl4BGwDL23OyP1LOL4Q,0.446,0.511,C#,-9.096,major,0.0445,0.0595,0,0.194,0.0435,109.861,243461,4,C# major
+November '17,Sheep,Mt. Joy,7412fpVfB2PSSb1nENQczC,0.498,0.502,D,-8.052,major,0.0371,0.891,9.07e-4,0.0716,0.286,81.169,215180,4,D major
+November '17,All Along,Nightshifts,4WqXmUH12uDY5Q6tu9yY33,0.512,0.552,C,-6.519,minor,0.031,0.291,1.6e-6,0.31,0.247,77.005,182047,4,C minor
+November '17,Stuck,One11Twenty,3c1bQALEQxQP6BdqIX07eg,0.727,0.54,C#,-8.709,major,0.0875,0.376,0,0.0418,0.458,194.029,221753,4,C# major
+November '17,All in All,Superjava,4CBZPeVKegeX7dLAXPF6CD,0.624,0.676,D,-6.896,minor,0.0538,0.29,1.39e-6,0.0811,0.32,118.011,221072,4,D minor
+November '17,Flight From The City,Jóhann Jóhannsson,3Sy6wgTNEp6vSgLs4EyXAf,0.13,0.086,A#,-21.92,major,0.0373,0.932,0.912,0.108,0.0375,90.223,391160,4,A# major
+October '17,You Don't Know How It Feels,Tom Petty,7MooGz4ZPE4bNxjFegR6Jx,0.765,0.502,A,-7.393,major,0.0321,0.119,0.0011,0.171,0.836,144.204,289440,4,A major
+October '17,Melt,Wannabe Jalva,3BAjMmoCT2togKMC6t4gCK,0.637,0.642,E,-6.863,minor,0.0272,0.25,0.0883,0.0981,0.341,81.994,287572,4,E minor
+October '17,Highway Patrol Stun Gun,Youth Lagoon,3Ty5AF8PMWtLxBjNSpZ0pt,0.578,0.655,C#,-6.988,major,0.0279,0.0348,2.81e-4,0.066,0.229,134.037,250164,4,C# major
+October '17,Lay You Down,Lava Beds,13TQfKDmXDvX5yzMvWQrL0,0.502,0.563,F#,-11.127,major,0.0279,0.405,0.187,0.0843,0.25,81.985,204604,4,F# major
+October '17,Portugal,Highs,32y27NTgiyg5sVJtXmaAfq,0.581,0.784,D,-7.382,major,0.0298,0.0706,0.126,0.204,0.897,100.01,217675,4,D major
+October '17,SGL,"Now, Now",3opSfLvpDbZVG0ecreiL4M,0.747,0.651,A,-4.155,major,0.0325,0.029,0.472,0.0848,0.913,119.951,194438,4,A major
+October '17,Super Natural,Turnover,5rS2hVOWoceoZfuoXM9Vwb,0.651,0.664,F,-7.929,major,0.0282,0.206,0.202,0.0977,0.559,121.025,257860,4,F major
+October '17,Suit And Jacket,Judah & the Lion,2ZYBwkmtYhgUj1A7teYAZ7,0.448,0.596,A#,-8.485,major,0.0471,0.246,1.66e-5,0.102,0.122,164.233,222256,4,A# major
+October '17,24/7,The Neighbourhood,4lOavMadLCGAOJEvMJ5t4t,0.615,0.74,G,-4.662,minor,0.0754,0.00241,0.00113,0.115,0.219,118.957,221707,4,G minor
+October '17,Sadderdaze,The Neighbourhood,31vZNE9IbY0JI0gRmaLAWr,0.538,0.545,E,-4.818,minor,0.028,0.00709,5.45e-5,0.139,0.32,120.071,250067,4,E minor
+October '17,Afraid,The Neighbourhood,7brQHA2CgQpcMBiOlfiXYb,0.464,0.701,F#,-5.693,minor,0.0411,0.00892,0.309,0.335,0.356,83.996,251187,4,F# minor
+October '17,Staying Up,The Neighbourhood,1NA2NvAgCB4EfcBC8OHfuj,0.394,0.855,D,-4.204,major,0.0554,0.0339,0.0132,0.243,0.316,175.902,268173,4,D major
+October '17,Light Pollution,Ratboys,0SqaYmilJqKX71q2xFLSEr,0.584,0.459,G#,-9.793,major,0.0294,0.0593,0.319,0.0365,0.384,79.977,170642,4,G# major
+October '17,Why Do I Wait (When I Know You've Got a Lover),The Zolas,2Wl4MbBRtan8gr0C8qUSGT,0.561,0.411,D,-9.384,major,0.0242,0.213,0.0174,0.0714,0.119,90.987,279907,4,D major
+October '17,Hindsight,Family Hahas,4YiBUFdg99pMpOpWLUxT6f,0.57,0.697,F#,-5.437,major,0.0353,0.105,4.52e-5,0.0881,0.675,131.072,249e3,4,F# major
+October '17,Stay Awake - Actors Remix,Gang Signs,0cr2ksK3uykqTUJsh9plgl,0.548,0.712,F#,-7.301,minor,0.0295,0.304,0.928,0.0954,0.117,109.984,242182,4,F# minor
+October '17,Mexican Jackpot,Flagship,3L2o3fuMpHQsNHHeqDtGmz,0.636,0.68,B,-5.163,major,0.037,0.00756,2.84e-5,0.0918,0.508,114.016,242360,4,B major
+October '17,In My Head,HAWAI,6if6xtP8ZXQ3OcGDZ5tqVS,0.438,0.82,A,-5.533,major,0.0492,0.0278,2.1e-5,0.291,0.339,113.045,225213,4,A major
+October '17,In My Arms (feat. Jamie N Commons),Grizfolk,7KubeWC5zOcYOLTYxCtnYE,0.61,0.757,F,-5.403,major,0.0269,0.0508,1.96e-5,0.152,0.392,133.882,172387,4,F major
+October '17,Heartbreak Summer,RAC,1XUWDkiiipRz5ORL7mPFw2,0.59,0.816,G,-5.055,major,0.0292,0.0737,0.0102,0.188,0.519,80.005,232013,4,G major
+October '17,I Still Wanna Know - Goldroom Remix,RAC,0IP986ydmgleIvKzQcfTvN,0.645,0.781,A#,-5.573,major,0.0335,0.0666,0.28,0.0777,0.588,123.003,315653,4,A# major
+October '17,We're Going Home,Clint Mansell,0cmAtbCkYqUImarXD7eP6P,0.294,0.239,E,-14.243,minor,0.0462,0.952,0.946,0.0689,0.0465,115.134,221613,4,E minor
+October '17,The Night Café,Clint Mansell,5EIdet1v7HS2klWd5fMKo1,0.337,0.309,D,-15.671,minor,0.035,0.973,0.961,0.0636,0.0356,113.48,247729,4,D minor
+October '17,Blossoming Chestnut Trees,Clint Mansell,0ZJXrdVGvXfYCbyGmwlSSC,0.0664,0.142,D,-16.81,minor,0.0381,0.984,0.945,0.104,0.0366,67.346,294561,4,D minor
+October '17,Pillow Talking,Clint Mansell,2n8gnd5snxSEoZetXqJ44m,0.154,0.0382,A,-28.547,minor,0.0344,0.995,0.921,0.0873,0.258,204.001,211787,3,A minor
+October '17,Hey Moon,John Maus,0MpsyFvt1KaxNYBYw2aanq,0.573,0.639,C,-7.143,major,0.0247,0.784,0.633,0.0923,0.24,89.575,248707,4,C major
+October '17,Dinner Bells,Wolf Parade,4E6Od4OZ9930kNg3IQateQ,0.498,0.667,G,-6.712,major,0.0328,0.788,0.316,0.136,0.144,140.096,454640,4,G major
+October '17,HELP,The Front Bottoms,4G7l8ksBL0Xq20SvJhRU2R,0.553,0.858,G,-4.124,major,0.0279,1.42e-5,1.19e-4,0.113,0.748,134.031,225640,4,G major
+October '17,Dim the Lights,Wild Ones,6x5nay7lGej5HlPJVvAJ2p,0.555,0.806,F#,-4.36,major,0.0268,0.0628,0.146,0.114,0.566,99.994,248747,4,F# major
+October '17,I Came Running,Ancient Astronauts,7G8xNxQAWiBPAVgBqEVI7o,0.655,0.779,G,-7.316,minor,0.0495,0.0887,0.841,0.128,0.146,89.995,239107,4,G minor
+October '17,B4uGO,Dibia$E,1BmZcqPahgxktUGAVaVK8n,0.478,0.797,F#,-7.09,major,0.771,0.584,2.19e-4,0.753,0.766,83.672,146976,4,F# major
+October '17,Pearl Song,Onra,6sgicAGbUJ1NaTqhG1T8bE,0.473,0.457,B,-8.953,major,0.298,0.0384,0.00366,0.138,0.095,90.454,157830,4,B major
+October '17,Maria,Funki Porcini,2aU0AqoYksRiS92lvtwyRT,0.683,0.316,C#,-16.659,major,0.0879,0.325,0.893,0.217,0.43,108.29,107107,3,C# major
+October '17,Wilderness Kids,Rup,6sBYxcMhuWDIl1LOmh3pyN,0.715,0.521,A,-6.512,minor,0.0632,0.113,0.0212,0.112,0.512,86.964,288387,4,A minor
+October '17,White House,S,0PKbXwoewJfzsGojTJHoEy,0.539,0.685,D,-9.47,major,0.0413,0.735,0.0875,0.103,0.854,154.915,174787,4,D major
+October '17,Selfish,Forth Wanderers,4Ubv15YM60WOnQzONOH4Pu,0.52,0.827,D,-2.347,major,0.0272,0.42,3.08e-4,0.136,0.538,105.013,209346,3,D major
+October '17,Fast 11 11,SK3L3TONS,2SR4KjyUbcW0QB2CPsPtvg,0.539,0.879,G,-5.276,major,0.219,0.251,7.63e-5,0.136,0.5,180.878,183840,4,G major
+October '17,Chemistry,Faze Wave,0S7EDriw3cLdnrSxg9ageT,0.35,0.689,B,-7.794,major,0.0456,0.0927,1.62e-4,0.201,0.27,147.956,219114,4,B major
+October '17,Ultrafluorescent,Oshwa,7kWD4AFmwEj9S6N8ROUnoD,0.701,0.617,B,-6.205,major,0.0306,0.0865,0.00595,0.113,0.505,124.008,136819,4,B major
+October '17,anemone,slenderbodies,4Z3P5tSmsB7BkFHFc38dz7,0.854,0.631,B,-8.197,minor,0.0452,0.884,0.00999,0.202,0.609,119.986,228062,4,B minor
+October '17,Black Bear,Black Bear,7kS4JyQvrqssb5DmDMwqOC,0.364,0.395,F,-13.957,minor,0.0412,0.00153,0.133,0.295,0.122,120.096,269427,4,F minor
+October '17,Airy Jane's Flying Carpet,Holy Family,3yFP4rcIlE0jefl5rffXlY,0.644,0.869,C,-7.848,minor,0.052,0.0949,0.832,0.093,0.345,100.989,196e3,4,C minor
+October '17,Path,Living ,43jmdQLvDrfvfcdaKLfl5K,0.499,0.827,F#,-6.909,major,0.037,0.00829,5.14e-5,0.142,0.336,111.987,223136,4,F# major
+October '17,Wildfire,Slow Magic,5GLNSHrRsrCRuFy1mc9zR6,0.55,0.72,F#,-7.07,minor,0.043,0.082,0.0107,0.239,0.134,124.984,204851,4,F# minor
+October '17,Reconstruct (feat. Seafloor),Photay,3PyKyatWHlHeqASgRYSkpV,0.51,0.508,F#,-10.358,major,0.117,0.412,0.729,0.121,0.247,178.23,309188,4,F# major
+October '17,Sun Was High (So Was I),Small Black,2hc6fCrA3pmmh4EJtzMBs9,0.505,0.882,C#,-6.051,minor,0.0405,0.0123,0.462,0.255,0.37,112.983,231680,4,C# minor
+September '17,All You Fascists,Billy Bragg,7ELquuoDdTdpZGENKNbkBy,0.196,0.956,A,-2.505,major,0.067,0.16,6.15e-5,0.371,0.61,206.134,163080,4,A major
+September '17,Holy Toledo,Vundabar,7vlX33qkhVUSMUe0wpTOyc,0.455,0.515,C#,-7.689,minor,0.0252,0.0082,0.251,0.137,0.215,86.944,320075,4,C# minor
+September '17,Cannibal Holocaust,Foxygen,0d8cCi9kOacsLY8JldsCOY,0.494,0.561,G,-8.557,major,0.034,0.364,0.0458,0.0779,0.537,115.108,227720,4,G major
+September '17,Speak In Rounds,Grizzly Bear,6kjIYPpW002JVf14ImZxtR,0.543,0.878,C,-7.724,major,0.0425,0.128,0.0267,0.119,0.56,97.495,264838,4,C major
+September '17,Yet Again,Grizzly Bear,202QyrB6Q3Kimsr7KqJut3,0.472,0.875,E,-5.024,minor,0.0446,0.00345,0.00576,0.128,0.461,136.064,318423,4,E minor
+September '17,Feels Good,Breakup,1B13r0PeEEJdx1ElPteowI,0.647,0.616,D,-8.29,major,0.0285,0.428,0.472,0.14,0.567,119.962,188476,4,D major
+September '17,No Reason,Douchka,4bpMT3PfKY9J5z6Dr3Aj0V,0.377,0.674,G,-5.731,major,0.119,0.00724,1.08e-4,0.286,0.0968,169.987,212471,4,G major
+September '17,All Stars,Martin Solveig,26haJjtanhamtf25RXH0MO,0.777,0.712,C#,-3.469,major,0.0451,0.148,5.59e-4,0.0599,0.609,124.033,170323,4,C# major
+September '17,Won't You Come Back feat. Faraz - Electro Mix,Faraz,4ZjwbVhC9ktMVOD7dntsqu,0.794,0.488,B,-13.427,minor,0.0558,0.195,0.901,0.147,0.298,125.995,308571,4,B minor
+September '17,Ride,Twenty One Pilots,2Z8WuEywRWYTKe1NybPQEW,0.645,0.713,F#,-5.355,major,0.0393,0.00835,0,0.113,0.566,74.989,214507,4,F# major
+September '17,Shrug,Mouth Breather,3eOoI3h5WtjPMrsyr2Qup4,0.524,0.708,G#,-8.14,minor,0.0478,0.0497,0.0199,0.444,0.716,92.137,213565,4,G# minor
+September '17,Fade,Mexico City Blondes,6ktLNtYTKcZM1RNuezKmEo,0.742,0.629,A#,-6.143,major,0.0362,0.239,0.067,0.092,0.489,130.067,243240,4,A# major
+September '17,Dogwalk,Pity Sex,0LLKJL3tEm6UqcqY0t2oJa,0.232,0.738,D,-2.793,major,0.0447,0.0218,0.192,0.214,0.502,120.813,282197,4,D major
+September '17,Sleeping Sickness,City and Colour,2SBFyml6gSXByXMRfW6UYi,0.642,0.623,E,-5.217,minor,0.0292,0.691,0,0.0706,0.327,134.932,248e3,4,E minor
+September '17,What Makes a Man?,City and Colour,0bSsYXX28u4GO1t6Qhb63I,0.428,0.302,F,-9.701,minor,0.0282,0.92,0.0354,0.131,0.247,137.367,206373,4,F minor
+September '17,Vinta,Crumb,71UsuepAxDwu0aP6IoWYRP,0.421,0.727,G#,-8.273,minor,0.0365,0.0132,0.565,0.223,0.486,112.603,299960,4,G# minor
+September '17,Actual Woman,Girlyboi,6IQVIa8UNIl3IWFHqoFdeg,0.164,0.389,E,-11.549,major,0.0307,0.427,0.88,0.128,0.0861,95.797,196875,3,E major
+September '17,Kids on the Run,Eyes on the Shore,26BHeKYD3C61ThBslI4y52,0.394,0.79,F#,-6.188,minor,0.034,0.0625,0.0129,0.154,0.353,107.596,305623,4,F# minor
+September '17,Full Moon,Petit Biscuit,16uBpYr9yKMBHSHldRMF0K,0.848,0.511,D,-8.84,major,0.292,0.28,0.607,0.0868,0.273,124.001,338203,4,D major
+September '17,Alone,Petit Biscuit,4p1NHiFP4PfV7eW1183Ej9,0.772,0.745,B,-10.194,major,0.0405,0.595,0.87,0.117,0.166,116.014,273162,4,B major
+September '17,Gravitation,Petit Biscuit,7gxLYfaAKjyC4pEs8rXW7Y,0.601,0.623,C#,-9.57,major,0.0727,0.0142,0.357,0.102,0.0456,119.886,217362,4,C# major
+September '17,Prom Song,Surfer Blood,7ccWSfGfDP58uBW82BGMMY,0.591,0.821,C#,-4.113,major,0.0322,5.5e-4,0.159,0.0902,0.483,127.998,233813,4,C# major
+September '17,Love And Respect,When Saints Go Machine,7yD1rSR4cF8I9DqqnLos0J,0.635,0.813,C,-6.711,major,0.085,0.101,0.0466,0.148,0.483,100.006,204014,4,C major
+September '17,Iodine,When Saints Go Machine,72K953diSNBEj4ZdGwA9uR,0.628,0.781,C,-7.214,minor,0.0308,0.00362,0.0223,0.164,0.559,99.987,233903,4,C minor
+September '17,Mannequin,When Saints Go Machine,292saZ4dVtoCILNH1xrB59,0.535,0.541,F,-8.16,major,0.0304,0.459,0.00262,0.104,0.187,81.213,229151,4,F major
+September '17,Mind Fields,No Vacation,5eZrjqnDP7bbcea1ckPDT4,0.443,0.706,C,-6.754,major,0.0302,0.0804,0.937,0.106,0.252,128.331,272626,4,C major
+September '17,Into The Barrens,Grizfolk,5w2FeR7c1LUwsxKub9iFHC,0.518,0.947,F,-4.708,minor,0.0454,0.00501,0.124,0.315,0.362,127.993,196120,4,F minor
+September '17,Harvard,Diet Cig,2eTioKDu4klzCrcceLOn5d,0.306,0.763,G,-5.768,major,0.0471,0.0345,0.0152,0.182,0.18,101.154,147502,4,G major
+September '17,Sleep Talk,Diet Cig,1eD78jjp5uEq2XWylMM2w5,0.312,0.585,A,-6.368,major,0.043,0.194,0.00451,0.114,0.318,109.231,165427,4,A major
+September '17,Boys Life,Small Black,2S01104ghxxnoSCzGXCPdZ,0.582,0.734,F#,-6.987,minor,0.0675,0.00727,0.202,0.76,0.644,127.071,302120,4,F# minor
+September '17,Chop,Vundabar,7dCiSeskqCSoB8G4JUAVJI,0.424,0.766,C#,-4.646,major,0.0359,0.467,0.284,0.309,0.465,80.464,169160,4,C# major
+September '17,Optimism,ANIMA!,5xvvIYNR8scrGvgYQk1Di8,0.752,0.599,F#,-11.053,major,0.0423,0.351,0.016,0.0806,0.546,99.967,206332,4,F# major
+September '17,Home,Islandis,2JGSYOFs3qNgd4hhvhrkf8,0.479,0.808,C#,-5.604,major,0.0673,8.4e-4,0.0288,0.152,0.588,75.121,230132,4,C# major
+September '17,One in the Same,Eyes on the Shore,5NDDkIkDupH0RoFGhPjSmf,0.517,0.784,F#,-7.369,minor,0.026,0.0294,0.00224,0.0716,0.394,94.062,264217,4,F# minor
+September '17,Horseshoe Crab,Slothrust,2O0CwwL8CtVH43lJwogt5u,0.358,0.519,A,-8.159,major,0.0314,0.0289,0.0195,0.163,0.195,129.731,290076,4,A major
+September '17,Adversity,Beach Fossils,251lM96DbNbBzUrSuDcP6y,0.661,0.733,D,-6.859,major,0.026,0.00551,0.66,0.0992,0.53,129.974,243297,4,D major
+September '17,Aereoaviones,Tristeza,35lUFiuk8w2mPcHwhKEijk,0.489,0.742,E,-8.685,minor,0.0296,0.138,0.886,0.108,0.472,131.016,310867,3,E minor
+September '17,Link in Bio,Diet Cig,75FxMdsN6ZwUb0A439gPfo,0.452,0.81,E,-7.98,major,0.0336,0.0929,0.0825,0.225,0.747,104.49,129539,4,E major
+September '17,Maid of the Mist,Diet Cig,0Ob0FRlho5wKQqLS1Juk4w,0.501,0.674,F,-7.264,major,0.028,0.0223,4.76e-4,0.132,0.444,108.191,154988,4,F major
+September '17,Oulala,Vundabar,1y5mn92HIU5PGXtBYIIk6R,0.395,0.708,A,-5.401,major,0.0361,0.174,0.0073,0.139,0.55,81.948,264347,4,A major
+September '17,Melt,Wannabe Jalva,3BAjMmoCT2togKMC6t4gCK,0.637,0.642,E,-6.863,minor,0.0272,0.25,0.0883,0.0981,0.341,81.994,287572,4,E minor
+September '17,Something New,Wannabe Jalva,4HFQnEEk8rjATaE7NlHByL,0.677,0.764,C,-5.387,minor,0.0306,0.0216,0.00571,0.116,0.575,108.998,274e3,4,C minor
+September '17,Know the Feeling,HalfNoise,0PUb5NltgSVRYxz0YWqmwk,0.545,0.899,F,-5.383,major,0.0479,7.34e-5,1.15e-4,0.428,0.594,107.964,159787,4,F major
+September '17,I Could Die,Saxxcat,3EIGEd86DGrKWtNbqszEwK,0.528,0.476,F#,-7.126,minor,0.0317,0.0821,0.0315,0.0933,0.0445,127.87,193410,4,F# minor
+September '17,Highway Patrol Stun Gun,Youth Lagoon,3Ty5AF8PMWtLxBjNSpZ0pt,0.578,0.655,C#,-6.988,major,0.0279,0.0348,2.81e-4,0.066,0.229,134.037,250164,4,C# major
+September '17,Rockets,shy kids,5d8GHB5JNggDJelmB5ivcV,0.581,0.637,C#,-7.131,major,0.0446,0.145,0,0.72,0.362,110.035,332750,3,C# major
+September '17,Playing with Fire,Nick Leng,218fyvRaSQjuwFEhuWQAQF,0.603,0.537,A,-7.672,major,0.0268,0.0388,0.095,0.11,0.0909,99.995,277734,4,A major
+August  '17,Silhouettes (Casio Version),Colony House,4IHY8b4jvoZjA2hmImI1XM,0.444,0.907,G#,-4.352,major,0.0501,0.00162,3.18e-4,0.0636,0.964,80.01,175856,4,G# major
+August  '17,Cave Fantasy,American Wolf,2PcVKPfrmaQcmcWfWuk5ZE,0.349,0.493,C,-10.718,minor,0.0314,0.0448,0.712,0.098,0.299,136.092,389453,4,C minor
+August  '17,Hey Arnold!,Autumn In June,2Gi9veF2vWMjOj2g8pSuMC,0.817,0.681,C,-6.162,major,0.0361,0.252,6.31e-5,0.114,0.713,127.03,154053,4,C major
+August  '17,Memories,Follin,12Lv5SHoJBHJWjP2119hWt,0.566,0.555,D,-7.265,major,0.0312,0.0505,0.202,0.0958,0.497,93.977,279101,4,D major
+August  '17,Make It Do,Mary Cassidy,2wSmbZrcTbVUwUMhy1QJ8j,0.718,0.645,G#,-8.057,major,0.0339,0.69,0.0066,0.118,0.319,101.957,19e4,4,G# major
+August  '17,Into The Barrens,Grizfolk,5w2FeR7c1LUwsxKub9iFHC,0.518,0.947,F,-4.708,minor,0.0454,0.00501,0.124,0.315,0.362,127.993,196120,4,F minor
+August  '17,"Blonde Hair, Black Lungs",Sorority Noise,5LuYzNT80u6BrRFtwEPet7,0.313,0.605,F,-6.261,major,0.0447,4.48e-4,0,0.136,0.379,114.182,176975,3,F major
+August  '17,Wolverines,Wuh Oh,0Ua08oPccBF9JiXQuGse9G,0.477,0.694,F,-8.152,major,0.028,0.595,0.614,0.109,0.158,130.062,195202,3,F major
+August  '17,Saxy Beast,Wuh Oh,6tr3OHKGCjyT4X3a0zzfCF,0.375,0.604,E,-9.471,major,0.0518,4.24e-4,0.729,0.293,0.468,129.83,115712,3,E major
+August  '17,Tickle,Eyes Lips Eyes,74BNcrrfzMTh66O8KMpsKk,0.376,0.872,E,-4.468,minor,0.0425,0.00371,0,0.284,0.264,125.125,233156,4,E minor
+August  '17,Why You Always Leave a Note,Prawn,3Stz5rcvMrvEkwaBnMRMGO,0.518,0.931,D,-6.236,major,0.0466,0.00976,0.0182,0.214,0.275,140.035,288080,4,D major
+August  '17,What Youth,Hazing,1vXZ8K7bfthRi0yjnpSs1K,0.49,0.575,E,-10.783,major,0.0297,0.125,0.813,0.298,0.499,112.066,177654,4,E major
+August  '17,Trippin',The Funky Bros,26dLkQ7WPyZyOt0FROi67S,0.718,0.814,C,-9.329,major,0.0345,0.26,0.945,0.0878,0.658,99.96,348518,4,C major
+August  '17,In a Dream,Skybox,0MrFdYmGk8IF4BMm1or1Up,0.776,0.747,G,-5.318,major,0.036,0.00306,3.8e-5,0.0519,0.966,115.967,198e3,4,G major
+August  '17,Anybody Out There,Young Mister,6uq3dJDgNiB9q3hyV1u4st,0.406,0.793,F#,-9.405,minor,0.0669,0.0956,0.949,0.0941,0.705,162.083,222823,4,F# minor
+August  '17,Two Thousand and Seventeen,Four Tet,3yogEdp82IygdtF6fYj42Z,0.567,0.47,D,-8.388,major,0.0297,0.318,0.16,0.0944,0.516,75.461,252256,4,D major
+August  '17,Scud Running,Prawn,0gfxgjq6KUtVUNTRnAgX5M,0.501,0.93,F,-4.471,major,0.048,0.00314,0.11,0.46,0.411,142.025,278153,4,F major
+August  '17,Shrug,Mouth Breather,3eOoI3h5WtjPMrsyr2Qup4,0.524,0.708,G#,-8.14,minor,0.0478,0.0497,0.0199,0.444,0.716,92.137,213565,4,G# minor
+August  '17,Holy Toledo,Vundabar,7vlX33qkhVUSMUe0wpTOyc,0.455,0.515,C#,-7.689,minor,0.0252,0.0082,0.251,0.137,0.215,86.944,320075,4,C# minor
+August  '17,Fade,Mexico City Blondes,6ktLNtYTKcZM1RNuezKmEo,0.742,0.629,A#,-6.143,major,0.0362,0.239,0.067,0.092,0.489,130.067,243240,4,A# major
+August  '17,Dogwalk,Pity Sex,0LLKJL3tEm6UqcqY0t2oJa,0.232,0.738,D,-2.793,major,0.0447,0.0218,0.192,0.214,0.502,120.813,282197,4,D major
+August  '17,Sleeping Sickness,City and Colour,2SBFyml6gSXByXMRfW6UYi,0.642,0.623,E,-5.217,minor,0.0292,0.691,0,0.0706,0.327,134.932,248e3,4,E minor
+August  '17,What Makes a Man?,City and Colour,0bSsYXX28u4GO1t6Qhb63I,0.428,0.302,F,-9.701,minor,0.0282,0.92,0.0354,0.131,0.247,137.367,206373,4,F minor
+August  '17,Vinta,Crumb,71UsuepAxDwu0aP6IoWYRP,0.421,0.727,G#,-8.273,minor,0.0365,0.0132,0.565,0.223,0.486,112.603,299960,4,G# minor
+August  '17,Actual Woman,Girlyboi,6IQVIa8UNIl3IWFHqoFdeg,0.164,0.389,E,-11.549,major,0.0307,0.427,0.88,0.128,0.0861,95.797,196875,3,E major
+August  '17,Kids on the Run,Eyes on the Shore,26BHeKYD3C61ThBslI4y52,0.394,0.79,F#,-6.188,minor,0.034,0.0625,0.0129,0.154,0.353,107.596,305623,4,F# minor
+July '17,Starting Fires,Eyes on the Shore,5xyotByLWx3jKxHf10Wsfh,0.529,0.67,E,-7.713,minor,0.0354,0.00322,0.0134,0.149,0.242,97.003,227629,4,E minor
+July '17,Blood,ANIMA!,14XWxMtz3iJ0vmy5tNebyB,0.678,0.523,G#,-8.17,minor,0.0341,0.383,5.46e-4,0.112,0.48,93.019,250101,4,G# minor
+July '17,Heavy,Oh Wonder,5NFUheRi9pdd1aisGVTc6J,0.716,0.457,E,-4.551,minor,0.0979,0.529,2.78e-5,0.279,0.895,96.142,191760,4,E minor
+July '17,Sea Spells,Vassals,43dmLS75wg7Dn4NcKsYaeX,0.64,0.738,E,-7.335,minor,0.0595,0.0235,0.0295,0.133,0.28,137.027,213868,3,E minor
+July '17,Soundless Sea,Waterstrider,5I1iegHLnIteuCAbSmcWt9,0.455,0.744,A,-8.151,minor,0.0336,0.0152,0.237,0.0957,0.142,122.918,293627,4,A minor
+July '17,Wolf Runner,Eyes on the Shore,1pIhbNZC9OSQRfDe0AKQHT,0.481,0.766,C,-7.182,major,0.0271,1.66e-4,0.424,0.0751,0.216,88.025,251459,4,C major
+July '17,Places,The Electric Sons,4cW7kSQDO8cXXUmWO1lqPD,0.259,0.624,A,-6.446,minor,0.0391,0.026,0,0.377,0.374,91.96,232174,4,A minor
+July '17,Toxins,Mating Ritual,1NijfKj7wdax7srIejJ3jU,0.513,0.765,C#,-4.906,minor,0.0374,4.14e-4,0.0785,0.153,0.616,82.965,187496,4,C# minor
+July '17,Ivan,Von Sell,2Nfl1A3civsc03hHdr4Z7T,0.594,0.746,C,-5.648,minor,0.0289,0.031,0.026,0.105,0.397,104.991,206054,4,C minor
+July '17,Used To,Mutemath,2YCi9lbn6SErTcNExuyrpK,0.665,0.62,F,-5.144,minor,0.0584,0.123,0,0.197,0.531,121.89,255200,4,F minor
+July '17,School Friends - Ansible Remix,"Now, Now",446fv9EM0q8Gu0VQA9zN7U,0.629,0.61,C#,-6.012,major,0.0329,0.109,0.804,0.125,0.279,113.997,178104,4,C# major
+July '17,Play Fire,Enemies,2oqyoYLRG1iDlsvCkPwHq7,0.47,0.83,G,-6.549,major,0.111,0.536,0.0259,0.0964,0.597,164.961,285559,3,G major
+July '17,Dog Physics,Ings,1hoLaUS42Z99HzVlC5rJP8,0.497,0.534,A,-13.172,major,0.0361,0.779,0.13,0.113,0.433,91.373,260853,4,A major
+July '17,Blood Red Youth,California Wives,7KbDyH7rZkCGk3mIBMEg4N,0.519,0.771,G,-4.874,major,0.0344,4.8e-4,0.359,0.079,0.597,150.938,258120,4,G major
+July '17,Warm Body,Cafuné,59Ls5mTOHNlOZccnIgC2zR,0.647,0.795,C#,-8.17,major,0.0302,5.39e-5,3.67e-6,0.434,0.544,134.978,187826,4,C# major
+July '17,Follow Me Home,Francis,65af9uPYcJQoZ4OHeEnWDv,0.645,0.626,B,-6.725,minor,0.0296,0.0458,0.0806,0.073,0.678,129.983,307960,4,B minor
+July '17,À tout à l'heure,Bibio,5lpcCO7bpZos00QpmAlkUG,0.257,0.805,A#,-5.119,major,0.0889,0.164,0.356,0.32,0.494,87.019,249573,4,A# major
+July '17,Dye the Water Green,Bibio,3mcKztAGGW5QgBXfmqp73i,0.32,0.314,A,-12.946,minor,0.0315,0.87,0.901,0.0832,0.381,147.894,325760,4,A minor
+July '17,New Sun - Gethen Mix,Waterstrider,2DFIbI5BMinkZIqstHHbjM,0.518,0.621,F#,-7.591,minor,0.0319,0.0902,0.0106,0.121,0.18,122.049,201267,4,F# minor
+July '17,The Sneeze,Argonaut & Wasp,1RQF1R1nKs1igzQIWiUBDr,0.728,0.681,F,-8.35,minor,0.0354,0.0436,0.0165,0.627,0.505,125.989,238500,4,F minor
+July '17,Hell With a Water Pistol,Magic Bronson,5hU1fxFaZHzmYGRY3LlejF,0.614,0.593,B,-6.255,minor,0.0385,7.8e-4,4.45e-4,0.0942,0.243,120.015,216e3,4,B minor
+July '17,This Is How We Walk on the Moon,Geographer,43np7Vo0MSRM7xBMpoBGFe,0.661,0.709,B,-6.616,minor,0.0266,0.337,0.0068,0.0788,0.657,93.975,238722,4,B minor
+July '17,Saltwater,Geowulf,1zXpHPdBAUxnOCQqFMFLk3,0.551,0.825,D,-5.813,major,0.0306,6.14e-4,0.307,0.115,0.686,107.031,247280,4,D major
+July '17,Fools,Wild Child,0q9X1RjvZnZJhWThRKaFnt,0.521,0.892,E,-6.623,major,0.0564,0.0229,1.37e-4,0.125,0.776,153.283,204139,4,E major
+July '17,Sugarwater,Danny Malone,3KkuBfo8LWX7wGLKfFijcz,0.647,0.705,C,-7.566,major,0.0393,0.575,3.58e-6,0.121,0.529,136.98,235867,4,C major
+July '17,The Struggle - RAC Mix,Grizfolk,3zO0lAxM6qIYIin4kCRKMQ,0.61,0.767,B,-5.645,minor,0.0377,0.216,0.00308,0.113,0.376,112.978,254600,4,B minor
+July '17,Perfect,HXLT,3kLye4hViug7G2y7iVe9x9,0.663,0.552,G,-7.102,major,0.0352,0.0261,1.85e-6,0.0595,0.486,152.024,239893,4,G major
+July '17,No Devil,San Fermin,1jNOGPV43QTYu1SbEXUgaG,0.527,0.712,B,-6.287,major,0.0484,0.00481,1.78e-5,0.086,0.613,143.962,240253,4,B major
+July '17,Open,Lost Triibe,4mlSKXejX6mtuRpwgVzAB4,0.695,0.738,A,-6.825,major,0.0275,0.198,0.00211,0.323,0.66,102.001,288954,4,A major
+July '17,The Ocean and the Sea,Wilderado,3w9AEl82hwHwj9BPHJlQXK,0.477,0.691,G,-5.885,major,0.043,0.0505,8.5e-5,0.392,0.163,137.862,232507,4,G major
+July '17,DLZ,TV On The Radio,4UXIUeistNzMseqDtgWA6d,0.516,0.885,G#,-3.958,minor,0.0505,0.0351,0.00133,0.107,0.616,175.977,228707,4,G# minor
+July '17,Happy Idiot,TV On The Radio,63mnZ0zF5fBwJzYg2pDo9e,0.625,0.945,B,-4.245,minor,0.0652,0.00223,7.95e-4,0.0777,0.846,139.994,183002,4,B minor
+July '17,Breathe,ANIMA!,14PlT32LqNoRbxk7oC4Qfh,0.692,0.618,G,-6.447,minor,0.062,0.0527,2.08e-4,0.0572,0.453,167.967,234143,4,G minor
+July '17,"Hard Time Killing Floor Blues - From “O Brother, Where Art Thou” Soundtrack",Chris Thomas King,3qFPNAWVGibpA0SV4Vn80F,0.477,0.0188,D,-25.669,minor,0.0437,0.974,0.0643,0.24,0.379,142.548,162427,3,D minor
+July '17,Feel Like Gold,Emerson Jay,5PR0w6r5rLV5izExCkvvqj,0.715,0.715,B,-4.971,minor,0.0485,0.245,2.41e-4,0.305,0.498,119.011,258151,4,B minor
+July '17,When the Lights Go Out,The Black Keys,1MCXoC4RIkH5M4OLvRjiJp,0.479,0.777,A,-7.436,major,0.038,0.865,0.0357,0.144,0.517,147.1,203907,4,A major
+July '17,Masters of the Internet,Marc Ribot,0ll1q3aoxhA7n4hydmhvof,0.373,0.871,B,-7.216,major,0.0776,0.314,0.418,0.63,0.403,179.651,244824,4,B major
+July '17,Personal Best - Keith Sweaty Remix,Small Black,6QeHQmy2Bk2TmTzh4CpvWx,0.538,0.725,F,-11.119,major,0.0472,0.0321,0.646,0.149,0.531,93.038,323226,4,F major
+July '17,Young Liars,TV On The Radio,2x24uEfWPzORC6r7FdjBFz,0.473,0.691,C,-7.984,major,0.0248,0.0312,0.00404,0.147,0.421,82.118,312280,3,C major
+July '17,Staring at the Sun,TV On The Radio,14R2hUgIr8eu1VogXoLqUk,0.211,0.637,G#,-7.817,major,0.0515,0.00304,0.00185,0.107,0.148,119.224,241213,4,G# major
+July '17,Hug Of Thunder,Broken Social Scene,3DyCegGAvjdqw85ZE68zHJ,0.691,0.43,B,-8.501,major,0.0337,0.596,0.329,0.169,0.45,131.002,294920,4,B major
+June '17,I've Seen Footage,Death Grips,7nCONy10IHp7XD3oYZ0lcx,0.603,0.944,B,-3.626,minor,0.347,0.0481,0,0.342,0.418,130.035,202853,4,B minor
+June '17,Shapeshifter,Elephant,62jJ95roNt8ODKMN0fVGjd,0.472,0.789,D,-3.744,minor,0.0385,0.568,0.0516,0.0933,0.61,75.973,194528,4,D minor
+June '17,Barnacles,Ugly Casanova,3Khizgd763J4s63Gcv6D9u,0.564,0.426,G,-9.697,major,0.0391,0.541,0.00168,0.217,0.624,162.906,305280,4,G major
+June '17,Blankets,DWNTWN,2JnhmceE5dbpkRWRh5sy5C,0.525,0.601,C,-9.787,major,0.0314,0.492,0.891,0.0962,0.193,93.963,178899,4,C major
+June '17,back again,flor,5E4R0wskKJS9PQUw3l3Xoj,0.635,0.561,G#,-8.127,minor,0.0275,0.101,0.00201,0.112,0.574,84.985,202773,4,G# minor
+June '17,warm blood,flor,5VXGST45fihtSA7FWCmEGf,0.562,0.748,D#,-5.852,major,0.0281,0.00989,0.00188,0.0793,0.46,142.057,247507,4,D# major
+June '17,Game,Mating Ritual,21vtyMs7mkb0ji9llNXGm4,0.684,0.621,C,-6.781,major,0.0517,0.276,0.068,0.116,0.595,89.006,263613,4,C major
+June '17,Taste,Braids,2xCpNUblqNoqG4s6uRwnRc,0.539,0.667,D,-6.68,major,0.0504,0.529,0.00388,0.13,0.204,138.025,300773,4,D major
+June '17,Up & Beyond,Wildcat! Wildcat!,4gvAsCDZbtwnapqLATCV4u,0.557,0.676,F#,-8.449,major,0.032,0.0104,0.0215,0.0724,0.0645,120.067,223974,4,F# major
+June '17,What We Had,Handsome Furs,5WxNeKqYtAjNGY5jvuv7sl,0.487,0.647,G,-7.414,minor,0.0254,0.0829,0.0974,0.239,0.547,83.979,236587,4,G minor
+June '17,Ciudad,St. Sleep,0JKrP9LYYEmstpjRG1G8uY,0.393,0.577,A,-8.646,major,0.032,0.0677,0.627,0.134,0.155,92.066,372440,4,A major
+June '17,Strictly Game,Harlem Shakes,6X4mvCzZSim0NDJaBR8ZFz,0.578,0.693,D,-5.523,major,0.0482,2.94e-5,0.0346,0.104,0.401,140.729,243427,4,D major
+June '17,Jack and the Giant,A Love Like Pi,1XALSFY5nrFQ9NaI2XNp9t,0.547,0.752,D#,-9.743,major,0.0394,0.689,0.335,0.162,0.365,99.032,223764,4,D# major
+June '17,Graffiti on a Tuesday Night,Neat Beats,32aYOuHE2oj9v5JdujsOJ2,0.554,0.727,A,-7.908,major,0.0425,0.573,0.781,0.193,0.769,90.027,260211,4,A major
+June '17,Wooden Eyes,Oketo,5Yo2lyHdP1T5jHndAhXCm3,0.515,0.836,D,-6.546,major,0.0379,0.048,0.217,0.12,0.412,149.988,318133,4,D major
+June '17,Like a Child,Oketo,5iYoNasLiEiinDUAkyPjyY,0.674,0.667,D,-7.385,major,0.0358,0.206,0.0131,0.1,0.78,151.957,347493,4,D major
+June '17,Marfa,Wildcat! Wildcat!,1ImIU4tIqeG2m1IiHuEz4h,0.329,0.639,G#,-5.238,major,0.0327,0.0063,0.0247,0.194,0.121,126.011,337154,4,G# major
+June '17,Passing Ships,Waterstrider,0Z7pqqbx7iGxPN3daECtjg,0.442,0.606,A#,-8.416,minor,0.0349,0.14,0.777,0.373,0.275,79.965,249840,4,A# minor
+June '17,Guru,Coast Modern,7ygO2E3yfwZVYbzaPdGzed,0.76,0.701,D#,-6.393,major,0.042,0.232,0.00295,0.07,0.81,140.023,204467,4,D# major
+June '17,Civilization,South of France,6iVLAZrZMpIgU7Fc3obizE,0.24,0.779,F,-8.636,major,0.0467,4.39e-5,0.78,0.166,0.21,98.055,247e3,4,F major
+June '17,The Midwest,South of France,2V1PZ03NaqzDutnBFSB7c5,0.394,0.891,A#,-3.949,major,0.0622,0.249,0.781,0.287,0.264,99.842,259200,4,A# major
+June '17,Leave the Lights On,South of France,47Vz5tdhPYi0qmTCS5UkQb,0.593,0.697,A,-6.712,minor,0.0299,0.548,0.933,0.0727,0.213,115.905,213103,4,A minor
+June '17,Work All Day,Portugal. The Man,2g4KPhbi3sb1O2JulSqaek,0.685,0.846,A,-4.816,minor,0.0294,0.337,9.94e-5,0.144,0.92,83.942,178947,4,A minor
+June '17,"Noise Pollution (feat. Mary Elizabeth Winstead & Zoe Manville) - Version A, Vocal Up Mix 1.3",Portugal. The Man,6UL2p4Uutwc5fh0iVEpbCn,0.488,0.805,G,-2.535,minor,0.0522,0.117,2.27e-4,0.172,0.444,100.028,225146,4,G minor
+June '17,Something About You - ODESZA Remix,Hayden James,6vjWim6xU6tPjA42GxSp1U,0.709,0.669,B,-8.422,minor,0.0409,0.0216,0.0125,0.146,0.106,105.004,343800,4,B minor
+June '17,St. Clarity,The Paper Kites,2zLCmEVHGxh2Sf2eIKLJNa,0.575,0.539,G,-12.542,major,0.0304,0.95,0.759,0.103,0.349,103.984,227547,4,G major
+June '17,Gasoline,Halsey,2IO7yf562c1zLzpanal1DT,0.731,0.58,A#,-7.328,minor,0.0399,0.223,0,0.129,0.319,119.997,199593,4,A# minor
+June '17,The Long Spring,Explosions In The Sky,0Ro81ejkX45XgOKVg4G3z5,0.291,0.399,G,-14.896,major,0.0288,0.339,0.858,0.0971,0.0384,108.447,334027,4,G major
+June '17,Cut Up Piano & Xylophone,Fridge,7KDisq4SdWv9b8HMW885cC,0.489,0.437,F#,-13.791,minor,0.0692,0.957,0.93,0.246,0.671,106.13,158133,4,F# minor
+June '17,Harmonics,Fridge,5actyJYo4xmSjxoKfVwFjX,0.675,0.237,C,-16.017,major,0.0833,0.569,0.826,0.0608,0.128,185.132,247147,4,C major
+June '17,Five Four Child Voice,Fridge,1PzyFZCtPb4raYnNsBNbmw,0.368,0.554,D,-8.808,major,0.0375,0.0717,0.385,0.173,0.177,87.579,560587,4,D major
+June '17,Magpie,Khushi,5K9gDRrPAQLMAuts77OQ7u,0.517,0.604,G#,-8.307,major,0.0357,0.718,0.0321,0.095,0.388,147.994,223877,4,G# major
+June '17,Nobody Loves Me Like You,Low Roar,2nsE7ASwTGtkv5gMiy8goU,0.267,0.423,G,-10.643,major,0.0315,0.69,0.77,0.107,0.102,79.429,355846,4,G major
+June '17,Autumn,Bear In Heaven,6h6SfLw0b4KZnbEzkYt0Cs,0.592,0.76,C#,-9.265,major,0.0352,0.0621,0.445,0.632,0.574,130,178773,4,C# major
+June '17,Into The Mirror,Minus the Bear,1Az3bddF2wGOWUmN3rSVh8,0.607,0.685,D#,-5.515,minor,0.0327,0.0241,1.99e-4,0.126,0.514,118.298,310733,4,D# minor
+June '17,Bridge Burn,Little Comets,0SRGzAkRLf6YLE8NC8IRx0,0.416,0.451,D,-10.316,minor,0.0639,0.747,0,0.11,0.535,205.95,164760,4,D minor
+June '17,Jimme's Song,Emanuel and the Fear,2j2Xxlkq04cnlSTD2jScqs,0.527,0.563,E,-7.306,minor,0.0623,0.0503,1.03e-4,0.124,0.506,111.51,478733,4,E minor
+June '17,Summer Spliffs,Broke For Free,4Piz3X660g9bu8fymDOy9h,0.72,0.756,B,-7.942,major,0.0337,0.0377,0.884,0.108,0.518,107.969,277627,4,B major
+June '17,For The Team,Prelow,4wjbIDkARGOF5zQygJdqMF,0.404,0.49,A,-7.573,major,0.0406,0.0363,0.00129,0.0638,0.149,156.098,224123,4,A major
+June '17,No Worries,Pogo,2GXIN2ZOwvPBvAQHKwkhhO,0.781,0.662,F#,-8.301,minor,0.0279,0.233,0.0137,0.214,0.663,106.982,208938,4,F# minor
+June '17,Final Drive,Pogo,6Te7aHbahkhII5YhcNG0vq,0.906,0.574,B,-11.69,major,0.0726,0.567,0.897,0.101,0.893,109.945,161752,4,B major
+June '17,I,Foreign Fields,1N2VBZEfkoLEW10iSYgXhl,0.69,0.674,C,-6.932,minor,0.0799,0.564,0.0834,0.0544,0.651,156.995,240374,4,C minor
+June '17,Friends,Brijs,7HrdrDCJWFRpU5eqgTJyHB,0.644,0.473,E,-6.986,major,0.029,0.641,0.771,0.129,0.288,107.995,218333,4,E major
+June '17,Morphine,The Ninjas,1ReBFnRG82cgGs41ChSKbn,0.519,0.646,F#,-7.309,minor,0.0359,0.117,4.3e-5,0.162,0.73,132.058,225750,4,F# minor
+June '17,Long Night - Dim Sum Remix,Guster,56FyrKlTk7wLdzG36iOft7,0.722,0.586,A#,-5.669,major,0.151,0.0764,3.14e-5,0.106,0.317,102.017,247760,4,A# major
+June '17,Meet Me in the Woods,Lord Huron,1bqrRn1pJWowNLA5N9L6uW,0.543,0.907,F#,-6.698,minor,0.0427,0.36,0.622,0.0689,0.616,80.5,262213,1,F# minor
+June '17,Drag,Day Wave,0oXwUeFAE6IR2lYhaTpxRT,0.537,0.713,G,-6.25,major,0.0272,0.227,0.65,0.1,0.367,93.198,189651,4,G major
+June '17,Ready 2 Wear,Geographer,2DDK72WwY5ab5jWGWseVNv,0.637,0.52,C#,-11.009,major,0.0341,0.273,0.131,0.104,0.277,113.943,329108,4,C# major
+May '17,Jazzhole,Free The Robots,2B4bCNOrtFtiIYbTFYlaje,0.587,0.882,F,-4.992,minor,0.0292,5.3e-4,0.0606,0.253,0.93,113.381,224520,4,F minor
+May '17,Hold Sway,Daedelus,32Lx4KwKik3pk8u5r4QLK0,0.53,0.741,G,-11.017,minor,0.0307,0.577,0.813,0.0886,0.249,149.995,360723,4,G minor
+May '17,Nissim,The Gaslamp Killer,64n686YmrOhzt2CefqJ4zO,0.474,0.837,F,-6.503,major,0.0514,0.127,0.0197,0.169,0.241,165.844,271822,4,F major
+May '17,Lord of the Rings (feat. Jeremiah Jae and Oliver The 2nd),Samiyam,4jpgQnBZTO6Vv2tUqEVtUG,0.526,0.713,D#,-9.402,major,0.385,0.0834,5.89e-6,0.468,0.433,145.5,181136,4,D# major
+May '17,The Coast is Clear (For Fireworks),Nobody,4CgHbqgnoDAu8e8rHmKiE1,0.583,0.817,B,-7.492,major,0.0314,1.19e-5,0.818,0.252,0.534,100.496,234067,4,B major
+May '17,Lately,The Helio Sequence,4IfsAMEKYWO6LmaDoCAUKI,0.44,0.834,A,-4.9,major,0.0403,4.11e-4,3.23e-5,0.211,0.16,117.011,250800,4,A major
+May '17,On Melancholy Hill,Gorillaz,0q6LuUqGLUiCPP1cbdwFs3,0.689,0.739,D,-5.81,major,0.026,1.51e-5,0.509,0.064,0.578,120.423,233867,4,D major
+May '17,"Austin, Tx",Tiny Victories,60pkRXfdAg3yFVvNPzXL1X,0.511,0.691,A#,-8.043,major,0.0269,1.12e-4,0.119,0.243,0.148,135,377924,4,A# major
+May '17,White House,S,0PKbXwoewJfzsGojTJHoEy,0.539,0.685,D,-9.47,major,0.0413,0.735,0.0875,0.103,0.854,154.915,174787,4,D major
+May '17,Endless Rhythm,Baio,6ZWK3RKHbeJRy2O2c9GeSi,0.767,0.891,E,-6.426,major,0.0402,0.221,0.0723,0.0935,0.773,122.026,194066,4,E major
+May '17,Plains - Baio Remix,Tycho,6NBXshgMAvHnLgSZ1zgIwU,0.538,0.668,G#,-10.729,major,0.03,0.487,0.912,0.0869,0.229,128.044,276500,4,G# major
+May '17,ON&ON&ON&ON - HNNY Remix,Baio,0bWWNiAqNWP1LxElHSwJ6C,0.648,0.742,E,-9.136,minor,0.034,0.0117,0.967,0.322,0.155,120.013,424720,4,E minor
+May '17,Je Suis Le Vent,Working for a Nuclear Free City,2p2V7Huf2ARIV79ARQCXXk,0.393,0.702,G#,-8.473,major,0.034,1.8e-4,0.89,0.742,0.0391,130.662,183320,4,G# major
+May '17,Flutes,Hot Chip,4Z03QyhMr9NIbMwKnajzwT,0.691,0.71,A#,-6.351,minor,0.0322,0.034,0.00225,0.0903,0.332,118.006,425320,4,A# minor
+May '17,Going Home,Epsilona,3vUvM3GjxcVsc7XSfeY6rL,0.376,0.801,F,-6.047,major,0.0444,0.03,0.0202,0.333,0.464,140.008,329491,4,F major
+May '17,Anti-Anti,Snowden,49LwAJvjOP7kEZoCJihnN0,0.538,0.874,B,-5.378,major,0.0329,0.0433,0.00118,0.42,0.679,134.896,235160,4,B major
+May '17,No Cars Go,Arcade Fire,0nev4XL4Y6hrDsRpK4ERcU,0.319,0.75,C#,-6.942,major,0.0371,7.2e-4,0.227,0.12,0.276,135.308,343627,4,C# major
+May '17,We Used to Wait,Arcade Fire,7cE9EO9fFcNJQ6VLtPq8ra,0.572,0.662,G#,-7.244,major,0.0275,0.0749,0.0185,0.104,0.5,120.737,301400,4,G# major
+May '17,Chapel Song,Augustines,1exsKXDQJ5QqJahwMJulfr,0.65,0.81,D,-6.533,major,0.0371,0.0395,0.317,0.0852,0.823,141.996,188667,4,D major
+May '17,Tower // W.O.H.L.,Wildcat! Wildcat!,7jvPTzlYbHpmcBGzCjlgXb,0.429,0.588,A#,-8.111,minor,0.0322,0.0591,0.0333,0.0936,0.0578,140.076,225094,4,A# minor
+May '17,You Can,Tearjerker,6xRScHXR0nuMLgtFDjotnd,0.293,0.801,D#,-5.56,major,0.0401,0.0731,0.677,0.325,0.482,126.814,305e3,4,D# major
+May '17,Five Fold Kiss (Don't Sleep),Psychic Babble,409pABExhKsAxAMdFgWZYD,0.632,0.622,F,-6.843,major,0.0291,0.245,0.0151,0.57,0.41,110.043,264947,4,F major
+May '17,Good News,Snowden,45A1bqAfvJLzGomoFbJNJr,0.394,0.818,G,-9.356,major,0.0373,5.74e-4,0.0236,0.126,0.575,149.987,252587,4,G major
+May '17,Speaking in Tongues (feat. David Byrne),Arcade Fire,3yl7bdAZKhCE3Dxgl2lzIb,0.581,0.677,F#,-7.924,major,0.0268,0.00737,0.407,0.0805,0.485,146.009,232333,4,F# major
+May '17,Fell On Black Days,Soundgarden,1wlKw9NAWVWpx7OIAyg9EA,0.573,0.75,E,-5.718,minor,0.0272,0.00165,2.85e-4,0.131,0.544,101.049,283027,3,E minor
+May '17,Nobody Speak (feat. Run the Jewels),DJ Shadow,1gYn6OTpw5W6n8QaJjyY5m,0.62,0.813,D,-5.937,major,0.153,0.0377,0.00282,0.263,0.3,160.063,195966,4,D major
+May '17,Marbles & Drains,TM Juke,6IFNvtvRgFas5MYqMfvoET,0.758,0.665,C,-6.579,major,0.0345,0.0144,0.929,0.0428,0.214,93.944,289787,4,C major
+May '17,Swim,DJ Cam,5gaSe6qpwxL4TOgXwzRDFo,0.598,0.485,E,-10.694,major,0.0273,0.358,0.0268,0.144,0.145,109.998,284952,4,E major
+May '17,Tonto Rides the Gain,Jon Kennedy,4V8ocyJeGzYFD5rYsa5WB7,0.724,0.509,A,-12.97,major,0.0446,0.00812,0.395,0.0981,0.0594,99.993,227627,4,A major
+May '17,Antiphon,Hidden Orchestra,2WNuC3r3wnjDYWOifLfe5a,0.432,0.562,G,-11.539,minor,0.031,0.256,0.915,0.0899,0.112,79.994,365973,4,G minor
+May '17,Dusk to Dawn,Emancipator,6WuZeRJ8RWPdNgtqLNqn4F,0.558,0.596,F#,-7.823,minor,0.0376,0.101,0.95,0.267,0.301,171.238,325744,4,F# minor
+May '17,Aimer sans amour,Guts,7yi1aBMIGLg3P25RNANtux,0.735,0.698,C,-8.454,major,0.0259,0.225,0.0386,0.432,0.739,106.523,257216,3,C major
+May '17,Every Time,Boogie Belgique,3MDkws8QGzLrMrWVAbzoXO,0.675,0.603,G,-6.985,major,0.0413,0.0754,0.319,0.165,0.169,79.003,241743,4,G major
+May '17,Nocturne,Ancient Astronauts,5Zd4DCAQpVGVd2X3IeKdYt,0.521,0.583,B,-10.774,minor,0.0328,0.0365,0.962,0.0962,0.275,144.456,233067,4,B minor
+May '17,All or Nothing (feat. Tanya Morgan & Lorine Chia),Guts,6jWFsJT5IYVKCJEQ55L29W,0.764,0.778,C,-6.231,major,0.163,0.523,1.78e-5,0.317,0.584,95.712,226920,4,C major
+May '17,First Snow (Ooah Remix),Emancipator,1P5T6qvtEHtbiDOelBWGHD,0.603,0.558,C#,-10.849,minor,0.0406,0.287,0.687,0.101,0.327,149.991,462627,4,C# minor
+May '17,Where Do We Go,Blue Sky Black Death,4YoWy5RhHhJ7sulwbVw5JD,0.575,0.577,A,-8.052,minor,0.0272,0.407,0.94,0.107,0.133,135.037,277600,4,A minor
+May '17,Proofread,Daniel Wilson,68XR81vAdqzPZSk5k40Zd6,0.814,0.71,C,-6.501,major,0.0332,0.0333,0.274,0.0931,0.711,126.009,266667,4,C major
+May '17,All Out in the Open,Mesita,1ftjD6A0aX6Ge4fZy0VtV4,0.593,0.791,B,-4.347,major,0.0288,0.25,0.888,0.291,0.769,100.756,257299,4,B major
+May '17,New Mexico,Richard Houghten,2HgFKTBzh5Lx1r5IbSTjAG,0.716,0.475,C#,-13.817,major,0.154,0.213,0.0656,0.0473,0.633,149.921,242400,4,C# major
+May '17,Forest Gum,New Madrid,6o7aY6oQUIdUf9sKaLeYiL,0.466,0.603,A#,-6.976,major,0.0385,0.467,0.14,0.312,0.205,122.35,190307,4,A# major
+May '17,Eyes to the Ground for Change,Listener,0dqvwSAycKNbTsn19A8RMF,0.442,0.81,G,-6.088,major,0.0604,0.0166,1.34e-5,0.324,0.299,112.736,191427,4,G major
+May '17,Your Heart Is a Muscle the Size of Your Fist - Live,Ramshackle Glory,3NaMBA6R1bq0qBiXckSHcf,0.539,0.718,D,-6.544,major,0.133,0.296,0,0.124,0.804,95.644,220840,4,D major
+May '17,I've Seen Footage,Death Grips,7nCONy10IHp7XD3oYZ0lcx,0.603,0.944,B,-3.626,minor,0.347,0.0481,0,0.342,0.418,130.035,202853,4,B minor
+Night in the Woods,Seven Wonders,Fleetwood Mac,76TweiQmmIfRpGVZUMNZbT,0.663,0.625,E,-12.098,major,0.0302,0.00772,1.27e-4,0.392,0.806,118.762,212267,4,E major
+Night in the Woods,Title,Disasterpeace,1Y7I1ngUvhdkOG37pDIuMW,0.477,0.368,C#,-12.142,major,0.0356,0.454,0.946,0.082,0.0318,119.965,137e3,4,C# major
+Night in the Woods,Should I Stay or Should I Go - Remastered,The Clash,3v8PlUFGQQDBIk1J86waCo,0.742,0.844,D,-6.441,major,0.111,0.0838,0,0.418,0.85,113.371,188240,4,D major
+Night in the Woods,Raise Hell,Brandi Carlile,4TWn4YeBaTqDURrYLd6k0a,0.652,0.773,B,-4.798,minor,0.0457,0.228,7.41e-6,0.0972,0.435,105.946,248240,4,B minor
+Night in the Woods,Wild Flowers,Frank Carter & The Rattlesnakes,4KiFEzt5lFlErJ4PT5kPAb,0.293,0.707,C#,-5.486,major,0.0574,5.32e-4,0.00574,0.06,0.537,167.98,184947,4,C# major
+Night in the Woods,Rabies,Aesop Rock,4qa7xa39jZYloEEhRkFljs,0.472,0.846,B,-4.928,minor,0.275,0.0138,1.24e-4,0.16,0.4,170.392,185507,4,B minor
+Night in the Woods,Stylo (feat. Mos Def and Bobby Womack),Gorillaz,6LUfuyLgvgqrykiTE6sJHY,0.686,0.751,A#,-5.747,minor,0.0604,0.00604,8.49e-4,0.0979,0.851,100.222,270520,4,A# minor
+Night in the Woods,I'm so Indie (feat. Geeze),Transit,28vpgQ5SxGF4D15Cs2r3Ys,0.792,0.722,C#,-4.849,major,0.296,0.208,0,0.698,0.847,89.988,266279,4,C# major
+Night in the Woods,Loser,Beck,4b8GTae6rqb9oPiRzVa3Gy,0.595,0.617,F#,-10.455,minor,0.117,0.0343,1.35e-4,0.383,0.823,85.387,234960,4,F# minor
+Night in the Woods,Girl With One Eye (Bayou Percussion Version),Florence + The Machine,4U5VoACerca4AA84Ln71ev,0.501,0.639,D,-5.454,minor,0.055,0.057,6.46e-5,0.0823,0.607,200.004,235307,4,D minor
+Night in the Woods,The Community Of Hope,PJ Harvey,1uQZQ7EOSO3kD3JGTK2oro,0.61,0.871,F#,-7.859,minor,0.0475,0.603,0,0.235,0.576,132.97,143573,4,F# minor
+Night in the Woods,Teenagers,My Chemical Romance,7j31rVgGX9Q2blT92VBEA0,0.463,0.857,E,-3.063,major,0.0632,0.0506,0,0.184,0.856,111.647,161920,4,E major
+Night in the Woods,Little Monster,Royal Blood,5fpj84RsT9cOTfWUCxBTXu,0.454,0.882,F,-4.251,major,0.06,0.00122,0.00156,0.138,0.497,95.999,212310,4,F major
+Night in the Woods,Scumbag City,The Strypes,740SKUOX1SgY98L343rseE,0.393,0.895,D,-3.592,major,0.0451,0.0481,1.16e-5,0.344,0.483,89.906,232333,4,D major
+Night in the Woods,Tureqt Fureg,Almeida,69PZmHJSdljkn2IJ2hQP7u,0.56,0.955,B,-3.534,minor,0.106,2.68e-4,5.42e-5,0.432,0.528,135.991,207367,4,B minor
+Night in the Woods,Benzocaine,IDLES,1er5FW5l25TqTnudW2Q8Em,0.283,0.95,B,-5.945,major,0.0559,1.32e-5,0.487,0.374,0.297,105.166,159320,4,B major
+Night in the Woods,Then Red Eyed,Melt-Banana,4grR2rIiiRTtn54wOUuxMN,0.277,0.989,A,-4.668,major,0.177,2.46e-6,0.922,0.116,0.0989,94.887,79453,3,A major
+Night in the Woods,"This Ain't A Scene, It's An Arms Race",Fall Out Boy,2GD8Ia7rtJzfgTIy20TaRI,0.435,0.887,A,-4.07,major,0.0636,7.47e-4,0,0.0327,0.408,199.935,212040,4,A major
+Night in the Woods,Super Rat,Honeyblood,05bZbnQEoQZ3SQnYFZoERP,0.479,0.707,G,-3.314,major,0.0366,0.185,2.84e-4,0.0987,0.257,82.241,205835,4,G major
+Night in the Woods,Leave You,Elastic Sleep,23nqaMxhAvDkGnoSJID4SF,0.283,0.743,D,-5.163,major,0.032,7.84e-4,0.284,0.36,0.173,111.692,210240,4,D major
+Night in the Woods,Blades and Fangs,Brooke Blair,57mBhK7eygX5fZZZsZ77Z8,0.173,0.242,F,-20.861,major,0.0444,0.603,0.891,0.087,0.0353,123.199,195141,4,F major
+Night in the Woods,Highway Sermon,Pearls & Brass,2HmhmDZrzQkhWJpqn5EWu7,0.349,0.636,G,-8.336,major,0.0436,0.084,0.721,0.219,0.247,95.834,319240,4,G major
+Night in the Woods,Chancellor,The Bakerton Group,776Katp7jsQCnCIHdDQHkl,0.451,0.773,D,-8.901,major,0.0338,9.02e-4,0.895,0.127,0.842,124.601,252173,4,D major
+Night in the Woods,American Idiot,Green Day,45zvStEMsXp8z45OQRhWFJ,0.381,0.984,C#,-2.42,major,0.0638,2.53e-5,6.91e-5,0.27,0.81,186.081,174320,4,C# major
+Night in the Woods,The Wizard,Bat For Lashes,4CZtML5lXKaw7sAXJViGjr,0.556,0.459,C,-9.245,major,0.0386,0.378,3.81e-4,0.0724,0.132,82.036,256773,4,C major
+Night in the Woods,Edge of Seventeen - Remastered,Stevie Nicks,5LNiqEqpDc8TuqPy79kDBu,0.591,0.804,C,-7.299,major,0.0454,0.327,5.98e-6,0.0818,0.658,111.457,329413,4,C major
+Night in the Woods,Forever,HAIM,5hfP8cKSzpfBisP3R24cAy,0.773,0.867,C,-4.595,major,0.0634,0.145,3.39e-4,0.105,0.586,118.008,245800,4,C major
+Night in the Woods,Mandinka,Sinéad O'Connor,6TYckNar2KHob86P5JNETu,0.618,0.771,A,-8.425,major,0.0404,0.0285,2.51e-6,0.0862,0.866,130.117,227653,4,A major
+Night in the Woods,"For A Pessimist, I'm Pretty Optimistic",Paramore,2IBM7pWht51SaU52GZGiEc,0.537,0.927,F#,-3.322,major,0.0476,1.7e-4,6.78e-6,0.115,0.379,102.445,228293,4,F# major
+Night in the Woods,Hurricane Drunk,Florence + The Machine,1h6Mjm7za06VQUQ5icXtxo,0.441,0.863,E,-4.693,major,0.231,0.15,1.64e-5,0.316,0.205,184.139,193347,4,E major
+Night in the Woods,You are the Problem Here,First Aid Kit,1wSGgkDKaX5OXM7NPqJv4U,0.468,0.775,A#,-5.225,minor,0.0443,0.016,3.12e-4,0.102,0.246,112.408,218373,4,A# minor
+Night in the Woods,Tie Me Up With Jackets,Fight Like Apes,4po7ZjfYjHZK88EwTdQNXp,0.309,0.815,C,-5.358,major,0.0507,5.1e-4,0.54,0.187,0.0619,110.23,155707,4,C major
+Night in the Woods,Freaks,Micachu & The Shapes,2hWxImrmTMPOlURpqvMS6t,0.347,0.188,F,-17.155,major,0.041,0.969,0.331,0.0759,0.0368,72.293,149747,3,F major
+Night in the Woods,Liability,Lorde,0xBsZrUrsZcCCrpxryZDHc,0.604,0.224,A#,-11.118,minor,0.113,0.925,0,0.134,0.326,84.109,172061,4,A# minor
+Night in the Woods,Owning Your Okayness,Milk Teeth,5oavHr1Xk65ehSo43KPe5f,0.46,0.927,A#,-3.642,major,0.0794,2.72e-4,2.18e-6,0.268,0.561,128.175,199293,4,A# major
+Night in the Woods,Don't Look Back In Anger,Oasis,3ixTiPABjqkBKPocxq6oIe,0.346,0.916,C,-3.588,major,0.0703,0.0331,3.82e-6,0.117,0.249,164.005,287827,4,C major
+Night in the Woods,We Didn't Start the Fire,Billy Joel,3Cx4yrFaX8CeHwBMReOWXI,0.712,0.967,G,-5.206,major,0.047,0.0771,0,0.356,0.895,145.024,287733,4,G major
+Night in the Woods,Pumped Up Kicks,Foster The People,7w87IxuO7BDcJ3YUqCyMTT,0.733,0.71,F,-5.849,minor,0.0292,0.145,0.115,0.0956,0.965,127.975,239600,4,F minor
+Night in the Woods,Stressed Out,Twenty One Pilots,3CRDbSIZ4r5MsZ0YwxuEkn,0.734,0.637,E,-5.677,minor,0.141,0.0462,2.29e-5,0.0602,0.648,169.977,202333,4,E minor
+Night in the Woods,Shooting Stars,Bag Raiders,2lZHCWCUkxLuQ5skJhkoyS,0.649,0.716,B,-6.232,major,0.0445,0.0879,0.03,0.0824,0.503,124.968,235813,4,B major
+Night in the Woods,Video Killed The Radio Star,The Buggles,7o7E1nrHWncYY7PY94gCiX,0.68,0.678,C#,-11.548,major,0.0754,0.103,0.00828,0.204,0.251,131.165,252773,4,C# major
+Night in the Woods,Be Calm,fun.,1CWR4H9AriyDr76Upjqw12,0.412,0.52,B,-6.508,major,0.0431,0.146,0,0.188,0.314,129.838,249813,4,B major
+Night in the Woods,No Rest For The Wicked,Lykke Li,2gCvWjrHt6PVJjIN1amlje,0.312,0.445,B,-7.202,minor,0.0305,0.365,0.0038,0.13,0.272,97.967,222719,4,B minor
+Night in the Woods,Enso,Harbouring Oceans,4xLDXQC91eY7M13Ar5R0yF,0.522,0.476,G#,-6.797,minor,0.0373,0.0284,0,0.0974,0.17,76.04,241541,4,G# minor
+Night in the Woods,War Pigs - 2009 Remastered Version,Black Sabbath,6BUhl6rrIIqUJgJP4QjJP7,0.462,0.628,F#,-12.348,minor,0.0581,0.231,0.00126,0.188,0.447,90.256,473787,4,F# minor
+Night in the Woods,Hells Bells,AC/DC,69QHm3pustz01CJRwdo20z,0.389,0.873,E,-4.768,minor,0.0475,0.00532,0.0055,0.273,0.303,106.767,312293,4,E minor
+Night in the Woods,Wicked Woman,Coven,3K6GIiWeP4VC3uclj6GckQ,0.369,0.51,E,-10.572,minor,0.0309,0.244,9.54e-5,0.0958,0.681,149.143,181133,4,E minor
+Night in the Woods,The House Of The Rising Sun,The Animals,3XC7Jd6SfrQYKZJ6inyRHK,0.316,0.484,A,-9.11,minor,0.0308,3.34e-4,0.00445,0.0912,0.299,117.363,269907,3,A minor
+Night in the Woods,Sympathy For The Devil,The Rolling Stones,4sFbojhVXQv7dBC9PVCcRn,0.566,0.673,A,-10.814,major,0.306,0.565,1.13e-6,0.0438,0.583,114.385,377747,4,A major
+Night in the Woods,I Predict A Riot,Kaiser Chiefs,75D3n6wnFQmu1HVmLAlWM4,0.395,0.979,G#,-3.241,major,0.0766,0.0243,0,0.12,0.41,158.842,233187,4,G# major
+Night in the Woods,Aliens Exist,blink-182,2ACrr0UksN6clCp2hm5FvV,0.47,0.92,B,-6.775,major,0.0975,0.00104,5.11e-6,0.381,0.638,107.589,192973,4,B major
+Night in the Woods,Woman On The Screen,Boris,1P89saAf7zFwSs85EIhszt,0.244,0.979,A#,-1.61,minor,0.0665,1.41e-6,0.0661,0.387,0.13,97.335,158520,4,A# minor
+Night in the Woods,Sleep Drifter,King Gizzard & The Lizard Wizard,7m6NL3rDG7liYjefjvCgfr,0.447,0.837,C#,-6.658,minor,0.04,0.561,0.811,0.123,0.435,156.403,284853,3,C# minor
+Night in the Woods,Wide Eyes,Local Natives,2fea1IQDXMABCGce4H5dzZ,0.526,0.84,B,-8.022,minor,0.0398,0.00114,0.423,0.237,0.478,123.173,266440,4,B minor
+Night in the Woods,Grounds for Divorce,Elbow,27rgTetikreqkvedaxrF5N,0.526,0.756,D,-5.083,minor,0.0266,0.4,2.39e-6,0.426,0.668,91.985,219453,4,D minor
+Night in the Woods,I Just Wanna Be Left Alone,Hidden Charms,423L3TzqsrxJkkRckW5PMX,0.505,0.735,D,-4.798,major,0.0345,0.00134,0.864,0.0705,0.337,97.492,189080,4,D major
+Night in the Woods,Come As You Are,Nirvana,0MKGH8UMfCnq5w7nG06oM5,0.5,0.824,E,-5.846,minor,0.0388,1.6e-4,0.00161,0.0916,0.539,120.125,218920,4,E minor
+Night in the Woods,Black Cat,Never Shout Never,2661xvydO3HPh3R24kQcTh,0.665,0.685,G#,-4.408,major,0.0345,0.0079,0,0.364,0.339,101.959,249160,4,G# major
+Night in the Woods,Run or Hide,Run River North,0gL2wxDmyNN71eEuCQUUfX,0.527,0.931,B,-3.426,minor,0.0452,0.0126,0,0.0556,0.423,114.994,216360,4,B minor
+Night in the Woods,Into the Black,Creeper,6jvvxTs78lG0MnAo02HHHd,0.369,0.871,A#,-4.873,minor,0.0985,0.0063,0.0244,0.223,0.232,166.913,190788,4,A# minor
+Night in the Woods,Riverside,Agnes Obel,1UmFRZU3taMGZApPhK32mc,0.648,0.177,A,-13.474,minor,0.0311,0.985,3.53e-4,0.134,0.236,99.101,228547,3,A minor
+Night in the Woods,Jesus Christ,Brand New,4NuIHP29mmJ9W75OCKrjNn,0.664,0.724,B,-5.36,minor,0.026,0.31,0.162,0.267,0.239,88.51,318267,4,B minor
+Night in the Woods,Where Have All My Heroes Gone,Matt Costa,4fg0xbXyP1tt2jmyjktGDk,0.441,0.434,G,-12.225,minor,0.0577,0.858,0.036,0.136,0.253,179.109,183687,4,G minor
+Night in the Woods,The Boathouse Story,Big Ship,66T3rAENAYMzO2cTM0bwSg,0.39,0.173,E,-18.439,major,0.031,0.667,0.954,0.105,0.116,102.776,394592,4,E major
+Night in the Woods,The Wolves,Ben Howard,3gqP2hxwgi6mb8FhtEe4zU,0.496,0.531,C,-9.889,minor,0.0325,0.312,0.00901,0.113,0.507,119.159,309347,4,C minor
+Night in the Woods,Wonderwall,Oasis,79RUMZfMNMpqZnswovvTqv,0.412,0.844,D,-5.613,major,0.037,0.00214,0,0.134,0.459,174.452,258907,4,D major
+Night in the Woods,Dan the Dancer,Mitski,4AZdhSWmNLsJeh9jiZAXlR,0.468,0.688,G#,-8.177,major,0.0397,1.63e-4,0.203,0.52,0.64,75.029,145504,3,G# major
+Night in the Woods,Action & Action,The Get Up Kids,6Rjvgq2Bbxwi8KNhatLwQe,0.418,0.914,C#,-4.815,minor,0.0877,1.29e-4,0.0213,0.238,0.411,76.219,245840,4,C# minor
+Night in the Woods,Everybody Wants to Love You,Japanese Breakfast,0v2Ec8PYN7Ez24QY9jyTRc,0.482,0.875,G,-3.263,major,0.035,0.402,0.178,0.283,0.691,129.934,132632,4,G major
+Night in the Woods,Skeletons,Yeah Yeah Yeahs,7DsNpL5ZV07pXWueZwuVKF,0.233,0.584,G,-8.187,major,0.0338,0.00217,0.407,0.36,0.0393,95.858,302160,4,G major
+Night in the Woods,The Beast,Casi,4AnGWukN3NQUyclFqBgJyB,0.259,0.682,C#,-5.738,major,0.122,0.0822,0,0.376,0.352,159.786,198020,4,C# major
+Night in the Woods,Kill Your Heroes,AWOLNATION,23hln7JvLtFTXa0kZLAVRY,0.575,0.95,C,-6.309,major,0.0649,0.00842,9.47e-5,0.765,0.315,96.046,178842,4,C major
+Night in the Woods,Little Talks,Of Monsters and Men,2ihCaVdNZmnHZWt0fvAM7B,0.446,0.757,C#,-5.177,major,0.0322,0.0206,0,0.146,0.421,102.88,266600,4,C# major
+Night in the Woods,Best Friend,Foster The People,7tvOve5IkjYenvqScZ75iQ,0.651,0.866,C#,-3.831,major,0.0584,0.00933,0,0.113,0.801,113.945,267827,4,C# major
+Night in the Woods,Nobody Dies,Thao & The Get Down Stay Down,3j4kcoBVfe6rGY2517OJ9f,0.64,0.73,C#,-5.888,major,0.0343,0.0224,0.0171,0.102,0.775,88.601,228114,4,C# major
+Night in the Woods,Fly Away,Lenny Kravitz,1OxcIUqVmVYxT6427tbhDW,0.586,0.872,G,-5.066,major,0.0483,0.018,0,0.622,0.729,159.925,221333,4,G major
+Night in the Woods,Paper Planes,M.I.A.,1wgqttlPacpvmX5DKVboOa,0.541,0.854,D,-6.196,major,0.155,0.0254,1.25e-4,0.651,0.454,86.044,205200,4,D major
+Night in the Woods,Young Dumb & Broke,Khalid,5Z3GHaZ6ec9bsiI5BenrbY,0.798,0.539,C#,-6.351,major,0.0421,0.199,1.66e-5,0.165,0.394,136.949,202547,4,C# major
+Night in the Woods,Chasing Shadows,Santigold,70sg6mJLEUw7xSPQu6uvr4,0.742,0.575,C,-5.55,major,0.0487,0.227,1.77e-6,0.176,0.583,76.494,195333,4,C major
+Night in the Woods,Pain,Klaus Schulze,1rrAFLWEHLx0924JhrDfbM,0.644,0.413,A,-16.653,minor,0.0384,0.0218,0.254,0.088,0.676,122.31,581173,4,A minor
+Night in the Woods,Stranger Things - Extended,Kyle Dixon & Michael Stein,4I90I39s5W0QrD1QtG3bwQ,0.19,0.226,E,-17.993,minor,0.0362,0.711,0.909,0.0926,0.0996,83.993,325714,4,E minor
+Night in the Woods,Into The Night,Xiu Xiu,5Gawipgd2Lw3bzf8RO26xt,0.151,0.722,C#,-9.193,minor,0.0408,0.153,0.98,0.329,0.0393,85.211,312773,4,C# minor
+Night in the Woods,Queen of the Losers,Xiu Xiu,3afs0xRLcdNcpfQdktogCt,0.137,0.788,G,-5.847,major,0.0552,0.0012,0.654,0.397,0.0904,205.585,263446,3,G major
+Night in the Woods,Copter,S U R V I V E,4IacfiNVmtTkTZQ8JvxOSm,0.236,0.337,C,-12.163,minor,0.0392,0.661,0.769,0.126,0.0351,75.556,396099,4,C minor
+Night in the Woods,Sarah's Theme - Remastered,Iva Davies,66O0wYke4de9UCsCrgEu4O,0.0913,0.259,F,-10.751,major,0.0364,0.715,0.979,0.119,0.0782,85.032,172013,3,F major
+Night in the Woods,Falling,Xiu Xiu,1SvFi99pbqxlYhgLJ2mnII,0.432,0.52,F,-8.736,major,0.0369,0.644,0.855,0.144,0.192,116.075,416553,4,F major
+Night in the Woods,Seven Devils,Florence + The Machine,0aN8Fd7iQNdxDNgXZckbdo,0.381,0.794,A,-5.558,minor,0.0358,0.00972,2.4e-4,0.0723,0.204,58.478,303245,4,A minor
+Night in the Woods,Dream,Imagine Dragons,25DpvTS4zsmLiVLx8Zv3N0,0.346,0.509,C#,-7.693,minor,0.0514,0.674,7.97e-5,0.0685,0.115,143.437,258e3,4,C# minor
+Night in the Woods,Edge of Town,Middle Kids,0wsmFq0QyD0dkNcFreNg0J,0.534,0.79,C#,-3.898,major,0.0296,0.00607,8.75e-5,0.0804,0.314,105.026,225525,4,C# major
+Night in the Woods,Teenage Love,Magic Wands,7IkzKmpFaKmWQgk7W6i9i6,0.597,0.589,F#,-6.855,major,0.0496,0.00743,0.0618,0.0676,0.775,89.245,212347,4,F# major
+Night in the Woods,All These Things That I've Done,The Killers,1GBUtYkXgKZc0XXi2zpvho,0.554,0.73,F#,-6.236,major,0.0418,0.00158,1.85e-5,0.117,0.204,118.24,301573,4,F# major
+Night in the Woods,Magic Spell,This Is The Kit,0cD2b0Dy3KXFUHigmtJ9dU,0.63,0.593,E,-10.37,minor,0.0492,0.91,0.471,0.107,0.403,118.274,260008,4,E minor
+Night in the Woods,Never Going Home,Hazel English,4owKdwOIG7qs89ZfGv2PZg,0.428,0.768,D,-5.845,major,0.0301,0.0779,0.646,0.0905,0.31,161.909,235907,4,D major
+Night in the Woods,Remember When,Heathers,503Nl0dtEWF9fhZmduBWmI,0.564,0.651,D,-3.389,major,0.0296,0.074,0,0.217,0.705,136.053,133640,4,D major
+Night in the Woods,Wrecking Ball,Mother Mother,1VZo1zddq6LpxwMtvHPVgM,0.664,0.797,G,-4.473,major,0.0362,0.194,0,0.337,0.284,97.004,194320,4,G major
+Night in the Woods,Feels Blind,Bikini Kill,6PJhl2R4g80X0D8snFZb94,0.346,0.862,G#,-6.893,major,0.0293,4.4e-5,0.00421,0.085,0.886,108.729,216e3,1,G# major
+Night in the Woods,No Scrubs,Big Joanie,6OfqyrhiGykk6oFZhErRju,0.542,0.648,D#,-6.593,minor,0.03,0.5,0.00361,0.0952,0.67,93.795,169670,4,D# minor
+Night in the Woods,Overture: Sunday Mourning,Black Lips,31R7W31ck9Kj0VN4lm7cDm,0.499,0.318,A#,-15.954,major,0.0295,0.0359,0.481,0.207,0.516,91.361,55371,4,A# major
+Night in the Woods,The Last Cul de Sac,Black Lips,45xrxmHAy2JFJl5bsVkASN,0.347,0.874,G,-4.656,major,0.0446,3.89e-4,1.81e-5,0.17,0.49,85.358,226911,4,G major
+Night in the Woods,City Lights,Harbouring Oceans,4tSjvI80eN2w1wRH03ORIy,0.655,0.556,C,-7.318,minor,0.0332,0.0636,0,0.124,0.459,141.977,197380,4,C minor
+Night in the Woods,Evil Eye,Franz Ferdinand,2F3dEXRcLx9nQT8qCnHj1j,0.702,0.815,B,-3.289,minor,0.0296,0.0148,3.85e-5,0.0486,0.819,110.968,167253,4,B minor
+Night in the Woods,San Diego Song,The Coronas,7EVQCaC9CXEuDsBC8GAGRl,0.298,0.673,F,-5.904,major,0.0402,0.0044,0,0.166,0.336,82.796,171373,4,F major
+Night in the Woods,Witness,Benjamin Booker,6HPwDVhhhFl4Ao2H2xMRTe,0.393,0.769,C,-6.93,major,0.0468,0.102,0,0.127,0.319,170.863,177587,4,C major
+Night in the Woods,Learn To Let Go,Kesha,3JKhmIlixlYwFLzrkc6drb,0.515,0.847,F,-2.951,major,0.039,0.00369,6.66e-5,0.293,0.645,168.104,217547,4,F major
+Night in the Woods,"Weird Autumn (From ""Night in the Woods"")",CG5,6pcoBQpNLi9R6E1IMOlI0U,0.583,0.833,G,-4.24,major,0.12,0.00886,1.34e-4,0.349,0.375,165.967,232771,4,G major
+Night in the Woods,"Rainy Day (From ""Night In The Woods"")",SixteenInMono,1SWsDgLwNFOAAlmX44vAAz,0.352,0.755,C,-6.334,major,0.039,0.00477,0.851,0.641,0.25,185.903,327742,4,C major
+Night in the Woods,Heroes - 1999 Remastered Version,David Bowie,5j6ZZwA9BnxZi5Bk0Ng4jB,0.478,0.774,G,-6.977,major,0.0292,2.65e-4,0.585,0.191,0.429,112.577,370373,4,G major
+Night in the Woods,Lady Bird,Jon Brion,6yzzno5cXBkh5c6UzRxcyM,0.252,0.144,A#,-17.657,major,0.0283,0.758,0.901,0.0852,0.0677,182.776,310267,3,A# major
+Night in the Woods,Meet Me in the Woods,Lord Huron,3YMcQhVh3m6yQ46wIoVhiv,0.543,0.925,F#,-6.775,minor,0.0447,0.391,0.434,0.0667,0.593,80.501,262209,1,F# minor
+Night in the Woods,I'mma Break It Down,Eazy-E,6ztTqxjh0JRQqPfBVWcytB,0.959,0.93,D#,-4.335,minor,0.224,0.101,0,0.0877,0.665,115.734,207493,4,D# minor
+Night in the Woods,Heart It Races - Dr Dog Version,Dr. Dog,2vupkXhwL4sNCRgNu72HCZ,0.705,0.474,A#,-13.081,major,0.0391,0.443,0.0553,0.338,0.756,98.612,233128,4,A# major
+Night in the Woods,Mountains,Message To Bears,22v9ZVkWWAYjderL7ZWuuH,0.569,0.572,F#,-11.363,major,0.0265,0.64,0.56,0.0921,0.658,110.031,234e3,4,F# major
+Night in the Woods,Bullet Head,Fangclub,6TbfmOhs4cS3RHcufVFFVE,0.432,0.788,F,-5.634,major,0.0995,4e-4,5.05e-5,0.329,0.468,145.046,120587,4,F major
+Night in the Woods,Control,Tigercub,0ILT475efW2vVY5pxvCj0m,0.44,0.905,G#,-6.308,major,0.0477,3.48e-4,0.00182,0.104,0.568,83.978,246006,4,G# major
+Night in the Woods,Strobe Lights,Estrons,3kN1wRpRQU9o8AIYw8KMOk,0.535,0.888,D,-2.863,major,0.0661,4.01e-4,0.0144,0.0434,0.718,93.493,155442,4,D major
+Night in the Woods,Sucker,The Big Moon,3Hzk2jGLWjUQJ2aAPmdtbB,0.461,0.755,D,-4.854,major,0.0499,0.112,4.04e-5,0.367,0.455,92.563,222227,3,D major
+Night in the Woods,Homophobes Are Just Pissed 'Cause They Can't Get Laid,Propagandhi,7kLAwZQPqGQwTK5mrfRdnX,0.39,0.944,G,-5.069,major,0.0464,5.13e-5,0.242,0.163,0.928,119.298,104587,4,G major
+Night in the Woods,Rebel Rebel - 2016 Remastered Version,David Bowie,2EC9IJj7g0mN1Q5VrZkiYY,0.635,0.686,A,-15.648,major,0.053,0.209,0.0176,0.282,0.464,125.988,274747,4,A major
+Night in the Woods,Night Shift,Siouxsie and the Banshees,3OTGIMpePnTxxjigPJW2eA,0.399,0.728,E,-7.16,minor,0.032,0.129,1.2e-4,0.182,0.227,87.29,364200,4,E minor
+Night in the Woods,Party Like It's Your Birthday,Studio Killers,0S5pueOUOvIancaAwpFTlC,0.65,0.797,G,-5.409,minor,0.0618,0.0181,0,0.115,0.67,110.017,224392,4,G minor
+Night in the Woods,Kirby,Aesop Rock,3fAPcwGO7pea21rE48r1Yu,0.638,0.741,C#,-6.012,minor,0.292,0.0343,0,0.0761,0.702,178.124,166907,4,C# minor
+Night in the Woods,"Astral Alley (From ""Night in the Woods"")",Simnoid,04iBgoLyosVehayePtC0Wk,0.537,0.525,A,-8.139,minor,0.0276,0.459,0.0621,0.0897,0.463,96.066,254995,4,A minor
+Night in the Woods,Restless Year,Ezra Furman,3rWfoCW4QL3ovetMMZlChT,0.686,0.945,A,-4.099,major,0.0788,0.0303,1.39e-5,0.121,0.486,94.521,145e3,4,A major
+Night in the Woods,All Falls Down,Kanye West,3rz4J87q1ZCVOoqzOIGJ3k,0.633,0.671,G#,-7.054,minor,0.494,0.182,0,0.209,0.414,91.029,223560,4,G# minor
+Night in the Woods,Sorcererz,Gorillaz,3TU33NKW8wqQ3UaIjo5ijj,0.584,0.872,A,-6.636,minor,0.0365,0.022,0.927,0.127,0.818,84.075,180373,3,A minor
+April '17,グッドバイ -album version-,toe,1qb5VMA5dMZKJQYRHRPKo4,0.531,0.665,C#,-7.774,minor,0.0344,0.512,0.721,0.088,0.0938,137.022,425533,4,C# minor
+April '17,Just Impolite,Plushgun,3GIopTyWdeoZnTR1cXEt6K,0.589,0.788,A,-6.917,major,0.147,0.14,3.57e-6,0.0854,0.676,174.999,231440,4,A major
+April '17,"November Was White, December Was Grey",Say Hi,38sRtZMhq9bN9by2MuSiWy,0.755,0.364,E,-11.294,major,0.0389,0.608,0.436,0.108,0.777,120.022,183573,4,E major
+April '17,Internet Killed the Video Star,The Limousines,3bf87vxatBoY88DeYMdt6D,0.636,0.9,A,-2.759,major,0.0323,0.00168,0,0.341,0.699,118.017,233227,4,A major
+April '17,Dancing On Quicksand,Bad Suns,3iMblbfItFWYGddJLycG64,0.651,0.936,G#,-2.873,major,0.0347,0.00212,4.55e-4,0.182,0.654,124.01,225781,4,G# major
+April '17,Water,Ra Ra Riot,1spp1NXsz4rHcVaJhhndKa,0.575,0.848,E,-4.297,major,0.0885,0.131,0,0.11,0.42,159.941,280333,4,E major
+April '17,Note To Self:,Owen,4OJRpMOHBFVg2R0jHGWAR8,0.557,0.648,C#,-9.204,major,0.0304,0.23,0.00436,0.0584,0.163,132.066,375013,4,C# major
+April '17,Razorback,Rachel Mallin,1DRwesIrES8K9FHHmoX4Ju,0.335,0.507,G,-11.652,minor,0.123,0.23,0.00141,0.0807,0.29,82.906,282627,4,G minor
+April '17,Memory House,Over Sands,0c45kCwcJYCinqRO8fjfgE,0.406,0.71,G,-6.445,minor,0.0295,0.0146,0.36,0.349,0.664,160.408,284131,4,G minor
+April '17,All I Want,The Reverb Junkie,5mZuTaveSXy5AiPCti8TyJ,0.527,0.532,C#,-7.567,minor,0.0387,0.516,0,0.286,0.327,66.014,143360,4,C# minor
+April '17,Oola,Little India,6tPHBJUrBVVHpeHmDIp8Xw,0.652,0.779,C,-5.703,minor,0.0296,0.119,0.454,0.0961,0.418,129.032,192267,4,C minor
+April '17,I Dare You,The xx,044qU7kwVZaDwzWnRsmVVL,0.752,0.543,C#,-9.483,major,0.0398,0.623,0.0706,0.107,0.282,126.001,233280,4,C# major
+April '17,Mountain At My Gates,Foals,53L6A3I9vf7rgEZnMzx54E,0.495,0.931,D,-5.336,minor,0.0469,0.0025,0.0783,0.246,0.617,104.05,244293,4,D minor
+April '17,Nova Scotia,Magic Man,5np64vfdJ6Qz6aDFkspMWz,0.543,0.898,A#,-6.322,major,0.0317,0.00426,0.228,0.102,0.274,120.007,255573,4,A# major
+April '17,Original Nuttah,UK Apachi,74V4K9dL0gxWe0F6BOBAyK,0.524,0.819,F#,-12.074,major,0.25,0.00547,2.32e-6,0.129,0.886,113.448,246933,5,F# major
+April '17,Day to Day,Evan Black,6FvUZBd2y5gBHAims34gHe,0.565,0.857,F#,-5.604,major,0.266,0.00763,0,0.354,0.742,82.947,190642,4,F# major
+April '17,Darkest (Dim),TOKiMONSTA,2uRZUJxvvsndpNpF0vSwDl,0.519,0.551,A#,-8.436,minor,0.0333,0.0592,0.437,0.368,0.141,86.83,309145,4,A# minor
+April '17,Smoke & Mirrors,TOKiMONSTA,1YI6wLnlhRIYCBq5vg2tfx,0.649,0.591,A,-11.936,minor,0.198,0.719,0.78,0.122,0.421,90.006,218507,4,A minor
+April '17,Special Re: Quest,Daedelus,0yftcs2gs8LMwMIM6ndlOl,0.677,0.839,A#,-8.134,major,0.038,0.158,0.0968,0.164,0.563,115.011,214676,4,A# major
+April '17,"Worlds to Run (featuring Milo, Anderson Paak)",Busdriver,59jz14e2H1EkNHiXY7kd05,0.614,0.671,E,-8.029,minor,0.147,0.136,1.14e-4,0.17,0.214,143.099,315565,4,E minor
+April '17,For the Fallen,Kneebody,1Wnx2ZERFJxaslj9VuZq9q,0.498,0.679,C#,-11.623,major,0.0341,0.29,0.84,0.0916,0.164,87.907,321440,4,C# major
+April '17,Dark Lights,mouse on the keys,4iYCNkBHg9YXjrw78K4WeS,0.552,0.222,D,-19.007,minor,0.0493,0.695,0.901,0.115,0.157,105.034,290540,4,D minor
+April '17,CLOCK,Plaid,0gkVD2tr14wCfJhqhdE94L,0.453,0.522,F,-12.395,minor,0.0537,0.312,0.822,0.0666,0.339,135.911,264e3,4,F minor
+April '17,It´s Not The Worst I´ve Looked - Lali Puna Remix,Two Lone Swordsmen,02PEzBRF5NQgBQPrXZvdvL,0.75,0.483,E,-10.628,minor,0.065,0.349,0.877,0.091,0.784,90.294,264147,4,E minor
+April '17,Neither/Neither - Application Remix,The Black Dog,6PpRAq3EJ3Tynu2UFVnrhA,0.238,0.566,D,-13.844,minor,0.146,0.0358,0.881,0.119,0.0361,82.381,265437,4,D minor
+April '17,Wishing Wells,The Colourist,6aAwVy5Hzf44HaXlG6INFO,0.541,0.922,C,-4.602,major,0.0638,0.00244,3.04e-5,0.107,0.413,135.028,257880,4,C major
+April '17,Selamat Pagi (Donna's Song),Lymbyc Systym,5PLcH69JfMAzVmJ39cDOGS,0.657,0.16,D#,-17.304,major,0.0254,0.854,0.797,0.0802,0.0639,99.001,244907,4,D# major
+April '17,Color Theory,Tea Leigh,1rldeBosgjoIDABmUJnCPW,0.583,0.768,E,-5.852,major,0.0286,2.4e-5,0.865,0.139,0.628,109.976,244364,4,E major
+April '17,Angkor (feat. Welshly Arms),Tsutro,79BeOrjDaBxvzTPUBxxV5u,0.616,0.777,F,-9.746,minor,0.0505,0.264,0.888,0.175,0.724,128.005,155333,4,F minor
+April '17,Never Going Home,Hazel English,4pnipOyqSfpDzeKpBPdOG0,0.416,0.779,D,-5.647,major,0.0308,0.0713,0.73,0.0658,0.296,161.89,236667,4,D major
+April '17,One House,RAC,6Xm92ATVFyFt5QiTD2oLVU,0.653,0.822,F#,-7.89,major,0.0348,0.183,7.28e-5,0.111,0.408,130.066,173827,4,F# major
+April '17,Forest,"Parks, Squares and Alleys",6MItX67OtBQHzId57kYQqd,0.49,0.727,B,-6.001,major,0.0327,0.361,0.00246,0.0808,0.248,159.934,247010,4,B major
+March '17,Let Me In,Snowmine,0jcHQTvfHCH1LETpdMdHJo,0.188,0.675,F#,-6.188,major,0.0379,0.206,0.0962,0.662,0.617,70.682,219227,4,F# major
+March '17,Sometimes (One Night),The Golden Peppers,0W7XCmgWhKXvqWbhTRP5Ai,0.65,0.567,F#,-6.139,major,0.0281,0.113,0.0016,0.147,0.369,118.012,206540,4,F# major
+March '17,Temporary Love,The Brinks,2U6hcDLZHYRSd9Up0mMe9W,0.714,0.555,F#,-7.55,minor,0.0459,0.656,2.89e-4,0.11,0.329,102.971,205130,4,F# minor
+March '17,Lost Weekend,The So So Glos,2rzQSDMRbe5RnCaNq410xp,0.592,0.837,D#,-4.442,major,0.0448,0.0746,1.04e-5,0.243,0.424,117.045,207867,4,D# major
+March '17,Lost in the Zoo,Goddamn Electric Bill,3sNySNP5Psp1ojI3Vip3Zr,0.572,0.428,G,-12.63,major,0.0285,0.96,0.92,0.129,0.198,105.023,247493,4,G major
+March '17,You Can't Live There Forever,The World Is A Beautiful Place & I Am No Longer Afraid To Die,0m5dYg8PUPEVf8hjXz8QoO,0.656,0.244,F#,-12.489,major,0.0308,0.445,0.715,0.118,0.464,110.048,241599,4,F# major
+March '17,Bruce Wayne,Memorecks,6Vn9ip0TryleiFXRs7Iw9q,0.929,0.714,B,-8.067,major,0.0307,0.254,0.00306,0.124,0.785,106.993,179439,4,B major
+March '17,Waterfalls,Memorecks,435sGEV42n1LRBZchEOi9c,0.368,0.435,C,-10.99,major,0.112,0.516,9.66e-5,0.104,0.132,179.185,184e3,4,C major
+March '17,Sidelong,Leisure Suit,1bfB0kIdXR5unHu9f64KOw,0.405,0.661,A,-7.404,minor,0.0314,0.685,0.868,0.11,0.0803,148.112,302014,4,A minor
+March '17,Gone,Day Wave,6OJMVcgJYX3rJrjN6txUOI,0.537,0.802,D#,-7.908,major,0.03,0.504,0.106,0.15,0.537,144.976,221975,4,D# major
+March '17,Love Unlimited,Blackbird Blackbird,6JzAIQgmtMY12wC3ZnvBIL,0.567,0.671,D,-8.913,major,0.0473,0.00378,0.0113,0.571,0.0551,114.93,201014,4,D major
+March '17,Jungle,Parrot Dream,3hD9G3mmUhtyNa2WHgHYcz,0.292,0.756,C#,-3.542,major,0.0286,0.42,0.00805,0.141,0.278,108.154,231715,4,C# major
+March '17,Overdose,The Good Fortune ,54oCocCSsp7lZdwqkgSaJM,0.711,0.393,C,-16.818,minor,0.0576,0.783,0.756,0.112,0.107,104.006,240039,4,C minor
+March '17,Ancient Mars,The Zolas,07AG7Pg08JSUKIJEWuh20r,0.701,0.505,C,-7.12,major,0.0268,0.332,0.707,0.283,0.837,123.977,222399,3,C major
+March '17,Someplace Beautiful,Alfred Hall,1tsZYgPcI6o4zKOXquLwee,0.603,0.695,C,-8.894,major,0.0282,0.00449,0.621,0.113,0.278,127.997,195080,4,C major
+March '17,Safety in an Open Mind,Snowmine,5bml5d1FQnUe7z3BTSQC2O,0.549,0.696,A#,-9.09,minor,0.0303,0.0204,0.902,0.104,0.487,89.999,227448,4,A# minor
+March '17,San Narciso,Faded Paper Figures,70XFAHdArqfkl3rFyXs7DR,0.677,0.668,A,-8.401,major,0.0304,0.00847,0.276,0.127,0.551,126.025,266453,4,A major
+March '17,Not the End of the World (Even as We Know It),Faded Paper Figures,4Km8YLL6l2MHA3Xxy4PpzK,0.559,0.836,C#,-5.06,major,0.0484,0.0777,2.47e-4,0.0582,0.408,100.087,227387,4,C# major
+March '17,"Good Morning, Hypocrite",Electric President,1OgiyBrmI67v6UzDr1VTUq,0.753,0.648,C,-10.122,major,0.0434,0.327,0.785,0.0728,0.487,144.99,323816,4,C major
+March '17,ID - Ultra Music Festival Anthem,Kygo,4SBqydJCEhcroni09XgT2c,0.686,0.678,A#,-8.063,major,0.0425,0.623,0.719,0.0971,0.338,105.005,289987,4,A# major
+March '17,The Commander Thinks Aloud,The Long Winters,7dIYMfQv5hyZ0I1S29MJIR,0.391,0.578,C,-5.432,major,0.0339,0.0297,2.88e-6,0.12,0.34,131.969,326053,4,C major
+March '17,Stars,Buried Beds,2wkdzqDNTd8nttZns3UM4Q,0.516,0.62,C#,-7.716,major,0.0263,0.0445,0,0.151,0.462,95.942,223823,4,C# major
+March '17,Feel The Lightning,Dan Deacon,39uiySBTAvmF70CPRDKNSq,0.502,0.763,D,-7.722,major,0.0437,0.0468,0.662,0.239,0.514,94.973,293413,4,D major
+March '17,Take Care of Me,Briana Marela,4IlP3vyHyGfAhPNUm0QziD,0.571,0.499,C,-10.387,major,0.0248,0.345,0.91,0.053900000000000003,0.27,91.978,283640,4,C major
+March '17,Hummingbird,ARMAND MARGJEKA,5wPc5Z8nPYpLtED4svv4W7,0.537,0.777,D,-8.455,major,0.102,0.0321,0.341,0.0997,0.742,167.788,226600,4,D major
+March '17,Hollow Body,Many Rooms,01Ouj17NKiLvm5iiapgSPx,0.398,0.287,C,-10.482,major,0.0336,0.753,0.242,0.0951,0.0949,74.54,302e3,4,C major
+March '17,Let It Go,Fe,7x4HwqYTzbdQ8YltftI06l,0.632,0.756,A#,-8.15,minor,0.0277,0.46,0.678,0.122,0.062,130.025,295420,4,A# minor
+March '17,Serenity,Saito,0SD8O7EuR7zK15pY0GKJpN,0.837,0.193,C,-12.543,major,0.066,0.92,0.937,0.108,0.56,106.529,81144,3,C major
+March '17,For You,Saito,6vIYYpeOFmGvzJKRJ8bFxO,0.652,0.854,G,-3.485,minor,0.0568,0.259,0.846,0.0662,0.82,180.271,165596,4,G minor
+March '17,Looking at the Ceiling,Saito,3Wgyi0hxgwCUZCtFypizxG,0.626,0.873,F#,-4.642,minor,0.0338,0.0316,0.825,0.0816,0.762,81.983,105396,4,F# minor
+March '17,Olivia,Shigeto,1Y2AAZVrm22D1wZXemkDNw,0.3,0.672,B,-10.75,minor,0.0795,0.541,0.247,0.0699,0.184,137.508,188385,3,B minor
+March '17,The Shark Fighter!,The Aquabats!,06WArFWIZUt3WUk6E6PdIu,0.443,0.957,C,-4.41,major,0.117,0.0196,1.31e-6,0.44,0.479,164.94,176653,4,C major
+March '17,I'm Ready,Geographer,46aToCetrdy4RfIQ7ld1hR,0.337,0.749,F#,-5.871,minor,0.0353,0.00123,2.61e-4,0.135,0.19,159.939,221253,4,F# minor
+March '17,Grizzly Adams,Breakfast,72qA25vAMVuJverho33scT,0.707,0.526,G,-9.468,major,0.0269,0.137,0.41,0.108,0.0842,106.995,269198,4,G major
+March '17,グッドバイ -album version-,toe,1qb5VMA5dMZKJQYRHRPKo4,0.531,0.665,C#,-7.774,minor,0.0344,0.512,0.721,0.088,0.0938,137.022,425533,4,C# minor
+March '17,Kodokunohatsumei,toe,5P9kSXsPkzbMP2D5UnjAfZ,0.539,0.702,A#,-9.198,major,0.0283,0.0342,0.803,0.185,0.461,121.95,203507,4,A# major
+March '17,Don't Act Like a Stranger,Cathedrals,1gTVBmPA5K0FOZET0IyQXT,0.609,0.825,C#,-5.054,major,0.031,0.0202,0,0.12,0.589,118.048,302917,4,C# major
+March '17,Spare Me,Faded Paper Figures,5E4EOR7mOMSNiRWZ5GwyOE,0.621,0.7,C#,-5.919,major,0.0301,0.0886,0,0.0956,0.75,99.978,273280,4,C# major
+March '17,Gasoline,Dave Monks,3C422o5WK3F2PvOWck8zPZ,0.628,0.406,G#,-10.904,major,0.0357,0.725,2.87e-5,0.119,0.328,83.983,243053,4,G# major
+March '17,Islands (Remix) - Specially Mixed for Your Personal Cassette Player,Philip Glass,6psTfpqN79lEqDaKaqMJ2P,0.123,0.0613,A#,-23.084,minor,0.0413,0.976,0.867,0.0766,0.0826,96.117,461547,3,A# minor
+March '17,Just Impolite,Plushgun,3GIopTyWdeoZnTR1cXEt6K,0.589,0.788,A,-6.917,major,0.147,0.14,3.57e-6,0.0854,0.676,174.999,231440,4,A major
+March '17,Internet Killed the Video Star,The Limousines,3bf87vxatBoY88DeYMdt6D,0.636,0.9,A,-2.759,major,0.0323,0.00168,0,0.341,0.699,118.017,233227,4,A major
+March '17,Flaming Arrow,Jupiter One,2j9nt88TV8vu6xGJdJy4qG,0.596,0.835,C,-6.171,major,0.0382,0.435,0.406,0.234,0.744,94.063,203667,4,C major
+March '17,"November Was White, December Was Grey",Say Hi,38sRtZMhq9bN9by2MuSiWy,0.755,0.364,E,-11.294,major,0.0389,0.608,0.436,0.108,0.777,120.022,183573,4,E major
+February '17,Feeling Ok,Best Coast,0hgsUnkawqDllP4OF4g9MN,0.437,0.926,A,-3.352,major,0.0583,1.49e-4,0.00843,0.202,0.221,118.962,196160,4,A major
+February '17,Chicago - Demo,Sufjan Stevens,3KEKijpvo4FP7AdQYmb22O,0.573,0.487,G,-8.688,major,0.0291,0.424,1.6e-4,0.113,0.391,120.046,248555,4,G major
+February '17,Keep on Dancing,We Are The City,5sN0zsGBCHi2yzcDlbJ84Z,0.6,0.802,F,-4.265,major,0.0546,0.00749,1.46e-4,0.124,0.69,94.033,182238,4,F major
+February '17,Alright,Henry Chadwick,5nUZQO1izXjxEjAW7zNk4j,0.742,0.658,F#,-6.515,minor,0.0347,0.292,0.00114,0.287,0.65,122.005,145798,4,F# minor
+February '17,White Sheet,Bellows,4c7iUUA3bh2uUOf2XQ4486,0.524,0.679,G,-8.967,major,0.0359,0.299,0.427,0.409,0.302,100.087,163200,4,G major
+February '17,Hidden Shelters,Lovelier Other,6is2XWFOREjTAxHQveZ8In,0.289,0.579,B,-8.017,minor,0.0343,0.628,0.561,0.442,0.375,80.532,258167,4,B minor
+February '17,Life in a Bubble I Blew - bonus track,Joywave,2gcqVTesDy08DOB2rV2Odt,0.646,0.752,G#,-5.463,minor,0.027,0.431,0.0213,0.176,0.52,129.97,221202,4,G# minor
+February '17,Hymnals - RAC Mix,Grizfolk,2r12KCHNv0p7JQJsGt3vYK,0.602,0.819,G,-6.542,minor,0.0493,0.0124,0.0116,0.175,0.0845,131.966,219943,4,G minor
+February '17,Rotten Love,Levy,1ClR4QqsQiuJ0glWxaCMVb,0.497,0.785,F,-6.807,major,0.0302,0.00634,0.682,0.107,0.407,122.948,193120,4,F major
+February '17,Untitled / Dark Divider,Stomacher,4ASrk43FIuUp6bo2jAlJmM,0.567,0.722,B,-8.181,major,0.0487,0.426,0.00228,0.769,0.548,127.982,243680,4,B major
+February '17,Twice,Little Dragon,49Su9fsYwmnnuJSyxj48kL,0.394,0.197,D,-11.719,minor,0.0346,0.977,0.0139,0.0725,0.228,136.12,186187,4,D minor
+February '17,Unicorn,Four Tet,2iT8h4iK7kYChOci6Ap77P,0.662,0.265,A,-18.991,major,0.0634,0.734,0.926,0.0818,0.0396,150.021,210994,3,A major
+February '17,You Took Your Time (feat. King Krule),Mount Kimbie,3zBgPi9s8iroxNQ5rNYeQR,0.419,0.637,F,-7.464,minor,0.0457,0.682,0.00275,0.107,0.264,139.878,314813,4,F minor
+February '17,Break Well,Mount Kimbie,2t0XPiQhdqLSoEHlZ2tMqG,0.282,0.478,F,-7.944,minor,0.0429,0.857,0.908,0.131,0.0399,119.902,222267,4,F minor
+February '17,Long Way,Diamond Thug,6y8fzUltWsIBPmwfJ2kLmW,0.65,0.537,C,-8.348,major,0.0253,0.468,5.39e-4,0.164,0.515,92.016,257031,4,C major
+February '17,Mind's Eye,Diamond Thug,0HzqpPq8Cm3L2WRS3C1rZI,0.572,0.669,F#,-6.991,minor,0.027,0.0535,8.3e-5,0.112,0.489,92.019,200878,4,F# minor
+February '17,Vacation,Crying,1jqjQu8Dt6HCGre60YMfa5,0.521,0.738,A,-6.082,major,0.0461,0.0694,9.35e-6,0.0682,0.603,147.667,260157,4,A major
+February '17,All Those Friendly People,Funeral Suits,6uphlOdyLfhfe1ReSeiiz3,0.371,0.869,D,-4.873,major,0.071,0.00997,0,0.166,0.472,120.647,278987,4,D major
+February '17,Colour Fade - Crimes Against Remix,Funeral Suits,16NNlRfhplvY27iEzipw15,0.553,0.947,B,-4.761,minor,0.0678,0.168,0.00399,0.112,0.292,125.015,243360,4,B minor
+February '17,Stranger,Covey,1kiffDo2l26ladtXDMHiI7,0.426,0.628,B,-4.638,major,0.0271,0.421,0.14,0.0922,0.0987,73.964,262804,4,B major
+February '17,Old Friend,Sea Wolf,2SnynjpKEEKBqNCLCsepjR,0.658,0.647,G,-8.157,major,0.029,0.248,1.9e-4,0.0837,0.823,147.419,237160,4,G major
+February '17,Stay Gold,Husbands,3ZH5PLe5NmrGXfPhQkfGJK,0.451,0.831,E,-11.001,major,0.0394,0.0429,0.188,0.156,0.697,160.017,205784,4,E major
+February '17,The W.A.N.D.,The Flaming Lips,29gAUokzTrxKQ9W0g55CKo,0.526,0.95,A,-3.462,major,0.261,0.07,0.00116,0.21,0.361,99.041,222867,4,A major
+February '17,Pompeii AM Gotterdammerung,The Flaming Lips,4Ddaf5bxzGfW1Ut2UtpTUl,0.276,0.92,A#,-4.355,major,0.135,0.00105,0.359,0.437,0.295,140.087,259880,4,A# major
+February '17,Night Jaunt - Julien Marchal Remix,Haring,4AW5nZjVwBmIQnS8Iycktv,0.207,0.112,F#,-23.541,major,0.0418,0.939,0.861,0.241,0.0349,118.819,391081,4,F# major
+February '17,This Disorder,The Features,3Tny13Wy19lH3octgSKMv3,0.887,0.383,C#,-7.547,minor,0.0689,0.0274,0.0195,0.0867,0.706,113.96,186640,4,C# minor
+February '17,Never Home,Mirror Days,5MSIiCBYYAcIydKCIAtCJb,0.482,0.805,D,-7.692,major,0.0288,0.139,0.328,0.0787,0.427,112.065,238411,4,D major
+February '17,Make Me,Prinze George,0ShMmBilix9m6LpLpRKzsC,0.732,0.481,D,-7.326,major,0.0284,0.415,0.00312,0.121,0.378,127.965,249364,4,D major
+February '17,Running For Cover,Ivan & Alyosha,7rSHHYpIIlo9A0IRqYv7E8,0.299,0.729,C#,-7.551,major,0.0355,0.00505,1.23e-6,0.0938,0.244,116.981,236267,4,C# major
+February '17,Dark Matter,Wyldest,4HQljtaBK3HtOIHJfmITru,0.358,0.724,C#,-7.741,major,0.0304,0.057,0.129,0.109,0.237,121.991,310148,4,C# major
+February '17,Tru Luv,Leach,5175kP4vGW09NhLm7OXI1C,0.596,0.711,A,-6.96,minor,0.236,0.281,2.31e-4,0.128,0.653,150.098,127998,3,A minor
+February '17,Holy Holy,Owen Rabbit,2BHvLsquSc5Eg4r2gYl9El,0.342,0.468,F,-9.997,major,0.0336,0.211,0.0132,0.223,0.124,133.214,183627,4,F major
+February '17,Stay for a While,Gibbz,1aQZKoiKKH8Y7bz0C18BGv,0.562,0.563,G#,-5.854,major,0.209,0.468,0.00227,0.298,0.726,145.487,223562,4,G# major
+February '17,Dance Through the Winter,GGOOLLDD,4s1ny2xyDNL3T3AORvkYdI,0.383,0.818,C,-3.976,major,0.138,0.0122,0.163,0.196,0.184,132.904,256644,4,C major
+February '17,How??,The Flaming Lips,1bm4WzPddQzOZFAz7JTklq,0.362,0.535,G#,-10.958,minor,0.0486,0.222,0.688,0.105,0.0896,119.169,264920,4,G# minor
+February '17,Light Outside,Absofacto,7J4WtoGCdREmGQrSzPYuFe,0.676,0.692,D#,-6.353,major,0.0373,0.0155,2.51e-6,0.0708,0.752,139.993,212571,4,D# major
+February '17,You Can't Live There Forever,The World Is A Beautiful Place & I Am No Longer Afraid To Die,0m5dYg8PUPEVf8hjXz8QoO,0.656,0.244,F#,-12.489,major,0.0308,0.445,0.715,0.118,0.464,110.048,241599,4,F# major
+February '17,Bruce Wayne,Memorecks,6Vn9ip0TryleiFXRs7Iw9q,0.929,0.714,B,-8.067,major,0.0307,0.254,0.00306,0.124,0.785,106.993,179439,4,B major
+February '17,Waterfalls,Memorecks,435sGEV42n1LRBZchEOi9c,0.368,0.435,C,-10.99,major,0.112,0.516,9.66e-5,0.104,0.132,179.185,184e3,4,C major
+February '17,Sidelong,Leisure Suit,1bfB0kIdXR5unHu9f64KOw,0.405,0.661,A,-7.404,minor,0.0314,0.685,0.868,0.11,0.0803,148.112,302014,4,A minor
+January '17,Watusi,Humans,12A762GT69kRVJrfI2btG4,0.714,0.787,C#,-7.264,minor,0.0642,0.00607,0.474,0.12,0.633,119.97,378988,4,C# minor
+January '17,March of the Pigs,Superhumanoids,08KMj10jOqowjnMCRGLbGs,0.532,0.496,G#,-8.818,major,0.0772,0.0164,0.157,0.101,0.185,170.198,172941,4,G# major
+January '17,Bloodlines,Mimicking Birds,1dmgyk0m28lg714YxF6rT5,0.4,0.518,E,-9.706,major,0.0346,0.333,0.00546,0.13,0.0954,76.285,236960,4,E major
+January '17,Islands,Hey Ocean!,6QejNKLkSVY4Kqt3w5numd,0.521,0.478,F,-9.972,major,0.0266,0.795,0.00126,0.0825,0.452,94.998,284800,4,F major
+January '17,On the Nature of Daylight,Max Richter,7j4G2lqrTZdDlHgR27A9r3,0.174,0.336,A#,-12.79,minor,0.0394,0.139,0.846,0.11,0.0333,84.734,371747,3,A# minor
+January '17,Opening,Philip Glass,1QmhkjuUlosROqKk59sBSK,0.179,0.026,C,-30.937,minor,0.0385,0.996,0.89,0.0836,0.068,77.116,353147,3,C minor
+January '17,Echorus,Philip Glass,4Ie4tIYFJnM8SyLBR9JQk5,0.277,0.0182,C,-24.333,major,0.0463,0.948,0.271,0.125,0.037,120.822,351467,4,C major
+January '17,Six Etudes for Piano - q = 108,Philip Glass,1pNVPDpgKtYZuGmVtu7mu7,0.104,0.00396,C,-35.954,major,0.0425,0.987,0.872,0.0741,0.0348,171.9,411560,4,C major
+January '17,Man in the Sixties,Balue,1DBkGLzWwGFdap1hRbpolr,0.52,0.844,D,-5.433,major,0.0316,0.00395,0.264,0.269,0.713,91.767,222e3,4,D major
+January '17,just cuz you can't,pronoun,3OGFXDA6X9dIzY5ubkexp3,0.426,0.903,F#,-8.815,major,0.0685,0.00609,0.305,0.27,0.605,160.125,195e3,4,F# major
+January '17,snowed in // there's no one new around you,pronoun,56oKFbgiRCcAwZVuVnG8o8,0.629,0.752,B,-9.061,major,0.0278,0.131,0.33,0.114,0.477,99.978,268e3,4,B major
+January '17,Marching Bands of Manhattan,Death Cab for Cutie,7xBWYN1Dzciatr34K6sfDh,0.361,0.47,C,-9.765,major,0.0324,0.565,3.96e-4,0.0728,0.431,200.273,252560,4,C major
+January '17,Morning Now,That Ghost,2VUkDWWiC462SMBddAT2WE,0.362,0.561,G,-7.858,major,0.0267,0.139,0.0308,0.099,0.355,134.624,181227,4,G major
+January '17,Aningaaq,Steven Price,62fphTOlJa3DcOr3cXkeE3,0.0619,0.0466,F,-31.148,major,0.0461,0.613,0.979,0.485,0.036,59.318,308720,4,F major
+January '17,Vampires,S,06Jm0wgBe407byE2aZBAug,0.609,0.864,C,-7.333,major,0.0307,0.0846,0.323,0.189,0.692,126.537,227547,4,C major
+January '17,How to Make Love Stay,empire! empire! (i was a lonely estate),11YL8S1YTsUVXSwzYvoHGb,0.581,0.44,F#,-11.311,minor,0.0268,0.0235,0.472,0.0845,0.0893,140.066,264747,4,F# minor
+January '17,Tigers,The Submarines,1II6kj5EdfLHB33BRQkNqI,0.614,0.685,F#,-5.576,major,0.0419,0.0556,0.0018,0.179,0.163,139.994,299307,4,F# major
+January '17,Introduction; Nothingness,Hayden Calnin,7N10t5HJbSsccIZxihyw65,0.53,0.32,A,-16.341,major,0.358,0.948,1.46e-4,0.0833,0.16,86.655,169091,3,A major
+January '17,Architect,"Manchester Orchestra, Frightened Rabbit",4WUVwGvscAM2nXbENtQHSY,0.372,0.313,C,-9.687,major,0.0302,0.868,6.45e-5,0.115,0.24,97.072,234051,4,C major
+January '17,Smoke and Mirrors,Strangers You Know,2kNY5VoDSimzsQoMfEMRNl,0.534,0.75,F#,-7.343,major,0.0825,0.072,0,0.0663,0.524,160.065,233813,4,F# major
+January '17,Out of the Fog,Erin McCarley,0iHhMKUG2pX2xfvyPLG18n,0.7,0.382,C,-11.011,minor,0.0434,0.0179,7.42e-4,0.0911,0.24,129.025,260461,4,C minor
+January '17,Fight Song,The Appleseed Cast,5lEnGlS5AxaNzcdEOrg4Yo,0.568,0.781,G#,-7.742,minor,0.0319,0.852,0.00266,0.111,0.308,138.029,253547,4,G# minor
+January '17,Flowers & Pixels,Urquides,2dy98izx6VZH17BfbNRbnD,0.381,0.648,C#,-8.467,minor,0.0327,0.00195,0.465,0.199,0.0415,119.236,227725,4,C# minor
+January '17,Light Is Like Water,Urquides,7aVVBmkoS9BamCDadB8ez1,0.455,0.568,C,-9.17,major,0.0274,0.0173,0.037,0.0797,0.166,126.359,351544,4,C major
+January '17,El Mimo,Urquides,29jk7lT6W14T5nymSiQVRw,0.447,0.924,A,-6.29,minor,0.0689,4.2e-5,0.371,0.0898,0.604,101.522,211868,4,A minor
+January '17,TROUBLE (feat. Absofacto),The Knocks,0SE7gSflAhE1a5HEs5Hk9R,0.591,0.666,C#,-6.789,minor,0.14,0.385,2.41e-4,0.074,0.669,116.936,2e5,4,C# minor
+January '17,Classic (feat. POWERS) - Zephure Remix,The Knocks,5npbHuMMnwtLvRPbJw7J0s,0.644,0.867,D,-3.095,major,0.211,0.155,0,0.277,0.589,125.935,190506,4,D major
+January '17,Harrison Ford,Someone Still Loves You Boris Yeltsin,01XTnPlTEbgMJs7zZhnr95,0.626,0.589,E,-8.924,major,0.0283,0.369,0.0145,0.161,0.166,113.078,210533,4,E major
+January '17,Up For Grabs,"Astronauts, etc.",5XvE0ABmBzLKd8aL4fJcsP,0.545,0.524,G,-7.305,major,0.0236,0.113,0.00125,0.171,0.403,76.019,242626,4,G major
+January '17,It Always Takes,Inspired Flight,3wmFORb2szFXGUN4NlyKSc,0.665,0.47,C#,-9.754,major,0.0248,0.778,2.82e-5,0.0997,0.422,98.966,248104,4,C# major
+January '17,So So Lovely,Shigeto,0d1he0dkoXg6BbK0GjRmfk,0.549,0.928,G#,-4.968,minor,0.191,0.263,0.214,0.0706,0.876,99.432,163176,4,G# minor
+January '17,Snap,Nosaj Thing,5Vd0aJEbWxvteDGvrirEax,0.692,0.697,A#,-9.435,minor,0.0792,0.00857,0.102,0.0956,0.135,126.62,206080,4,A# minor
+January '17,Anxiété,Naive Thieves,1TdSKazfzWQ1Uz5bqvFfEN,0.556,0.782,F,-5.751,minor,0.0432,0.0524,0.763,0.224,0.653,115.984,141440,4,F minor
+January '17,Carry The Zero,Built To Spill,3HMOMdRPywfouYx5B4PvaH,0.264,0.812,E,-5.651,major,0.031,1.35e-5,0.108,0.0962,0.458,94.095,343893,4,E major
+January '17,A.M. 180,Grandaddy,1nMTZpPK7y79YmNUJnCMS7,0.296,0.421,F,-8.724,major,0.0313,6.58e-4,0.931,0.285,0.211,88.166,200667,4,F major
+January '17,Animal,Javier Dunn,1HnDHi1KZrsMSwGut1A8KC,0.701,0.287,C#,-16.319,minor,0.0267,0.916,0.0126,0.112,0.178,100.012,215200,3,C# minor
+January '17,Tokyo Summer,Mounties,78hGjJf8KGJCnJTVbrwwCm,0.369,0.955,F#,-2.483,major,0.0508,0.11,0.00371,0.161,0.736,83.962,242271,4,F# major
+January '17,West Egg (Original Mix),Pierce Fulton,6AfSqz3OAhMRjqt2FECmcm,0.679,0.649,C,-7.085,major,0.0367,0.558,0.828,0.0903,0.249,160.023,296250,4,C major
+January '17,Cat Fantastic,TTNG,1kaWnMc0ryiFtPwWVKmZtb,0.521,0.803,A,-6.264,major,0.0387,0.0528,4.94e-4,0.254,0.698,127.894,293987,4,A major
+January '17,Can't Get Happy,Only Real,0soPMFEuf0quTI585I5TeO,0.552,0.882,B,-4.461,major,0.0261,0.337,0,0.141,0.669,89.983,227111,4,B major
+January '17,Forever Longing The Golden Sunsets,The Appleseed Cast,5LmVh9OnnFw0ARSFU4oKFD,0.182,0.948,B,-4.186,major,0.0874,0.0409,1.53e-5,0.104,0.418,152.837,281907,4,B major
+Your Top Songs 2016,Sittin Here,Supermassive,0eEtvptSMs3Ib3llWU7FEg,0.651,0.855,A,-6.086,minor,0.0447,0.00598,0.0136,0.0753,0.621,140.015,210746,4,A minor
+Your Top Songs 2016,A King Alone,The M Machine,7d6FQksrcTy82SxNINgpX7,0.676,0.751,C,-6.597,major,0.0439,0.00122,0.738,0.15,0.271,110.033,226909,4,C major
+Your Top Songs 2016,Girls,Slow Magic,0TaLEGNb6f3nL2VME9SxAR,0.681,0.657,C#,-6.385,minor,0.0728,0.222,0,0.135,0.353,101.012,271003,4,C# minor
+Your Top Songs 2016,Upswing,Prinze George,4iw5Zh3RG6t9VmLEMTTn9W,0.614,0.536,D,-6.397,major,0.0289,0.00148,0.122,0.0808,0.417,97.002,283e3,4,D major
+Your Top Songs 2016,Us,Haring,1lvzmxNejb0ZKmmMSfhibh,0.628,0.356,A,-10.909,minor,0.0348,0.00198,0.845,0.176,0.155,107.009,282196,4,A minor
+Your Top Songs 2016,Punching In A Dream,The Naked And Famous,5PtEpuVX03k9bOUwilL5EO,0.473,0.883,F#,-3.65,major,0.047,0.00201,9.67e-4,0.142,0.164,115.048,238133,4,F# major
+Your Top Songs 2016,Circles,machineheart,1QqVXJhaHXpWHrnaEvTzi1,0.612,0.665,B,-4.519,minor,0.0292,0.0119,0,0.0928,0.384,99.989,283680,4,B minor
+Your Top Songs 2016,Fears,MTNS,3TejpL5hSb3LQnlYhYbygy,0.684,0.434,E,-12.09,major,0.0346,0.123,0.183,0.113,0.173,139.986,257669,4,E major
+Your Top Songs 2016,Singularity - Osborne Remix,Hollow & Akimbo,1zbdTLY23XxmoO07irDJjz,0.765,0.557,D,-7.018,minor,0.0419,0.0644,0.43,0.115,0.818,114.996,310264,4,D minor
+Your Top Songs 2016,Expialidocious,Pogo,2an468qCv459bc5DiWulZg,0.612,0.685,D#,-10.57,major,0.102,0.154,2.46e-5,0.205,0.791,122.055,190820,4,D# major
+Your Top Songs 2016,Young Hearts,Strange Talk,1Ua8fsSpMlVUwkm7KkcNcM,0.59,0.83,C#,-7.242,major,0.0319,6.35e-4,0.0946,0.11,0.354,150.005,230665,4,C# major
+Your Top Songs 2016,Blitz,Digitalism,6i0SVo9pcvYnEZg2vR3e07,0.6,0.833,B,-5.136,minor,0.22,7.62e-4,0.932,0.352,0.461,127.988,256120,4,B minor
+Your Top Songs 2016,Funn,Cash+David,5EFi0iKkDiJhxKYpuH71zg,0.687,0.76,C#,-7.791,minor,0.0326,0.0504,0.814,0.117,0.391,90.015,146837,4,C# minor
+Your Top Songs 2016,Kanye,Bogan Via,5vL0KBvhuuFbF8PZTBnSN7,0.713,0.783,D#,-5.647,minor,0.0302,0.0691,0.397,0.0709,0.689,92.016,300453,4,D# minor
+Your Top Songs 2016,carmen,Stromae,60ynqVuPGEmnNqhRRehCZI,0.658,0.827,G#,-8.018,major,0.102,0.0191,1.85e-4,0.341,0.565,150.024,189027,4,G# major
+Your Top Songs 2016,All I Really Need,Vindata,1ryaTk9K15sdYbDsdNKGOY,0.617,0.649,F#,-8.245,minor,0.0382,0.00274,0.0333,0.632,0.183,144.017,354709,4,F# minor
+Your Top Songs 2016,Arrows - Love Thy Brother Remix,Mas Ysa,75MZ2E7WkKaNACjdJoDK8C,0.737,0.815,C,-5.877,major,0.0417,0.0383,0.00378,0.115,0.429,121.999,193279,4,C major
+Your Top Songs 2016,Downtown,Majical Cloudz,5iK8GmW2uiPuUc5CtkZrIK,0.382,0.283,F#,-9.357,major,0.0292,0.786,0.00478,0.111,0.0441,95.3,249063,4,F# major
+Your Top Songs 2016,Stars (EP Version),Future Generations,0hOoJ4xdB7Oai7O6AMqnJA,0.499,0.867,A,-4.445,minor,0.0345,0.0737,0.811,0.252,0.371,88.437,262427,4,A minor
+Your Top Songs 2016,Mr. November,The National,4g8Fn7fWwxculLpkPMxYU1,0.417,0.879,G,-4.187,major,0.0454,0.0234,1.74e-6,0.183,0.707,146.165,240493,4,G major
+Your Top Songs 2016,Always,Panama,4jozjPDv6YVVDmDqDQqyTf,0.606,0.758,F,-5.721,minor,0.027,2.89e-4,0.11,0.143,0.435,116.043,219052,4,F minor
+Your Top Songs 2016,Gasoline,Alpine,1KHOOsJUHBy82PCZVV8Lmd,0.618,0.624,A#,-3.749,major,0.0283,0.0885,0,0.339,0.774,85.994,201800,4,A# major
+Your Top Songs 2016,Imprint,Amtrac,44uekTvcdyNa3TkJCXCREw,0.729,0.698,E,-9.63,minor,0.053,0.254,0.813,0.102,0.519,110.009,172378,4,E minor
+Your Top Songs 2016,Title And Registration,Death Cab for Cutie,6LTQAaWl0Nrnt45ln6iKf3,0.752,0.566,A,-9.64,major,0.0324,0.333,0.13,0.108,0.727,115.794,219267,4,A major
+Your Top Songs 2016,Moon Watcher,Ishi,4UkfZCmm3hXnssbgvGHyVT,0.808,0.679,A,-6.469,minor,0.0365,0.00334,0.6,0.0798,0.493,129.005,294467,4,A minor
+Your Top Songs 2016,Nothing But Our Love - Kasper Bjørke Remix,JR JR,1zehnIUFj3dUmGEzyGG6bg,0.512,0.927,B,-6.371,major,0.0313,6.77e-5,0.235,0.0597,0.891,130.002,298500,4,B major
+Your Top Songs 2016,Put Me To Work,PAPA,1nTvJgr9WaRk6BDoUdjAmZ,0.383,0.876,D,-4.246,major,0.0554,6.95e-4,0.24,0.0837,0.619,144.057,156867,4,D major
+Your Top Songs 2016,Occasional Magic,Yppah,6LxJfN0jU7SOS5uFNkVWHr,0.524,0.828,C#,-7.182,minor,0.035,1.85e-5,0.851,0.0977,0.218,91.974,257627,4,C# minor
+Your Top Songs 2016,The New Original,Wayfarers,3oxRPUIgY1J6M1Jw1BgsFD,0.633,0.811,C,-3.886,minor,0.0319,3.06e-4,0.0417,0.345,0.727,118.018,204978,4,C minor
+Your Top Songs 2016,Lower The Heavens,The Donkeys,3fI5JUeWcSl48NttF2ujnn,0.316,0.757,A,-5.07,minor,0.0313,0.0653,0.861,0.183,0.113,131.444,332307,4,A minor
+Your Top Songs 2016,Two Dots,Lusine,7x7js2zOVMzMbw7HVwpUmq,0.709,0.661,G,-8.405,minor,0.0328,0.607,0.708,0.133,0.608,119.987,278413,4,G minor
+Your Top Songs 2016,Kiara,Bonobo,7sqii6BhIDpJChYpU3WjwS,0.595,0.788,D#,-10.128,minor,0.363,0.195,0.202,0.153,0.414,97.012,230307,4,D# minor
+Your Top Songs 2016,Somewhere,COLLEAGUES,52O8Rx3bvKdQGSTqzm4zRS,0.613,0.624,F,-8.306,major,0.0267,0.14,0.172,0.0797,0.148,100.03,288e3,4,F major
+Your Top Songs 2016,Seven Strangers,90 Pounds of Pete,7anAbuYORJyHvlHb6lambu,0.62,0.713,A,-7.08,major,0.0388,0.0487,3.91e-4,0.166,0.32,139.96,209531,4,A major
+Your Top Songs 2016,Stellar Flares,Yppah,3jVTFRO1VJN15kUx7eyW1K,0.569,0.641,B,-11.074,major,0.0333,5.06e-5,0.869,0.124,0.246,110.031,158083,4,B major
+Your Top Songs 2016,Lovers 2,Alpine,2AiJIQ6q9sf5qGW2euN2ej,0.72,0.585,B,-8.632,minor,0.0298,0.614,0.0168,0.109,0.592,122.013,146773,4,B minor
+Your Top Songs 2016,I Don't Want to Live Forever,Listener,2D2CnKqzvyoUAUGalYUKIn,0.601,0.852,E,-4.312,minor,0.308,0.00898,3.04e-6,0.373,0.519,120.008,254533,4,E minor
+Your Top Songs 2016,Afraid Of Everyone,The National,0riCBdanE8M6z2VOoErDZw,0.527,0.778,A,-7.639,minor,0.0508,0.504,0.8,0.0997,0.24,126.027,259093,4,A minor
+Your Top Songs 2016,Tiny Anthem,The M Machine,7huKSNp5GL1p4yRH26qJXk,0.352,0.85,A#,-7.349,major,0.17,0.0262,4.63e-4,0.12,0.19,170.012,282353,4,A# major
+Your Top Songs 2016,Kangaru,Jóhann Jóhannsson,5Uoa2uh62TtDR1fLmVXJyW,0.278,0.218,A#,-17.633,major,0.038,0.97,0.926,0.105,0.0495,83.397,175982,4,A# major
+Your Top Songs 2016,Pogo,Digitalism,4CLZlTPjaKqbadAJc031OQ,0.403,0.754,C,-5.256,major,0.0441,6.08e-5,7.73e-5,0.529,0.398,136.021,226467,4,C major
+Your Top Songs 2016,Still Life,Hollow & Akimbo,3IOWuBLkQYpwFERmGUgwvY,0.568,0.863,C,-5.208,major,0.0412,0.0127,0.0518,0.107,0.466,98.008,239513,4,C major
+Your Top Songs 2016,Go!,Soft Swells,2aCKSM3OrzKlEkd7DXZ7Cu,0.626,0.7,D,-10.953,major,0.0358,0.283,0.433,0.472,0.246,118.008,282453,4,D major
+Your Top Songs 2016,Most Roads Lead to Home (Instrumental),Listener,3J8fFOeIE4ZwkUulxMJX1J,0.371,0.664,G,-9.645,major,0.0345,2.6e-5,0.718,0.125,0.165,124.987,255e3,4,G major
+Your Top Songs 2016,Aerials,Lights & Motion,11wlDEdE6fV0YuRXSXMAnE,0.453,0.615,E,-6.631,major,0.0292,7.47e-5,0.245,0.0799,0.0382,130.02,345742,4,E major
+Your Top Songs 2016,Look Up,Mas Ysa,0XWDrpLovAhPPVkli8cHAU,0.663,0.9,C,-8.461,major,0.0486,0.115,0.205,0.603,0.496,126.389,326773,4,C major
+Your Top Songs 2016,Silk,Giselle,418fYKL9zrcfvpI6WnIARi,0.632,0.243,F,-13.464,major,0.0463,0.963,0.00324,0.106,0.0516,82.069,192047,4,F major
+Your Top Songs 2016,Automatic (feat. Jenn Wasner),Big Data,2lDRnUVZJTYLzDFD5BuaWN,0.396,0.644,E,-5.441,minor,0.0666,0.0689,0.0025,0.111,0.321,179.952,314067,4,E minor
+Your Top Songs 2016,Heartbeat Amplifier,The Polish Ambassador,0gyzuOe3583jZfVAbTFMCY,0.531,0.609,F#,-8.39,minor,0.057,0.0485,0.58,0.137,0.336,159.933,356304,4,F# minor
+Your Top Songs 2016,Colour In Your Hands (Scandinavia Edit),D.L.i.d,0JixxezgmNNTKR3NQwa6vL,0.421,0.767,A,-8.407,minor,0.0312,0.00728,0.868,0.0692,0.054,180.009,349333,4,A minor
+Your Top Songs 2016,Garden Grays,Wildcat! Wildcat!,1CfDA5hDlUFbYb4pK1NUQn,0.488,0.773,B,-5.063,minor,0.0283,0.00109,3.74e-4,0.109,0.255,93.999,213003,4,B minor
+Your Top Songs 2016,Robotic,Hannah Georgas,6S3cCgcePjIurF8pT2XWPP,0.53,0.88,G,-4.69,major,0.0413,0.0132,0.153,0.113,0.454,136.976,238360,4,G major
+Your Top Songs 2016,Young,Vallis Alps,3u4rIcRR7gSoJdkJIx9zpu,0.584,0.384,D#,-12.144,minor,0.0675,0.72,0.288,0.0964,0.184,93.981,324123,4,D# minor
+Your Top Songs 2016,Duckpond,Midwest Product,3oaWlxqvuCDNc9snpZkgvK,0.573,0.75,C#,-9.145,major,0.0272,0.0419,0.648,0.117,0.0396,101.979,296947,4,C# major
+Your Top Songs 2016,Leave A Trace - Goldroom Remix,CHVRCHES,5Lt0L3Hc2eSZXPIOGWXcd8,0.722,0.789,A,-5.484,major,0.041,0.168,0.0177,0.0913,0.043,112.001,299063,4,A major
+Your Top Songs 2016,Make It up or Let Go,"Saturday, Monday",6AY8SZjscYGYRHTyHOP5hF,0.627,0.721,G,-7.422,minor,0.0392,0.0264,0.649,0.292,0.0718,128.292,290446,4,G minor
+Your Top Songs 2016,Get Out,Frightened Rabbit,6NsRMcD9MBp9sYXtcnJSGK,0.366,0.859,C#,-5.957,major,0.0531,0.0334,0.0774,0.139,0.569,178.021,201147,4,C# major
+Your Top Songs 2016,Cape Town - Panama Remix,Clubfeet,50PgbvLGwLjZXZ5LXwu2JH,0.758,0.965,A,-3.687,minor,0.0438,0.0526,0.0461,0.129,0.694,118.033,246689,4,A minor
+Your Top Songs 2016,Devil Like Me,Rainbow Kitten Surprise,0HsGh7cboYz6cVMIyFrQ8j,0.679,0.63,D,-6.83,major,0.158,0.758,7.06e-5,0.111,0.558,123.082,188280,4,D major
+Your Top Songs 2016,Archipelago,IAMBEAR,5RJDwi0W4tFJkbjbL0cwlT,0.347,0.622,F#,-7.728,minor,0.228,0.763,0.669,0.15,0.211,180.145,277181,4,F# minor
+Your Top Songs 2016,ave cesaria,Stromae,4zw0Ih25ilFwQdtkzzWA7s,0.721,0.653,B,-8.259,minor,0.209,0.131,3e-6,0.226,0.391,112.992,249520,4,B minor
+Your Top Songs 2016,Fantasy,Dye,0FlEFGqwvLmJzZ2PcYrA2D,0.521,0.858,A#,-4.05,major,0.029,8.81e-4,0.376,0.394,0.2,110.006,289587,4,A# major
+Your Top Songs 2016,Maurine,Say Hi,7dw9Y2IXDk9VD1umi477tM,0.761,0.527,E,-11.472,major,0.0454,0.21,0.529,0.114,0.265,119.988,194733,4,E major
+Your Top Songs 2016,The Ghosts Of Beverly Drive - Tycho Remix,Death Cab for Cutie,3KgceZu60IAoDwkn7Ehf6O,0.516,0.686,F#,-10.422,minor,0.126,0.137,3.2e-4,0.075,0.499,159.894,312e3,4,F# minor
+Your Top Songs 2016,Coward,Hans Zimmer,3wa4t4bc0UjG2eSGgXHcaR,0.433,0.258,C,-18.526,major,0.0425,0.25,0.886,0.228,0.0398,119.99,506876,4,C major
+Your Top Songs 2016,Columbus,Snowmine,7JIng8f1mUfmjjrl9SuSeM,0.646,0.598,F#,-7.598,minor,0.033,0.394,0.0181,0.0786,0.486,118.049,247193,4,F# minor
+Your Top Songs 2016,Daggers,Robot Science,6js1TMeoPmuo72BgZZlw3E,0.431,0.907,B,-6.602,minor,0.0295,0.00674,0.654,0.108,0.581,118.8,330568,4,B minor
+Your Top Songs 2016,Cornfield Chase,Hans Zimmer,18z7tK7u9DcDw85LYRR5Fe,0.33,0.229,A,-16.442,minor,0.0375,0.948,0.973,0.0998,0.0593,96.158,126960,4,A minor
+Your Top Songs 2016,Dim The Lights,Wild Ones,16VxQTJDjiqjIraZ6zhi3J,0.548,0.803,F#,-4.333,major,0.0271,0.0621,0.177,0.109,0.537,99.969,248747,4,F# major
+Your Top Songs 2016,Half-Life,Field Mouse,14ctapweFEZM0FhOd4ueQo,0.507,0.722,G#,-8.644,major,0.0329,0.00431,0.0167,0.18,0.462,153.93,158453,4,G# major
+Your Top Songs 2016,Pure,Blackbird Blackbird,1zWUwuaYqMdY6xqmVa4Zb1,0.458,0.667,F#,-9.084,major,0.179,0.572,0.906,0.121,0.357,101,141160,4,F# major
+Your Top Songs 2016,Avril 14th,Aphex Twin,2LbyMbtKsh2pld57XN50M2,0.594,0.0252,F,-29.986,minor,0.0421,0.995,0.898,0.0949,0.391,78.985,125533,4,F minor
+Your Top Songs 2016,American Dream,On An On,4JyTh0iRV8i02HxMCbFrdl,0.635,0.893,F,-4.552,major,0.0342,0.0142,0.0095,0.109,0.895,120.005,194369,4,F major
+Your Top Songs 2016,Light,CRISTALLIN,3ne6Dy39rWIQBS5N7kdZ3d,0.57,0.65,D#,-6.189,major,0.0247,0.662,0.613,0.152,0.123,89.995,213891,4,D# major
+Your Top Songs 2016,Mystery Colors,"Astronauts, etc.",05O1JFM21r3YEIR0dTqqwv,0.619,0.619,A#,-8.568,major,0.0295,0.462,0.0767,0.114,0.0955,131.941,237500,4,A# major
+Your Top Songs 2016,Mountains,Hans Zimmer,6WVRhBxRMW9fn6sRkt2gWn,0.251,0.0575,A,-16.985,minor,0.0293,0.605,0.922,0.098,0.0371,95.947,219093,4,A minor
+Your Top Songs 2016,Bust the Way You Were (feat. Unravel),Gangplans,1GvrrKeINHgvgoX2KF9lHo,0.566,0.737,D,-9.526,major,0.0425,0.00216,0.855,0.114,0.161,114.991,254e3,4,D major
+Your Top Songs 2016,Shot Fox,Alpine,2E3UE3HoNiCGEr2AScDEn5,0.557,0.687,E,-7.373,minor,0.0401,0.00156,0.171,0.26,0.46,163.958,227992,4,E minor
+Your Top Songs 2016,Folded Out,Stolen Jars,4KgNwNhYP7CzrOQ5XjszhA,0.661,0.338,G,-10.668,major,0.0287,0.321,0.32,0.111,0.301,107.528,188760,4,G major
+Your Top Songs 2016,Reminder,Moderat,7xaY1srsqteTaRA7Rl8yy7,0.397,0.487,D,-9.972,major,0.0691,0.0348,0.337,0.0955,0.118,159.888,234080,4,D major
+Your Top Songs 2016,Flim,Aphex Twin,4YvnrZMF1VmTAZIJlBhvCg,0.708,0.735,A#,-14.889,major,0.0524,0.513,0.857,0.0804,0.413,147.984,177107,4,A# major
+Your Top Songs 2016,Opium,The New Division,1SFDYObi6lB3MpiIkWTXla,0.56,0.858,A,-5.942,minor,0.0313,3.12e-4,0.878,0.106,0.436,111.033,320023,4,A minor
+Your Top Songs 2016,Logic of a Dream,Explosions In The Sky,3GuegWLYVRmMxV8AVpYJqM,0.329,0.388,E,-12.741,minor,0.0432,0.583,0.852,0.109,0.0625,120.016,397653,4,E minor
+Your Top Songs 2016,Rome,Phoenix,1jIvxe4pkZDvsyP9lfcwYX,0.651,0.676,D,-6.872,major,0.0328,0.353,0.0739,0.101,0.407,126.227,278080,4,D major
+Your Top Songs 2016,Bear Hands,Private Island,75yJqOWtWFbmX5c8dBNpCQ,0.485,0.894,B,-4.864,minor,0.0718,0.0257,0.065,0.137,0.523,126.072,284827,4,B minor
+Your Top Songs 2016,Alex,Nicky Blitz,1YkWIZn9Be7QjBtQq1oYyv,0.555,0.81,C,-5.456,major,0.0269,0.00736,0.0065,0.212,0.668,135.046,190851,4,C major
+Your Top Songs 2016,Night Trek - Bibio Remix,Wax Stag,50A4ssXMGld5PoPuNzqYtA,0.626,0.655,A,-12.584,major,0.0343,0.0392,0.725,0.228,0.616,96.004,307460,4,A major
+Your Top Songs 2016,First,Cold War Kids,0aGSUNleFqs5HNEJcwqvXJ,0.468,0.692,D,-4.015,major,0.0295,0.0202,2.39e-6,0.523,0.561,78.009,200360,4,D major
+Your Top Songs 2016,Awake,Tycho,0Mx2W2i58sIPmEvfKdh1Q2,0.552,0.878,C#,-5.767,major,0.0353,0.0585,0.892,0.0746,0.598,176.057,283636,4,C# major
+Your Top Songs 2016,Hello!,Explosions In The Sky,6SZtWGjKULlJUW9sD5guhk,0.464,0.342,F#,-19.402,major,0.0375,0.595,0.88,0.0741,0.0619,120,218960,4,F# major
+Your Top Songs 2016,West Coast,Hey Marseilles,6JrhK1EuBS9EKpFmcuhrp1,0.575,0.651,A,-5.209,major,0.0258,0.00831,2.99e-6,0.099,0.406,138.804,218133,4,A major
+Your Top Songs 2016,The Match,The Eastern Sea,4yAArOkkNm03xd6UIvvOrG,0.491,0.417,D,-9.575,major,0.0338,0.244,0.053900000000000003,0.0616,0.319,119.289,294667,4,D major
+Your Top Songs 2016,The Night Out - A-Trak vs. Martin Rework,Martin Solveig,1LEKzDLoGL2ueXIMqkXM93,0.545,0.928,C#,-3.358,minor,0.135,0.00237,1.66e-6,0.338,0.617,127.985,232510,4,C# minor
+Your Top Songs 2016,TenTwentyTen,Generationals,276plrNIM5lpbgoPIdxBUJ,0.624,0.832,A,-5.128,major,0.0433,0.0274,0.00747,0.0761,0.796,86.019,202613,4,A major
+Your Top Songs 2016,Stay With Us,Seoul,3Opk9C8pMgBCmbqXelH0I5,0.691,0.541,G#,-7.71,major,0.0307,0.405,0.83,0.122,0.6,107.33,237945,4,G# major
+Your Top Songs 2016,Always With Me,Wolf Saga,0fAo3LIct08Q7jChh9Ertr,0.59,0.32,B,-11.643,major,0.0332,0.0365,0.745,0.11,0.094,124.994,221880,4,B major
+Your Top Songs 2016,Bad Kingdom,Moderat,52sUt1HsFxScRUbOxnBQRP,0.425,0.657,G,-8.143,minor,0.0572,0.00231,0.888,0.286,0.261,118.018,262840,4,G minor
+Your Top Songs 2016,Fiona Coyne,Skylar Spence,3x3lq0IUkLEv4apfJxwgwd,0.667,0.875,B,-5.274,minor,0.122,0.0105,3.46e-6,0.336,0.715,110.029,244292,4,B minor
+Your Top Songs 2016,Man In A Garage,Coldcut,655z88zyZCihaO9gQoBhhX,0.576,0.729,F#,-7.358,minor,0.0269,0.00162,0.75,0.15,0.681,140.015,207827,4,F# minor
+Your Top Songs 2016,Farthest Outpost,Martin O'Donnell,3OT8VG4HoORccFXPs3i5Sg,0.425,0.338,F,-17.195,major,0.0357,0.732,0.868,0.0741,0.199,119.959,314413,4,F major
+Your Top Songs 2016,Paris,Magic Man,4EaO2XR7gWaHq8DW7nu1iY,0.472,0.881,D,-5.252,major,0.0524,0.0876,0,0.0698,0.502,178.858,232747,4,D major
+December '16,Emily,San Fermin,4cdEFKZRmFfZkqkQmo9Gix,0.643,0.644,C,-8.141,major,0.03,0.0727,0.024,0.215,0.58,96.001,226867,4,C major
+December '16,It's Not Over,Panama,7nVX8ioiI14L0hkmfkrurR,0.641,0.825,D,-10.272,major,0.0536,0.32,0.405,0.25,0.431,130.025,279267,4,D major
+December '16,Surrender,Pilgrim,3gBK6LM4xOcJXIgwcXozeb,0.743,0.572,C,-6.735,major,0.0715,0.0304,0.162,0.106,0.758,101.327,255923,4,C major
+December '16,Suitcase,The New Electric Sound,5hAzmOywH0Z5QNz44IS8nh,0.463,0.755,F,-5.693,minor,0.0333,0.106,2.39e-4,0.12,0.589,145.023,284080,4,F minor
+December '16,Far,Canopy Climbers,5i6G3CbuyjcOjKe7lJrsWX,0.599,0.551,F#,-8.195,major,0.0313,0.0299,0.0108,0.109,0.16,94.956,248612,4,F# major
+December '16,Home Away from Home,Canopy Climbers,0MaDLHCiHmW4wZERHhz9QA,0.669,0.519,G#,-10.082,major,0.0278,0.0396,1.63e-6,0.0961,0.396,109.998,241091,4,G# major
+December '16,Closer,Lemaitre,7sSC2ndMmI1qGNbu8UXQuE,0.585,0.774,D,-3.65,minor,0.0335,0.00133,0.0126,0.106,0.384,91.957,270533,4,D minor
+December '16,Days Don't Fade,Lindbergh Palace,5rh6VOp1gWlWLlpdPu3RQp,0.542,0.714,D#,-6.351,major,0.0308,0.333,0.00801,0.124,0.31,125.011,253801,4,D# major
+December '16,Omar,Bayonne,54f36LcrbW4X9XPtdBZr3N,0.572,0.61,C,-8.132,major,0.0283,0.455,0.881,0.113,0.519,147.063,355413,4,C major
+December '16,The Night,HONNE,7naPidcaBye6u9xLtZ6v6z,0.667,0.558,A,-5.743,minor,0.0364,0.197,3.14e-6,0.176,0.402,140.016,302487,4,A minor
+December '16,Mate,Gang Signs,0mlvFyJkOqYYQtmYKhIpMg,0.435,0.561,G,-10.949,major,0.0499,7.57e-4,0.681,0.105,0.193,119.995,33e4,4,G major
+December '16,Hold The Line,Jack and Eliza,6Rv1R5w8wj4mxv3qarmudR,0.581,0.494,F,-5.945,major,0.031,0.595,4.2e-6,0.2,0.357,121.957,178955,4,F major
+December '16,Take Care,Roah Summit,7roxrg5DeegLrJzTTyAyNx,0.509,0.676,D,-7.497,major,0.0308,0.102,0.124,0.0688,0.198,147.996,268793,4,D major
+December '16,A Selfish Man,Francis Lung,4uymXF57TdCZgZP2AupOtE,0.665,0.636,F,-8.598,minor,0.0288,6.29e-4,0.615,0.128,0.698,132.786,374213,4,F minor
+December '16,Gone - Nicolas Haelg Remix,JR JR,4p5qlpbMid6MvTt3w4EhM5,0.653,0.663,A,-6.15,major,0.0291,0.0547,0.0123,0.636,0.686,125.997,208260,4,A major
+December '16,NoLo,Grace Mitchell,5tR4MFnmZKLjY5ccrSPyki,0.536,0.687,G#,-7.393,minor,0.0381,0.00836,1.83e-5,0.269,0.222,89.944,265973,4,G# minor
+December '16,Crusoe,Halcyon Drive,6vXJqDYg40mO3eFcKCJ5S2,0.654,0.809,A#,-5.79,major,0.0416,0.351,7.57e-4,0.195,0.699,91.034,201245,4,A# major
+December '16,High & Low,Son & Thief,3BmyZNv2w0jraiqekGMLJc,0.593,0.495,C,-9.804,major,0.0286,0.202,0.223,0.102,0.0548,85.528,302240,4,C major
+December '16,Hallelujah,The Helio Sequence,0e9dyQBdyhjH640nwPEwmb,0.429,0.974,G#,-5.215,major,0.0475,0.00183,0.0346,0.0853,0.525,95.982,268098,4,G# major
+December '16,The Measure,The Helio Sequence,0Ce6N5FNR84mNAViVrYGT1,0.551,0.662,E,-9.687,major,0.0292,0.42,0.739,0.195,0.194,136.867,199640,4,E major
+December '16,Beach,Peter Wolf Crier,4J3jG8Ydg56WgltAy7bEeP,0.539,0.824,C,-8.68,major,0.0361,0.0655,5.17e-6,0.293,0.521,101.008,188573,4,C major
+December '16,Cool Kids - RAC Mix,Echosmith,0aHx993Ffbxhx2u9Xo3SxN,0.7,0.672,G#,-6.255,major,0.0598,0.00189,0.0338,0.0839,0.262,130.033,259329,4,G# major
+December '16,Underline,Morning Show,7KjvCqHqfv4ueuNR0UECcS,0.624,0.746,C,-7.872,major,0.0509,0.195,0.289,0.131,0.225,93.993,250659,4,C major
+December '16,Sheep In Wolves Clothes,little hurricane,2J9Xxbqqyes5yZOcdY3ZuE,0.531,0.848,A#,-6.931,major,0.0645,0.00584,1.63e-6,0.0955,0.411,114.021,198763,4,A# major
+November '16,Mr. November,The National,4g8Fn7fWwxculLpkPMxYU1,0.417,0.879,G,-4.187,major,0.0454,0.0234,1.74e-6,0.183,0.707,146.165,240493,4,G major
+November '16,Somewhere,COLLEAGUES,52O8Rx3bvKdQGSTqzm4zRS,0.613,0.624,F,-8.306,major,0.0267,0.14,0.172,0.0797,0.148,100.03,288e3,4,F major
+November '16,Honeysuckle - Milwaukee,Canon Blue,4kH2Gt1ASesDpEwFSpCgpO,0.515,0.625,F#,-9.151,minor,0.0302,0.274,0.0684,0.0907,0.336,97.038,276133,4,F# minor
+November '16,Inner City,So Many Wizards,3pkOnHUNvmvA2bCK77g2S4,0.354,0.814,A,-8.25,major,0.053900000000000003,0.0202,0.311,0.356,0.365,151.109,165993,4,A major
+November '16,Visits,COLLEAGUES,6S053SQ4izt0aXBmsMfONZ,0.664,0.677,C,-8.315,major,0.0299,0.191,0.53,0.1,0.59,119.96,201028,4,C major
+November '16,Circles,machineheart,1QqVXJhaHXpWHrnaEvTzi1,0.612,0.665,B,-4.519,minor,0.0292,0.0119,0,0.0928,0.384,99.989,283680,4,B minor
+November '16,Tourist,RAC,7rhbiTr94Jnbov2WVQCC7D,0.814,0.551,G,-5.561,major,0.0353,0.185,3.24e-4,0.0555,0.778,106.008,184240,4,G major
+November '16,Afraid Of Everyone,The National,0riCBdanE8M6z2VOoErDZw,0.527,0.778,A,-7.639,minor,0.0508,0.504,0.8,0.0997,0.24,126.027,259093,4,A minor
+November '16,Colerain,Way Yes,3cNNz041IdlLRfuiBcS45o,0.623,0.849,F#,-7.383,minor,0.041,0.48,0.754,0.118,0.192,104.992,388480,4,F# minor
+November '16,Go!,Soft Swells,2aCKSM3OrzKlEkd7DXZ7Cu,0.626,0.7,D,-10.953,major,0.0358,0.283,0.433,0.472,0.246,118.008,282453,4,D major
+November '16,The Match,The Eastern Sea,4yAArOkkNm03xd6UIvvOrG,0.491,0.417,D,-9.575,major,0.0338,0.244,0.053900000000000003,0.0616,0.319,119.289,294667,4,D major
+November '16,Fireflies,Mother Falcon,6A1sdbyem98dRGht2qxZY8,0.417,0.674,F#,-9.644,major,0.0363,0.454,0.0107,0.0931,0.392,169.269,236333,4,F# major
+November '16,Thank You,Bombadil,34a295RioFNNKHqfRi3eVd,0.291,0.172,C,-17.151,major,0.0344,0.954,0.452,0.0941,0.463,96.082,256840,4,C major
+November '16,Inheritance,The Last Bison,6IocAASV879CUeZZzJYPdz,0.47,0.508,D,-14.644,major,0.0598,0.659,0.95,0.282,0.567,88.743,61707,3,D major
+November '16,Quill,The Last Bison,4NtQlmxIKjl8aNYA8XRxFH,0.457,0.567,D,-8.524,major,0.0344,0.513,4.5e-4,0.329,0.57,125.891,154053,4,D major
+November '16,1957,Milo Greene,08cXy6KUizaAelYXtcew3w,0.388,0.595,C#,-9.799,major,0.0325,0.663,5.58e-5,0.178,0.596,190.043,204213,4,C# major
+November '16,Don't You Give Up On Me,Milo Greene,4gvAocL5C5UKJcJ2kEJlka,0.56,0.613,A,-8.756,major,0.0275,0.118,0.00429,0.226,0.505,124.01,197873,4,A major
+November '16,"Shake, Shake, Shake",Bronze Radio Return,4dI4oscajpdtjpg2dP1x28,0.727,0.678,A#,-5.136,major,0.0625,0.0797,5.64e-4,0.115,0.204,119.955,163236,4,A# major
+November '16,D-D-Dance,The Royal Concept,3yA5KQa12akj6MT6mSWHf8,0.275,0.801,A#,-4.456,major,0.221,0.00123,3.35e-5,0.106,0.448,205.715,222040,4,A# major
+November '16,Running Back To You,For The Foxes,2tNUFabN3Zpei8csN0D36h,0.547,0.764,D#,-5.945,major,0.0342,0.307,0.00579,0.0953,0.508,125.594,259213,4,D# major
+November '16,Beautiful Women,Netherfriends,6VFPL38pOXN1VohA0pF8ED,0.334,0.772,B,-7.052,minor,0.0908,0.00922,0.465,0.483,0.0928,134.858,172543,3,B minor
+November '16,Less Words,Old Earth,3n9uVE1Rxnvn7igOTj66sT,0.266,0.261,G#,-12.134,major,0.0282,0.878,0.689,0.237,0.0547,106.853,208e3,4,G# major
+November '16,Seventeen,Sjowgren,6S0IRhCK4P0llKnIjivfGd,0.609,0.728,G,-5.859,major,0.0419,0.327,0.0851,0.0569,0.322,146.016,225360,4,G major
+November '16,Twin Size Mattress,The Front Bottoms,0tCJ4iU48j9B6xMjXx35Ht,0.328,0.867,E,-5.53,major,0.0812,0.00548,4.33e-6,0.103,0.336,145.25,264677,4,E major
+November '16,Progress,Francisco The Man,4fyOMumYj68XaEmyKq9UJ0,0.394,0.717,G#,-7.763,major,0.0424,2.18e-4,0.161,0.204,0.655,167.836,227468,4,G# major
+November '16,Put 'Em Up,Priory,2039juQOFMpEuA6P6oOMZ9,0.56,0.711,B,-6.494,major,0.0443,0.0113,1.42e-6,0.141,0.404,179.99,216107,4,B major
+November '16,Palmless,dana falconberry,25MpDrxls4e5PoHMcb1yN0,0.555,0.887,F#,-7.509,major,0.0368,0.0254,0.075,0.27,0.665,106.99,244256,4,F# major
+November '16,Family And Genus,Shakey Graves,2uKribaTW8mv1FlnIkfUHy,0.737,0.486,A#,-12.293,major,0.0568,0.476,0.251,0.402,0.363,113.001,319840,4,A# major
+November '16,Snowglobe,OWEL,1z1entlIgK6bmILQrxvEzL,0.387,0.462,F#,-7.995,minor,0.0286,0.0394,0.629,0.123,0.0601,160.054,454960,4,F# minor
+November '16,Kangaru,Jóhann Jóhannsson,5Uoa2uh62TtDR1fLmVXJyW,0.278,0.218,A#,-17.633,major,0.038,0.97,0.926,0.105,0.0495,83.397,175982,4,A# major
+October '16,Stars (EP Version),Future Generations,0hOoJ4xdB7Oai7O6AMqnJA,0.499,0.867,A,-4.445,minor,0.0345,0.0737,0.811,0.252,0.371,88.437,262427,4,A minor
+October '16,Folded Out,Stolen Jars,4KgNwNhYP7CzrOQ5XjszhA,0.661,0.338,G,-10.668,major,0.0287,0.321,0.32,0.111,0.301,107.528,188760,4,G major
+October '16,Recess,Golden Coast,4AaX6BvUuqvJ2CGbrV0oKf,0.762,0.832,A#,-8.139,major,0.0797,0.0303,0.0215,0.0893,0.658,103.005,188646,4,A# major
+October '16,Garden Grays,Wildcat! Wildcat!,1CfDA5hDlUFbYb4pK1NUQn,0.488,0.773,B,-5.063,minor,0.0283,0.00109,3.74e-4,0.109,0.255,93.999,213003,4,B minor
+October '16,We Are the Dream (TheFatRat Remix),Sound Remedy,3wDIWPDD1320EUg60FeUOs,0.707,0.755,F,-3.867,minor,0.0496,0.0708,0.048,0.074,0.679,94.995,242526,4,F minor
+October '16,Paris,Magic Man,4EaO2XR7gWaHq8DW7nu1iY,0.472,0.881,D,-5.252,major,0.0524,0.0876,0,0.0698,0.502,178.858,232747,4,D major
+October '16,Gotta Go Home,Humans,6PDQPUW9qm7KcalwSZ3efn,0.663,0.862,B,-4.823,minor,0.0494,0.00365,0.00137,0.0967,0.392,120.001,289487,4,B minor
+October '16,Dangerous - Sebu Remix,Big Data,1GGAFSOcU7nMNLVKZwWyju,0.728,0.669,F,-3.547,major,0.047,0.00386,2.01e-6,0.519,0.855,122.988,210467,4,F major
+October '16,Still Late,Satellite High,3OJozfaa975lgDvKVUApUX,0.769,0.63,C,-11.248,minor,0.0445,0.584,0.0057,0.072,0.452,101.99,209505,4,C minor
+October '16,Innocence (feat. REMMI),Super Duper,2hZ16g5eXGZWTFCBoVrxUy,0.438,0.561,G#,-6.462,major,0.0263,0.00123,0,0.109,0.261,139.993,185143,4,G# major
+October '16,X,Moons of Mars,5CtDx3ELApmuTqb5kAFstr,0.575,0.866,C#,-6.112,major,0.0323,4.46e-5,0.0104,0.183,0.513,128.029,160320,4,C# major
+October '16,Melt,Broke For Free,4es2aiFJ3zIFitLpVKGJeM,0.616,0.846,F#,-7.454,minor,0.0384,0.0284,0.863,0.37,0.357,93.979,260827,4,F# minor
+October '16,Sweet n Sour,Waterbed,21C5OBkZs7G9T8lXkFg5vY,0.734,0.696,C#,-7.983,major,0.15,0.416,0.00181,0.106,0.548,80.545,144257,4,C# major
+October '16,Colours In The Sky,Miami Horror,5GbJAv0eTdbrAaCUl9oUQy,0.432,0.756,F,-5.922,major,0.0317,0.297,2.96e-5,0.338,0.446,87.898,250947,4,F major
+October '16,Nothing More,Guards,11Av7NIWdRnaZq7Dj3gOmg,0.541,0.751,F#,-8.116,major,0.0352,0.0268,3.41e-4,0.0964,0.845,90.975,229870,4,F# major
+October '16,Barking Dog,Phantogram,0Hthpa5QeGayFaG0KwBMLM,0.287,0.504,B,-9.387,major,0.0333,0.834,5.92e-5,0.668,0.258,111.024,182960,4,B major
+October '16,Bill Murray,Phantogram,0zDbbJ71fcLI9E8dmlgffZ,0.424,0.503,A,-6.74,major,0.0281,0.0684,0.137,0.233,0.122,76.454,215413,4,A major
+October '16,Light,CRISTALLIN,3ne6Dy39rWIQBS5N7kdZ3d,0.57,0.65,D#,-6.189,major,0.0247,0.662,0.613,0.152,0.123,89.995,213891,4,D# major
+October '16,Total Zombie,Day Wave,2r7JYb8F8IrS5n9RO1jPPo,0.563,0.842,E,-8.011,major,0.0284,0.325,0.293,0.157,0.729,149.001,255506,4,E major
+October '16,Accidents,The One AM Radio,7Iz6rdL2yGnX4MlUoUYRxM,0.849,0.531,C,-7.579,major,0.0422,0.763,0.0174,0.0716,0.791,114.949,118826,4,C major
+October '16,Good Intentions,The One AM Radio,4kqtYptNskFp3lfRLmAWey,0.531,0.749,E,-5.972,major,0.0506,0.11,1.99e-6,0.168,0.459,160.006,165562,4,E major
+October '16,Zen Scientist (feat. Myka 9),Milo,5ip8NxzAUFcKFI2BRwaQ9B,0.514,0.418,A,-11.506,minor,0.368,0.716,0.00626,0.201,0.268,139.238,230032,4,A minor
+September '16,Intro,Warpaint,7oPReZS2KtJD7k38KaDhye,0.641,0.667,B,-9.873,minor,0.0377,0.285,0.779,0.345,0.569,131.753,111078,4,B minor
+September '16,"Cannot Get, Started",Handsome Furs,4vQEnQogkz2J8VSPMMkxb1,0.724,0.796,G,-5.974,major,0.0454,0.103,8.95e-5,0.128,0.798,130.041,180147,4,G major
+September '16,Pretty Boy,Young Galaxy,0rJ2T1R5GuPYIj5J3BdInp,0.564,0.948,F#,-6.527,minor,0.0377,0.0202,0.583,0.104,0.269,124.979,235840,4,F# minor
+September '16,Arrows - Love Thy Brother Remix,Mas Ysa,75MZ2E7WkKaNACjdJoDK8C,0.737,0.815,C,-5.877,major,0.0417,0.0383,0.00378,0.115,0.429,121.999,193279,4,C major
+September '16,All in My Head,Porcelain Raft,4VIVjhZ8wkq1XRmv3LEV9s,0.538,0.82,E,-6.126,minor,0.0361,0.22,0.0675,0.253,0.301,120.006,240726,4,E minor
+September '16,Omamori,Elite Gymnastics,42U7kpe9H9aGJHhOvG8mHo,0.539,0.947,C,-5.956,major,0.0347,0.00108,0.798,0.0945,0.593,98.011,258623,4,C major
+September '16,Seven Strangers,90 Pounds of Pete,7anAbuYORJyHvlHb6lambu,0.62,0.713,A,-7.08,major,0.0388,0.0487,3.91e-4,0.166,0.32,139.96,209531,4,A major
+September '16,Half-Life,Field Mouse,14ctapweFEZM0FhOd4ueQo,0.507,0.722,G#,-8.644,major,0.0329,0.00431,0.0167,0.18,0.462,153.93,158453,4,G# major
+September '16,Prehistoric - Field Mouse Remix,"Now, Now",5ZSS5xL0e4YcrPkyYPV88k,0.476,0.816,F#,-5.509,minor,0.0306,0.00473,0.00358,0.106,0.224,83.493,229603,4,F# minor
+September '16,No Stranger,Small Black,7GPbLkRMgFuU4WtTYYFmeW,0.506,0.858,C,-5.099,major,0.0331,0.0013,0.00238,0.127,0.316,116.984,272400,4,C major
+September '16,Tunnels and Planes,Nick Leng,4yjfM171SimZyctF5W3yoX,0.572,0.596,G,-6.964,major,0.152,0.779,0.154,0.161,0.0622,170.069,251294,4,G major
+September '16,Pure,Blackbird Blackbird,1zWUwuaYqMdY6xqmVa4Zb1,0.458,0.667,F#,-9.084,major,0.179,0.572,0.906,0.121,0.357,101,141160,4,F# major
+September '16,Downtown,Majical Cloudz,5iK8GmW2uiPuUc5CtkZrIK,0.382,0.283,F#,-9.357,major,0.0292,0.786,0.00478,0.111,0.0441,95.3,249063,4,F# major
+September '16,Winter Beats,I Break Horses,1zA0RHeNyCAj4mTKCXzsti,0.173,0.782,A,-5.672,major,0.0772,0.00334,0.346,0.223,0.0329,78.357,285600,4,A major
+September '16,Alex,Nicky Blitz,1YkWIZn9Be7QjBtQq1oYyv,0.555,0.81,C,-5.456,major,0.0269,0.00736,0.0065,0.212,0.668,135.046,190851,4,C major
+September '16,Sushi & Wine,Liam Back,49xNQViVNGTnpNjTYSrw4V,0.658,0.796,F,-4.581,major,0.196,0.0304,0.656,0.305,0.486,103.273,189535,4,F major
+September '16,Life in the Sky,Fanfarlo,3rkdnfH1fMypJr3LGNR07D,0.29,0.778,B,-5.541,minor,0.0521,0.207,0.0137,0.152,0.172,174.137,373098,4,B minor
+September '16,Master Of None,Beach House,005qPpqZ4PYk9JTh2EijJr,0.494,0.338,F,-15.236,major,0.0261,0.604,0.51,0.0922,0.239,86.468,199413,4,F major
+September '16,West Coast,Hey Marseilles,6JrhK1EuBS9EKpFmcuhrp1,0.575,0.651,A,-5.209,major,0.0258,0.00831,2.99e-6,0.099,0.406,138.804,218133,4,A major
+September '16,Howling,Cathedrals,1FcZz1kyVomWBEiT93xcJZ,0.642,0.471,G#,-8.49,major,0.0363,0.316,0.0581,0.537,0.135,125.079,286308,4,G# major
+September '16,Feeling Alright - Daughter Remix,Warpaint,1KYvyqqcfQWTPU3RFhRFvx,0.532,0.504,F#,-12.399,minor,0.0311,0.505,0.826,0.339,0.346,95.034,267019,4,F# minor
+September '16,Cascade,Ryan Helsing,5U82v3no1Q8u6USA8ot2je,0.574,0.662,B,-8.878,minor,0.0459,0.647,0.857,0.119,0.179,172.028,276279,4,B minor
+September '16,Transpose,Super Magic Hats,7nDhGGglgMRfVruwxIwmVG,0.608,0.5,F,-10.77,minor,0.0299,0.645,0.927,0.169,0.0714,127.99,183660,4,F minor
+September '16,Sanctuary,Infinity Shred,01LZNRp7m1qQh4UsimtVmv,0.448,0.799,A#,-7.41,minor,0.0309,0.102,0.903,0.495,0.12,120.011,405073,4,A# minor
+September '16,You Got Me,Generationals,3jqg8gLVlGau6SyespptqN,0.908,0.87,C,-6.666,major,0.204,0.778,0.262,0.0933,0.807,157.035,296787,4,C major
+September '16,Drilling,Minus the Bear,6blyhK94ONYsrcdHNl73wh,0.259,0.897,F#,-5.048,minor,0.0848,0.00146,0.0135,0.308,0.517,165.051,303493,4,F# minor
+September '16,Two Animals,Violents,3nMHfl5Y5jqCBt5B6fyAeO,0.604,0.516,B,-10.082,minor,0.0307,0.115,0.177,0.0997,0.207,118.052,209946,4,B minor
+August '16,A King Alone,The M Machine,7d6FQksrcTy82SxNINgpX7,0.676,0.751,C,-6.597,major,0.0439,0.00122,0.738,0.15,0.271,110.033,226909,4,C major
+August '16,Funn,Cash+David,5EFi0iKkDiJhxKYpuH71zg,0.687,0.76,C#,-7.791,minor,0.0326,0.0504,0.814,0.117,0.391,90.015,146837,4,C# minor
+August '16,Seabass,Private Island,4qGXlYQhwNQ0Ur2n7IJLTR,0.508,0.624,D,-8.376,major,0.0284,0.142,0.00851,0.119,0.433,132.058,257963,4,D major
+August '16,Silk,Giselle,418fYKL9zrcfvpI6WnIARi,0.632,0.243,F,-13.464,major,0.0463,0.963,0.00324,0.106,0.0516,82.069,192047,4,F major
+August '16,Fall Underneath (Kilter remix),Snakadaktal,7DzWnjbBzg0OTXDib7QF4s,0.766,0.523,C,-11.473,major,0.0349,0.43,0.00187,0.112,0.151,107.994,266491,4,C major
+August '16,Tiny Anthem,The M Machine,7huKSNp5GL1p4yRH26qJXk,0.352,0.85,A#,-7.349,major,0.17,0.0262,4.63e-4,0.12,0.19,170.012,282353,4,A# major
+August '16,We Are Together - Original Mix,Planet Of Sound,6FmgfD3NTbcVH2uh6N2nvX,0.541,0.795,G#,-6.818,major,0.0315,0.0119,0.605,0.237,0.343,117.009,386381,4,G# major
+August '16,Daggers,Robot Science,6js1TMeoPmuo72BgZZlw3E,0.431,0.907,B,-6.602,minor,0.0295,0.00674,0.654,0.108,0.581,118.8,330568,4,B minor
+August '16,Look Up,Mas Ysa,6ki6gKwzDFUQzlbRcG0NR6,0.669,0.905,C,-8.479,major,0.0497,0.128,0.319,0.495,0.47,126.388,328e3,4,C major
+August '16,Maurine,Say Hi,7dw9Y2IXDk9VD1umi477tM,0.761,0.527,E,-11.472,major,0.0454,0.21,0.529,0.114,0.265,119.988,194733,4,E major
+August '16,The Villain,Mesita,0bWPsrSq7q8yqcXLiCgmdv,0.614,0.785,F#,-3.818,major,0.0314,0.00882,0.00641,0.232,0.465,81.977,219842,4,F# major
+August '16,Archipelago,IAMBEAR,5RJDwi0W4tFJkbjbL0cwlT,0.347,0.622,F#,-7.728,minor,0.228,0.763,0.669,0.15,0.211,180.145,277181,4,F# minor
+August '16,Bear Hands,Private Island,75yJqOWtWFbmX5c8dBNpCQ,0.485,0.894,B,-4.864,minor,0.0718,0.0257,0.065,0.137,0.523,126.072,284827,4,B minor
+August '16,Running After,Amtrac,0R8QCXjbrQn3kbYxptUk6w,0.79,0.702,G#,-5.862,minor,0.067,0.00134,0.879,0.0847,0.485,124.01,358105,4,G# minor
+August '16,Separate Lives,HÆLOS,7x5wEE9Zi4JuRJUH6ZxNOm,0.297,0.77,E,-7.341,minor,0.0603,0.0222,5.22e-4,0.107,0.317,93.741,287198,3,E minor
+August '16,Girls,Slow Magic,0TaLEGNb6f3nL2VME9SxAR,0.681,0.657,C#,-6.385,minor,0.0728,0.222,0,0.135,0.353,101.012,271003,4,C# minor
+August '16,Violins - Elyella Remix,I'm From Barcelona,3KHGkvVAloT6uZIxFht4J8,0.56,0.831,B,-5.158,major,0.0367,7.43e-4,0.00123,0.134,0.461,126.015,270952,4,B major
+August '16,Hello!,Explosions In The Sky,6SZtWGjKULlJUW9sD5guhk,0.464,0.342,F#,-19.402,major,0.0375,0.595,0.88,0.0741,0.0619,120,218960,4,F# major
+August '16,Harps,Max and the Moon,5kQaMjvOzIiDgCsvOUvbwt,0.583,0.673,C#,-6.421,major,0.0283,0.121,0.163,0.0975,0.114,94.979,233280,4,C# major
+August '16,Claimed By The Sea (PLAN Remix),French For Rabbits,2XLFjWSUYdOelXPGwsxhHN,0.514,0.412,F,-16.672,minor,0.0402,0.0249,0.779,0.137,0.222,119.951,196e3,4,F minor
+August '16,The Cats,French For Rabbits,7pVdNellBaH5K3vHOTuBot,0.351,0.465,G#,-12.877,minor,0.0427,0.762,0.00289,0.0934,0.219,172.127,247493,4,G# minor
+August '16,Bridge,High Highs,2HLd7alxKkXHU2KmbGUUVm,0.602,0.359,F#,-7.893,major,0.0244,0.902,0.0263,0.0946,0.44,90.458,150522,4,F# major
+August '16,Second Summer - RAC Mix,YACHT,5TuUUmKQNHPmiEzN9EGY4U,0.688,0.763,F#,-6.787,major,0.0338,0.383,0.559,0.116,0.36,120.002,274672,4,F# major
+August '16,Youth,Wolf Colony,4eKjHG7WAJwvIPKFFVx3Qd,0.707,0.731,F,-8.998,minor,0.0426,0.264,0.1,0.123,0.417,115.975,204022,4,F minor
+August '16,Arms,90 Pounds of Pete,2JBcz53XXQOwAYoFpxl3t6,0.6,0.749,C,-3.984,major,0.0718,0.267,9.74e-6,0.0793,0.505,156.952,227e3,4,C major
+August '16,I Like Van Halen Because My Sister Says They Are Cool,El Ten Eleven,6S7uVSinsFkrrL8n5JUqZx,0.592,0.582,A,-9.222,major,0.0247,0.00712,0.838,0.112,0.754,149.978,234560,4,A major
+July '16,Moon Watcher,Ishi,4UkfZCmm3hXnssbgvGHyVT,0.808,0.679,A,-6.469,minor,0.0365,0.00334,0.6,0.0798,0.493,129.005,294467,4,A minor
+July '16,Night Trek - Bibio Remix,Wax Stag,50A4ssXMGld5PoPuNzqYtA,0.626,0.655,A,-12.584,major,0.0343,0.0392,0.725,0.228,0.616,96.004,307460,4,A major
+July '16,Fantasy,Dye,0FlEFGqwvLmJzZ2PcYrA2D,0.521,0.858,A#,-4.05,major,0.029,8.81e-4,0.376,0.394,0.2,110.006,289587,4,A# major
+July '16,Young,Vallis Alps,3u4rIcRR7gSoJdkJIx9zpu,0.584,0.384,D#,-12.144,minor,0.0675,0.72,0.288,0.0964,0.184,93.981,324123,4,D# minor
+July '16,Rome,Phoenix,1jIvxe4pkZDvsyP9lfcwYX,0.651,0.676,D,-6.872,major,0.0328,0.353,0.0739,0.101,0.407,126.227,278080,4,D major
+July '16,Stay With Us,Seoul,3qXhCgS2Q1IIjuHNqBvtdu,0.688,0.538,G#,-7.771,major,0.0323,0.401,0.909,0.121,0.638,107.324,237947,4,G# major
+July '16,Chicago - Chicago,Canon Blue,0NAqHBymXxomZgXxGBEXXt,0.806,0.711,E,-8.93,minor,0.0267,0.296,0.00868,0.0627,0.844,106.985,258440,4,E minor
+July '16,Upswing,Prinze George,4iw5Zh3RG6t9VmLEMTTn9W,0.614,0.536,D,-6.397,major,0.0289,0.00148,0.122,0.0808,0.417,97.002,283e3,4,D major
+July '16,Young Hearts,Strange Talk,1Ua8fsSpMlVUwkm7KkcNcM,0.59,0.83,C#,-7.242,major,0.0319,6.35e-4,0.0946,0.11,0.354,150.005,230665,4,C# major
+July '16,Columbus,Snowmine,7JIng8f1mUfmjjrl9SuSeM,0.646,0.598,F#,-7.598,minor,0.033,0.394,0.0181,0.0786,0.486,118.049,247193,4,F# minor
+July '16,Now,Mackintosh Braun,5BhagZEjEuyuaMX3ZSDEjd,0.968,0.489,F#,-9.955,minor,0.0773,0.0326,0.9,0.136,0.651,114.991,184427,4,F# minor
+July '16,Mystery Colors,"Astronauts, etc.",05O1JFM21r3YEIR0dTqqwv,0.619,0.619,A#,-8.568,major,0.0295,0.462,0.0767,0.114,0.0955,131.941,237500,4,A# major
+July '16,Stellar Flares,Yppah,3jVTFRO1VJN15kUx7eyW1K,0.569,0.641,B,-11.074,major,0.0333,5.06e-5,0.869,0.124,0.246,110.031,158083,4,B major
+July '16,Float,Pacific Air,3yt2uGIGep27Q3vtwMXM7d,0.713,0.656,C,-7.273,major,0.0326,0.0619,2.53e-6,0.191,0.58,119.99,198987,4,C major
+July '16,Robotic,Hannah Georgas,6S3cCgcePjIurF8pT2XWPP,0.53,0.88,G,-4.69,major,0.0413,0.0132,0.153,0.113,0.454,136.976,238360,4,G major
+July '16,I Don't Want to Live Forever,Listener,2D2CnKqzvyoUAUGalYUKIn,0.601,0.852,E,-4.312,minor,0.308,0.00898,3.04e-6,0.373,0.519,120.008,254533,4,E minor
+July '16,Most Roads Lead to Home (Instrumental),Listener,3J8fFOeIE4ZwkUulxMJX1J,0.371,0.664,G,-9.645,major,0.0345,2.6e-5,0.718,0.125,0.165,124.987,255e3,4,G major
+July '16,Dub Run,Sizemix,1g3ZU1FZAp75dkPCUJlVpo,0.737,0.857,G,-7.174,major,0.0704,0.0883,0.843,0.229,0.208,95.587,216800,4,G major
+July '16,Waves That Rolled You Under (backstroke. Remix),Young Summer,48OZ6IftJ5l0Nui29ZOhy4,0.392,0.712,F,-6.45,minor,0.0467,0.0484,2.09e-4,0.11,0.525,87.486,243319,4,F minor
+July '16,Knot In My Heart,The Zolas,2fJvbryihwQ0p1iGlnXKQu,0.772,0.612,F#,-7.93,minor,0.0342,0.136,0.147,0.13,0.498,101.006,200960,4,F# minor
+July '16,Inside Out - Tycho Remix,Spoon,28Q5hNuXYYOVNEAorGFOiY,0.654,0.804,C,-7.053,major,0.0326,0.0815,0.53,0.205,0.24,107.009,319959,4,C major
+July '16,Somebody Who (Nzca Remix),Au Revoir Simone,3ExAGSKmXUujxRzWn4Asnm,0.763,0.724,C#,-6.395,minor,0.0354,0.213,0.00304,0.28,0.495,117.943,243893,4,C# minor
+July '16,Communion,Maximum Balloon,2O7epBJ0cmDp1m4JcbDTgZ,0.733,0.646,C,-5.067,major,0.0238,0.0332,0.00127,0.0464,0.676,105.983,257467,4,C major
+July '16,Speak Easy,Mansionair,1mzNrF9Mzf5pZuvzhq0TQY,0.47,0.842,B,-6.271,minor,0.0407,0.385,0.00453,0.139,0.139,164.989,249731,4,B minor
+July '16,Duckpond,Midwest Product,3oaWlxqvuCDNc9snpZkgvK,0.573,0.75,C#,-9.145,major,0.0272,0.0419,0.648,0.117,0.0396,101.979,296947,4,C# major
+July '16,Alternator,Midwest Product,0Qsv2RrJ8CaQERBKSvMn8H,0.675,0.772,F,-9.777,major,0.0334,0.0318,0.835,0.098,0.28,127.989,319560,4,F major
+June '16,Here and Heaven,Stuart Duncan,54CtOOuhXdUKGpG0KsEVDD,0.515,0.222,D,-12.798,major,0.0351,0.929,0.0157,0.132,0.383,123.481,233413,4,D major
+June '16,Heartbeat Amplifier,The Polish Ambassador,0gyzuOe3583jZfVAbTFMCY,0.531,0.609,F#,-8.39,minor,0.057,0.0485,0.58,0.137,0.336,159.933,356304,4,F# minor
+June '16,Unless You Speak From Your Heart,Porcelain Raft,250NX81qmgtzNJVDmWdDzZ,0.401,0.796,F,-4.235,major,0.0318,0.326,0.0187,0.129,0.275,87.569,215107,4,F major
+June '16,Go With It,TOKiMONSTA,1PxeVXU16vI9Mf09ntfaPZ,0.698,0.56,A,-8.476,major,0.0305,0.131,0.255,0.101,0.651,140.016,263587,4,A major
+June '16,Start Shootin' (Little People's Americana Remix),Little People,6853jac7JFGLymGuXUaNIa,0.734,0.571,F,-6.964,minor,0.0284,0.109,0.656,0.12,0.53,94.835,373806,4,F minor
+June '16,Shudder,BASECAMP,57EDQaz0G2DN3GqP7BJwgm,0.756,0.798,G,-6.706,minor,0.0858,0.225,8.45e-5,0.135,0.396,125.002,24e4,4,G minor
+June '16,Twin Rivers,Big Scary,48bPaceCMUmNmRGWPEIs8b,0.563,0.434,C,-8.974,major,0.0266,0.17,9.51e-5,0.241,0.175,72.994,243253,4,C major
+June '16,People,Kye Kye,6gOCGFSDrXPzlCC2tqFlAa,0.54,0.792,A,-4.73,minor,0.0381,0.00283,0.00523,0.132,0.381,94.03,204613,4,A minor
+June '16,Put the Days Away,Sun Airway,5KrQ7SRLO8IgFAHY2D61LH,0.318,0.803,C,-7.197,major,0.051,0.0158,0.954,0.372,0.152,139.888,293613,4,C major
+June '16,Firing Line (Ark Patrol Remix),Hoodlem,33ZnXBqCfUN3ekvdjbQipJ,0.505,0.576,F#,-6.151,minor,0.0345,0.19,1.04e-6,0.389,0.435,95.985,263750,4,F# minor
+June '16,Young,Vallis Alps,3u4rIcRR7gSoJdkJIx9zpu,0.584,0.384,D#,-12.144,minor,0.0675,0.72,0.288,0.0964,0.184,93.981,324123,4,D# minor
+June '16,Burn From the Rockets,Alex Nackman,0Z0w3gJsuTTIN5J7ahFSWj,0.543,0.936,G,-5.706,major,0.0387,0.0114,9.64e-6,0.226,0.628,125.026,244280,4,G major
+June '16,Upswing,Prinze George,4iw5Zh3RG6t9VmLEMTTn9W,0.614,0.536,D,-6.397,major,0.0289,0.00148,0.122,0.0808,0.417,97.002,283e3,4,D major
+June '16,Apollo Throwdown (Star Slinger Remix),The Go! Team,6MzRsft8yz89OQsWNjZzFQ,0.71,0.959,C#,-6.697,minor,0.209,0.149,2.1e-5,0.336,0.485,108.006,255333,4,C# minor
+May '16,Always With Me,Wolf Saga,0fAo3LIct08Q7jChh9Ertr,0.59,0.32,B,-11.643,major,0.0332,0.0365,0.745,0.11,0.094,124.994,221880,4,B major
+May '16,Saving Us a Riot,Phoria,2n1mukIntnIGBzhf8Ifkr2,0.487,0.157,D#,-15.193,minor,0.0312,0.713,0.145,0.116,0.0671,129.483,256766,4,D# minor
+May '16,We Exist,Arcade Fire,3hDpkvXDbmcrKya8CUS6lN,0.567,0.506,C#,-8.742,major,0.0264,0.00731,0.205,0.103,0.358,116.392,343784,4,C# major
+May '16,Ready to Start,Arcade Fire,1F2Ca0Cfo7DcdieWlZEqzc,0.464,0.931,F#,-4.695,minor,0.03,0.109,0.0289,0.0772,0.543,95.555,255907,4,F# minor
+May '16,River,"Oh, Be Clever",4zLc6hMcOkRsGq0o19IFrC,0.578,0.678,A#,-4.965,major,0.0338,0.0173,1.3e-4,0.106,0.425,149.819,228800,4,A# major
+May '16,Architecture,Manor,66WcP7m4aqvw0n7I7L5a87,0.605,0.754,F,-6.428,minor,0.0262,0.0247,0.213,0.121,0.72,104.981,215931,4,F minor
+May '16,American Dream,On An On,4JyTh0iRV8i02HxMCbFrdl,0.635,0.893,F,-4.552,major,0.0342,0.0142,0.0095,0.109,0.895,120.005,194369,4,F major
+May '16,The Night Out - A-Trak vs. Martin Rework,Martin Solveig,1LEKzDLoGL2ueXIMqkXM93,0.545,0.928,C#,-3.358,minor,0.135,0.00237,1.66e-6,0.338,0.617,127.985,232510,4,C# minor
+May '16,Canoe Canoa,Populous,1tbInvb7M0kUdlxfwh18qM,0.712,0.467,E,-8.632,minor,0.0342,0.0553,0.448,0.0852,0.524,99.986,177667,4,E minor
+May '16,Sway,Anna Of The North,38qePkccYVYaEHhT3pWvS7,0.605,0.691,B,-6.752,minor,0.0284,0.0817,0.0252,0.0774,0.296,119.972,181944,3,B minor
+May '16,Young Hearts,Strange Talk,1Ua8fsSpMlVUwkm7KkcNcM,0.59,0.83,C#,-7.242,major,0.0319,6.35e-4,0.0946,0.11,0.354,150.005,230665,4,C# major
+May '16,Tangerine Sky,Blackbird Blackbird,23tlH9wAlnLZIT0zlVS2d4,0.702,0.781,G,-8.462,major,0.0389,0.134,0.667,0.114,0.138,117.001,285107,4,G major
+May '16,Everything,City of the Sun,4QhBvbzk0ti2ClGrd6miSc,0.311,0.445,F,-17.413,major,0.0376,0.883,0.924,0.127,0.376,140.169,281747,4,F major
+May '16,I'm with Polly,City of the Sun,5SUBSmYR8I8spFXgEDcO28,0.689,0.637,B,-7.599,minor,0.0691,0.654,0.363,0.12,0.586,140.054,183638,4,B minor
+May '16,Etchasketch Trees,Ernest Gonzales,40YRrlhMGR8eab1TWO7TDB,0.745,0.606,D#,-8.902,minor,0.031,3.72e-4,0.779,0.154,0.236,115.987,160345,4,D# minor
+May '16,Ocean,Tiny Deaths,53KWBTzkk23wBzWrtSen8p,0.293,0.574,F,-6.718,major,0.0397,0.0378,3.99e-4,0.0791,0.214,153.896,187426,4,F major
+May '16,Running,Computer Magic,6vOXtjqThBvqRtP6SV6xuy,0.547,0.782,D,-6.283,minor,0.0368,0.174,0.908,0.0998,0.243,119.986,329147,4,D minor
+May '16,Alone - Original,Godwolf,67VFbGgR5HhjbaaOfktRsH,0.629,0.676,C#,-6.51,major,0.0374,0.0226,0.106,0.332,0.126,130.033,239400,4,C# major
+May '16,Eli Eli,Misun,5t7KJUxGWKMeLJgcwCKC6a,0.663,0.753,G,-6.527,minor,0.0344,0.0573,0.00266,0.105,0.797,127.974,166878,4,G minor
+May '16,Make It up or Let Go,"Saturday, Monday",6AY8SZjscYGYRHTyHOP5hF,0.627,0.721,G,-7.422,minor,0.0392,0.0264,0.649,0.292,0.0718,128.292,290446,4,G minor
+May '16,Pilgrim,"Saturday, Monday",3ypMHGWdB3D7RgiaaSjpOO,0.59,0.645,C,-7.158,major,0.0439,0.197,0.0434,0.128,0.377,124.976,230897,4,C major
+May '16,White Doves,Young Empires,72aId1MpvOmzTg6fuRJV6q,0.524,0.934,D,-3.762,major,0.0424,0.00756,1.87e-5,0.173,0.193,118.007,218867,4,D major
+April '16,Punching In A Dream,The Naked And Famous,5PtEpuVX03k9bOUwilL5EO,0.473,0.883,F#,-3.65,major,0.047,0.00201,9.67e-4,0.142,0.164,115.048,238133,4,F# major
+April '16,Lovers 2,Alpine,2AiJIQ6q9sf5qGW2euN2ej,0.72,0.585,B,-8.632,minor,0.0298,0.614,0.0168,0.109,0.592,122.013,146773,4,B minor
+April '16,Expialidocious,Pogo,2an468qCv459bc5DiWulZg,0.612,0.685,D#,-10.57,major,0.102,0.154,2.46e-5,0.205,0.791,122.055,190820,4,D# major
+April '16,Fears,MTNS,3TejpL5hSb3LQnlYhYbygy,0.684,0.434,E,-12.09,major,0.0346,0.123,0.183,0.113,0.173,139.986,257669,4,E major
+April '16,Imprint,Amtrac,55EPNXT0eUexqdm1dN4Brp,0.729,0.698,E,-9.63,minor,0.053,0.254,0.813,0.102,0.519,110.009,172378,4,E minor
+April '16,Gasoline,Alpine,1KHOOsJUHBy82PCZVV8Lmd,0.618,0.624,A#,-3.749,major,0.0283,0.0885,0,0.339,0.774,85.994,201800,4,A# major
+April '16,Two Dots,Lusine,7x7js2zOVMzMbw7HVwpUmq,0.709,0.661,G,-8.405,minor,0.0328,0.607,0.708,0.133,0.608,119.987,278413,4,G minor
+April '16,Kanye,Bogan Via,5vL0KBvhuuFbF8PZTBnSN7,0.713,0.783,D#,-5.647,minor,0.0302,0.0691,0.397,0.0709,0.689,92.016,300453,4,D# minor
+April '16,Kiara,Bonobo,7sqii6BhIDpJChYpU3WjwS,0.595,0.788,D#,-10.128,minor,0.363,0.195,0.202,0.153,0.414,97.012,230307,4,D# minor
+April '16,Sittin Here,Supermassive,0eEtvptSMs3Ib3llWU7FEg,0.651,0.855,A,-6.086,minor,0.0447,0.00598,0.0136,0.0753,0.621,140.015,210746,4,A minor
+April '16,Put Me To Work,PAPA,1nTvJgr9WaRk6BDoUdjAmZ,0.383,0.876,D,-4.246,major,0.0554,6.95e-4,0.24,0.0837,0.619,144.057,156867,4,D major
+April '16,The New Original,Wayfarers,3oxRPUIgY1J6M1Jw1BgsFD,0.633,0.811,C,-3.886,minor,0.0319,3.06e-4,0.0417,0.345,0.727,118.018,204978,4,C minor
+April '16,Lower The Heavens,The Donkeys,3fI5JUeWcSl48NttF2ujnn,0.316,0.757,A,-5.07,minor,0.0313,0.0653,0.861,0.183,0.113,131.444,332307,4,A minor
+April '16,All I Really Need,Vindata,1ryaTk9K15sdYbDsdNKGOY,0.617,0.649,F#,-8.245,minor,0.0382,0.00274,0.0333,0.632,0.183,144.017,354709,4,F# minor
+April '16,Still Life,Hollow & Akimbo,3IOWuBLkQYpwFERmGUgwvY,0.568,0.863,C,-5.208,major,0.0412,0.0127,0.0518,0.107,0.466,98.008,239513,4,C major
+April '16,Singularity - Osborne Remix,Hollow & Akimbo,1zbdTLY23XxmoO07irDJjz,0.765,0.557,D,-7.018,minor,0.0419,0.0644,0.43,0.115,0.818,114.996,310264,4,D minor
+April '16,Architecture,SomethingALaMode,6RPbXxGLKwXmp5oWNNHwei,0.476,0.659,G,-4.008,minor,0.0314,0.0133,0.922,0.0719,0.053900000000000003,120.958,308796,4,G minor
+April '16,carmen,Stromae,60ynqVuPGEmnNqhRRehCZI,0.658,0.827,G#,-8.018,major,0.102,0.0191,1.85e-4,0.341,0.565,150.024,189027,4,G# major
+April '16,ave cesaria,Stromae,4zw0Ih25ilFwQdtkzzWA7s,0.721,0.653,B,-8.259,minor,0.209,0.131,3e-6,0.226,0.391,112.992,249520,4,B minor
+April '16,Shot Fox,Alpine,2E3UE3HoNiCGEr2AScDEn5,0.557,0.687,E,-7.373,minor,0.0401,0.00156,0.171,0.26,0.46,163.958,227992,4,E minor
+April '16,bike home,Humans,0XkIF6npC7SDScdZB5duEW,0.778,0.493,G#,-9.662,major,0.0528,0.0212,0.173,0.0636,0.549,120.009,178907,4,G# major
+April '16,Soak It Up,Houses,6MOqASyUNmA1Q2I1pcmztK,0.71,0.5,G,-11.915,major,0.0367,0.359,0.0617,0.0776,0.0734,103.006,251693,4,G major
+April '16,Synchronous Bloom,Thrupence,4HFvue4xVSgCvX3FNyRdaY,0.26,0.649,A,-6.766,major,0.0931,0.281,0.803,0.135,0.16,102.942,225759,4,A major
+April '16,Dim The Lights,Wild Ones,16VxQTJDjiqjIraZ6zhi3J,0.548,0.803,F#,-4.333,major,0.0271,0.0621,0.177,0.109,0.537,99.969,248747,4,F# major
+April '16,Leave A Trace - Goldroom Remix,CHVRCHES,5Lt0L3Hc2eSZXPIOGWXcd8,0.722,0.789,A,-5.484,major,0.041,0.168,0.0177,0.0913,0.043,112.001,299063,4,A major
+April '16,Til Tomorrow,DWNTWN,3djXFMmpWT2vzUYOgD1xVD,0.545,0.726,C#,-6.607,minor,0.0293,8.24e-4,2.63e-5,0.263,0.538,144.992,222813,4,C# minor
+April '16,The Ghosts Of Beverly Drive - Tycho Remix,Death Cab for Cutie,3KgceZu60IAoDwkn7Ehf6O,0.516,0.686,F#,-10.422,minor,0.126,0.137,3.2e-4,0.075,0.499,159.894,312e3,4,F# minor
+April '16,Awake,Tycho,0Mx2W2i58sIPmEvfKdh1Q2,0.552,0.878,C#,-5.767,major,0.0353,0.0585,0.892,0.0746,0.598,176.057,283636,4,C# major
+April '16,Avril 14th,Aphex Twin,2LbyMbtKsh2pld57XN50M2,0.594,0.0252,F,-29.986,minor,0.0421,0.995,0.898,0.0949,0.391,78.985,125533,4,F minor
+April '16,Flim,Aphex Twin,4YvnrZMF1VmTAZIJlBhvCg,0.708,0.735,A#,-14.889,major,0.0524,0.513,0.857,0.0804,0.413,147.984,177107,4,A# major
+April '16,Beep Street,Squarepusher,4ygcdmPyBFEaf25SEEsKrz,0.499,0.82,F,-8.835,minor,0.0541,0.0756,0.869,0.0849,0.598,161.449,397133,4,F minor
+April '16,Colour In Your Hands (Scandinavia Edit),D.L.i.d,0JixxezgmNNTKR3NQwa6vL,0.421,0.767,A,-8.407,minor,0.0312,0.00728,0.868,0.0692,0.054,180.009,349333,4,A minor
+April '16,Fiona Coyne,Skylar Spence,3x3lq0IUkLEv4apfJxwgwd,0.667,0.875,B,-5.274,minor,0.122,0.0105,3.46e-6,0.336,0.715,110.029,244292,4,B minor
+April '16,Us,Haring,1lvzmxNejb0ZKmmMSfhibh,0.628,0.356,A,-10.909,minor,0.0348,0.00198,0.845,0.176,0.155,107.009,282196,4,A minor
+MrSuicideSheep Favourites,Hushh,AViVA,6Jb7UPWUXDOrgdI0XnBSp5,0.758,0.721,G#,-6.291,minor,0.0582,0.103,3.54e-4,0.381,0.728,116.908,180197,4,G# minor
+MrSuicideSheep Favourites,Fluorescent Light,Crystal Skies,646kATrg64tASb337eJfH9,0.3,0.903,C#,-5.102,minor,0.354,0.412,0,0.0984,0.395,159.469,234081,4,C# minor
+MrSuicideSheep Favourites,Needed You - StayLoose Remix,Illenium,4hIDKvLeQWelfBkX4W93hH,0.519,0.935,C#,-2.284,minor,0.21,0.12,5.08e-5,0.0883,0.487,147,228571,4,C# minor
+MrSuicideSheep Favourites,Damn Thing (feat. Trove),ThatBehavior,2aHFgZP3YJaTgn5rgeWho6,0.753,0.712,B,-4.337,minor,0.0599,0.0772,0,0.327,0.388,94.971,143053,4,B minor
+MrSuicideSheep Favourites,Got Habits,Two Can,1nbjfX4mS7wci5PRIveAx6,0.6,0.747,F,-4.304,minor,0.131,0.171,9.94e-5,0.0848,0.524,157.619,164051,4,F minor
+MrSuicideSheep Favourites,Mistake,Owsey,2yoX1ilBLMw7Zs790aj5Sq,0.461,0.358,C,-12.002,minor,0.0363,0.609,0.00509,0.129,0.177,80.011,265523,4,C minor
+MrSuicideSheep Favourites,Erase Me,Said the Sky,0AISJtBDtZXgB2fuvcjQEN,0.528,0.61,F,-6.564,major,0.0287,0.376,7.32e-5,0.211,0.304,130.11,210661,4,F major
+MrSuicideSheep Favourites,Isic Tutor,Xavier Dunn,0Jdd4x4uUctaccjMC8ophS,0.529,0.451,C,-9.69,minor,0.033,0.21,0.00491,0.142,0.165,90.028,214263,4,C minor
+MrSuicideSheep Favourites,Affection,Said the Sky,66ba6b58Z8wOEVcRcRD82z,0.553,0.653,F#,-7.926,major,0.0438,0.389,1.79e-6,0.0907,0.335,92.014,253043,4,F# major
+MrSuicideSheep Favourites,I Only Need One (feat. MNDR),Bearson,1KHGzOBgQfaZ0LLzsWB6LN,0.693,0.656,G#,-3.849,major,0.0449,0.163,0,0.127,0.573,140.007,198874,4,G# major
+MrSuicideSheep Favourites,Faded Away (feat. Icona Pop) - Akouo Remix,Sweater Beats,5foO37KWhNCVIba2hntL2q,0.767,0.663,G,-5.813,minor,0.0905,0.0168,0.0919,0.064,0.518,92.006,195652,4,G minor
+MrSuicideSheep Favourites,Time Well Spent,LVTHER,7gY5XnHvMHsWmWKZuooCMm,0.7,0.602,E,-4.726,minor,0.115,0.509,1.81e-6,0.253,0.278,89.98,184e3,4,E minor
+MrSuicideSheep Favourites,Trust,soso,1HtbdWaRfj3vF7cAVX8S6W,0.645,0.742,A#,-7.574,minor,0.0351,0.254,0.303,0.0831,0.071,100.003,220800,4,A# minor
+MrSuicideSheep Favourites,Moondancer,"Saturday, Monday",59QJVIxXBUTY5lToayxjat,0.633,0.457,C#,-10.38,major,0.0594,0.536,1.14e-4,0.0906,0.138,105.908,199422,4,C# major
+MrSuicideSheep Favourites,I Miss You This Much,yeule,6XclSJHbRiQbkc2j3mo8NQ,0.154,0.432,C,-9.859,major,0.0425,0.66,0.00108,0.0977,0.12,80.939,244e3,5,C major
+MrSuicideSheep Favourites,Never Let Her Go,Audio Dope,3UrVy6djiUIWOFntBt9uAj,0.577,0.319,A#,-7.504,minor,0.0315,0.647,0.628,0.286,0.159,85.685,217633,4,A# minor
+MrSuicideSheep Favourites,Sideways,Marian Hill,7gcaFO43gzlBELx9gs6fZR,0.526,0.11,B,-12.937,major,0.0592,0.922,2.59e-4,0.112,0.239,171.859,233107,3,B major
+MrSuicideSheep Favourites,Retrograde,Jagara,6llZPoHpm2nlceuNAwzvfV,0.493,0.233,G,-11.251,minor,0.043,0.543,0.0407,0.11,0.106,78.027,175385,4,G minor
+MrSuicideSheep Favourites,Fake It,JOY.,4yez5oUodhH56PX9mBraon,0.527,0.402,B,-11.805,major,0.0312,0.11,0.00118,0.202,0.204,76.495,215415,4,B major
+MrSuicideSheep Favourites,Tell Her,Michl,0guNjayAfHBgG1BPhkhT3d,0.345,0.244,A,-13.037,major,0.043,0.955,0.00861,0.0846,0.117,125.163,143329,4,A major
+MrSuicideSheep Favourites,Kamikazee - Stripped,MISSIO,0HtQZJYXJEQb0sYvwvQHQM,0.308,0.372,G,-8.052,minor,0.03,0.866,0.0846,0.229,0.171,140.457,228234,4,G minor
+MrSuicideSheep Favourites,The Hearse - Stripped,Matt Maeson,6Lx4J5IvSfGn0qRUxPupV5,0.45,0.321,B,-9.728,minor,0.0357,0.914,0,0.117,0.423,104.527,209240,5,B minor
+MrSuicideSheep Favourites,Change Your Mind,Said the Sky,3O7DVRorFs0cnOqSiwb9YJ,0.286,0.37,F,-11.521,minor,0.0347,0.657,9.08e-6,0.146,0.105,135.289,179155,4,F minor
+MrSuicideSheep Favourites,Sleepless Nights,AK,1QAsfDzqpK4zMyqa8S2Koz,0.564,0.208,A,-12.079,minor,0.0356,0.739,0.922,0.109,0.039,83.493,241515,4,A minor
+MrSuicideSheep Favourites,Choke,Sonn,28PYwyQETvCDNXMRBFAtzr,0.652,0.403,A,-14.328,minor,0.0802,0.871,0.808,0.0742,0.089,140.012,18e4,4,A minor
+MrSuicideSheep Favourites,Isn't She Lovely,Sad Savior,1mFF4EVa6b3MJd7QeD5aEB,0.569,0.382,F,-10.201,major,0.0278,0.738,0.174,0.156,0.119,109.998,146182,4,F major
+MrSuicideSheep Favourites,Lost,Nuages,267aJQYOkv1kfoRGfgUwfU,0.248,0.483,G#,-11.073,minor,0.0404,0.0074400000000000004,0,0.962,0.23,119.746,199091,5,G# minor
+MrSuicideSheep Favourites,Home Soon,yuzu blur,0plIIWDys4UBGmura01RpY,0.645,0.189,B,-16.776,major,0.0606,0.854,0.0105,0.108,0.121,67.479,144e3,4,B major
+MrSuicideSheep Favourites,Poison in the Brain,Ondi Vil,1z5r2gxSJBaS4DG8Kg6NO2,0.865,0.223,E,-10.117,major,0.133,0.411,0.0492,0.0978,0.414,92.07,123424,4,E major
+MrSuicideSheep Favourites,Crisis,ZΩH,7MQD3gjdUehxcRuTQEsQC5,0.555,0.499,F,-15.436,minor,0.0343,0.785,0.971,0.119,0.0695,129.986,176312,4,F minor
+MrSuicideSheep Favourites,Know Where,Holy Other,3uNxAnCEZ12rSH953QguLy,0.576,0.394,E,-9.634,minor,0.0961,0.792,0.754,0.106,0.186,85.035,208353,4,E minor
+MrSuicideSheep Favourites,No Time Like Now - Yoste Remix,Illenium,7aZnBNLw2fiQ2nFYSICkXs,0.323,0.47,G,-8.972,minor,0.0436,0.435,0.12,0.0828,0.0685,76.417,181961,4,G minor
+MrSuicideSheep Favourites,Million,SMNM,324CjJ8fyhU4AQOCOXkvez,0.626,0.548,G,-5.711,minor,0.0245,0.0132,0,0.111,0.174,108.006,311111,4,G minor
+MrSuicideSheep Favourites,Heart (Samuraii Remix),Stonefox,30DvrKbciJunUOfIlg0FQy,0.713,0.664,G#,-8.815,minor,0.0525,0.689,0.00963,0.316,0.423,103.998,343846,4,G# minor
+MrSuicideSheep Favourites,All I Need - Original Mix,Lovejet,4uGeAA8rhbxiVm2jCpThwT,0.294,0.731,A,-6.812,major,0.0394,2.47e-4,0.439,0.273,0.192,124.068,24e4,4,A major
+MrSuicideSheep Favourites,Best Thing (feat. Gavrielle) - Original Mix,Louis Vivet,2cX9YnTbVjIPBZiySWMUqT,0.802,0.62,B,-7.315,major,0.066,0.0307,0.0489,0.0659,0.21,109.999,304106,4,B major
+MrSuicideSheep Favourites,Moments of Silk,Jay Rodger,1ASr37ThbfvLw1LTQMDqVV,0.347,0.214,G,-12.824,major,0.0366,0.873,4e-5,0.201,0.0979,113.145,214359,4,G major
+MrSuicideSheep Favourites,We Are Together - Original Mix,Planet Of Sound,6FmgfD3NTbcVH2uh6N2nvX,0.541,0.795,G#,-6.818,major,0.0315,0.0119,0.605,0.237,0.343,117.009,386381,4,G# major
+MrSuicideSheep Favourites,The Room,EvenS,4pOwvmHk011lEiGyvbHWHh,0.584,0.253,F#,-13.324,minor,0.039,0.218,0.91,0.109,0.284,115.046,204565,4,F# minor
+MrSuicideSheep Favourites,Praise You - Maribou State Remix,Fatboy Slim,16jxMKaB6y67fvjmOQTV8M,0.704,0.542,G#,-8.369,minor,0.0567,0.133,2.25e-4,0.0599,0.178,122.994,343582,4,G# minor
+MrSuicideSheep Favourites,Blu,MitiS & MaHi,7e2sIF3MXofSbSkwGLplfX,0.483,0.719,C#,-10.388,major,0.0415,0.0104,0.00241,0.14,0.228,142.033,304248,4,C# major
+MrSuicideSheep Favourites,Architecture - Original EP Version,SALM,4VZH3vAVl0ST1qwss2RTXv,0.469,0.655,G,-4.01,minor,0.0322,0.0134,0.918,0.0826,0.0572,120.962,307948,4,G minor
+MrSuicideSheep Favourites,Omega Point,Apex,5G1uE8ikVmSMqjIj8QjElb,0.444,0.932,G#,-6.225,major,0.0542,1.25e-4,0.727,0.304,0.0464,172.01,323721,4,G# major
+MrSuicideSheep Favourites,String Theory,Apex,00WgnFIsY1y84p7mYAJRuF,0.443,0.92,G#,-6.299,major,0.0613,8.5e-4,0.815,0.0927,0.112,175.044,333514,4,G# major
+MrSuicideSheep Favourites,Searching - Original Mix,ENiGMA Dubz,6jH82qObHnwMxGOdhmZ3YD,0.648,0.767,F,-6.241,minor,0.039,0.0763,0.896,0.664,0.109,136.077,263e3,4,F minor
+MrSuicideSheep Favourites,Back to You,WILD,1W4J1nJr1nmYjC1ooY8xuC,0.585,0.96,C,-3.314,major,0.0383,0.379,1.09e-6,0.116,0.299,112.013,195520,4,C major
+MrSuicideSheep Favourites,Spirits - Sondr Remix,The Strumbellas,4ceqgIHiBv9PYAdn1kJmst,0.65,0.887,C,-4.354,major,0.0644,0.063,0,0.212,0.693,102.471,184118,4,C major
+May '15,El Micrófono,Mexican Institute Of Sound,3e9Ti954mXs6i9ugYf8zLN,0.784,0.784,C#,-7.516,major,0.0476,0.203,2.73e-5,0.0818,0.79,114.356,214120,4,C# major
+May '15,Book Club,Arkells,6lBykzCGjkuD7H41xzqu5u,0.544,0.88,B,-4.078,major,0.0725,0.388,0,0.0994,0.586,157.946,197013,4,B major
+May '15,Headphones,I'm From Barcelona,3XQ1g3Vlg2tRWJUd7SUAjc,0.606,0.466,D,-9.946,major,0.0267,0.549,0.00849,0.145,0.383,125.016,168640,4,D major
+May '15,Magnets,Norton,6Vb0o5jWKNdxnq7HWdKRmQ,0.545,0.891,B,-5.175,major,0.0336,4.62e-4,0.15,0.0852,0.604,150.064,236977,4,B major
+May '15,Forrest Gump,Digitalism,4WCySrCo7tftPGwhmrg6qq,0.518,0.957,B,-3.055,minor,0.047,6.78e-4,0.368,0.227,0.37,135.591,212960,4,B minor
+May '15,Woman (In Mirror),La Dispute,79ttpwqKsPMOJYgwMYaysv,0.734,0.514,A,-14.697,minor,0.0353,0.221,0.244,0.112,0.546,107.507,264253,4,A minor
+May '15,Snowshoes,Precious Fathers,5xYHSO6hXV1KADdDwo1fsO,0.38,0.562,E,-11.756,major,0.0278,0.00562,0.731,0.0847,0.226,139.689,242040,4,E major
+May '15,Parkour,Finn Riggins,4F7ingcFvG4498bDoRTopU,0.299,0.867,E,-5.652,major,0.0588,0.147,0.685,0.0791,0.258,86.555,268320,4,E major
+May '15,Hold On,Summer Heart,6qWpDW8yQfj9peU6IiLYFU,0.509,0.833,E,-6.76,minor,0.0781,0.0262,0.754,0.114,0.651,159.954,214500,4,E minor
+May '15,I'm Gonna Make My Move,Absofacto,0vVCZCNME7b4kgL7vJJhPs,0.688,0.278,C#,-13.621,minor,0.0306,0.521,0.907,0.116,0.493,81.615,294629,4,C# minor
+May '15,Twenty Miles,Deer Tick,69XEXAbJTZwFfVz7ayfg3I,0.501,0.784,C,-7.089,major,0.0334,0.529,0.0766,0.131,0.34,113.643,223933,4,C major
+May '15,Recurring,Bonobo,3e0Aa82tM8CC140JR2DNGY,0.622,0.665,B,-8.752,minor,0.0362,0.16,0.936,0.279,0.457,115.014,303013,4,B minor
+May '15,Dissolve,Absofacto,6sarUARDOnVNNDlo1wC58p,0.688,0.578,F#,-10.667,minor,0.043,0.235,2.31e-4,0.0666,0.902,85.483,224661,4,F# minor
+May '15,On Paper,Arkells,2GPu4aTEf365ESO34eoJYL,0.53,0.906,C,-4.286,major,0.0741,0.224,0,0.129,0.503,153.979,205427,4,C major
+May '15,No Cars Go,Maxence Cyrin,1dJ4kRD0B2WT5pYYBP1LEl,0.378,0.158,G#,-17.914,major,0.0424,0.918,0.915,0.0952,0.0844,121.954,242280,4,G# major
+Songquest 1-5,Mombasa Suite,Martin O'Donnell,5afz62eHIrvGY4JfTKP7ZE,0.487,0.406,G,-11.593,minor,0.0492,0.343,0.826,0.121,0.113,123.972,403e3,4,G minor
+Songquest 1-5,When We Escape,Minus the Bear,4WkrolMKq9cbzj8SUavwQd,0.422,0.828,F#,-6.561,minor,0.0277,0.00826,0.00507,0.158,0.523,97.648,243707,4,F# minor
+Songquest 1-5,Tuolumne,Eddie Vedder,2X7geNPv8okwUwmNhADJqd,0.352,0.285,C,-15.043,major,0.0339,0.893,0.977,0.119,0.329,107.674,60307,4,C major
+Songquest 1-5,Vanished,Crystal Castles,0AEB5IhgCxr4Nt8L5CrRBX,0.683,0.87,C,-7.197,minor,0.028,0.00441,9.82e-5,0.264,0.519,119.983,242547,4,C minor
+Songquest 1-5,Book Club,Arkells,6lBykzCGjkuD7H41xzqu5u,0.544,0.88,B,-4.078,major,0.0725,0.388,0,0.0994,0.586,157.946,197013,4,B major
+January '15 (but also '16),Cool Kids - RAC Mix,Echosmith,0aHx993Ffbxhx2u9Xo3SxN,0.7,0.672,G#,-6.255,major,0.0598,0.00189,0.0338,0.0839,0.262,130.033,259329,4,G# major
+January '15 (but also '16),Wolves - RAC Remix,Digitalism,0mi9zOPOn3VAbHetNJ1MGB,0.64,0.866,E,-5.124,major,0.0344,0.0295,0.116,0.124,0.458,124.999,305277,4,E major
+January '15 (but also '16),Silver Streets,BOY,0o4ITu5PXZvEzGe3McL2f2,0.559,0.512,C,-7.806,major,0.0324,0.0385,0.0929,0.115,0.386,137.967,331187,4,C major
+January '15 (but also '16),Cradle,The Joy Formidable,0xnrSQxqqNEKMtw6slzwVx,0.422,0.94,D,-3.754,major,0.0406,2.94e-5,0.03,0.131,0.488,160.938,166720,4,D major
+January '15 (but also '16),Slow Show,The National,6vmvNj64lOYWs3Vs4vZbgv,0.575,0.705,E,-8.421,major,0.0319,0.665,0.897,0.13,0.545,150.045,248267,4,E major
+January '15 (but also '16),Parkour,Finn Riggins,4F7ingcFvG4498bDoRTopU,0.299,0.867,E,-5.652,major,0.0588,0.147,0.685,0.0791,0.258,86.555,268320,4,E major
+January '15 (but also '16),Magic Hour,RAC,2aYvJDC1WI319f8aCzJR7s,0.644,0.816,C,-5.902,major,0.0355,0.00973,0.00622,0.116,0.472,118.033,246373,4,C major
+January '15 (but also '16),I Hate the Weekend,Tacocat,2rSuWBGR6li7anapMGgPhu,0.243,0.88,B,-4.646,minor,0.0414,3.18e-5,0,0.336,0.748,178.381,125935,4,B minor
+January '15 (but also '16),Back to You,WILD,7nlGMUcyIGWZQFkOOxOWl5,0.499,0.94,C,-2.741,major,0.0332,0.0897,7.28e-5,0.109,0.477,112.02,195e3,4,C major
+January '15 (but also '16),Disintegration Anxiety,Explosions In The Sky,6pIoLYF3lK4RZPW3lQppil,0.494,0.634,C#,-11.748,minor,0.0462,0.0258,0.863,0.128,0.246,150.15,251173,4,C# minor
+January '15 (but also '16),Beat Of My Drum,POWERS,1lvWhdFZyTkdnUBYpUE3e9,0.775,0.901,F#,-2.454,minor,0.0794,0.0681,4.72e-6,0.0927,0.889,120.048,206280,4,F# minor
+January '15 (but also '16),Fireflies,Lights & Motion,6WFNlrkPvno4BrwjJ7pyy0,0.408,0.485,G,-7.049,major,0.0297,0.0175,0.952,0.15,0.0359,105.017,326307,4,G major

@@ -1,0 +1,87 @@
+---
+title: "comparing audio features from my monthly playlists, using spotifyr"
+author: Andrew
+date: '2018-08-11'
+slug: song-features
+tags: ["spotifyr", "R"]
+---
+
+
+
+<p>The NYT has a fun <a href="https://www.nytimes.com/interactive/2018/08/09/opinion/do-songs-of-the-summer-sound-the-same.html">interactive</a> up this week, looking at audio features to see if popular summer songs have the same sort of “signature”. After attending a presentation earlier this year, I discovered that these same sorts of features are accessible through Spotify’s API! How people curate their collections and approach listening to music usually tells you something about them, and since seeing the presentation I’ve been wanting to take a dive into my own listening habits. After getting inspired by the NYT’s piece, I felt like I knew how I could get started. Plus, there’s an <a href="https://github.com/charlie86/spotifyr">R package</a> now on CRAN that serves as a wrapper for Spotify’s API, making the data collection process easy.</p>
+<p>Spotify’s API functionality seems pretty straightforward. Tracks are curated as playlists by users, and tracks have a bunch of metadata (artist, album, etc.). Each of these entities (tracks, albums, artists, users) has an ID, allowing you to organize and jump between them. The first thing I need are all the tracks from each playlist I’ve created. Once I have them, it’s just one more line of code to get the audio features that Spotify makes available.</p>
+<pre class="r"><code>library(tidyverse)
+library(spotifyr)
+
+# fetch the public playlists/tracks &amp; features from my account
+my_lists  &lt;- get_user_playlists(&quot;amateurthoughts&quot;)
+my_tracks &lt;- get_playlist_tracks(my_lists)
+audiofeat &lt;- get_track_audio_features(my_tracks)
+
+feats &lt;- my_tracks %&gt;%
+  select(playlist_name, track_name, artist_name, track_uri) %&gt;%
+  left_join(audiofeat, by = &quot;track_uri&quot;)</code></pre>
+<p>Since I started using Spotify actively around 3 years ago, I’ve been creating a new playlist for each month. I’m interested in comparing my most recent listening habits to what I was doing last year. So, I’ll pull out all the tracks up through August of this year, and grab the corresponding playlists from 2017. I’ve named them in the same way each time: “January ’18”, “February ’18”, etc. This should make working with the features I collected a little easier.</p>
+<pre class="r"><code>feats &lt;- feats %&gt;%
+  filter(str_detect(playlist_name, &quot;&#39;&quot;)) %&gt;%
+  separate(playlist_name, into = c(&quot;month&quot;, &quot;year&quot;), sep = &quot; &#39;&quot;) %&gt;%
+  mutate(month = str_trim(month))
+
+# pluck out only the months we&#39;ve run through in 2018
+feats &lt;- feats %&gt;%
+  filter(
+    year %in% c(17, 18),
+    !month %in% c(&quot;September&quot;, &quot;October&quot;, &quot;November&quot;, &quot;December&quot;)
+  )
+
+feats$month &lt;- factor(feats$month, levels = month.name[1:8], labels = month.abb[1:8])</code></pre>
+<p>Now we have a little dataset with a row for each track. Each month, I get up to about 151 minutes, which is around 40.5 songs. Let’s see what Spotify has available for us to look at.</p>
+<pre class="r"><code>glimpse(feats)</code></pre>
+<pre><code>## Observations: 595
+## Variables: 19
+## $ month            &lt;fct&gt; Aug, Aug, Aug, Aug, Aug, Aug, Aug, Aug, Aug, ...
+## $ year             &lt;chr&gt; &quot;18&quot;, &quot;18&quot;, &quot;18&quot;, &quot;18&quot;, &quot;18&quot;, &quot;18&quot;, &quot;18&quot;, &quot;18...
+## $ track_name       &lt;chr&gt; &quot;Goodnight Moon&quot;, &quot;Lullaby&quot;, &quot;Imaginary Folkl...
+## $ artist_name      &lt;chr&gt; &quot;Boogie Belgique&quot;, &quot;Proleter&quot;, &quot;clammbon&quot;, &quot;T...
+## $ track_uri        &lt;chr&gt; &quot;2rvo9Ddv18aRV0OJldhWTf&quot;, &quot;4eQKQ5ZO4UlSUzskVq...
+## $ danceability     &lt;dbl&gt; 0.788, 0.893, 0.602, 0.689, 0.250, 0.488, 0.4...
+## $ energy           &lt;dbl&gt; 0.675, 0.582, 0.792, 0.642, 0.288, 0.872, 0.5...
+## $ key              &lt;chr&gt; &quot;G&quot;, &quot;G#&quot;, &quot;D&quot;, &quot;E&quot;, &quot;C&quot;, &quot;A&quot;, &quot;D#&quot;, &quot;D&quot;, &quot;D&quot;...
+## $ loudness         &lt;dbl&gt; -8.591, -8.087, -8.463, -11.697, -14.341, -7....
+## $ mode             &lt;chr&gt; &quot;minor&quot;, &quot;major&quot;, &quot;major&quot;, &quot;minor&quot;, &quot;major&quot;, ...
+## $ speechiness      &lt;dbl&gt; 0.0318, 0.1500, 0.0331, 0.0450, 0.0323, 0.034...
+## $ acousticness     &lt;dbl&gt; 6.16e-02, 2.00e-01, 1.46e-01, 2.92e-01, 6.93e...
+## $ instrumentalness &lt;dbl&gt; 7.11e-01, 2.48e-02, 8.87e-01, 8.70e-01, 8.24e...
+## $ liveness         &lt;dbl&gt; 0.1000, 0.0749, 0.1180, 0.1730, 0.1020, 0.088...
+## $ valence          &lt;dbl&gt; 0.5250, 0.7610, 0.3450, 0.1730, 0.3240, 0.529...
+## $ tempo            &lt;dbl&gt; 107.993, 99.988, 93.743, 136.977, 147.243, 13...
+## $ duration_ms      &lt;dbl&gt; 264736, 280413, 318027, 258510, 160108, 23569...
+## $ time_signature   &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, ...
+## $ key_mode         &lt;chr&gt; &quot;G minor&quot;, &quot;G# major&quot;, &quot;D major&quot;, &quot;E minor&quot;, ...</code></pre>
+<p>The NYT piece highlighted 5 features that we can look at:</p>
+<ul>
+<li><em>Acousticness:</em> likelihood the song features acoustic instruments</li>
+<li><em>Danceability:</em> strength and regularity of the beat</li>
+<li><em>Energy:</em> how fast and noisy the song sounds</li>
+<li><em>Loudness:</em> the average volume of a song</li>
+<li><em>Valence:</em> how cheerful the song sounds</li>
+</ul>
+<p>These seem like a reasonable place to start. I’m not really sure how each track receives a given value for one of these features, or exactly what their increments mean. For 4 of the 5 features, it looks like they’re measured from 0 to 1, but <em>loudness</em> ranges from -36 to -1.34 in the tracks I’ve pulled out.</p>
+<p>The NYT piece used spider/radar plots to show how individual songs have their own unique combination of the different audio features. I tried this approach out, but instead of putting the features on each of the points, I’ve placed the months there instead. For each month, I computed an average for each of the features. As you move clockwise around each ring, you can see whether average value for the songs of from that month were high or low. The dashed grey line is a visual reference. If the solid line is inside it, the month’s average was below what’s typical for songs in this collection. If the solid line is outside the dashed circle, the month’s average is above what’s typical.</p>
+<p><img src="/post/20180811-spotify-features_files/figure-html/unnamed-chunk-4-1.png" width="1152" /></p>
+<p>Although this style of plotting has some limitations, I really like how it highlights differences for comparison. If my listening habits were the same across both years, the shapes in each column would look the same. Let’s take <em>energy</em> as an example. In 2017 (top row), the line was above the reference during 4 of 8 months. To illustrate, here are two tracks, one from July (0.95) and one from August (0.93), respectively.</p>
+<iframe src="https://open.spotify.com/embed/track/63mnZ0zF5fBwJzYg2pDo9e" width="600" height="82" frameborder="0" allowtransparency="true">
+</iframe>
+<iframe src="https://open.spotify.com/embed/track/0gfxgjq6KUtVUNTRnAgX5M" width="600" height="82" frameborder="0" allowtransparency="true">
+</iframe>
+<p>Contrast these to two tracks from May of this year. The first scoring at 0.18, and the other sitting closer to the middle at 0.35. Aside from breaking things apart by month, I don’t think I really have a system for deciding what goes on each playlist. I guess this May was sleepier than last year’s.</p>
+<iframe src="https://open.spotify.com/embed/track/3cIG78oBauowzEbkBwWADN" width="600" height="82" frameborder="0" allowtransparency="true">
+</iframe>
+<iframe src="https://open.spotify.com/embed/track/4thSyFvS3TQp5lt4x4aG4t" width="600" height="82" frameborder="0" allowtransparency="true">
+</iframe>
+<p>Based on these tracks and the description of Spotify’s features, I figured that <em>energy</em> or <em>danceability</em> would be pretty strongly related to tempo, but it doesn’t seem this is the case for tracks in my collection. The relationships are, um, noisy; maybe tempo should be transformed or rescaled somehow?</p>
+<p><img src="/post/20180811-spotify-features_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="wrap-up" class="section level3">
+<h3>wrap-up</h3>
+<p>I think this is where I’m going to leave things for the moment. The main question I had going in was to see if there were any patterns in some of the features from month-to-month. Based on the brief progress here, it seems like there’s variation within and across years. I sort-of wondered if there would be any regular seasonal patterns, but maybe this isn’t really surprising. The universe of music I typically browse might have some overarching patterns that can’t be succinctly reduced to these features. At the same time, I only tried one summary, and there’s more metadata to be looked at. Perhaps there’s something to be learned in looking at how I go about adding tracks each day during a month. Time to let things sit for a bit, and revisit this data with some more specific questions.</p>
+</div>

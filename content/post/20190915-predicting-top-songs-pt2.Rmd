@@ -1,0 +1,242 @@
+---
+title: "predicting my yearly top songs without listening/usage data (part 2)"
+author: Andrew
+date: '2019-09-23'
+slug: "top-songs-over-time-spotifyr-2"
+tags: ["spotifyr", "R", "tidymodels", "supervised learning"]
+draft: true
+---
+
+```{r opts, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, warning = FALSE, echo = FALSE
+)
+```
+
+```{r setup and import}
+library(tidyverse)
+library(tidymodels)
+library(spotifyr)
+library(ggridges)
+library(scales)
+
+theme_set(
+  theme_minimal(base_size = 18) +
+    theme(panel.grid.minor = element_blank())
+)
+
+tracks <- read_csv("../../static/data/20190914-track-audio-features.csv")
+
+# clean up the month/year of each playlist
+# regular monthly lists look like this: "August '18"
+tracks <- tracks %>%
+  mutate(nm = playlist_name) %>%
+  separate(nm, c("playlist_mon", "playlist_year"), sep = " '") %>%
+  mutate(
+    playlist_mon  = str_squish(playlist_mon),
+    playlist_year = ifelse(
+      is.na(playlist_year),
+      str_remove_all(playlist_name, "[[:alpha:]]| "),
+      str_c("20", playlist_year) %>%
+        str_remove_all("[[:alpha:]]| ") %>%
+        str_remove("\\(")
+    )
+  ) %>%
+  filter(playlist_year != 2015) # drop a handful from a 2015/2016 combined list
+
+targets <- filter(tracks, str_detect(playlist_name, "Top Songs"))
+samples <- anti_join(tracks, targets, by = "playlist_name")
+
+# we want to know whether each track was within the year's top songs list
+samples <- targets %>%
+  select(playlist_year, track_uri) %>%
+  mutate(is_target = 1) %>%
+  right_join(samples, by = c("playlist_year", "track_uri")) %>%
+  mutate(is_target = replace_na(is_target, 0))
+
+# if a song shows up >1 times within a year, keep the earliest instance
+# add a count to show which songs are repeated within a year
+samples <- samples %>%
+  mutate(playlist_mon = factor(playlist_mon, levels = month.name)) %>%
+  arrange(track_uri, playlist_year, playlist_mon) %>%
+  add_count(track_uri, playlist_year, name = "num_lists") %>%
+  distinct(track_uri, playlist_year, .keep_all = TRUE)
+
+set.seed(20190914)
+
+ts_split <- initial_split(samples, prop = .75, strata = "playlist_year")
+ts_train <- training(ts_split)
+ts_test  <- testing(ts_split)
+
+ts_cvdat <- vfold_cv(ts_train, v = 10)
+```
+
+```{r}
+# this was a good classifier-- .8 AUC; reproduce me!
+# lm(is_target ~ playlist_mon * playlist_year, data = ts_train)
+
+# TODO: break the key/mode variable into 3-4 groups based on your EDA
+# TODO: try breaking the months into seasons?
+```
+
+```{r, eval = FALSE}
+ts_train %>%
+  gather(var, val, danceability:duration_ms, num_lists) %>%
+  mutate(is_target = factor(is_target)) %>%
+  group_by(var) %>%
+  mutate(val = scale(val)[1]) %>%
+  ggplot(aes(x = val, fill = is_target)) +
+  geom_density() +
+  facet_wrap(~var, scales = "free")
+
+pct_mon <- samples %>%
+  count(playlist_year, playlist_mon, is_target) %>%
+  mutate(playlist_mon = factor(playlist_mon, levels = month.name)) %>%
+  arrange(playlist_year, playlist_mon) %>%
+  spread(is_target, n, fill = 0) %>%
+  group_by(playlist_year, playlist_mon) %>%
+  summarise(
+    total = `0` + `1`,
+    pct   = `1` / total
+  )
+
+ggplot(pct_mon, aes(x = playlist_mon, y = pct, group = playlist_year)) +
+  geom_point(aes(size = total)) +
+  geom_line() +
+  facet_wrap(~playlist_year)
+```
+
+```{r setup the pipeline, eval = FALSE}
+
+
+ts_recipe <- function(dataset) {
+  dataset <- select(dataset, -track_uri)
+  
+  recipe(is_target ~ ., data = dataset) %>%
+    step_center(all_numeric(), -all_outcomes()) %>%
+    step_scale(all_numeric(), -all_outcomes()) %>%
+    step_dummy(all_nominal(), -all_outcomes()) %>%
+    step_num2factor(is_target)
+}
+
+ts_logit <- function(split, id) {
+  analysis_df   <- analysis(split)
+  analysis_prep <- prep(ts_recipe(analysis_df), training = analysis_df)
+  analysis_proc <- bake(analysis_prep, new_data = analysis_df)
+  
+  assess_df   <- assessment(split)
+  assess_prep <- prep(ts_recipe(assess_df), testing = assess_df)
+  assess_proc <- bake(assess_prep, new_data = assess_df)
+  
+  model <- logistic_reg("classification") %>%
+    set_engine("glm") %>%
+    fit(is_target ~ ., data = analysis_proc %>% select(-contains("key")))
+  
+  tibble(
+    `id`  = id,
+    truth = assess_proc$is_target,
+    pred  = unlist(predict(model, assess_proc)) 
+  )
+}
+
+ts_rf <- function(split, id) {
+  analysis_df   <- analysis(split)
+  analysis_prep <- prep(ts_recipe(analysis_df), training = analysis_df)
+  analysis_proc <- bake(analysis_prep, new_data = analysis_df)
+  
+  assess_df   <- assessment(split)
+  assess_prep <- prep(ts_recipe(assess_df), testing = assess_df)
+  assess_proc <- bake(assess_prep, new_data = assess_df)
+  
+  model <- rand_forest("classification") %>%
+    set_engine("ranger", importance = 'impurity') %>%
+    fit(is_target ~ ., data = analysis_proc)
+  
+  tibble(
+    `id`  = id,
+    truth = assess_proc$is_target,
+    pred  = unlist(predict(model, assess_proc))
+  )
+}
+
+ts_svm <- function(split, id) {
+    analysis_df   <- analysis(split)
+  analysis_prep <- prep(ts_recipe(analysis_df), training = analysis_df)
+  analysis_proc <- bake(analysis_prep, new_data = analysis_df)
+  
+  assess_df   <- assessment(split)
+  assess_prep <- prep(ts_recipe(assess_df), testing = assess_df)
+  assess_proc <- bake(assess_prep, new_data = assess_df)
+  
+  model <- svm_poly("classification") %>%
+    fit(is_target ~ ., data = analysis_proc)
+  
+  tibble(
+    `id`  = id,
+    truth = assess_proc$is_target,
+    pred  = unlist(predict(model, assess_proc))
+  )
+}
+
+ts_nn <- function(split, id, neighbors = 5) {
+  analysis_df   <- analysis(split)
+  analysis_prep <- prep(ts_recipe(analysis_df), training = analysis_df)
+  analysis_proc <- bake(analysis_prep, new_data = analysis_df)
+  
+  assess_df   <- assessment(split)
+  assess_prep <- prep(ts_recipe(assess_df), testing = assess_df)
+  assess_proc <- bake(assess_prep, new_data = assess_df)
+  
+  model <- nearest_neighbor("classification", neighbors) %>%
+    set_engine("kknn") %>%
+    fit(is_target ~ ., data = analysis_proc)
+  
+  tibble(
+    `id`  = id,
+    truth = assess_proc$is_target,
+    pred  = unlist(predict(model, assess_proc))
+  )
+}
+
+logit_res <- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_logit(.x, .y))
+rf_res    <- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_rf(.x, .y))
+svm_res   <- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_svm(.x, .y))
+nn_res    <- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y))
+
+lst(logit_res, rf_res, svm_res, nn_res) %>%
+  map_df(
+    ~group_by(., id) %>%
+      summarise(
+        sens = sens_vec(truth, pred),
+        spec = spec_vec(truth, pred),
+        accu = accuracy_vec(truth, pred)
+      ),
+    .id = "model"
+  ) %>% 
+  group_by(model) %>%
+  summarise_at(vars(sens:accu), funs(mean, sd))
+
+lst(
+  `2`  = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 2)),
+  `3`  = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 3)),
+  `5`  = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 5)),
+  `8`  = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 8)),
+  `10` = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 10)),
+  `15` = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 15))
+) %>%
+  map_df(
+    ~group_by(., id) %>%
+      summarise(
+        sens = sens_vec(truth, pred),
+        spec = spec_vec(truth, pred),
+        accu = accuracy_vec(truth, pred)
+      ),
+    .id = "model"
+  ) %>% 
+  group_by(model) %>%
+  summarise_at(vars(sens:accu), funs(mean, sd))
+  
+  
+
+```
+

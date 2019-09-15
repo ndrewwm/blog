@@ -17,14 +17,12 @@ library(scales)
 library(lubridate)
 library(magrittr)
 library(plotly)
-library(forcats)
 library(broom)
-library(stringr)
-library(glue)
-library(modelr)
 library(leaflet)
 library(tidycensus)
 library(sf)
+
+options(tigris_use_cache = TRUE)
 
 # we'll look at the 'scrubbed' data, no incomplete reports for now
 scrubbed <- read_csv("../../static/data/ufo-sightings/scrubbed.csv.zip")
@@ -68,7 +66,7 @@ That said, the number of sightings in each state has seen a steady climb since 2
 ```{r medians-over-time}
 by_year_boxplot <- us %>% 
   count(year_sighted, state) %>% 
-  ungroup %>% 
+  ungroup() %>% 
   filter(year_sighted > 1990) %>% 
   ggplot(aes(x = factor(year_sighted), y = n)) + 
   geom_boxplot(fill = "steelblue") +
@@ -129,7 +127,7 @@ shapes_frame <- us %>%
   gather(shape_simp, n, -year_sighted) %>%  # doesn't get messed up
   group_by(year_sighted) %>%
   mutate(pct  = n / sum(n)) %>%
-  ungroup %>%
+  ungroup() %>%
   arrange(year_sighted, pct) %>%
   filter(year_sighted > 1949)
 
@@ -198,9 +196,7 @@ ggplotly(p2)
 As I mentioned above, the *Economist* piece suggests that sightings tend to spurn big cities, rationale being that light pollution drives down reports. They also suggested that sightings favor the US/Canada border, and other rural areas. I'm not sure if I've reached the same conclusions... The map below reflects two pieces of data for each county in the US during 2013: population density (people/km^2), and sightings reported. The little grid below reflects how I've categorized each county. The top-left (dark-grey) represents counties with a really high population density but low numbers of sightings. The bottom right (deep brown) represents counties with a low population density but really high sighting count. Up in the top right we have counties whose number of sightings tracks well with their population size. 
  
 ```{r build-bv-map, cache=TRUE}
-source("../../../census-api-key.R")
-
-us$geometry <- 1:nrow(us) %>% 
+us$geometry <- 1:nrow(us) %>%
   lapply(function(x) st_point(c(us$longitude[x], us$latitude[x]))) %>% 
   st_sfc(crs = 4269)
 
@@ -217,14 +213,15 @@ countydat <-
   st_transform(4269) %>% 
   st_join(us2, join = st_contains)
 
-rates <- countydat %>% 
-  as.data.frame %>%
-  count(`NAME`) %>% 
+rates <- countydat %>%
+  as_tibble() %>%
+  count(NAME) %>% 
   right_join(
     countydat %>% 
-      select(NAME, B17006_001E, area, geometry) %>% 
-      distinct
-  ) %>% 
+      select(NAME, B17006_001E, area, geometry) %>%
+      as_tibble() %>%
+      distinct(NAME, .keep_all = TRUE)
+  ) %>%
   mutate(
     d = B17006_001E / as.numeric(area / 1000000),
     dm = Hmisc::cut2(d, g = 3, levels.mean = TRUE),
@@ -256,7 +253,7 @@ bv_choro <- rates %>%
   leaflet() %>%
   addPolygons(
     color = "black",
-    popup = ~glue_data(., "{NAME}; Sightings: {n}, Density: {round(d, 2)}"),
+    popup = ~str_glue_data(., "{NAME}; Sightings: {n}, Density: {round(d, 2)}"),
     stroke = TRUE,
     weight = 1,
     smoothFactor = 0.2,
@@ -267,7 +264,7 @@ bv_choro <- rates %>%
 
 legend_p <- rates %>% 
   select(dm, nm, bin) %>% 
-  distinct %>% 
+  distinct() %>% 
   arrange(bin) %>% 
   ggplot(aes(x = nm, y = dm, fill = bin)) +
   geom_tile() +
@@ -301,8 +298,6 @@ The thing I find striking is that there are a few really urban counties that sti
 ### Are there cultural or population-based factors that are related to sightings?
 
 ```{r sightings-glm-0}
-source("../../../census-api-key.R")
-
 census <- get_acs(
   geography = "state", 
   endyear = 2013,
@@ -356,9 +351,9 @@ ele <- "table:nth-child(4) td , table:nth-child(4) th"
 binge <- "https://www.cdc.gov/alcohol/data-table-text.htm#prevalence" %>% 
   read_html %>% 
   html_nodes(ele) %>% 
-  html_text
+  html_text()
 
-binge_clean <- data_frame(txt = binge) %>% 
+binge_clean <- tibble(txt = binge) %>% 
   filter(!str_detect(txt, "\\("), txt != "") %>% 
   mutate(txt = str_c(txt, "-", lead(txt))) %>% 
   filter(!str_detect(txt, "^[[:digit:]]"), !str_detect(txt, "%")) %>% 
@@ -385,7 +380,7 @@ yr13 <- us %>%
   filter(year_sighted == 2013) %>% 
   count(state.abb = str_to_upper(state)) %>%
   rename(sightings = n) %>% 
-  left_join(data_frame(state.abb, state = state.name), "state.abb")
+  left_join(tibble(state.abb, state = state.name), "state.abb")
 
 demog <- medians %>%
   rename(state = NAME) %>%
@@ -445,14 +440,14 @@ roundy <- function(x) round(x, 2)
 # i.e., in the case of our model, if openness increases by 1 point,
 # the number of sightings increases by 1.03.
 sightings_est <- sightings_pois %>%
-  tidy %>%
+  tidy() %>%
   bind_cols(confint_tidy(sightings_pois)) %>%
   select(term, estimate, contains("conf")) %>%
   mutate_each(funs(roundy(exp(.))), -term) %>%
   arrange(desc(abs(1 - estimate)))
 ```
 
-```{r sightings-glm2, include = FALSE}
+```{r sightings-glm2, include = FALSE, eval = FALSE}
 census_regions <- read_csv("../../data/ufo-sightings/census-regions.csv")
 
 demog <- demog %>% 
@@ -464,7 +459,7 @@ sightings_pois_region <- glm(sightings ~ census_region, data = demog, family = p
 summary(margins::margins(sightings_pois_region))
 ```
 
-```{r simple-lm}
+```{r simple-lm, eval = FALSE}
 sightings_lm <- lm(
   sightings ~
     pop_norm_z  +

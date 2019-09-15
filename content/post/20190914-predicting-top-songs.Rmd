@@ -1,0 +1,423 @@
+---
+title: "predicting my yearly top songs without times listened/usage data"
+author: Andrew
+date: '2019-09-16'
+slug: top-songs-over-time-spotifyr
+tags: ["spotifyr", "R", "tidymodels", "supervised learning"]
+# output:
+#   blogdown::html_page:
+#     highlight: pygments
+---
+
+```{r opts, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, warning = FALSE, echo = FALSE
+)
+```
+
+## question: how do tracks end up on my yearly top-100 songs playlist?
+
+[Last year]((https://www.semidocumentedlife.com/post/monthly-audio-features-spotifyr/)) I dug into the **_spotifyr_** package to see if the monthly playlists I curate varied by different track audio features available from the API. This time, I'm back with some more specific questions. I'm not sure when they started doing this but, Spotify creates yearly playlists for each user, meant to reflect the user's top-100 songs. I look forward to getting one each year, but I wish I knew more about how it worked.
+
+![](/img/top-songs-2018-screenshot.png)
+
+Ah yes, an exciting and very specific phrase: "the songs you loved most". I did a little looking around, but haven't found an official-looking article on how songs get selected for each person. It's perhaps obvious that the number of times one plays a track plays a part, but I'm not sure what else is safe to say. I also can't see that kind of usage data, so I definitely can't re-engineer their approach (even if I actually knew what it was). But, maybe there's still something that can be learned with what I can get from the API. If you think about plays/time spent listening as a latent variable that drives one's inclusion on the yearly list, maybe there are signatures of the kinds of tracks I end up listening to repetitively. 
+
+## a note on my playlist-curation habits
+
+Before we go deeper into what I looked at, I want to say a little more about how I put together playlists on Spotify. I don't know if this is unusual, but I don't typically create lists based on moods, genres, or artists (I have one for songs from tv/film soundtracks, and one that's full of gloomy songs, but both are fairly short). Instead, I start a new playlist at the beginning of each month, and add tracks as I encounter them (e.g. shared from friends, overheard in public places, pulled from my discover weekly list, or from browsing). I don't restrict myself to only adding a song to only one playlist, so if there's a track I'm enjoying, it'll show up across multiple lists. While this is undoubtely not foolproof, what's on my lists is generally a good proxy for what I enjoyed listening to during a given month.
+
+## getting the data
+
+Okay, now we can move on to what I actually did. These steps are similar to where we started in my previous post about **_spotifyr_**; we start by pulling down all the tracks from each playlist under my account, and then requesting the audio features for each track.
+
+```{r libraries}
+library(tidyverse)
+library(tidybayes)
+library(spotifyr)
+library(scales)
+
+theme_set(
+  theme_minimal(base_size = 18) +
+    theme(panel.grid.minor = element_blank())
+)
+```
+
+```{r raw data script, echo = FALSE, eval = FALSE}
+# fetch the public playlists from my account
+my_lists <- get_user_playlists("amateurthoughts")
+
+# pull out every song that ended up in my monthly playlists & the top songs lists
+tracks <- my_lists %>%
+  filter(str_detect(playlist_name, "Top Songs|'16|'17|'18")) %>%
+  get_playlist_tracks()
+
+# then merge in the audio features
+tracks <- tracks %>%
+  get_track_audio_features() %>%
+  right_join(tracks, by = "track_uri") %>%
+  as_tibble()
+
+write_csv(tracks, "../../static/data/20190914-track-audio-features.csv")
+```
+
+```{r raw data blog, echo = TRUE, eval = FALSE}
+library(tidyverse)
+library(spotifyr)
+
+# fetch the public playlists from my account
+my_lists <- get_user_playlists("amateurthoughts")
+
+# pull out every song that ended up in my monthly playlists & the top songs lists
+tracks <- my_lists %>%
+  filter(str_detect(playlist_name, "Top Songs|'16|'17|'18")) %>%
+  get_playlist_tracks()
+
+# then merge in the audio features
+tracks <- tracks %>%
+  get_track_audio_features() %>%
+  right_join(tracks, by = "track_uri") %>%
+  as_tibble()
+```
+
+```{r data import}
+tracks <- read_csv("../../static/data/20190914-track-audio-features.csv")
+```
+
+Next, we'll do some cleaning to tag each track that showed up in the year's "Top Songs" playlist. We'll pull out the actual "target" tracks that were compiled at the end of the year; the tibble for analysis we're moving towards should be a track-level file, with each track only represented once and our dependent variable (whether it was a "top song"). If a track is ultimately used across multiple lists _within the same year_, we'll note the number of times it appears, as well as the _first_ month that we observed it.
+
+```{r determine whether each track is a top song, echo = TRUE}
+# clean up the month/year of each playlist
+# regular monthly lists look like this: "August '18"
+tracks <- tracks %>%
+  mutate(nm = playlist_name) %>%
+  separate(nm, c("playlist_mon", "playlist_year"), sep = " '") %>%
+  mutate(
+    playlist_mon  = str_squish(playlist_mon),
+    playlist_year = ifelse(
+      is.na(playlist_year),
+      str_remove_all(playlist_name, "[[:alpha:]]| "),
+      str_c("20", playlist_year) %>%
+        str_remove_all("[[:alpha:]]| ") %>%
+        str_remove("\\(")
+    )
+  ) %>%
+  filter(playlist_year != 2015) # drop a handful from a 2015/2016 combined list
+
+targets <- filter(tracks, str_detect(playlist_name, "Top Songs"))
+samples <- anti_join(tracks, targets, by = "playlist_name")
+
+# we want to know whether each track was within the year's top songs list
+samples <- targets %>%
+  select(playlist_year, track_uri) %>%
+  mutate(is_target = 1) %>%
+  right_join(samples, by = c("playlist_year", "track_uri")) %>%
+  mutate(is_target = replace_na(is_target, 0))
+
+# if a song shows up >1 times within a year, keep the earliest instance
+# add a count to show which songs are repeated within a year
+samples <- samples %>%
+  mutate(playlist_mon = factor(playlist_mon, levels = month.name)) %>%
+  arrange(track_uri, playlist_year, playlist_mon) %>%
+  add_count(track_uri, playlist_year, name = "num_lists") %>%
+  distinct(track_uri, playlist_year, .keep_all = TRUE)
+
+# where are the missing 49 songs?
+count(samples, is_target)
+```
+
+```{r summary info}
+# excluding the top-songs, we want to describe my average playlist
+context_tracks <- samples 
+
+# which tracks have been played more than once?
+dup_tracks <- context_tracks %>%
+  add_count(track_uri, name = "num_years") %>%
+  filter(num_lists > 1 | num_years > 1)
+
+list_summary <- context_tracks %>%
+  group_by(playlist_year, playlist_mon) %>%
+  summarise(
+    n   = n(),
+    dur = sum(duration_ms) * .00001
+  ) %>%
+  summarise(
+    med_songs = median(n),
+    avg_songs = mean(n),
+    sd_songs  = sd(n),
+    med_dur   = median(dur),
+    avg_dur   = mean(dur),
+    sd_dur    = sd(dur)
+  )
+```
+
+Sadly, I wasn't able to match 49 tracks from the set of "Top Songs" (about 16% of the total number of "Top Songs"), and I'm not sure how to account for each of them. For a handful, it looks as if the track URI recorded in the "Top Songs" list(s) is different than what's recorded in my monthly playlists. For others, it's as if the tracks were never added to my monthly playlists. Maybe there is some contamination with the miscellaneous lists I mentioned in the previous section; 3 of the missing tracks from 2018 were ones that would fit in my "soundtracks" playlist.
+
+In any case, here's some contextual information about all the tracks/playlists in the collection we're looking at. I have a "Top Songs" list for 2016, 2017, and 2018, so that means we're looking at all the tracks from my monthly playlists during these years.
+
+```{r}
+list_summary %>%
+  knitr::kable(
+    col.names = c("Year", "# Songs, Median", "Mean", "SD", "# Minutes, Median", "Mean", "SD"),
+    digits  = 1,
+    caption = "Playlist statistics across each year"
+  )
+```
+
+The `samples` tibble has `r comma(nrow(context_tracks))` total observations, representing `r comma(n_distinct(context_tracks$track_uri))` unique tracks (`r nrow(dup_tracks)` have been included on more than one list). Each of my monthly playlists has something like `r round(mean(list_summary$med_songs), 0)` songs on it, lasting for about `r round(mean(list_summary$med_dur), 0)` minutes, although it looks like my habits differed a bit over the 3 years.
+
+Just as a refresher, here's a table describing collection of audio features from the API. Most of the features are numeric variables. A few of these are probabilities that a song contains a certain quality. For example, one represents the estimate of whether or not a song is being performed live (it seems like this was done based on whether sounds from an audience were detected in the recording). Other features are nominal, non-numeric data that describe the track, such as the song's musical key or time signature.
+
+```{r}
+# hey! this is weird, but if you name/label the chunk, the table number gets replaced
+# by some weird html-- so don't do that if you care about your table numbering!
+
+tribble(
+  ~type,       ~feature,       ~description,
+  "_Numeric_", "acousticness", "Likelihood the song features acoustic instruments",
+  "",          "danceability", "Strength and regularity of the beat",
+  "",          "duration_ms",  "Duration of the song (in milliseconds)",
+  "",          "energy",       "How fast and noisy the song sounds",
+  "",          "instrumentalness", "Probability that the song is an instrumental (based on presence/absence of vocals)",
+  "",          "liveness",     "Probability that the song is being performed live",
+  "",          "loudness",     "The average volume of a song",
+  "",          "tempo",        "The song's tempo",
+  "",          "valence",      "How cheerful the song sounds",
+  "_Nominal_", "key",          "The song's musical key",
+  "",          "mode",          "Whether the song's key is major or minor",
+  "",          "time_signature", "The song's estimated time signature (meter)"
+) %>%
+  knitr::kable(
+    col.names = c("Type", "Feature", "Description"),
+    caption = "Description of track features",
+    align = "cll"
+  )
+```
+
+## some exploratory analysis
+
+Okay, now that we know what we're working with, we can try to move forward to answering my question. Ultimately, I'd like to build a model that can help tell me whether one of the tracks in a playlist of mine will end up on my yearly list, so I'll set up training/testing datasets for exploration and evaluation. I've been trying to learn more about the **_tidymodels_** family of packages, and I've really appreciated how easy it is to organize this part of the workflow with the **_rsample_** package. We'll use it to chop up our tracks below, starting with `initial_split()` to generate training/test sets. The `initial_split()` function creates an `rsplit` object, which organizes our tracks into different samples/groups. In this case, we've randomly allocated 75% of the tracks to the training set, and 25% for testing. The `training()` and `testing()` functions are helpers that enable us to easily extract our groups, so we can work on them. We can also organize our training data into a set of V-fold samples for cross-validation (which is done with the `vfold_cv()` function below).
+
+```{r create split, echo = TRUE}
+library(tidymodels)
+
+set.seed(20190914)
+
+ts_split <- initial_split(samples, prop = .75, strata = "playlist_year")
+ts_train <- training(ts_split)
+ts_test  <- testing(ts_split)
+
+ts_cvdat <- vfold_cv(ts_train, v = 10)
+```
+
+Okay, now comes the disappointing thing I can share with you: I'm not sure any of the audio features are specifically related to inclusion on the "Top Songs" lists. Before building any models, I started by plotting each of the numeric features, and examining cross-tabulations between the "Top Songs" dependent variable and the nominal features. I'll show you a plot of the numeric features first to illustrate the problem I encountered. Can you spot the issue? These are density plots for each of the features, with the distributions of tracks that _were_ "top songs" compared to those that weren't. The shape of these densities show us the most likely values of each feature; the closer a value on the x-axis is to one of the "peaks" of the plot, the more frequently that value is observed in the data.
+
+```{r fig.height=6, fig.width=9.5}
+library(ggridges)
+
+p_features_facet <- ts_train %>%
+  select(
+    track_uri,        # some unique identifiers for the track
+    is_target,
+    playlist_year,
+    acousticness,     # all the numeric features
+    danceability,
+    duration_ms,
+    energy,
+    instrumentalness,
+    liveness,
+    loudness,
+    tempo,
+    valence,
+    num_lists
+  ) %>%
+  gather(var, val, -track_uri, -is_target, -playlist_year) %>%
+  mutate(
+    var = var %>%
+      str_replace("_", " ") %>%
+      str_to_title() %>%
+      fct_recode(
+        `Times Included\nPer Year` = "Num Lists",
+        `Duration (MS)`  = "Duration Ms"
+      ),
+    is_target = factor(is_target, 0:1, c("No", "Yes"))
+  ) %>%
+  ggplot(aes(y = is_target, x = val)) +
+  geom_density_ridges() +
+  facet_wrap(~var, scales = "free_x") +
+  labs(x = "Feature", y = "Top Song?")
+
+p_features_facet
+```
+
+So, the problem ... If you look at each pair of density plots, they each look really similar to each other. They're not identical, but the modal values for each feature seem really close. What does this mean? Well, it seems that my "top songs" are very representative of the other songs in my playlists that *don't* end up in one of the "top songs" lists. At least with this set of features, I don't think any model I could build would really do much to discriminate between potential "top songs" from regular songs.
+
+```{r}
+
+```
+
+```{r}
+# this was a good classifier-- .8 AUC; reproduce me!
+# lm(is_target ~ playlist_mon * playlist_year, data = ts_train)
+```
+
+```{r, eval = FALSE}
+ts_train %>%
+  gather(var, val, danceability:duration_ms, num_lists) %>%
+  mutate(is_target = factor(is_target)) %>%
+  group_by(var) %>%
+  mutate(val = scale(val)[1]) %>%
+  ggplot(aes(x = val, fill = is_target)) +
+  geom_density() +
+  facet_wrap(~var, scales = "free")
+
+pct_mon <- samples %>%
+  count(playlist_year, playlist_mon, is_target) %>%
+  mutate(playlist_mon = factor(playlist_mon, levels = month.name)) %>%
+  arrange(playlist_year, playlist_mon) %>%
+  spread(is_target, n, fill = 0) %>%
+  group_by(playlist_year, playlist_mon) %>%
+  summarise(
+    total = `0` + `1`,
+    pct   = `1` / total
+  )
+
+ggplot(pct_mon, aes(x = playlist_mon, y = pct, group = playlist_year)) +
+  geom_point(aes(size = total)) +
+  geom_line() +
+  facet_wrap(~playlist_year)
+```
+
+```{r setup the pipeline, eval = FALSE}
+
+
+ts_recipe <- function(dataset) {
+  dataset <- select(dataset, -track_uri)
+  
+  recipe(is_target ~ ., data = dataset) %>%
+    step_center(all_numeric(), -all_outcomes()) %>%
+    step_scale(all_numeric(), -all_outcomes()) %>%
+    step_dummy(all_nominal(), -all_outcomes()) %>%
+    step_num2factor(is_target)
+}
+
+ts_logit <- function(split, id) {
+  analysis_df   <- analysis(split)
+  analysis_prep <- prep(ts_recipe(analysis_df), training = analysis_df)
+  analysis_proc <- bake(analysis_prep, new_data = analysis_df)
+  
+  assess_df   <- assessment(split)
+  assess_prep <- prep(ts_recipe(assess_df), testing = assess_df)
+  assess_proc <- bake(assess_prep, new_data = assess_df)
+  
+  model <- logistic_reg("classification") %>%
+    set_engine("glm") %>%
+    fit(is_target ~ ., data = analysis_proc %>% select(-contains("key")))
+  
+  tibble(
+    `id`  = id,
+    truth = assess_proc$is_target,
+    pred  = unlist(predict(model, assess_proc)) 
+  )
+}
+
+ts_rf <- function(split, id) {
+  analysis_df   <- analysis(split)
+  analysis_prep <- prep(ts_recipe(analysis_df), training = analysis_df)
+  analysis_proc <- bake(analysis_prep, new_data = analysis_df)
+  
+  assess_df   <- assessment(split)
+  assess_prep <- prep(ts_recipe(assess_df), testing = assess_df)
+  assess_proc <- bake(assess_prep, new_data = assess_df)
+  
+  model <- rand_forest("classification") %>%
+    set_engine("ranger", importance = 'impurity') %>%
+    fit(is_target ~ ., data = analysis_proc)
+  
+  tibble(
+    `id`  = id,
+    truth = assess_proc$is_target,
+    pred  = unlist(predict(model, assess_proc))
+  )
+}
+
+ts_svm <- function(split, id) {
+    analysis_df   <- analysis(split)
+  analysis_prep <- prep(ts_recipe(analysis_df), training = analysis_df)
+  analysis_proc <- bake(analysis_prep, new_data = analysis_df)
+  
+  assess_df   <- assessment(split)
+  assess_prep <- prep(ts_recipe(assess_df), testing = assess_df)
+  assess_proc <- bake(assess_prep, new_data = assess_df)
+  
+  model <- svm_poly("classification") %>%
+    fit(is_target ~ ., data = analysis_proc)
+  
+  tibble(
+    `id`  = id,
+    truth = assess_proc$is_target,
+    pred  = unlist(predict(model, assess_proc))
+  )
+}
+
+ts_nn <- function(split, id, neighbors = 5) {
+  analysis_df   <- analysis(split)
+  analysis_prep <- prep(ts_recipe(analysis_df), training = analysis_df)
+  analysis_proc <- bake(analysis_prep, new_data = analysis_df)
+  
+  assess_df   <- assessment(split)
+  assess_prep <- prep(ts_recipe(assess_df), testing = assess_df)
+  assess_proc <- bake(assess_prep, new_data = assess_df)
+  
+  model <- nearest_neighbor("classification", neighbors) %>%
+    set_engine("kknn") %>%
+    fit(is_target ~ ., data = analysis_proc)
+  
+  tibble(
+    `id`  = id,
+    truth = assess_proc$is_target,
+    pred  = unlist(predict(model, assess_proc))
+  )
+}
+
+logit_res <- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_logit(.x, .y))
+rf_res    <- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_rf(.x, .y))
+svm_res   <- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_svm(.x, .y))
+nn_res    <- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y))
+
+lst(logit_res, rf_res, svm_res, nn_res) %>%
+  map_df(
+    ~group_by(., id) %>%
+      summarise(
+        sens = sens_vec(truth, pred),
+        spec = spec_vec(truth, pred),
+        accu = accuracy_vec(truth, pred)
+      ),
+    .id = "model"
+  ) %>% 
+  group_by(model) %>%
+  summarise_at(vars(sens:accu), funs(mean, sd))
+
+lst(
+  `2`  = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 2)),
+  `3`  = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 3)),
+  `5`  = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 5)),
+  `8`  = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 8)),
+  `10` = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 10)),
+  `15` = map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_nn(.x, .y, 15))
+) %>%
+  map_df(
+    ~group_by(., id) %>%
+      summarise(
+        sens = sens_vec(truth, pred),
+        spec = spec_vec(truth, pred),
+        accu = accuracy_vec(truth, pred)
+      ),
+    .id = "model"
+  ) %>% 
+  group_by(model) %>%
+  summarise_at(vars(sens:accu), funs(mean, sd))
+  
+  
+
+```

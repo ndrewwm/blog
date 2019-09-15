@@ -1,0 +1,221 @@
+---
+title: "predicting my yearly top songs without times listened/usage data"
+author: Andrew
+date: '2019-09-16'
+slug: top-songs-over-time-spotifyr
+tags: ["spotifyr", "R", "tidymodels", "supervised learning"]
+# output:
+#   blogdown::html_page:
+#     highlight: pygments
+---
+
+
+
+<div id="question-how-do-tracks-end-up-on-my-yearly-top-100-songs-playlist" class="section level2">
+<h2>question: how do tracks end up on my yearly top-100 songs playlist?</h2>
+<p><a href="(https://www.semidocumentedlife.com/post/monthly-audio-features-spotifyr/)">Last year</a> I dug into the <strong><em>spotifyr</em></strong> package to see if the monthly playlists I curate varied by different track audio features available from the API. This time, I’m back with some more specific questions. I’m not sure when they started doing this but, Spotify creates yearly playlists for each user, meant to reflect the user’s top-100 songs. I look forward to getting one each year, but I wish I knew more about how it worked.</p>
+<p><img src="/img/top-songs-2018-screenshot.png" /></p>
+<p>Ah yes, an exciting and very specific phrase: “the songs you loved most”. I did a little looking around, but haven’t found an official-looking article on how songs get selected for each person. It’s perhaps obvious that the number of times one plays a track plays a part, but I’m not sure what else is safe to say. I also can’t see that kind of usage data, so I definitely can’t re-engineer their approach (even if I actually knew what it was). But, maybe there’s still something that can be learned with what I can get from the API. If you think about plays/time spent listening as a latent variable that drives one’s inclusion on the yearly list, maybe there are signatures of the kinds of tracks I end up listening to repetitively.</p>
+</div>
+<div id="a-note-on-my-playlist-curation-habits" class="section level2">
+<h2>a note on my playlist-curation habits</h2>
+<p>Before we go deeper into what I looked at, I want to say a little more about how I put together playlists on Spotify. I don’t know if this is unusual, but I don’t typically create lists based on moods, genres, or artists (I have one for songs from tv/film soundtracks, and one that’s full of gloomy songs, but both are fairly short). Instead, I start a new playlist at the beginning of each month, and add tracks as I encounter them (e.g. shared from friends, overheard in public places, pulled from my discover weekly list, or from browsing). I don’t restrict myself to only adding a song to only one playlist, so if there’s a track I’m enjoying, it’ll show up across multiple lists. While this is undoubtely not foolproof, what’s on my lists is generally a good proxy for what I enjoyed listening to during a given month.</p>
+</div>
+<div id="getting-the-data" class="section level2">
+<h2>getting the data</h2>
+<p>Okay, now we can move on to what I actually did. These steps are similar to where we started in my previous post about <strong><em>spotifyr</em></strong>; we start by pulling down all the tracks from each playlist under my account, and then requesting the audio features for each track.</p>
+<pre class="r"><code>library(tidyverse)
+library(spotifyr)
+
+# fetch the public playlists from my account
+my_lists &lt;- get_user_playlists(&quot;amateurthoughts&quot;)
+
+# pull out every song that ended up in my monthly playlists &amp; the top songs lists
+tracks &lt;- my_lists %&gt;%
+  filter(str_detect(playlist_name, &quot;Top Songs|&#39;16|&#39;17|&#39;18&quot;)) %&gt;%
+  get_playlist_tracks()
+
+# then merge in the audio features
+tracks &lt;- tracks %&gt;%
+  get_track_audio_features() %&gt;%
+  right_join(tracks, by = &quot;track_uri&quot;) %&gt;%
+  as_tibble()</code></pre>
+<p>Next, we’ll do some cleaning to tag each track that showed up in the year’s “Top Songs” playlist. We’ll pull out the actual “target” tracks that were compiled at the end of the year; the tibble for analysis we’re moving towards should be a track-level file, with each track only represented once and our dependent variable (whether it was a “top song”). If a track is ultimately used across multiple lists <em>within the same year</em>, we’ll note the number of times it appears, as well as the <em>first</em> month that we observed it.</p>
+<pre class="r"><code># clean up the month/year of each playlist
+# regular monthly lists look like this: &quot;August &#39;18&quot;
+tracks &lt;- tracks %&gt;%
+  mutate(nm = playlist_name) %&gt;%
+  separate(nm, c(&quot;playlist_mon&quot;, &quot;playlist_year&quot;), sep = &quot; &#39;&quot;) %&gt;%
+  mutate(
+    playlist_mon  = str_squish(playlist_mon),
+    playlist_year = ifelse(
+      is.na(playlist_year),
+      str_remove_all(playlist_name, &quot;[[:alpha:]]| &quot;),
+      str_c(&quot;20&quot;, playlist_year) %&gt;%
+        str_remove_all(&quot;[[:alpha:]]| &quot;) %&gt;%
+        str_remove(&quot;\\(&quot;)
+    )
+  ) %&gt;%
+  filter(playlist_year != 2015) # drop a handful from a 2015/2016 combined list
+
+targets &lt;- filter(tracks, str_detect(playlist_name, &quot;Top Songs&quot;))
+samples &lt;- anti_join(tracks, targets, by = &quot;playlist_name&quot;)
+
+# we want to know whether each track was within the year&#39;s top songs list
+samples &lt;- targets %&gt;%
+  select(playlist_year, track_uri) %&gt;%
+  mutate(is_target = 1) %&gt;%
+  right_join(samples, by = c(&quot;playlist_year&quot;, &quot;track_uri&quot;)) %&gt;%
+  mutate(is_target = replace_na(is_target, 0))
+
+# if a song shows up &gt;1 times within a year, keep the earliest instance
+# add a count to show which songs are repeated within a year
+samples &lt;- samples %&gt;%
+  mutate(playlist_mon = factor(playlist_mon, levels = month.name)) %&gt;%
+  arrange(track_uri, playlist_year, playlist_mon) %&gt;%
+  add_count(track_uri, playlist_year, name = &quot;num_lists&quot;) %&gt;%
+  distinct(track_uri, playlist_year, .keep_all = TRUE)
+
+# where are the missing 49 songs?
+count(samples, is_target)</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##   is_target     n
+##       &lt;dbl&gt; &lt;int&gt;
+## 1         0   833
+## 2         1   251</code></pre>
+<p>Sadly, I wasn’t able to match 49 tracks from the set of “Top Songs” (about 16% of the total number of “Top Songs”), and I’m not sure how to account for each of them. For a handful, it looks as if the track URI recorded in the “Top Songs” list(s) is different than what’s recorded in my monthly playlists. For others, it’s as if the tracks were never added to my monthly playlists. Maybe there is some contamination with the miscellaneous lists I mentioned in the previous section; 3 of the missing tracks from 2018 were ones that would fit in my “soundtracks” playlist.</p>
+<p>In any case, here’s some contextual information about all the tracks/playlists in the collection we’re looking at. I have a “Top Songs” list for 2016, 2017, and 2018, so that means we’re looking at all the tracks from my monthly playlists during these years.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 1: </span>Playlist statistics across each year</caption>
+<thead>
+<tr class="header">
+<th align="left">Year</th>
+<th align="right"># Songs, Median</th>
+<th align="right">Mean</th>
+<th align="right">SD</th>
+<th align="right"># Minutes, Median</th>
+<th align="right">Mean</th>
+<th align="right">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2016</td>
+<td align="right">24.0</td>
+<td align="right">24.7</td>
+<td align="right">5.6</td>
+<td align="right">62.1</td>
+<td align="right">60.1</td>
+<td align="right">13.7</td>
+</tr>
+<tr class="even">
+<td align="left">2017</td>
+<td align="right">40.5</td>
+<td align="right">38.3</td>
+<td align="right">6.4</td>
+<td align="right">97.7</td>
+<td align="right">94.0</td>
+<td align="right">17.8</td>
+</tr>
+<tr class="odd">
+<td align="left">2018</td>
+<td align="right">29.5</td>
+<td align="right">33.5</td>
+<td align="right">14.1</td>
+<td align="right">73.3</td>
+<td align="right">80.5</td>
+<td align="right">31.5</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>samples</code> tibble has 1,084 total observations, representing 1,077 unique tracks (64 have been included on more than one list). Each of my monthly playlists has something like 31 songs on it, lasting for about 78 minutes, although it looks like my habits differed a bit over the 3 years.</p>
+<p>Just as a refresher, here’s a table describing collection of audio features from the API. Most of the features are numeric variables. A few of these are probabilities that a song contains a certain quality. For example, one represents the estimate of whether or not a song is being performed live (it seems like this was done based on whether sounds from an audience were detected in the recording). Other features are nominal, non-numeric data that describe the track, such as the song’s musical key or time signature.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-2">Table 2: </span>Description of track features</caption>
+<thead>
+<tr class="header">
+<th align="center">Type</th>
+<th align="left">Feature</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><em>Numeric</em></td>
+<td align="left">acousticness</td>
+<td align="left">Likelihood the song features acoustic instruments</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="left">danceability</td>
+<td align="left">Strength and regularity of the beat</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="left">duration_ms</td>
+<td align="left">Duration of the song (in milliseconds)</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="left">energy</td>
+<td align="left">How fast and noisy the song sounds</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="left">instrumentalness</td>
+<td align="left">Probability that the song is an instrumental (based on presence/absence of vocals)</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="left">liveness</td>
+<td align="left">Probability that the song is being performed live</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="left">loudness</td>
+<td align="left">The average volume of a song</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="left">tempo</td>
+<td align="left">The song’s tempo</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="left">valence</td>
+<td align="left">How cheerful the song sounds</td>
+</tr>
+<tr class="even">
+<td align="center"><em>Nominal</em></td>
+<td align="left">key</td>
+<td align="left">The song’s musical key</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="left">mode</td>
+<td align="left">Whether the song’s key is major or minor</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="left">time_signature</td>
+<td align="left">The song’s estimated time signature (meter)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="some-exploratory-analysis" class="section level2">
+<h2>some exploratory analysis</h2>
+<p>Okay, now that we know what we’re working with, we can try to move forward to answering my question. Ultimately, I’d like to build a model that can help tell me whether one of the tracks in a playlist of mine will end up on my yearly list, so I’ll set up training/testing datasets for exploration and evaluation. I’ve been trying to learn more about the <strong><em>tidymodels</em></strong> family of packages, and I’ve really appreciated how easy it is to organize this part of the workflow with the <strong><em>rsample</em></strong> package. We’ll use it to chop up our tracks below, starting with <code>initial_split()</code> to generate training/test sets. The <code>initial_split()</code> function creates an <code>rsplit</code> object, which organizes our tracks into different samples/groups. In this case, we’ve randomly allocated 75% of the tracks to the training set, and 25% for testing. The <code>training()</code> and <code>testing()</code> functions are helpers that enable us to easily extract our groups, so we can work on them. We can also organize our training data into a set of V-fold samples for cross-validation (which is done with the <code>vfold_cv()</code> function below).</p>
+<pre class="r"><code>library(tidymodels)
+
+set.seed(20190914)
+
+ts_split &lt;- initial_split(samples, prop = .75, strata = &quot;playlist_year&quot;)
+ts_train &lt;- training(ts_split)
+ts_test  &lt;- testing(ts_split)
+
+ts_cvdat &lt;- vfold_cv(ts_train, v = 10)</code></pre>
+<p>Okay, now comes the disappointing thing I can share with you: I’m not sure any of the audio features are specifically related to inclusion on the “Top Songs” lists. Before building any models, I started by plotting each of the numeric features, and examining cross-tabulations between the “Top Songs” dependent variable and the nominal features. I’ll show you a plot of the numeric features first to illustrate the problem I encountered. Can you spot the issue? These are density plots for each of the features, with the distributions of tracks that <em>were</em> “top songs” compared to those that weren’t. The shape of these densities show us the most likely values of each feature; the closer a value on the x-axis is to one of the “peaks” of the plot, the more frequently that value is observed in the data.</p>
+<p><img src="/post/20190914-predicting-top-songs_files/figure-html/unnamed-chunk-3-1.png" width="912" /></p>
+<p>So, the problem … If you look at each pair of density plots, they each look really similar to each other. They’re not identical, but the modal values for each feature seem really close. What does this mean? Well, it seems that my “top songs” are very representative of the other songs in my playlists that <em>don’t</em> end up in one of the “top songs” lists. At least with this set of features, I don’t think any model I could build would really do much to discriminate between potential “top songs” from regular songs.</p>
+</div>

@@ -19,7 +19,7 @@ tags: ["spotifyr", "R", "rsample", "EDA"]
 </div>
 <div id="a-note-on-my-playlist-curation-habits" class="section level2">
 <h2>a note on my playlist-curation habits</h2>
-<p>Before we go deeper into what I looked at, I want to say a little more about how I put together playlists on Spotify. I don’t know if this is unusual, but I don’t typically create lists based on moods, genres, or artists (I have one for songs from tv/film soundtracks, and one that’s full of gloomy songs, but both are fairly short). Instead, I start a new playlist at the beginning of each month, and add tracks as I encounter them (e.g. shared from friends, overheard in public places, pulled from my discover weekly list, or from browsing). I don’t restrict myself to only adding a song to only one playlist, so if there’s a track I’m enjoying, it’ll show up across multiple lists. While this is definitely not a perfectly precise system, I’m comfortable saying that what’s on my lists is a good proxy for what I enjoyed listening to during a given month.</p>
+<p>Before we go deeper into what I looked at, I want to say a little more about how I put together playlists on Spotify. I don’t know if this is unusual, but I don’t typically create lists based on moods, genres, or artists (I have one for songs from tv/film soundtracks, and one that’s full of gloomy songs, but both are fairly short). Instead, I start a new playlist at the beginning of each month, and add tracks as I encounter them (e.g. shared from friends, overheard in public places, pulled from my discover weekly list, or from browsing). I don’t restrict myself to only adding a song to only one playlist, so if there’s a track I’m enjoying, it’ll show up across multiple lists. It’s not a perfectly precise, but I’m comfortable saying that what’s on my lists is a good proxy for what I enjoyed listening to during a given month.</p>
 </div>
 <div id="getting-the-data" class="section level2">
 <h2>getting the data</h2>
@@ -40,7 +40,7 @@ tracks &lt;- tracks %&gt;%
   get_track_audio_features() %&gt;%
   right_join(tracks, by = &quot;track_uri&quot;) %&gt;%
   as_tibble()</code></pre>
-<p>Next, we’ll do some cleaning to tag each track that showed up in the year’s “Top Songs” playlist. We’ll pull out the actual “target” tracks that were compiled at the end of the year; the tibble for analysis we’re moving towards should be a track-level file, with each track only represented once and our dependent variable (whether it was a “top song”). If a track is ultimately used across multiple lists <em>within the same year</em>, we’ll note the number of times it appears, as well as the <em>first</em> month that we observed it.</p>
+<p>Next, we’ll do some cleaning to tag each track that showed up in the year’s “Top Songs” playlist. We’ll pull out the actual “target” tracks that were compiled at the end of the year; the tibble for analysis we’re moving towards should be a track-level file (i.e. each track only represented once), containing track features and the dependent variable (whether each track was a “top song”). If a track is used across multiple lists <em>within the same year</em>, we’ll note the number of times it appears, as well as the <em>first</em> month that we observed it.</p>
 <pre class="r"><code># clean up the month/year of each playlist
 # regular monthly lists look like this: &quot;August &#39;18&quot;
 tracks &lt;- tracks %&gt;%

@@ -1,7 +1,7 @@
 ---
 title: "predicting my yearly top songs without listening/usage data (part 1)"
 author: Andrew
-date: '2019-09-16'
+date: '2019-09-18'
 slug: "top-songs-over-time-spotifyr-1"
 tags: ["spotifyr", "R", "rsample", "EDA"]
 # output:
@@ -17,11 +17,11 @@ knitr::opts_chunk$set(
 
 ## question: how do tracks end up on my yearly top-100 songs playlist?
 
-[Last year](https://www.semidocumentedlife.com/post/monthly-audio-features-spotifyr/){target="_blank"} I dug into the **_spotifyr_** package to see if the monthly playlists I curate varied by different track audio features available from the API. This time, I'm back with some more specific questions. I'm not sure when they started doing this but, Spotify creates yearly playlists for each user, meant to reflect the user's top-100 songs. I look forward to getting one each year, but I wish I knew more about how it worked.
+[Last year](https://www.semidocumentedlife.com/post/monthly-audio-features-spotifyr/){target="_blank"} I dug into the [**_spotifyr_**](https://github.com/charlie86/spotifyr){target="_blank"} package to see if the monthly playlists I curate varied by different track audio features available from the API. This time, I'm back with some more specific questions. Maybe they've always done this but, Spotify creates yearly playlists for each user, meant to reflect the user's top-100 songs. I look forward to getting one each year, but I wish I knew more about how it worked.
 
 ![](/img/top-songs-2018-screenshot.png)
 
-Ah yes, an exciting and very specific phrase: "the songs you loved most". I did a little looking around, but haven't found an official-looking article on how songs get selected for each person. It seems obvious that the number of times one plays a track plays a part, but I'm not sure if there's anything else to it. I also can't get that kind of usage data, so I definitely can't re-engineer their approach (even if I actually knew what it was). But, maybe there's still something that can be learned with what you can get from the API. In this context, the time spent listening to a given track is an unobserved (latent) variable that we can't measure directly. _And_ we know this latent variable drives the outcome we're interested in (is this a top song, yes/no). If we can't see the real relationship, maybe we can do the next best thing, which is identifying characteristics of songs that are positively related to our outcome (and would be related to amount spent listening, in theory).
+Ah yes, an exciting and very specific phrase: "the songs you loved most". I did a little looking around, but haven't found an official-looking article on how songs get selected for each person. It seems obvious that the number of times one plays a track plays a part, but I'm not sure if there's anything else to it. I also can't get that kind of usage data, so I can't re-engineer their approach (even if I actually knew what it was). But, maybe there's still something that can be learned with what's available from the API. In this context, the time spent listening to a given track is a hidden  variable (unobserved) that we can't measure. _And_ we know this hidden variable drives the outcome we're interested in (is this a top song, yes/no). If we can't see the real relationship, hopefully we can find characteristics of songs that are positively related to our outcome (in theory, these characteristics would also be positively related to the amount of time spent listening).
 
 ## a note on my playlist-curation habits
 
@@ -58,7 +58,7 @@ tracks <- tracks %>%
   right_join(tracks, by = "track_uri") %>%
   as_tibble()
 
-write_csv(tracks, "../../static/data/20190914-track-audio-features.csv")
+write_csv(tracks, "../../static/data/predicting-top-songs/20190914-track-audio-features.csv")
 ```
 
 ```{r raw data blog, echo = TRUE, eval = FALSE}
@@ -81,10 +81,10 @@ tracks <- tracks %>%
 ```
 
 ```{r data import}
-tracks <- read_csv("../../static/data/20190914-track-audio-features.csv")
+tracks <- read_csv("../../static/data/predicting-top-songs/20190914-track-audio-features.csv")
 ```
 
-Next, we'll do some cleaning to tag each track that showed up in the year's "Top Songs" playlist. We'll pull out the actual "target" tracks that were compiled at the end of the year; the tibble for analysis we're moving towards should be a track-level file (i.e. each track only represented once), containing track features and the dependent variable (whether each track was a "top song"). If a track is used across multiple lists _within the same year_, we'll note the number of times it appears, as well as the _first_ month that we observed it.
+Now we'll do some cleaning to tag each track that showed up in the year's "Top Songs" playlist. The tibble for analysis we're moving towards should be a track-level file (i.e. each track only represented once), containing track features and the dependent variable (whether each track was a "top song"). If a track is used across multiple lists _within the same year_, we'll note the number of times it appears, as well as the _first_ month that we observed it.
 
 ```{r determine whether each track is a top song, echo = TRUE}
 # clean up the month/year of each playlist
@@ -151,7 +151,7 @@ list_summary <- context_tracks %>%
   )
 ```
 
-Sadly, I wasn't able to match 49 tracks from the set of "Top Songs" (about 16% of the total number of "Top Songs"), and I'm not sure how to account for each of them. For a handful, it looks as if the track URI recorded in the "Top Songs" list(s) is different than what's recorded in my monthly playlists. For others, it's as if the tracks were never added to my monthly playlists. Maybe there is some contamination with the miscellaneous lists I mentioned in the previous section; 3 of the missing tracks from 2018 were ones that would fit in my "soundtracks" playlist.
+Sadly, I wasn't able to match 49 tracks from the set of "Top Songs" (about 16% of the total number of "Top Songs"), and I'm not sure how to account for each of them. For a handful, it looks as if the track URI recorded in the "Top Songs" list(s) is different than what's recorded in my monthly playlists. For others, it's as if the tracks were never added to my monthly playlists. Maybe there's some contamination with the miscellaneous lists I mentioned in the previous section; 3 of the missing tracks from 2018 were ones that would fit in my "soundtracks" playlist.
 
 In any case, here's some contextual information about all the tracks/playlists in the collection we're looking at. I have a "Top Songs" list for 2016, 2017, and 2018, so that means we're looking at all the tracks from my monthly playlists during these years.
 
@@ -166,7 +166,7 @@ list_summary %>%
 
 The `samples` tibble has `r comma(nrow(context_tracks))` total observations, representing `r comma(n_distinct(context_tracks$track_uri))` unique tracks (`r nrow(dup_tracks)` have been included on more than one list). Each of my monthly playlists has something like `r round(mean(list_summary$med_songs), 0)` songs on it, lasting for about `r round(mean(list_summary$med_dur), 0)` minutes, although it looks like my habits differed a bit over the 3 years.
 
-For an overview, here's a table describing collection of audio features from the API. Most of the features are numeric variables. A few of these are probabilities that a song contains a certain quality. For example, one represents the estimate of whether or not a song is being performed live (it seems like this was done based on whether sounds from an audience were detected in the recording). Other features are nominal, non-numeric data that describe the track, such as the song's musical key or time signature.
+Next, I have an overview of the audio features from the API. Most of the features are numeric variables. A few of these are probabilities that a song contains a certain quality. For example, one represents the estimate of whether or not a song is being performed live (it seems like this was done based on whether sounds from an audience were detected in the recording). Other features are nominal, non-numeric data that describe the track, such as the song's musical key or time signature.
 
 ```{r}
 # hey! this is weird, but if you name/label the chunk, the table number gets replaced
@@ -174,12 +174,12 @@ For an overview, here's a table describing collection of audio features from the
 
 tribble(
   ~type,       ~feature,       ~description,
-  "_Numeric_", "acousticness", "Likelihood the song features acoustic instruments",
+  "_Numeric_", "acousticness", "Likelihood that the song features acoustic instruments",
   "",          "danceability", "Strength and regularity of the beat",
   "",          "duration_ms",  "Duration of the song (in milliseconds)",
   "",          "energy",       "How fast and noisy the song sounds",
-  "",          "instrumentalness", "Likelihood the song is an instrumental (based on presence/absence of vocals)",
-  "",          "liveness",     "Likelihood the song is being performed live",
+  "",          "instrumentalness", "Likelihood that the song is an instrumental (based on presence/absence of vocals)",
+  "",          "liveness",     "Likelihood that the song is being performed live",
   "",          "loudness",     "The average volume of a song",
   "",          "tempo",        "The song's tempo",
   "",          "valence",      "How cheerful the song sounds",
@@ -196,7 +196,7 @@ tribble(
 
 ## some exploratory analysis
 
-Okay, now that we know what we're working with, we can try to move forward to answering my question. Ultimately, I'd like to build a model that can help tell me whether one of the tracks in a playlist of mine will end up on my yearly list, so I'll set up training/testing datasets for exploration and evaluation. I've been trying to learn more about the **_tidymodels_** family of packages, and I've really appreciated how easy it is to organize this part of the workflow with the **_rsample_** package. We'll use it to chop up our tracks below, starting with `initial_split()` to generate training/test sets. The `initial_split()` function creates an `rsplit` object, which organizes our tracks into different samples/groups. In this case, we've randomly allocated 75% of the tracks to the training set, and 25% for testing. The `training()` and `testing()` functions are helpers that enable us to easily extract our groups, so we can work on them. In the figures below, we'll just be using the training data to explore variables of interest. We can also organize our training data into a set of V-fold samples for cross-validation (which is done with the `vfold_cv()` function below).
+Okay, now that we know what we're working with, we can try to move forward to answering my question. Ultimately, I'd like to build a model that can help tell me whether one of the tracks in a playlist of mine will end up on my yearly list, so I'll set up training/testing datasets for exploration and evaluation. I've been trying to learn more about the [**_tidymodels_**](https://www.tidyverse.org/articles/2018/08/tidymodels-0-0-1/){target="_blank"} family of packages, and I've really appreciated how easy it is to organize this part of the workflow with the **_rsample_** package. We'll use it to chop up our tracks below, starting with `initial_split()` to generate training/test sets. The `initial_split()` function creates an `rsplit` object, which organizes our tracks into different samples/groups. In this case, we've randomly allocated 75% of the tracks to the training set, and 25% for testing. The `training()` and `testing()` functions are helpers that enable us to easily extract our groups, so we can work on them. In the figures below, we'll just be using the training data to explore variables of interest.
 
 ```{r create split, echo = TRUE}
 library(tidymodels)
@@ -206,8 +206,13 @@ set.seed(20190914)
 ts_split <- initial_split(samples, prop = .75, strata = "playlist_year")
 ts_train <- training(ts_split)
 ts_test  <- testing(ts_split)
+```
 
-ts_cvdat <- vfold_cv(ts_train, v = 10)
+```{r store}
+write_csv(
+  bind_rows(train = ts_train, test = ts_test, .id = "dataset"),
+  "../../static/data/predicting-top-songs/20190915-ts-tracks-train-test.csv"
+)
 ```
 
 Now comes the disappointing thing I can share with you: I'm not sure if many of the audio features are specifically related to inclusion on my "Top Songs" lists. Before building any models, I started by plotting each of the numeric features, and examining cross-tabulations between the "Top Songs" dependent variable and the nominal features. I'll show you a plot of the numeric features first to illustrate the problem I encountered. Can you spot the issue? These are density plots for each of the features, with the distributions of tracks that _were_ "top songs" compared to those that weren't. The shape of these densities show us the most likely values of each feature; the closer a value on the x-axis is to one of the "peaks" of the plot, the more frequently that value is observed in the data.
@@ -278,9 +283,11 @@ p_keymode <- ts_train %>%
 p_keymode
 ```
 
-Okay, along the y-axis we have each major/minor key, and along the x-axis we have the percent of tracks in a given key/mode that ended up in my "top songs". Each dot/point is sized by the total number of tracks in each key/mode-- bigger points mean the key/mode is more common in the collection. Lastly, I've included a dotted reference line (at `r percent(refline)`); this represents the overall proportion of tracks that ended up in the "top songs" playlist. Points past the dotted line seem to be beating what would be expected by a random track. It seems like we can maybe group the tracks into 3-4 clusters of key/modes. B-Major is about where I expected, as far as its rank. It has a bunch of my [recent](https://open.spotify.com/track/2rvo9Ddv18aRV0OJldhWTf?si=pQ0JQJ0mSHacQd56rYIeCA){target="_blank"} [favorites](https://open.spotify.com/track/4CwajKyhHp2OI1ZseDVjlo?si=wgqD-h-9Sb6WAPe0e1B52Q){target="_blank"}, but it's also home to all kinds of earworms (e.g. Lady Gaga's "Poker Face" and Neil Diamond's "Sweet Caroline"). I can't really explain what's going on with D# minor up there (the true unicorns, rare & good?), but [Bogan Via's "Kanye"](https://open.spotify.com/track/5vL0KBvhuuFbF8PZTBnSN7?si=m5qdSouLTJGfph4JgB2e8Q){target="_blank"} and [Rogue Wave's "Look at Me"](https://open.spotify.com/track/5rPP9ADi0t1ZmBLyZiy82A?si=sJB_VNngRXGPW60PEm8tGA){target="_blank"} really are some of my favorite finds. RIP to A# minor, I looked at all the tracks I had from that set, and I barely remember any of them.
+Quick explanation of what's going on in this plot. Along the y-axis we have each major/minor key, and along the x-axis we have the percent of tracks in a given key/mode that ended up in one of my "top songs" playlists. Each dot/point is sized by the total number of tracks in each key/mode. Bigger points mean the key/mode is more common in the collection of tracks. Lastly, I've included a dotted reference line (at `r percent(refline)`); this represents the overall proportion of tracks that ended up in the "top songs" playlists. 
 
-The last thing I looked at was whether there were any seasonal patterns in the tracks that ended up in my "top songs". In my previous post, I at least observed some variation in the different audio features across the different months I was curating playlists. I don't know if there are really points in which I'm listening to more/less music across the year, or if I have a rhythm to when I'm actively digging up new songs, but maybe I just haven't been paying attention. Alternatively, maybe I'm passively revisiting certain playlists more often than others? But, as I mentioned early on, I don't think this is characteristic of my use patterns.
+So, here's the takeaway: points past the dotted line seem to be beating what would be expected by a random track. B-Major is about where I expected, as far as its rank. It has a bunch of my [recent](https://open.spotify.com/track/2rvo9Ddv18aRV0OJldhWTf?si=pQ0JQJ0mSHacQd56rYIeCA){target="_blank"} [favorites](https://open.spotify.com/track/4CwajKyhHp2OI1ZseDVjlo?si=wgqD-h-9Sb6WAPe0e1B52Q){target="_blank"}, but it's also home to all kinds of earworms (e.g. Lady Gaga's "Poker Face" and Neil Diamond's "Sweet Caroline"). I can't really explain what's going on with D# minor up there (the true unicorns, rare & good?), but [Bogan Via's "Kanye"](https://open.spotify.com/track/5vL0KBvhuuFbF8PZTBnSN7?si=m5qdSouLTJGfph4JgB2e8Q){target="_blank"} and [Rogue Wave's "Look at Me"](https://open.spotify.com/track/5rPP9ADi0t1ZmBLyZiy82A?si=sJB_VNngRXGPW60PEm8tGA){target="_blank"} really are some of my favorite finds. RIP to A# minor, I looked at all the tracks I had from that set, and I barely remember any of them.
+
+The last thing we'll look at is whether there are any seasonal patterns in the tracks that ended up in my "top songs". In my previous post, I at least observed some variation in the different audio features across the different months I was curating playlists. I don't know if there are really points in which I'm listening to more/less music across the year, or if I have a rhythm to when I'm actively digging up new songs, but maybe I just haven't been paying attention. Or, maybe I'm revisiting certain playlists more often than others? But, as I mentioned early on, I don't think this is characteristic of my habits.
 
 ```{r fig.width = 10, fig.height=6}
 p_mon <- ts_train %>%
@@ -311,7 +318,7 @@ p_mon <- ts_train %>%
 p_mon
 ```
 
-This figure is laid out similarly to the last one, but I have a few notes.
+This figure is laid out similarly to the last one, but I have a few notes:
 
 1. I didn't start making monthly playlists until around April 2016, which is why we're missing some points.
 2. It looks like none of the songs I have for January, October, or November 2018 ended up in my "top songs", which is why we're missing points there too.
@@ -320,6 +327,6 @@ This figure is laid out similarly to the last one, but I have a few notes.
 
 ## can we build a model to predict my "top songs" for 2019?
 
-Maybe! I'm disappointed that none of the continuous/numeric features look promising. At the same time, there might be enough to make decent predictions with my seasonal patterns and the key/mode information. We have a few months until December, so maybe we'll have a real test using fresher data from 2019. All of these little findings are only reflective of my personal patterns and habits when it comes to using Spotify. But I'd be really curious to know if they'd be helpful for predicting someone else's "top songs" list, or if they're related to other user behavior.
+Maybe! I'm disappointed that none of the continuous/numeric features look promising. At the same time, there might be enough to make decent predictions with my seasonal patterns and the key/mode information. We have a few months until December, so maybe we'll have a real test using fresher data from 2019. All these little findings might only apply to my personal habits, but I'm still curious if they'd be helpful for predicting someone else's "top songs" list, or if they're related to other kinds of user behavior.
 
-As a next step, I'll use a supervised learning approach to train some classifiers using functions from **_recipes_** and **_parsnip_** (both found in  **_tidymodels_**), using the training/test data we created earlier. Afterwards, I'll use a few different metrics from **_yardstick_** to see how well they perform. However, this post ended up being a lot longer than I expected, so I'm going to break out the actual model building and assessment into a second post. You should be able to find it [here,](https://semidocumentedlife.com/post/top-songs-over-time-spotifyr-2) when it's up.
+As a next step, I'll use a supervised learning approach to build some classifiers using functions from **_recipes_** and **_parsnip_** (both found in  [**_tidymodels_**](https://www.tidyverse.org/articles/2018/08/tidymodels-0-0-1/){target="_blank"}), using the training/test data we created earlier. Afterwards, I'll use a few different metrics from **_yardstick_** to see how well they perform. However, this post ended up being a lot longer than I expected, so I'm going to break out the actual model building and assessment into a second post. You should be able to find it [here,](https://semidocumentedlife.com/post/top-songs-over-time-spotifyr-2) when it's up.

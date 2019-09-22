@@ -62,41 +62,15 @@ ts_cvdat <- vfold_cv(train)
 ```
 
 ```{r}
-ts_recipe <- function(dataset, skip_toggle = TRUE, r = 1) {
-  # vector of each of the numeric variables
-  numerics <- c(
-    "danceability", "energy", "loudness", "speechiness", "liveness",
-    "acousticness", "instrumentalness",
-    "valence", "tempo",  "duration_ms"
-  )
-  
+ts_recipe <- function(dataset, skip_toggle = TRUE, r = .7) {
   # the full formula of variables to be included for modeling
-  varspec <- is_target ~
-    danceability       +
-    energy             +
-    loudness           +
-    speechiness        +
-    liveness           +
-    acousticness       +
-    instrumentalness   +
-    valence            +
-    tempo              +
-    duration_ms        +
-    keygroup           +
-    playlist_year      +
-    playlist_mon
+  varspec <- is_target ~ keygroup + playlist_year + playlist_mon
   
+  # up-sample our target class in order to even out the class imbalance
   # with our specified variables, create dummies for the year/mon and keygroup
-  # then perform a PCA on the numeric columns (after centering/scaling)
   recipe(varspec, data = dataset) %>%
     step_upsample(is_target, ratio = r, skip = skip_toggle) %>%
-    step_dummy(keygroup, playlist_year, playlist_mon) %>%
-    step_center(one_of(numerics)) %>%
-    step_scale(one_of(numerics)) %>%
-    step_pca(one_of(numerics), num_comp = 3) %>%
-    step_interact(terms = ~PC1:PC2) %>%
-    step_interact(terms = ~PC1:PC3) %>%
-    step_interact(terms = ~PC2:PC3)
+    step_dummy(keygroup, playlist_year, playlist_mon)
 }
 
 ts_logit <- function(split, id, r = .7) {
@@ -178,4 +152,59 @@ lst(log, rf, knn) %>%
   ggplot(aes(x = .metric, y = val, fill = model)) +
   geom_col(position = "dodge") +
   facet_wrap(~desc)
+```
+
+```{r stacked models}
+ts_stacked <- function(split, id) {
+  tr <- analysis(split)
+  ts <- assessment(split)
+  
+  tr_prep <- prep(ts_recipe(tr, FALSE, r = .7), training = tr)
+  tr_proc <- bake(tr_prep, new_data = train)
+  
+  ts_prep <- prep(ts_recipe(ts), testing = ts)
+  ts_proc <- bake(ts_prep, new_data = ts)
+  
+  rf <- rand_forest("classification", trees = 1000) %>%
+    set_engine("ranger") %>%
+    fit(is_target ~ ., data = tr_proc)
+  
+  lg <- logistic_reg("classification") %>%
+    set_engine("glm") %>%
+    fit(is_target ~ ., data = tr_proc)
+  
+  kn <- nearest_neighbor("classification", 4) %>%
+    set_engine("kknn") %>%
+    fit(is_target ~ ., data = tr_proc)
+  
+  tr_proc <- mutate(
+    tr_proc,
+    rf    = unlist(predict(rf, tr_proc)),
+    lg    = unlist(predict(lg, tr_proc)),
+    kn    = unlist(predict(kn, tr_proc))
+  )
+  
+  ts_proc <- mutate(
+    ts_proc,
+    rf    = unlist(predict(rf, ts_proc)),
+    lg    = unlist(predict(lg, ts_proc)),
+    kn    = unlist(predict(kn, ts_proc))
+  )
+  
+  model <- rand_forest("classification", trees = 5000) %>%
+    set_engine("ranger") %>%
+    fit(is_target ~ ., data = tr_proc)
+  
+  tibble(
+    `id`  = id,
+    truth = ts_proc$is_target,
+    pred  = unlist(predict(model, ts_proc)) 
+  )
+}
+
+ts_stacked %>%
+  group_by(id) %>%
+  class_metrics(truth, estimate = pred) %>%
+  group_by(.metric) %>%
+  summarise_at(vars(.estimate), list(mean, median, sd))
 ```

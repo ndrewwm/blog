@@ -1,12 +1,245 @@
 ---
 title: "predicting my yearly top songs without listening/usage data (part 2)"
 author: Andrew
-date: '2019-09-23'
+date: '2019-10-13'
 slug: "top-songs-over-time-spotifyr-2"
 tags: ["spotifyr", "R", "tidymodels", "supervised learning"]
-draft: true
 ---
 
 
 
+<!--
+TODO: 
 
+1. link to that other blog post that was helpful for understanding recipes
+2. formula for kappa statistic
+3. did I mix up precision/recall
+
+-->
+<p>This is a continuation from a previous post, which can be <a href="https://semidocumentedlife.com/post/top-songs-over-time-spotifyr-1/">found here.</a>
+Okay, picking up where we left off! In this post we’ll dive into building a set of models that can classify each of my playlist tracks as a “top-song” or not. While this is an exploration of some boutique data, it’s also a cursory look at many of the packages found in the <strong><em>tidymodels</em></strong> ecosystem. A few posts I found useful in terms of working with <strong><em>tidymodels</em></strong> can be found <a href="http://www.rebeccabarter.com/blog/2019-06-06_pre_processing/">here,</a> and <a href="">here.</a></p>
+<div id="processing-training" class="section level2">
+<h2>processing &amp; training</h2>
+<p>We’ll start by setting up our environment, and pulling in the data analyzed in part 1. While I don’t always feel the need to detail everything going on in this step, there are two extra-crucial commands right at the top. The first is <code>set.seed()</code>. For my own sanity, I want to make sure that small differences due to random chance aren’t changing as I work on the models/analysis. We’ll be using k-fold cross validation (which involves randomly splitting a dataset into <em>k</em> equal parts) and boostrap resampling, both of which will need a seed specified (if we want the results to be reproducible). The next is an <code>options()</code> call– the <strong><em>yardstick</em></strong> package typically treats the first level of categorical variables as the target level. For dichotomous outcomes I’m used to treating 0 as negative and 1 as positive, and it feels right to keep them in order. If you’re like me, it’s important to toggle this option so your metrics are calculated correctly!</p>
+<pre class="r"><code>set.seed(20190914)
+options(yardstick.event_first = FALSE)
+
+library(tidyverse)
+library(tidymodels)
+library(zeallot)
+
+theme_set(
+  theme_minimal(base_size = 18) +
+    theme(
+      panel.grid.minor = element_blank(),
+      axis.text        = element_text(face = &quot;bold&quot;)
+    )
+)
+
+tracks &lt;- read_csv(&quot;../../static/data/predicting-top-songs/20190915-ts-tracks-train-test.csv&quot;)</code></pre>
+<p>Here we’ll do some minor setup based on our results from the previous post. I wanted to create a 4-level variable with the key/mode combination for each track, based on how likely they were to end up in one of my “top songs” playlists.</p>
+<pre class="r"><code># prepare the key/mode and season variables we explored in part 1
+tracks &lt;- tracks %&gt;%
+  mutate(
+    is_target     = factor(is_target),
+    playlist_year = factor(playlist_year),
+    
+    keygroup = case_when(
+      key_mode %in% c(
+        &quot;D# minor&quot;, &quot;B major&quot;, &quot;G minor&quot;, &quot;C minor&quot;, &quot;A# major&quot;
+      ) ~ &quot;great&quot;,
+      key_mode %in% c(
+        &quot;C# minor&quot;, &quot;F# major&quot;, &quot;A major&quot;, &quot;D minor&quot;, &quot;G major&quot;, &quot;A minor&quot;,
+        &quot;C major&quot;
+      ) ~ &quot;good&quot;,
+      key_mode %in% c(
+        &quot;E minor&quot;, &quot;A# minor&quot;
+      ) ~ &quot;not good&quot;,
+      TRUE ~ &quot;fine&quot;
+    )
+  )</code></pre>
+<p>Next, we’ll set up our training and test data that we generated in part 1. Instead of just building models with our training set alone, I want to average out the performance using a cross-validation technique: K-fold (or V-fold) cross validation. There are several resources that explain in greater detail what K-fold CV is and why you should use it, so I won’t dive into it here. The super abbreviated explanation is that the data is split into <em>k</em> different parts; <span class="math inline">\(k-1\)</span> of the parts are used to build a model, and the final partition is held out for the model to predict. Each possible combination of splits is used to train the model, and afterwards the model’s average performance can be computed across the <em>k</em> different attempts.</p>
+<pre class="r"><code># break out the training/test set into different frames, and drop some unused variables
+tracks &lt;- tracks %&gt;%
+  split(tracks$dataset) %&gt;%
+  map(~select(., -dataset, -time_signature, -playlist_name, -playlist_img)) 
+
+# zeallot&#39;s multi-assignment operator that can be used to unpack lists cleanly
+c(test, train) %&lt;-% tracks
+
+ts_cvdat &lt;- vfold_cv(train)</code></pre>
+<p>Because we’ll be building models on a buch of different datasts, we need to define functions that will apply the same processing instuctions each time. The first function will hold the <em>recipe</em> for each model that we’ll train. Recipes (<code>recipes::recipe()</code>) describe outcome and predictor variables in a dataset, as well as processing <em>steps</em> that need to be applied before building a model. In the code block below, you’ll see a few things happening:</p>
+<ol style="list-style-type: decimal">
+<li>A <em>formula</em> for the recipe is specified; the variable on the left-hand side will be treated as the outcome/dependent variable in the data being operated on, while the variables on the right-hand side will be treated as predictors.</li>
+<li>A chain of steps is specified, with options being controlled by arguments from the function we’re defining.
+<ul>
+<li><code>recipes::step_upsample()</code> allows us to resample the target class, so that the class represented more frequently post-processing.
+<ul>
+<li>In our dataset, the outcome is fairly imbalanced (only 23.7% of our tracks ended up as a top-song). Classifiers often have difficulties when classes aren’t represented evenly, so upsampling may help partially skirt this issue. Downsampling (i.e. randomly discarding cases from the non-target class) is also an option for dealing with imbalanced data, but we really don’t have too many tracks to begin with, so retaining all of them seems to be the best route.</li>
+<li><em>Importantly,</em> upsampling is something that should only be applied during model training. This is why we’re controlling the step with the <code>skip_toggle</code> argument in our function. When validating our models, we want to make sure that they perform well on data as it would exist in the wild. The imbalanced nature of our data is a part of the context from which they were drawn, so we want to make sure that’s preserved when we evaluate performance.</li>
+</ul></li>
+<li><code>recipes::step_dummy()</code> is a bit simpler. All this does is generate dummy (binary 0/1) columns for each of our categorical variables (while automatically excluding a reference category).
+<ul>
+<li>Note that I’m referring to column names as I would when using <code>dplyr::select()</code>. Much like the <strong><em>tidyverse</em></strong>, packages in <strong><em>tidymodels</em></strong> use Non-Standard Evaluation, making specifying commands familiar for folks already familiar with <strong><em>dplyr</em></strong> et al.</li>
+</ul></li>
+</ul></li>
+</ol>
+<pre class="r"><code>ts_recipe &lt;- function(dataset, skip_toggle = TRUE, r = .7) {
+  # the full formula of variables to be included for modeling
+  f &lt;- is_target ~ keygroup + playlist_mon
+  
+  # up-sample our target class in order to even out the class imbalance
+  # with our specified variables, create dummies for the year/mon and keygroup
+  recipe(f, data = dataset) %&gt;%
+    step_upsample(is_target, ratio = r, skip = skip_toggle) %&gt;%
+    step_dummy(keygroup, playlist_mon)
+}</code></pre>
+<p>The <strong><em>recipes</em></strong> package has a ton of other <code>step_</code> functions, with commands that can handle things like centering/scaling, imputation of missing data, and principle components analysis (just to name a few). There’s even a <a href=""><strong><em>textrecipes</em></strong></a> package that I’ve been curious about, which extends the framework to analysis of text-based data. Most of the common steps that one has to take in terms of preparing a pipeline for processing data prior to modeling are well-covered, and this little example just scratches the surface.</p>
+<p>Now that we’ve specified how we want to preprocess the data, we can set up master functions that will be applied to each split in our training data. Just to briefly cover what this next function is doing:</p>
+<ol style="list-style-type: decimal">
+<li>It accepts a <code>split</code> generated from a <code>vfold_cv</code> object, and uses the <code>analysis()</code> and <code>assessment()</code> functions to extract the datasets.</li>
+<li>The recipe we defined above is <code>prep()</code>’d and <code>bake()</code>’d (i.e. the processing steps are applied based on the provided recipe, and processed datasets are generated).</li>
+<li>Using functions from the <strong><em>parsnip</em></strong> package, we create a <em>model</em> object, using a specific model <em>engine</em>, and specify a model <em>fit</em> based on the variables in our dataset.
+<ul>
+<li>In this case we’re setting up a logistic regression, with the goal of classification, using <code>stats::glm()</code>.</li>
+</ul></li>
+<li>Lastly, we predict the classification of each case in our validation/assessment data, and return the predictions as a tibble.</li>
+</ol>
+<pre class="r"><code>ts_logit &lt;- function(split, id, r = .7) {
+  # extract the analysis/assessment sets from the split
+  tr &lt;- analysis(split)
+  ts &lt;- assessment(split)
+  
+  # prep/bake the data according to the recipe
+  # the *r* argument controls how much the target class should be upsampled
+  # an *r* of 1 means both classes should be the same size
+  tr_prep &lt;- prep(ts_recipe(tr, skip_toggle = FALSE, r = r), training = tr)
+  tr_proc &lt;- bake(tr_prep, new_data = tr)
+  
+  ts_prep &lt;- prep(ts_recipe(ts), testing = ts)
+  ts_proc &lt;- bake(ts_prep, new_data = ts)
+  
+  # build the model with the prepped analysis set
+  model &lt;- logistic_reg(&quot;classification&quot;) %&gt;%
+    set_engine(&quot;glm&quot;) %&gt;%
+    fit(is_target ~ ., data = tr_proc)
+  
+  # apply the model to the assessment set, and return a tibble
+  tibble(
+    `id`  = id,
+    truth = ts_proc$is_target,
+    pred  = unlist(predict(model, ts_proc)) 
+  )
+}</code></pre>
+<p>I’ve only showed one model as an example, but I’ve used the same framework to set up a random forest classifier, a KNN classifier, and a final function that stacks all 3 of the individual classifiers, and builds a random forest using the other models’ predictions as additional features. This is an additional ensemble technique that I’ll discuss when we’ll get to the results.</p>
+<p>Now, all that’s left is to train the models and evaluate them! Given that all the analysis has been defined in some smaller functions, we can just loop over each split with <code>purr::map2_df()</code> to create tibbles with predictions from each split for each different model.</p>
+<pre class="r"><code>lr  &lt;- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_logit(.x, .y))
+rf  &lt;- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_rf(.x, .y))
+knn &lt;- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_knn(.x, .y))
+
+# the stacked model results
+stacked_res &lt;- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_stacked(.x, .y))</code></pre>
+</div>
+<div id="evaluation" class="section level2">
+<h2>evaluation</h2>
+<p>Let’s see how well we did. Given that our outcome variable is binary, a lot of the metrics we’ll be using to evaluate the performance of each model may be familiar, and can be easily conceptualized using a confusion table, like the one below:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Predicted/Reference</th>
+<th align="center">Positive</th>
+<th align="center">Negative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Positive</td>
+<td align="center">A</td>
+<td align="center">B</td>
+</tr>
+<tr class="even">
+<td align="center">Negative</td>
+<td align="center">C</td>
+<td align="center">D</td>
+</tr>
+</tbody>
+</table>
+<p>Specifically, we’ll be using the following:</p>
+<p>Accuracy = (A + D) / (A + B + C + D)</p>
+<ul>
+<li>The metric that most folks are familiar with, i.e the proportion of all cases that were predicted correctly.</li>
+</ul>
+<p>Sensitivity = A / (A + C)</p>
+<!-- on a plane, no wifi: do I have precision/recall backwards?? -->
+<ul>
+<li>Also known as “precision”, this metric represents the proportion of positive cases that were correctly predicted.</li>
+</ul>
+<p>Specificity = D / (B + D)</p>
+<ul>
+<li>Also known as “recall”, this metric represents the proportion of negative cases that were correctly predicted.</li>
+</ul>
+<p>Balanced Accuracy = mean(Sensitivity, Specificity)</p>
+<ul>
+<li>This is merely an average of sensitivity and specificity.</li>
+</ul>
+<p>Kappa = … I’m on a plane rn, and can’t remember how the formula is specified :(</p>
+<ul>
+<li>Similar to accuracy, but adjusts to account for agreement based on chance alone. Often helpful when classes are imbalanced (e.g. in this context).</li>
+</ul>
+<p>Each one of these measures can be computed using a function from <strong><em>yardstick</em></strong>, e.g. <code>spec()</code> and <code>sens()</code>, which accept a tibble/data.frame and expect columns representing predictions and actual class values (in the case of classification). We can create a special list for each of our metrics using <code>yardstick::metric_set()</code>, and then apply each of them to columns in a tibble. Handily, you can neatly combine a metric set with <code>group_by()</code>, which enables us to concisely summarize performance across all the folds/models. Let’s take a peek at the median performance for each model using a bar plot. Handily, each of these measures range from 0 to 1, with 1 representing the highest performance.</p>
+<pre class="r"><code>class_metrics &lt;- metric_set(sens, spec, accuracy, kap, bal_accuracy)
+
+train_cv_results &lt;- 
+  bind_rows(LR = lr, RF = rf, KNN = knn, Agg = stacked_res, .id  = &quot;model&quot;) %&gt;%
+  group_by(model, id) %&gt;%
+  class_metrics(truth = truth, estimate = pred) %&gt;%
+  group_by(model, .metric) %&gt;%
+  summarise_at(vars(.estimate), list(median, mean, sd))
+
+# bar plot with median values for each metric
+p_train_metrics &lt;- train_cv_results %&gt;%
+  select(-fn2, -fn3) %&gt;%
+  gather(desc, val, fn1) %&gt;%
+  mutate(
+    .metric = fct_recode(
+      .metric,
+      Accuracy            = &quot;accuracy&quot;,
+      `Balanced Accuracy` = &quot;bal_accuracy&quot;,
+      Kappa               = &quot;kap&quot;,
+      Specificity         = &quot;spec&quot;,
+      Sensitivity         = &quot;sens&quot;
+    ),
+  ) %&gt;%
+  ggplot(aes(x = .metric, y = val, fill = model)) +
+  geom_col(position = &quot;dodge&quot;) +
+  scale_fill_manual(&quot;Model&quot;, values = scico::scico(4, palette = &quot;nuuk&quot;)) +
+  labs(x = &quot;&quot;, y = &quot;Median across 10 folds&quot;) +
+  theme(legend.position = &quot;top&quot;)
+
+p_train_metrics</code></pre>
+<p><img src="/post/20190915-predicting-top-songs-pt2_files/figure-html/train%20results-1.png" width="1104" /></p>
+<p>So, the picture from our training data? Fine, but not great! One of the things that’s clear is that the individual classifiers have some different strengths. First, the KNN classifier appears to have the highest overall accuracy, but this is driven almost entirely to classify non top-song tracks correctly. You can see this based on its rank within specificity and sensitivity. I experimented with varying the number of nearest-neighbors from 0-12, and 4 seemed best on-balance. Second, the random forest classifier seemed to trail a bit behind the logistic regression, although they’re mostly comparable. Increasing the number of trees in the forest past a few thousand didn’t really provide much of a boost. Lastly, the stacked/aggregated classifier appears to have done a fair amount better than any of the models on their own. My hopes were that I could borrow some of the specificity from the KNN classifier, while retaining sensitivity from the logit and RF models, and it seems to have paid off. Even still, we’re only correctly classifying just over half of all true top-songs, and 75% of non top-songs.</p>
+<p>Now, for a final test with our holdout data. The stacked/aggregated model seems to be our best performer, so we’ll refit the model using all of our available training data, and predict all of the cases left in our holdout data.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-2">Table 1: </span>Test set results</caption>
+<thead>
+<tr class="header">
+<th align="right">Accuracy</th>
+<th align="right">Balanced Accuracy</th>
+<th align="right">Kappa</th>
+<th align="right">Sensitivty</th>
+<th align="right">Specificity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.68</td>
+<td align="right">0.59</td>
+<td align="right">0.16</td>
+<td align="right">0.43</td>
+<td align="right">0.75</td>
+</tr>
+</tbody>
+</table>
+<p>Oof, worse on all accounts. Guess we’re dealing with some overfitting. Well, this certainly isn’t a glittering example of artificial intelligence, but I think it’s pretty cool to get this far mostly by knowing a track’s key/mode. Maybe there are some other things that I’ve annotated or haven’t thought of that can help predict things a bit better. Just a little over 1.5 months until December, so maybe I’ll loop back if something strikes me, and either update this post with the results for 2019, or spin off what I find into a new post.</p>
+</div>

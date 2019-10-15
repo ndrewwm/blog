@@ -40,7 +40,7 @@ tracks &lt;- tracks %&gt;%
   get_track_audio_features() %&gt;%
   right_join(tracks, by = &quot;track_uri&quot;) %&gt;%
   as_tibble()</code></pre>
-<p>Now we’ll do some cleaning to tag each track that showed up in the year’s “Top Songs” playlist. The tibble for analysis we’re moving towards should be a track-level file (i.e. each track only represented once), containing track features and the dependent variable (whether each track was a “top song”). If a track is used across multiple lists <em>within the same year</em>, we’ll note the number of times it appears, as well as the <em>first</em> month that we observed it.</p>
+<p>Now we’ll do some cleaning to tag each track that showed up in the year’s “Top Songs” playlist. The tibble for analysis we’re moving towards should be a track*year level dataset (i.e. each track only represented once within each year), containing track features and the dependent variable (whether each track was a “top song”). If a track is used across multiple lists <em>within the same year</em>, we’ll note the number of times it appears, as well as the <em>first</em> month that we observed it.</p>
 <pre class="r"><code># clean up the month/year of each playlist
 # regular monthly lists look like this: &quot;August &#39;18&quot;
 tracks &lt;- tracks %&gt;%

@@ -84,7 +84,7 @@ tracks <- tracks %>%
 tracks <- read_csv("../../static/data/predicting-top-songs/20190914-track-audio-features.csv")
 ```
 
-Now we'll do some cleaning to tag each track that showed up in the year's "Top Songs" playlist. The tibble for analysis we're moving towards should be a track-level file (i.e. each track only represented once), containing track features and the dependent variable (whether each track was a "top song"). If a track is used across multiple lists _within the same year_, we'll note the number of times it appears, as well as the _first_ month that we observed it.
+Now we'll do some cleaning to tag each track that showed up in the year's "Top Songs" playlist. The tibble for analysis we're moving towards should be a track*year level dataset (i.e. each track only represented once within each year), containing track features and the dependent variable (whether each track was a "top song"). If a track is used across multiple lists _within the same year_, we'll note the number of times it appears, as well as the _first_ month that we observed it.
 
 ```{r determine whether each track is a top song, echo = TRUE}
 # clean up the month/year of each playlist

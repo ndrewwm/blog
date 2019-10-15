@@ -25,7 +25,7 @@ Ah yes, a vaguely tantalizing phrase: "the songs you loved most". I did a little
 
 ## a note on my playlist-curation habits
 
-Before we go deeper into what I looked at, I want to say a little more about how I put together playlists on Spotify. I don't know if this is unusual, but I don't typically create lists based on moods, genres, or artists (I have one for songs from tv/film soundtracks, and one that's full of gloomy songs, but both are fairly short). Instead, I start a new playlist at the beginning of each month, and add tracks as I encounter them (e.g. shared from friends, overheard in public places, pulled from my discover weekly list, or from browsing). I don't restrict myself to only adding a song to only one playlist, so if there's a track I'm enjoying, it'll show up across multiple lists. It's not a perfectly precise, but I'm comfortable saying that what's on my lists is a good proxy for what I enjoyed listening to during a given month.
+Before we go deeper into what I looked at, I want to say a little more about how I put together playlists on Spotify. I don't know if this is unusual, but I don't typically create lists based on moods, genres, or artists (with 1-2 exceptions, e.g. I have one for songs from tv/film soundtracks). Instead, I start a new playlist at the beginning of each month, and add tracks as I encounter them. I don't restrict myself to only adding a song to only one playlist, so if there's a track I'm enjoying, it'll show up across multiple lists. It's not perfectly precise, but I'm comfortable saying that what's on my lists is a good proxy for what I enjoyed listening to during a given month.
 
 ## getting the data
 

@@ -29,7 +29,7 @@ library(tidymodels)
 library(zeallot)
 
 theme_set(
-  theme_minimal(base_size = 18) +
+  theme_minimal(base_size = 20) +
     theme(
       panel.grid.minor = element_blank(),
       axis.text        = element_text(face = &quot;bold&quot;)
@@ -42,7 +42,6 @@ tracks &lt;- read_csv(&quot;../../static/data/predicting-top-songs/20190915-ts-t
 tracks &lt;- tracks %&gt;%
   mutate(
     is_target     = factor(is_target),
-    playlist_year = factor(playlist_year),
     
     keygroup = case_when(
       key_mode %in% c(
@@ -185,7 +184,7 @@ stacked_res &lt;- map2_df(.x = ts_cvdat$splits, .y = ts_cvdat$id, ~ts_stacked(.x
 <ul>
 <li>Similar to accuracy, but adjusts to account for agreement based on chance alone. Often helpful when classes are imbalanced (e.g. in this context).</li>
 </ul>
-<p>Each one of these measures can be computed using a function from <strong><em>yardstick</em></strong>, e.g. <code>spec()</code> and <code>sens()</code>, which accept a tibble/data.frame and expect columns representing predictions and actual class values (in the case of classification). We can create a special list for each of our metrics using <code>yardstick::metric_set()</code>, and then apply each of them to columns in a tibble. Handily, you can neatly combine a metric set with <code>group_by()</code>, which enables us to concisely summarize performance across all the folds/models. Let’s take a peek at the median performance for each model using a bar plot. Handily, each of these measures range from 0 to 1, with 1 representing the highest performance.</p>
+<p>Each one of these measures can be computed using a function from <strong><em>yardstick</em></strong>, e.g. <code>spec()</code> and <code>sens()</code>, which accept a tibble/data.frame and expect columns representing predictions and actual class values (in the case of classification). We can create a special list for each of our metrics using <code>yardstick::metric_set()</code>, and then apply each of them to columns in a tibble. Handily, you can use a metric set in tandem with <code>group_by()</code>, which enables us to concisely summarize performance across all the folds/models. Let’s take a peek at the median performance for each model using a bar plot. Also note that each of these measures range from 0 to 1, with 1 representing the highest performance.</p>
 <pre class="r"><code>class_metrics &lt;- metric_set(sens, spec, accuracy, kap, bal_accuracy)
 
 train_cv_results &lt;- 

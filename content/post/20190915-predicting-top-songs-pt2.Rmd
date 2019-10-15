@@ -37,7 +37,7 @@ library(tidymodels)
 library(zeallot)
 
 theme_set(
-  theme_minimal(base_size = 18) +
+  theme_minimal(base_size = 20) +
     theme(
       panel.grid.minor = element_blank(),
       axis.text        = element_text(face = "bold")
@@ -54,7 +54,6 @@ Here we'll do some minor setup based on our results from the previous post. I wa
 tracks <- tracks %>%
   mutate(
     is_target     = factor(is_target),
-    playlist_year = factor(playlist_year),
     
     keygroup = case_when(
       key_mode %in% c(
@@ -291,7 +290,7 @@ Kappa = $1 - \frac{1-p_0}{1-p_E}$ (where $p_0$ is the observed agreement, and $p
 
 - Similar to accuracy, but adjusts to account for agreement based on chance alone. Often helpful when classes are imbalanced (e.g. in this context).
 
-Each one of these measures can be computed using a function from **_yardstick_**, e.g. `spec()` and `sens()`, which accept a tibble/data.frame and expect columns representing predictions and actual class values (in the case of classification). We can create a special list for each of our metrics using `yardstick::metric_set()`, and then apply each of them to columns in a tibble. Handily, you can neatly combine a metric set with `group_by()`, which enables us to concisely summarize performance across all the folds/models. Let's take a peek at the median performance for each model using a bar plot. Handily, each of these measures range from 0 to 1, with 1 representing the highest performance.
+Each one of these measures can be computed using a function from **_yardstick_**, e.g. `spec()` and `sens()`, which accept a tibble/data.frame and expect columns representing predictions and actual class values (in the case of classification). We can create a special list for each of our metrics using `yardstick::metric_set()`, and then apply each of them to columns in a tibble. Handily, you can use a metric set in tandem with `group_by()`, which enables us to concisely summarize performance across all the folds/models. Let's take a peek at the median performance for each model using a bar plot. Also note that each of these measures range from 0 to 1, with 1 representing the highest performance.
 
 ```{r train results, echo = TRUE, fig.width=11.5, fig.height=6.5}
 class_metrics <- metric_set(sens, spec, accuracy, kap, bal_accuracy)

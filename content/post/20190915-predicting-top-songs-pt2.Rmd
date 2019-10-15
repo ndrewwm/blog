@@ -1,7 +1,7 @@
 ---
 title: "predicting my yearly top songs without listening/usage data (part 2)"
 author: Andrew
-date: '2019-10-13'
+date: '2019-10-14'
 slug: "top-songs-over-time-spotifyr-2"
 tags: ["spotifyr", "R", "tidymodels", "supervised learning"]
 ---
@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 ```
 
 This is a continuation from a previous post, which can be [found here.](https://semidocumentedlife.com/post/top-songs-over-time-spotifyr-1/) 
-Okay, picking up where we left off! In this post we'll dive into building a set of models that can classify each of my playlist tracks as a "top-song" or not. While this is an exploration of some boutique data, it's also a cursory look at many of the packages found in the **_tidymodels_** ecosystem. A few posts I found useful in terms of working with **_tidymodels_** can be found [here,](http://www.rebeccabarter.com/blog/2019-06-06_pre_processing/) and [here.]()
+Okay, picking up where we left off! In this post we'll dive into building a set of models that can classify each of my playlist tracks as a "top-song" or not. While this is an exploration of some boutique data, it's also a cursory look at many of the packages found in the **_tidymodels_** ecosystem. A few posts I found useful in terms of working with **_tidymodels_** can be found [here,](http://www.rebeccabarter.com/blog/2019-06-06_pre_processing/) and [here.](https://www.brodrigues.co/blog/2018-11-25-tidy_cv/)
 
 ## processing & training
 
@@ -277,18 +277,17 @@ Accuracy = (A + D) / (A + B + C + D)
 
 Sensitivity = A / (A + C)
 
-<!-- on a plane, no wifi: do I have precision/recall backwards?? -->
-- Also known as "precision", this metric represents the proportion of positive cases that were correctly predicted.
+- Also known as "recall", this metric represents the proportion of positive cases that were correctly predicted.
 
 Specificity = D / (B + D)
 
-- Also known as "recall", this metric represents the proportion of negative cases that were correctly predicted.
+- This metric represents the proportion of negative cases that were correctly predicted.
 
 Balanced Accuracy = mean(Sensitivity, Specificity)
 
 - This is merely an average of sensitivity and specificity.
 
-Kappa = ... I'm on a plane rn, and can't remember how the formula is specified :(
+Kappa = $1 - \frac{1-p_0}{1-p_E}$ (where $p_0$ is the observed agreement, and $p_E$ is the expected agreement due to chance)
 
 - Similar to accuracy, but adjusts to account for agreement based on chance alone. Often helpful when classes are imbalanced (e.g. in this context).
 

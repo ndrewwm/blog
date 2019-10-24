@@ -21,8 +21,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-This is a continuation from a previous post, which can be [found here.](https://semidocumentedlife.com/post/top-songs-over-time-spotifyr-1/) 
-Okay, picking up where we left off! In this post we'll dive into building a set of models that can classify each of my playlist tracks as a "top-song" or not. While this is an exploration of some boutique data, it's also a cursory look at many of the packages found in the **_tidymodels_** ecosystem. A few posts I found useful in terms of working with **_tidymodels_** can be found [here,](http://www.rebeccabarter.com/blog/2019-06-06_pre_processing/) and [here.](https://www.brodrigues.co/blog/2018-11-25-tidy_cv/)
+This is a continuation from a previous post, which can be [found here.](https://semidocumentedlife.com/post/top-songs-over-time-spotifyr-1/){target="_blank"} 
+Okay, picking up where we left off! In this post we'll dive into building a set of models that can classify each of my playlist tracks as a "top-song" or not. While this is an exploration of some boutique data, it's also a cursory look at many of the packages found in the **_tidymodels_** ecosystem. A few posts I found useful in terms of working with **_tidymodels_** can be found [here,](http://www.rebeccabarter.com/blog/2019-06-06_pre_processing/){target="_blank"} and [here.](https://www.brodrigues.co/blog/2018-11-25-tidy_cv/){target="_blank"}
 
 ## processing & training
 
@@ -108,7 +108,7 @@ ts_recipe <- function(dataset, skip_toggle = TRUE, r = .7) {
 }
 ```
 
-The **_recipes_** package has a ton of other `step_` functions, with commands that can handle things like centering/scaling, imputation of missing data, and principle components analysis (just to name a few). There's even a [**_textrecipes_**]() package that I've been curious about, which extends the framework to analysis of text-based data. Most of the common steps that one has to take in terms of preparing a pipeline for processing data prior to modeling are well-covered, and this little example just scratches the surface.
+The **_recipes_** package has a ton of other `step_` functions, with commands that can handle things like centering/scaling, imputation of missing data, and principle components analysis (just to name a few). There's even a [**_textrecipes_**](https://github.com/tidymodels/textrecipes){target="_blank"} package that I've been curious about, which extends the framework to analysis of text-based data. Most of the common steps that one has to take in terms of preparing a pipeline for processing data prior to modeling are well-covered, and this little example just scratches the surface.
 
 Now that we've specified how we want to preprocess the data, we can set up master functions that will be applied to each split in our training data. Just to briefly cover what this next function is doing:
 

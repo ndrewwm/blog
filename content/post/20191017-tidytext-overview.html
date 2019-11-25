@@ -1,0 +1,190 @@
+---
+title: "analyzing the october primary debate, using tidytext"
+author: Andrew
+date: '2019-11-25'
+slug: "tidytext-overview"
+tags: ["tidytext", "R"]
+# output:
+#   blogdown::html_page:
+#     highlight: pygments
+---
+
+
+
+<p>(This is a write-up of a talk I gave to the Ann Arbor R User Group, earlier this month.)</p>
+<p>It seems like the longer one works with data, the probability they are tasked to work with <em>unstructured text</em> approaches 1. No matter the setting –whether you’re working with survey responses, administrative data, whatever– one of the most common ways that humans record information is by writing things down. Something great about text-based data is that it’s often plentiful, and might have the advantage of being really descriptive of something you’re trying to study. However, the path to summarizing this information can feel daunting, especially if you’re encountering it for the first time.</p>
+<p>With this perspective in mind, I want to write down some basics regarding the excellent R package, <a href="https://github.com/juliasilge/tidytext" target="_blank"><strong><em>tidytext</em></strong></a>, which follows principles of the <strong><em>tidyverse</em></strong> in encouraging the use of <a href="https://en.wikipedia.org/wiki/Tidy_data" target="_blank"><em>tidy</em></a> data (c.f. <a href="https://www.jstatsoft.org/article/view/v059i10" target="_blank">Wickham, 2014</a>). Julia Silge and David Robinson (the authors of <strong><em>tidytext</em></strong>) have also <a href="https://www.tidytextmining.com/" target="_blank">written a book</a> on using the package in combination with other tools in the R language to analyze text. The full-text is free online, and you can also purchase a paper copy through O’Reilly. If you find this post useful, I would recommend moving onto their book as a more thorough guide, with many useful examples.</p>
+<div id="what-well-do-in-this-post" class="section level2">
+<h2>what we’ll do in this post</h2>
+<p>I’m aiming for 3 things:</p>
+<ol style="list-style-type: decimal">
+<li>Basic vocabulary around text analysis, as related to <strong><em>tidytext</em></strong> functions</li>
+<li>Demonstrate tokenization and pre-processing of text</li>
+<li>Describe some textual data</li>
+</ol>
+<p>For this exercise, I’ve pulled down the transcript of the October democratic party primary debate from 10/15/2019. I wanted to work with something fresh, and for this post we can imagine ourselves as a data journalist looking to describe patterns of speech from the different candidates.</p>
+</div>
+<div id="fundamental-units-of-text-tokens" class="section level2">
+<h2>fundamental units of text: tokens</h2>
+<p>Our first piece of vocabulary: “token”. A <em>token</em> is a meaningful sequence of characters, such as a word, phrase, or sentence. One of the main tasks of mining text-data is converting strings of characters into the types of tokens needed for analysis; this process is called tokenization. As far as how this is accomplished with <strong><em>tidytext</em></strong>, the workflow is to create a table (data.frame/tibble) with a single token per row. We accomplish this step using the <code>unnest_tokens()</code> function.</p>
+<pre class="r"><code>library(tidyverse)
+library(tidytext)
+library(scico)
+
+# load the debate transcript data
+wp &lt;- read_rds(&quot;../../static/post/20191017-tidytext-overview/data/20191110-oct-dem-debate-cleaned.rds&quot;)
+
+# Cooper&#39;s introduction to the debate
+wp[[2, 3]] %&gt;% str_sub(1, 128)</code></pre>
+<pre><code>## [1] &quot;And live from Otterbein University, just north of Columbus, Ohio, this is the CNN-New York Times Democratic presidential debate.&quot;</code></pre>
+<pre class="r"><code>dd_uni &lt;- unnest_tokens(
+ tbl         = wp,
+ output      = word,
+ input       = txt,
+ token       = &quot;words&quot;,  # (default) tokenize strings to words
+ to_lower    = TRUE,     # (default) set the resulting column to lowercase
+ strip_punct = TRUE      # (default) scrub the punctuation from each word
+)
+
+# the same line, tokenized into single words (unigrams)
+filter(dd_uni, index == 1)</code></pre>
+<pre><code>## # A tibble: 112 x 3
+##    speaker index word      
+##    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;     
+##  1 Cooper      1 and       
+##  2 Cooper      1 live      
+##  3 Cooper      1 from      
+##  4 Cooper      1 otterbein 
+##  5 Cooper      1 university
+##  6 Cooper      1 just      
+##  7 Cooper      1 north     
+##  8 Cooper      1 of        
+##  9 Cooper      1 columbus  
+## 10 Cooper      1 ohio      
+## # … with 102 more rows</code></pre>
+<p>So, from an initial data frame, we’ve gone from a single row per string to rows for each resulting token. The <code>unnest_tokens()</code> function is key to much of what you’ll do with <strong><em>tidytext</em></strong>, so getting familiar with it is important. Now, because each word is now a row of text, we can start to use existing functions from to do some basic analysis. What if we wanted to track the mentions of terms related to a given topic, like healthcare? Here we’ll create a vector of words, and use <code>cumsum()</code> to track running totals within each speaker.</p>
+<pre class="r"><code>hc_terms &lt;- c(
+  &quot;health&quot;, &quot;premium&quot;, &quot;premiums&quot;,
+  &quot;medicare&quot;, &quot;sick&quot;, &quot;prescription&quot;,
+  &quot;insurance&quot;, &quot;doctor&quot;, &quot;medicare&quot;, &quot;obamacare&quot;
+)
+
+# looking at the top 3 candidates
+dd_uni %&gt;%
+  filter(speaker %in% c(&quot;Biden&quot;, &quot;Warren&quot;, &quot;Sanders&quot;)) %&gt;%
+  group_by(speaker) %&gt;%
+  mutate(hc = cumsum(word %in% hc_terms)) %&gt;%
+  ggplot(aes(x = index, y = hc, color = speaker)) +
+  geom_step(size = 1.05) +
+  scale_color_scico_d(name = &quot;&quot;, palette = &quot;nuuk&quot;, direction = -1) +
+  labs(
+    x = &quot;Remark (debate progress)&quot;,
+    y = &quot;Mentions&quot;,
+    title = &#39;Cumulative mentions of &quot;health&quot;, &quot;premium(s)&quot;, &quot;medicare&quot;,\n&quot;sick&quot;, &quot;prescription&quot;, &quot;insurance&quot;, &quot;doctor&quot;,\n&quot;medicare&quot;, or &quot;Obamacare&quot;&#39;
+  )</code></pre>
+<p><img src="/post/20191017-tidytext-overview_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Here you can see Sanders and Warren responding to questions about their policies/plans during the beginning of the debate, and when Sanders and Biden revisit the topic of the insurance industry near the end.</p>
+<p>But, you’re definitely not restricted to using just single words! Maybe we want to look for important phrases important to the debate, like “Medicare For All”. A phrase like “Medicare For All” can be thought of as what’s called an <em>n-gram</em>, specifically a <em>trigram</em>. N-grams are just a sequence of <em>n</em> items from a sample of text or speech; in our case our unit/item is words.</p>
+<p>We can use <code>unnest_tokens()</code> to pull out all the different trigrams found in our text, and (because the function returns a tidy data frame!) we can then use <code>dplyr::count()</code> to see how many times a given trigram is mentioned.</p>
+<pre class="r"><code>dd_tri &lt;- unnest_tokens(wp, trigram, txt, token = &quot;ngrams&quot;, n = 3)
+
+# count the prevalence of all trigrams found
+count(dd_tri, trigram, sort = TRUE) %&gt;%
+  slice(1:15)</code></pre>
+<pre><code>## # A tibble: 15 x 2
+##    trigram                 n
+##    &lt;chr&gt;               &lt;int&gt;
+##  1 thank you senator      59
+##  2 &lt;NA&gt;                   43
+##  3 we have to             42
+##  4 the united states      37
+##  5 we need to             35
+##  6 in this country        33
+##  7 i want to              31
+##  8 we&#39;re going to         31
+##  9 make sure that         26
+## 10 the american people    26
+## 11 on this stage          25
+## 12 one of the             21
+## 13 are going to           19
+## 14 medicare for all       18
+## 15 thank you mr           18</code></pre>
+<p>From this little exercise, it looks like a transitional phrase, “Thank you Senator” (used mostly by the moderators), is the most frequent trigram. However, something worth noting is that the next most common instance is <code>NA</code>– what’s going on here? These simply represent comments that had fewer than 3 words. This is something that we’ll see given that we’re looking at transcribed speech (as opposed to written responses), so it’s important to think about idiosyncracies you might encounter depending on the data you’re analyzing.</p>
+</div>
+<div id="handling-non-informative-words-or-tokens" class="section level2">
+<h2>handling non-informative words or tokens</h2>
+<p>In many analyses, it might be important to discard words that aren’t useful or helpful to descrbing the data you’re working with. In natural language processing, these terms/words are referred to as <em>stop words</em>, and they’re generally the most common words found in a language. In the English language, some common stop words include “I”, “is”, “of”, “are”, and “the”. There isn’t a universally accepted list of words that should be discarded, and it’s frequently necessary to augment an existing list with entries that are specific to a given project. For example, we could think about removing the word “senator”, given that many of the debate participants are senators and its usage would be similar to how an honorific like “Mr.” or “Mrs./Ms.” might be used throughout the debate. The <strong><em>tidytext</em></strong> package helpfully includes several lists of stop words, which are a useful starting place for this task. The helper function <code>get_stopwords()</code> enables you to select from a set of 3 lexicons, and supports Spanish, German, and French (in addition to English).</p>
+<pre class="r"><code>smart_stops &lt;- get_stopwords(language = &quot;en&quot;, source = &quot;smart&quot;)
+
+head(smart_stops)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   word      lexicon
+##   &lt;chr&gt;     &lt;chr&gt;  
+## 1 a         smart  
+## 2 a&#39;s       smart  
+## 3 able      smart  
+## 4 about     smart  
+## 5 above     smart  
+## 6 according smart</code></pre>
+<pre class="r"><code># here&#39;s Cooper&#39;s introduction again
+# this time we&#39;ll drop unigrams that match terms from our list of stop words
+dd_uni %&gt;%
+  anti_join(smart_stops, by = &quot;word&quot;) %&gt;%
+  filter(index == 1)</code></pre>
+<pre><code>## # A tibble: 65 x 3
+##    speaker index word      
+##    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;     
+##  1 Cooper      1 live      
+##  2 Cooper      1 otterbein 
+##  3 Cooper      1 university
+##  4 Cooper      1 north     
+##  5 Cooper      1 columbus  
+##  6 Cooper      1 ohio      
+##  7 Cooper      1 cnn       
+##  8 Cooper      1 york      
+##  9 Cooper      1 times     
+## 10 Cooper      1 democratic
+## # … with 55 more rows</code></pre>
+<p>Note that because each unigram is stored as a row in the data frame, and each stop word is stored as a row in its own data frame, we’re able to discard the ones we don’t want by using <code>dplyr::anti_join()</code>.</p>
+</div>
+<div id="pulling-everything-together-using-term-frequencies-and-document-frequencies" class="section level2">
+<h2>pulling everything together: using term frequencies and document frequencies</h2>
+<p>Next we’ll pull each of these preceding steps together to try and identify distinctive words from some of the leading candidates. One common approach to doing this is by generating TF/IDF scores of given terms. TF/IDF is a combination of <em>term frequency</em> and <em>(inverse) document frequency</em>.</p>
+<p>Term frequency is merely the fraction of times that a term (in this case, word) appears in a given document.</p>
+<p><span class="math inline">\(tf(t,d) = \frac{f_{t,d}}{\sum\limits_{t&#39;\in d} f_{t&#39;,d}}\)</span></p>
+<p>Document frequency is the number of times a term appears across all documents in a collection. In this case, the measure is inverted so that terms that appear in a small number of documents receive a larger value.</p>
+<p><span class="math inline">\(idf(t,D) = log\frac{N}{1 + |d \in D : t \in d|}\)</span></p>
+<p>Lastly, the two measures are combined as a product; terms that are found frequently in a small number of documents get higher scores, whereas terms that are found in virtually every document receive lower scores.</p>
+<p><span class="math inline">\(tfidf(t,d,D) = tf(t, d) \cdot idf(t, D)\)</span></p>
+<p>Calculating each of these metrics is straightforward using the <code>bind_tf_idf()</code> function. <code>bind_tf_idf()</code> simply needs a document ID, a term label, and a count for each term; the results are added to the source data.frame/tibble as new columns. In this case we’ll be treating all the text from each speaker in the debate as a document (thus IDF will be high if every speaker uses a given term).</p>
+<pre class="r"><code># create unigrams, drop stop words, calculate metrics
+# then, keep each speaker&#39;s top 10 terms
+top_10_tfidf &lt;- wp %&gt;%
+  unnest_tokens(word, txt) %&gt;%
+  anti_join(smart_stops, by = &quot;word&quot;) %&gt;%
+  count(speaker, word) %&gt;%
+  bind_tf_idf(word, speaker, n) %&gt;%
+  arrange(speaker, desc(tf_idf)) %&gt;%
+  group_by(speaker) %&gt;%
+  slice(1:10) %&gt;%
+  ungroup()</code></pre>
+<p>Next, because we’re still working with a tibble, it’s simple to visualize these terms and metrics. We’ll be using <strong><em>ggplot2</em></strong> as before, but there are a few extensions in <strong><em>tidytext</em></strong> worth mentioning, specifically <code>reorder_within()</code>. Facets are a super useful aspect of ggplot’s repertoire, but I’ve occasionally found myself struggling to neatly organize factors/categories across panels. I’ve especially encountered this when working with text and unique tokens that aren’t common across different documents. <code>reorder_within()</code> handles this within <code>aes()</code>, simply taking the vector to be reordered, the metric by which the vector should be sorted, and the group/category that will be used for faceting. The only other thing needed is to add <code>scale_x/y_reordered()</code> as an additional layer, and to make sure that the scales for the reordered axis are set as “free” within <code>facet_wrap()</code> (or <code>facet_grid()</code>).</p>
+<pre class="r"><code>top_10_tfidf %&gt;%
+  filter(speaker %in% c(&quot;Biden&quot;, &quot;Warren&quot;, &quot;Sanders&quot;, &quot;Buttigieg&quot;, &quot;Booker&quot;, &quot;Harris&quot;)) %&gt;%
+  ggplot(aes(x = reorder_within(word, tf_idf, speaker), y = tf_idf, fill = speaker)) +
+  geom_col() +
+  scale_fill_scico_d(palette = &quot;nuuk&quot;, direction = -1) +
+  scale_x_reordered() +
+  facet_wrap(~speaker, scales = &quot;free_y&quot;, nrow = 2) +
+  labs(x = &quot;&quot;, y = &quot;TF/IDF&quot;) +
+  theme(
+    legend.position = &quot;none&quot;,
+    panel.spacing = unit(1.5, &quot;lines&quot;)
+  ) +
+  coord_flip()</code></pre>
+<p><img src="/post/20191017-tidytext-overview_files/figure-html/unnamed-chunk-7-1.png" width="1152" /></p>
+</div>
+<div id="wrap-up" class="section level2">
+<h2>wrap-up</h2>
+<p>Okay, I think that was a fairly quick overview of some of <strong><em>tidytext’s</em></strong> capabilities, but there’s so much more beyond what I’ve covered here! I really recommend looking at Julia &amp; Dave’s book, and I’d like to explore some other analysis methods (such as topic modeling, which <strong><em>tidytext</em></strong> supports) in future posts. Please feel free to let me know if you’ve found this useful, or if there’s something I can better explain. Happy text mining!</p>
+</div>

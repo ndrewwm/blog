@@ -261,7 +261,7 @@ The switched measure also allows us to look closer at some of the patterns we sa
 ggplotly(p2, tooltip = "Label")
 ```
 
-But when you look at black and Hispanic/Latino families, we get a clearer look at this sort of delayed decline that we pick up in the 2013 wave, which is more pronounced for black families. From what I've read, housing forclosures peaked in 2010, and while declining, were still high up to the 2013 wave. Homes have historically been one of the most reliable repositories for American wealth; a lot of research has already been done about how black families were especially affected by forclosures. Something else we can see more clearly is how relatively worse off black families are compared to whites and Hispanics/Latinos; both of these groups appear to have turned a corner in 2016, even if they aren't all improving from where they were in 2007.
+But when you look at black and Hispanic/Latino families, we get a clearer look at this sort of delayed decline that we pick up in the 2013 wave, which is more pronounced for black families. Homes have historically been one of the most reliable repositories for American wealth; a lot of research has already been done about how black families were especially affected by forclosures. From what I've read, housing forclosures peaked in 2010, and while declining, were still high common up through the 2013 wave. Something else we can see more clearly is how relatively worse off black families are compared to whites and Hispanics/Latinos; both of these groups appear to have turned a corner in 2016, even if they aren't all improving from where they were in 2007.
 
 ```{r p3-2, echo = FALSE}
 ggplotly(p3, tooltip = "Label")

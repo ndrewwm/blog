@@ -1,0 +1,184 @@
+---
+title: please don't use a basic linear model to estimate case counts in your state
+author: Andrew
+date: '2020-06-25'
+slug: lm-case-counts
+tags:
+  - R
+  - please wear a mask
+---
+
+```{r opts, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(broom)
+library(scales)
+
+theme_set(
+  theme_minimal(base_size = 20) +
+    theme(
+      panel.grid.minor = element_blank()
+    )
+)
+
+states <- read_csv("../../static/data/lm-case-counts/us-states.csv")
+
+idaho <- filter(states, state == "Idaho")
+
+fit_dts <- function(data, beg, end, days = 15) {
+  fit <- lm(
+    cases ~ date,
+    data = filter(idaho, date >= beg, date <= end)
+  )
+  
+  out <- tibble(date = as.Date(ymd(beg):(ymd(end) + days), origin = "1970-1-1")) %>%
+    mutate(
+      pred = predict(fit, .),
+      slope = coef(fit)[2], # slope for the model
+      rsq = glance(fit)$r.squared
+    )
+  
+  out
+}
+
+fit1 <- fit_dts(idaho, "2020-04-15", "2020-05-15")
+fit2 <- fit_dts(idaho, "2020-04-15", "2020-05-30")
+
+f1_desc <- distinct(fit1, rsq, slope)
+f2_desc <- distinct(fit2, rsq, slope)
+
+p0 <- ggplot() +
+  scale_x_date(name = "", limits = range(idaho$date)) +
+  scale_y_continuous(name = "Cumulative Cases", limits = c(0, 5000), label = comma)
+```
+
+So, this is my first post in a while. I changed jobs in January, and moved back across the country to my hometown of Boise, ID. I was hoping that my first post-move update would be more uplifting, but by mid-March, I didn't want to write anything, for a variety reasons. As a person whose job involves cleaning and analyzing data, the pandemic has been surreal-- public health, statistical methods, and data visualizations are now daily topics, for basically everyone I talk to. Early on, I decided that I would **not** attempt to work with the deluge of public data that was being made available. I like exploring datasets as a hobby, but I didn't want to add to the noise, and I didn't want to mislead friends/family that might look at something I'd post. 
+
+However, it seems this hasn't stopped other folks from engaging in some amateur modeling.[^1] One of my parents forwarded me some graphics that a fellow useR was creating in their state. They were plotting cumulative counts over time, and using a linear model to summarize the trend. In the email chain, responding to a discussion about how cautious their community ought to be, they used their results to suggest that their state's trend was "statistically flat". Linear models can sometimes be helpful to (roughly) describe rates of change, but I'm going use my state's trajectory to show why this reasoning isn't great.
+
+Let's pretend I started analyzing my state's data in mid-May. Using the cumulative counts, I fit a model from 4/15/20 to 5/15/20. I have a big $R^2$ value (`r round(f1_desc$rsq, 3)`), and the model estimates around `r round(f1_desc$slope)` new cases each day.[^2] Great. In black, I've plotted the actual cumulative count of cases. The blue line is what the model predicts, estimating out to 5/30/20.
+
+```{r}
+p1 <- p0 +
+  geom_line(
+    data = fit1,
+    aes(x = date, y = pred), color = "blue", size = 1
+  ) +
+  geom_line(
+    data = filter(idaho, date <= "2020-05-15"),
+    aes(x = date, y = cases), size = 1
+  ) 
+
+p1
+```
+
+Going along, we see more data. Let's check back at the end of the month. The progress is measured with the dotted points-- the model's predictions look pretty good!
+
+```{r}
+p2 <- p0 +  
+  geom_line(
+    data = fit1,
+    aes(x = date, y = pred), color = "blue", size = 1
+  ) +
+  geom_line(
+    data = filter(idaho, date <= "2020-05-15"),
+    aes(x = date, y = cases), size = 1
+  ) +
+  geom_line(
+    data = filter(idaho, date >= "2020-05-15", date <= "2020-05-31"),
+    aes(x = date, y = cases), lty = "dotted", size = 1
+  )
+
+p2
+```
+
+Maybe now I decide to update the model. I've redrawn the blue line with data from 4/15/20 to 5/30/20, and we'll project into June. I still have a big $R^2$ value (`r round(f2_desc$rsq, 3)`), and the model now estimates `r round(f2_desc$slope)` new cases each day. Cool.
+
+```{r}
+p3 <- p0 +
+  geom_line(
+    data = fit2,
+    aes(x = date, y = pred), color = "blue", size = 1
+  ) +
+  geom_line(
+    data = filter(idaho, date <= "2020-05-30"),
+    aes(x = date, y = cases), size = 1
+  ) 
+
+p3
+```
+
+Now I sit back for another few weeks, and check back in the middle of June. Hold on, something seems to be happening...
+
+```{r}
+p4 <- p0+
+  geom_line(
+    data = fit2,
+    aes(x = date, y = pred), color = "blue", size = 1
+  ) +
+  geom_line(
+    data = filter(idaho, date <= "2020-05-30"),
+    aes(x = date, y = cases), size = 1
+  ) +
+  geom_line(
+    data = filter(idaho, date >= "2020-05-30", date <= "2020-06-15"),
+    aes(x = date, y = cases), lty = "dotted", size = 1
+  )
+
+p4
+```
+
+Well, here we are today, and yikes! My predictions for June aren't looking so good. The number of cases have really started to climb!
+
+```{r}
+p5 <- p0 +
+  geom_line(
+    data = fit_dts(idaho, "2020-04-15", "2020-05-30", 25),
+    aes(x = date, y = pred), color = "blue", size = 1
+  ) +
+  geom_line(
+    data = filter(idaho, date <= "2020-06-25"),
+    aes(x = date, y = cases), size = 1
+  )
+
+p5
+```
+
+```{r oof}
+fit_all <- lm(cases ~ date, data = filter(idaho, date >= "2020-04-15"))
+fit_jun <- lm(cases ~ date, data = filter(idaho, date >= "2020-06-10"))
+```
+
+Here's what linear models built using two different parts of the series look like. First, in red, is what the model would look like if I used all the data I had from 4/15/20 until today. Next, in orange, is what the model looks like, using data from 6/10/20 to 6/24/20. The differences are huge! It's clear how the full model (red) starts to severely mismatch the shape of the curve; we go from a slope of `r round(coef(fit_all)[2])` to ~`r round(coef(fit_jun)[2])` cases per day! It doesn't matter which data you build the model with; this dynamic change is something that a linear model can't cue an analyst to, because this is, **fundamentally,** a non-linear process.
+
+```{r}
+p6 <- p0 +
+  geom_smooth(
+    data = filter(idaho, date >= "2020-04-15"), 
+    aes(x = date, y = cases), size = 1,
+    method = "lm", se = FALSE, color = "red"
+  ) +
+  geom_smooth(
+    data = filter(idaho, date >= "2020-06-10"), 
+    aes(x = date, y = cases), size = 1,
+    method = "lm", se = FALSE, color = "orange"
+  ) +
+  geom_line(
+    data = idaho,
+    aes(x = date, y = cases), size = 1
+  )
+
+p6
+```
+
+In short, a trend is only "flat" until it's not, and _a linear model doesn't help you understand or anticipate such changes, especially when you're looking at a contagious disease._ Perhaps in another universe,  Idaho's case counts would've plateaued until the virus died out. But, this isn't close to being a reasonable scenario. Yes, the daily increase in new infections was apparently flat, for almost two months (given our testing rates, which were below recommendations). And yes, the models were pretty dang good at summarizing that rate of ~26 per day. But this is the wrong curve-- we need to flatten the case count of people who have the disease, not its derivative! Because we never reached that point, it's not hard to guess how this will interact with policy decisions being made by states. Idaho permitted bars to open on 5/30/20 and cases spiked roughly 2 weeks later, well in line with what we know about COVID-19's incubation period. Epidemiological theory and current medical data would predict this, but a naive model (like the ones presented here) can't.[^3]
+
+[^1]: I say "amateur" with humility-- I would count myself as such with regards to many things I've tinkered with.
+
+[^2]: Obligatory note that a large R^2 value doesn't mean the model is "good", see e.g.: https://data.library.virginia.edu/is-r-squared-useless/
+
+[^3]: This isn't to say there aren't useful approaches to model curves like these! There are plenty of excellent examples attempting to do exactly that for our country and the entire world-- stopping with a linear regression isn't up to the task at hand!

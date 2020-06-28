@@ -6,7 +6,8 @@ slug: lm-case-counts
 tags:
   - R
   - please wear a mask
-twitterImg: post/20200625-let-the-experts-do-their-jobs_files/figure-html/unnamed-chunk-6-1.png
+images:
+  - post/20200625-let-the-experts-do-their-jobs_files/figure-html/unnamed-chunk-6-1.png
 ---
 
 
@@ -15,7 +16,7 @@ twitterImg: post/20200625-let-the-experts-do-their-jobs_files/figure-html/unname
 
 So, this is my first post in a while. I changed jobs in January, and moved back across the country to my hometown of Boise, ID. I was hoping that my first post-move update would be more uplifting, but by mid-March, I didn't want to write anything, for a variety reasons. As a person whose job involves cleaning and analyzing data, the pandemic has been surreal-- public health, statistical methods, and data visualizations are now daily topics, for basically everyone I talk to. Early on, I decided that I would **not** attempt to work with the deluge of public data that was being made available. I like exploring datasets as a hobby, but I didn't want to add to the noise, and I didn't want to mislead friends/family that might look at something I'd post. 
 
-However, it seems this hasn't stopped other folks from engaging in some amateur modeling.[^1] One of my parents forwarded me some graphics that a fellow useR was creating in their state. They were plotting cumulative counts over time, and using a linear model to summarize the trend. In the email chain, responding to a discussion about how cautious their community ought to be, they used their results to suggest that their state's trend was "statistically flat". The implication seemed to be that the situation was stable, or unlikely to get worse. They weren't providing projections with the figures themselves, but this posture is still predictive, and leverages the model as supportive evidence. Linear models can sometimes be helpful to (roughly) describe rates of change, but I'm going use my state's trajectory to show why this reasoning isn't great.
+However, it seems this hasn't stopped other folks from engaging in some amateur modeling.[^1] One of my parents forwarded me some graphics that an acquaintance was creating with data from their state. They were plotting cumulative counts over time, and using a linear model to summarize the trend. In the email chain, responding to a discussion about how cautious their community ought to be, they used their results to suggest that their state's trend was "statistically flat". The implication seemed to be that the situation was stable, or unlikely to get worse. They weren't providing projections with the figures themselves, but this posture is still predictive, and leverages the model as supportive evidence. Linear models can sometimes be helpful to (roughly) describe rates of change, but I'm going use my state's trajectory to show why this reasoning isn't great.
 
 Let's pretend we're back in mid-May, and I start watching my state's data.[^2] Using the cumulative counts, I fit a model from 4/15/20 to 5/15/20. I have a big `\(R^2\)` value (0.996), and the model estimates around 26 new cases each day.[^3] Great. In black, I've plotted the actual cumulative count of cases. The blue line is what the model estimates (the line of best fit), with predictions shown through to 5/30/20.
 
@@ -33,13 +34,13 @@ Now I sit back for another few weeks, and check back in the middle of June. Hold
 
 <img src="/post/20200625-let-the-experts-do-their-jobs_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
-Well, here we are today, and yikes! My predictions for June aren't looking so good. The number of cases have really started to climb! So, what's going on here? Conditions appear to have changed, but our model seemed really confident that we'd still be under 4,000 cases at this point. In red, I've shaded the difference between the actual case count and what our model would predict. The distances between observed data and predictions is called *error*, and now we're able to talk about one of the fundamental limitations in the model we've been using: it can't be used to predict non-linear change.
+Well, here we are today, and yikes! My predictions for June aren't looking so good. The number of cases have really started to climb! So, what's going on here? Conditions appear to have changed, but our model seemed really confident that we'd still be under 4,000 cases at this point. In red, I've shaded the difference between the actual case count and what our model would predict. The distances between observed data and predictions is called *error*. Now we're able to talk about one of the fundamental limitations in the model we've been using: it can't be used to predict non-linear change.
 
 <img src="/post/20200625-let-the-experts-do-their-jobs_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 
 
-Here's what linear models built using two different parts of the series look like. First, in red, is what the model would look like if I used all the data I had from 4/15/20 until today. Next, in orange, is what the model looks like, using data from 6/10/20 to 6/26/20. The differences are huge! It's clear how the full model (red) starts to severely mismatch what's happening; we go from a slope of 37 to ~111 cases per day! While you can barely see it, the shading around each line is meant to reflect the model's uncertainty. But it's clear that the error estimated by the model doesn't match the dynamics of the data! When I predict a new day using linear models like these, I'm bound to use my estimated slope to make that calculation. Similarly, the confidence or uncertainty I have in my prediction is also based on the assumption that errors will be concentrated around the line I'm estimating (with more/less confidence depending on how much data I've built the model with).
+Here's what linear models built using two different parts of the series look like. First, in red, is what the model would look like if I used all the data I had from 4/15/20 until today. Next, in orange, is what the model looks like using data from 6/10/20 to 6/26/20. The differences are huge! It's clear how the full model (red) starts to severely mismatch what's happening; we go from a slope of 37 to ~111 cases per day! While you can barely see it, the shading around each line is meant to reflect the model's uncertainty. But it's clear that the error estimated by the model doesn't match the dynamics of the data! When I predict a new day using linear models like these, I'm bound to use my estimated slope to make that calculation. Similarly, the confidence or uncertainty I have in my prediction is also based on the assumption that errors will be concentrated around the line I'm estimating (with more/less confidence depending on how much data I've built the model with).
 
 <img src="/post/20200625-let-the-experts-do-their-jobs_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 

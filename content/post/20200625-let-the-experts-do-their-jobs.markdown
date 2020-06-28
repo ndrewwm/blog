@@ -6,7 +6,7 @@ slug: lm-case-counts
 tags:
   - R
   - please wear a mask
-twitterImg: ../../static/post/20200625-let-the-experts-do-their-jobs_files/figure-html/unnamed-chunk-6-1.png
+twitterImg: post/20200625-let-the-experts-do-their-jobs_files/figure-html/unnamed-chunk-6-1.png
 ---
 
 

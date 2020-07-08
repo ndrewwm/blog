@@ -97,7 +97,7 @@ p <- yoy_st %>%
     title = "Change in # of daily new cases: {closest_state}",
     subtitle = "US: Difference between day's cases and cases 3 weeks prior",
     x = "OpenTable reservations, daily difference from 2019 (3 weeks prior)",
-    y = "Change in cases (per 1m people)",
+    y = "Change in COVID-19 cases (per 1m people)",
     caption = str_glue("Excluded states: {str_c(state.abb[!state.abb %in% unique(yoy_st$stabb)], collapse = ', ')}")
   )
 
@@ -152,7 +152,7 @@ p_fits <- yoy_st %>%
     title = "Change in # of daily new cases, daily from 6/5 - 7/6",
     subtitle = "US: Difference between day's cases and cases 3 weeks prior",
     x = "OpenTable reservations, daily difference from 2019 (3 weeks prior)",
-    y = "Change in cases (per 1m people)",
+    y = "Change in COVID-19 cases (per 1m people)",
     caption = str_glue("Excluded states: {str_c(state.abb[!state.abb %in% unique(yoy_st$stabb)], collapse = ', ')}")
   ) +
   theme(legend.position = c(.8, .2))
@@ -160,21 +160,18 @@ p_fits <- yoy_st %>%
 p_fits
 
 # some quick averaging of the correlation between our two vars
-se <- function(x) sd(x) / sqrt(length(x))
+fish_z <- atanh(sqrt(fits$r.squared))
 
-lim <- se(sqrt(fits$r.squared)) * 1.96
-
-av_r <- round(mean(sqrt(fits$r.squared)), 2)
+av_r <- fish_z %>% mean() %>% tanh() %>% round(2)
+rang_r <- sqrt(fits$r.squared) %>% range() %>% round(2)
 
 av_b <- round(mean(fits$ot_res), 1)
-
-lim_b <- se(fits$ot_res) * 1.96
 
 # idaho's cases?
 id_cases <- round(100 * 1787000 / 1000000, 0)
 ```
 
-Hopefully this second view gives a better sense of how much the association varies. On average, the correlation between these two variables was `r str_glue("{av_r}, 95% CI [{round(av_r - lim, 2)}, {round(av_r + lim, 2)}]")`. This translates roughly to an increase of `r av_b` <!-- `r str_glue("{av_b}, 95% CI [{round(av_b - lim, 2)}, {round(av_b + lim, 2)}]")` --> cases/million people for each percentage increase in reservations. For example, if an "average" state saw a 50% increase in reservations 3 weeks ago, today we'd expect an additional 100 cases/mil above what was reported 3 weeks ago. In Idaho, a state with 1.78M people, this would mean an increase of `r id_cases` cases above what was reported 3 weeks ago.[^4] With **many** caveats warranted, it feels creepy to look at this, having watched my county go almost a full week of seeing over 100 new cases each day. I don't know by how much Ada has moved back to what was normal for 2019 restaurant dining, but like I mentioned initially, there's definitely more people out and about. I highly recommend take-out, if y'all really, really, don't want to cook!
+Hopefully this second view gives a better sense of how much the association varies. On average, the correlation between these two variables was `r str_glue("{av_r} (range [{rang_r[1]}, {rang_r[2]}])")`. This translates roughly to an increase of `r av_b` cases/million people for each percentage increase in reservations. For example, if an "average" state saw a 50% increase in reservations 3 weeks ago, today we'd expect an additional 100 cases/mil above what was reported 3 weeks ago. In Idaho, a state with 1.78M people, this would mean an increase of `r id_cases` cases above what was reported 3 weeks ago.[^4] With **many** caveats warranted, it feels creepy to look at this, having watched my county go almost a full week of seeing over 100 new cases each day. I don't know by how much Ada has moved back to what was normal for 2019 restaurant dining, but like I mentioned initially, there's definitely more people out and about. I highly recommend take-out, if y'all really, really, don't want to cook!
 
 [^1]: Earlier in June, oof. Also, now's a good time to note that I'm not an epidemiologist, and that while I'm curious & can make graphs, my lack of expertise on this topic area should prompt caution on any interpretations presented here. 
 

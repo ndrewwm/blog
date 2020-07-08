@@ -1,0 +1,185 @@
+---
+title: lagged OpenTable reservations vs. change in daily case counts
+author: Andrew
+date: '2020-07-07'
+slug: lagged-opentable-reservations-vs-case-counts
+categories: []
+tags:
+  - covid-19
+  - you gotta wear a mask
+---
+
+```{r opts, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r prep}
+library(tidyverse)
+library(lubridate)
+library(tidycensus)
+library(gganimate)
+library(scico)
+library(broom)
+
+theme_set(
+  theme_minimal(base_size = 15) +
+    theme(panel.grid.minor = element_blank())
+)
+
+# gather each dataset used, including ACS population estimates
+ot  <- read_csv("../../static/data/lagged-opentable-vs-cases/YoY_Seated_Diner_Data.csv")
+c19 <- read_csv("../../static/data/lagged-opentable-vs-cases/us-states.csv")
+pop <- get_acs(geography = "state", variables = "B01003_001")
+
+# wide -> tall for the open table data, keep dates after April from US states
+# assumption is that impact of dining will be reflected in case counts within ~3 weeks
+yoy_st <- ot %>%
+  pivot_longer(cols = -c(Type, Name), names_to = "dt", values_to = "val") %>%
+  mutate(
+    dt = mdy(str_c(dt, "/2020")),
+    lead_dt = dt + days(21)
+  ) %>%
+  filter(
+    str_to_title(Name) %in% state.name,
+    lead_dt <= max(c19$date)
+  )
+
+# merge in the case & population data
+# attempting to match the metric used in the tweet
+# difference between _today_ and value 21 days _prior_
+yoy_st <- c19 %>%
+  right_join(yoy_st, by = c("date" = "lead_dt", "state" = "Name")) %>%
+  left_join(select(pop, state = NAME, popest = estimate), by = "state") %>%
+  left_join(tibble(state.name, state.abb), by = c("state" = "state.name")) %>%
+  group_by(state) %>%
+  mutate(
+    new_cases = cases - lag(cases),
+    diff = new_cases - lag(new_cases, 21),
+    rate = round(diff / popest * 1000000, 3)
+  ) %>%
+  ungroup() %>%
+  select(
+    state,
+    stabb = state.abb,
+    stpop = popest,
+    case_dt = date,
+    dine_dt = dt,
+    cases,
+    deaths,
+    ot_res = val,
+    diff,
+    rate
+  )
+```
+
+Having broken my personal promise to not work with COVID data[^1], I decided to revisit the subject after seeing a recent project from [Nathan Yau](https://flowingdata.com/2020/07/02/restaurant-reopenings/). Yau was looking at OpenTable reservations, and made a clean & well-annotated plot with panels for each state. The OpenTable dataset tracks the difference between seated dining on a given day between 2019 and 2020. Plotting these differences over time gives a view into how quickly people are returning to more regular consumption patterns. Yau's work had deepened a sinking feeling I'd had since mid-June, when things started getting much worse in my state. Walking around Boise, regardless of the time, I was seeing so many people in restaurants (and bars, for the brief time they were open). It was eerie, knowing that things weren't *actually* back to normal, and all I wondered was when we'd start seeing the impact.
+
+At the end of last week, I saw another angle on this topic, summarizing an analysis of credit card spending.
+
+```{r}
+blogdown::shortcode("tweet", "1278766321610735620")
+```
+
+This relationship is interesting, but the single snapshot above wasn't satisfying. The 3-week lag sounds about right, but checking differences at any single point feels arbitrary. I really want a sense for how this relationship would vary, given that people's relative comfort with going into a restaurant is undoubtedly changing over time.
+
+The OpenTable data has some limitations, and not every state is represented, but it seems like a viable way to take a closer look. Below, I've plotted the count of new daily cases vs. the total new cases from 3 weeks prior (per 1m people) on the y-axis[^2], and have the OpenTable percent-difference along the x-axis[^3]. We'll step through each day over the past month(-ish), tracking the simple linear fit.
+
+```{r animated scatter}
+p <- yoy_st %>%
+  filter(case_dt >= "2020-06-05") %>%
+  ggplot(aes(x = ot_res, y = rate)) +
+  geom_smooth(method = "lm", se = FALSE) +
+  geom_text(aes(label = stabb)) +
+  scale_x_continuous(breaks = seq(-100, 0, 25), labels = c("-100%     ", seq(-75, 0, 25))) +
+  transition_states(case_dt, transition_length = 1, state_length = 3) +
+  ease_aes() +
+  labs(
+    title = "Change in # of daily new cases: {closest_state}",
+    subtitle = "US: Difference between day's cases and cases 3 weeks prior",
+    x = "OpenTable reservations, daily difference from 2019 (3 weeks prior)",
+    y = "Change in cases (per 1m people)",
+    caption = str_glue("Excluded states: {str_c(state.abb[!state.abb %in% unique(yoy_st$stabb)], collapse = ', ')}")
+  )
+
+animate(p, fps = 4)
+```
+
+As with the credit-card data, the association seems to be positive, but only slightly. At several points we have some big outliers (e.g. AZ, FL, and RI), and there are a few days in which the relationship appears to either be flat, or non-linear. For a slightly different view, here's the same data, but with all the data and lines in the same plot. Regression lines from more recent days will be colored darker.
+
+```{r lines}
+# get the intercept & slope from each day's regression line
+fits <- yoy_st %>%
+  filter(case_dt >= "2020-06-05") %>%
+  split(.$case_dt) %>%
+  map_df(
+    function(slice) {
+      fit <- lm(rate ~ ot_res, data = slice)
+      
+      enframe(coef(fit)) %>%
+        pivot_wider(names_from = "name", values_from = "value") %>%
+        set_names(c("intercept", "ot_res")) %>%
+        bind_cols(glance(fit)) %>%
+        mutate(r = with(slice, cor(rate, ot_res)))
+    },
+    .id = "case_dt"
+  ) %>%
+  mutate(case_dt = ymd(case_dt))
+
+# work-around to get the color scale to show properly
+# thanks to this stackoverflow: https://stackoverflow.com/questions/49276967/mapping-dates-to-the-viridis-colour-scale-in-ggplot2
+dts <- pretty(fits$case_dt)
+
+# plot all the fits in one figure
+# dates will color-code the lines
+p_fits <- yoy_st %>%
+  filter(case_dt >= "2020-06-05") %>%
+  ggplot(aes(x = ot_res, y = rate)) +
+  geom_point(alpha = .2) +
+  geom_abline(
+    data = fits,
+    aes(intercept = intercept, slope = ot_res, color = as.numeric(case_dt)),
+    alpha = .7
+  ) +
+  scale_x_continuous(breaks = seq(-100, 0, 25), labels = c("-100%     ", seq(-75, 0, 25))) +
+  scale_color_scico(
+    name = "",
+    breaks = as.numeric(dts),
+    labels = dts,
+    palette = "nuuk",
+    direction = -1
+  ) +
+  labs(
+    title = "Change in # of daily new cases, daily from 6/5 - 7/6",
+    subtitle = "US: Difference between day's cases and cases 3 weeks prior",
+    x = "OpenTable reservations, daily difference from 2019 (3 weeks prior)",
+    y = "Change in cases (per 1m people)",
+    caption = str_glue("Excluded states: {str_c(state.abb[!state.abb %in% unique(yoy_st$stabb)], collapse = ', ')}")
+  ) +
+  theme(legend.position = c(.8, .2))
+
+p_fits
+
+# some quick averaging of the correlation between our two vars
+se <- function(x) sd(x) / sqrt(length(x))
+
+lim <- se(sqrt(fits$r.squared)) * 1.96
+
+av_r <- round(mean(sqrt(fits$r.squared)), 2)
+
+av_b <- round(mean(fits$ot_res), 1)
+
+lim_b <- se(fits$ot_res) * 1.96
+
+# idaho's cases?
+id_cases <- round(100 * 1787000 / 1000000, 0)
+```
+
+Hopefully this second view gives a better sense of how much the association varies. On average, the correlation between these two variables was `r str_glue("{av_r}, 95% CI [{round(av_r - lim, 2)}, {round(av_r + lim, 2)}]")`. This translates roughly to an increase of `r av_b` <!-- `r str_glue("{av_b}, 95% CI [{round(av_b - lim, 2)}, {round(av_b + lim, 2)}]")` --> cases/million people for each percentage increase in reservations. For example, if an "average" state saw a 50% increase in reservations 3 weeks ago, today we'd expect an additional 100 cases/mil above what was reported 3 weeks ago. In Idaho, a state with 1.78M people, this would mean an increase of `r id_cases` cases above what was reported 3 weeks ago.[^4] With **many** caveats warranted, it feels creepy to look at this, having watched my county go almost a full week of seeing over 100 new cases each day. I don't know by how much Ada has moved back to what was normal for 2019 restaurant dining, but like I mentioned initially, there's definitely more people out and about. I highly recommend take-out, if y'all really, really, don't want to cook!
+
+[^1]: Earlier in June, oof. Also, now's a good time to note that I'm not an epidemiologist, and that while I'm curious & can make graphs, my lack of expertise on this topic area should prompt caution on any interpretations presented here. 
+
+[^2]: I used data from the NYT's GitHub repo, and 2018 ACS 5-year population estimates
+
+[^3]: The OpenTable data is here: https://www.opentable.com/state-of-industry; reservations include diners that were seated using online & phone reservations, as well as walk-ins.
+
+[^4]: This granted I've done these analyses reasonably, my interpretation is correct, and that these estimates can generalize to states that weren't included in the OpenTable data. The latter in particular may not be safe to assume. I really want to emphasize that this is speculative, and not conclusive.

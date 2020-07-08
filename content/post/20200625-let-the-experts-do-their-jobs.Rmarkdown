@@ -1,10 +1,10 @@
 ---
-title: please don't use a basic linear model to estimate case counts in your state
+title: please don't use a basic linear model to predict case counts in your state
 author: Andrew
 date: '2020-06-26'
 slug: lm-case-counts
 tags:
-  - R
+  - covid-19
   - please wear a mask
 images:
   - post/20200625-let-the-experts-do-their-jobs_files/figure-html/unnamed-chunk-6-1.png

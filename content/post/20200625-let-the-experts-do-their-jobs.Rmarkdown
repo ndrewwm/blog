@@ -1,5 +1,5 @@
 ---
-title: please don't use a basic linear model to predict case counts in your state
+title: please don't use a basic linear model to predict cumulative case counts in your state
 author: Andrew
 date: '2020-06-26'
 slug: lm-case-counts

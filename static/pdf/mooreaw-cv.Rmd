@@ -1,0 +1,146 @@
+---
+output:
+  bookdown::pdf_document2:
+    toc: false
+---
+
+\pagenumbering{gobble}
+
+\begin{center}
+\textbf{Andrew W. Moore} \break
+Data Science Professional \& Developer \textbf{in} Boise, ID \break
+\href{mailto:moore.andrew09@gmail.com}{moore.andrew09@gmail.com} \break
+\url{https://semidocumentedlife.com/} \break
+github: \href{https://github.com/mooreaw/}{@mooreaw} \break
+\end{center}
+
+------
+
+**Currently**
+
+Institutional Research Analyst in the Office of Institutional Research, at Boise State University.
+
+**Research & Professional Interests**
+
+Statistical methods, information design, data science education, social/structural determinants of health, child welfare, social policy
+
+**Technical Skills**
+
+R & R-Shiny, Leaflet, Git/GitHub, SQL, SAS, MATLAB, MS Excel, Tableau, Markdown, Hugo, Qualtrics \newline
+
+\textbf{\underline{Education}}
+
+\textbf{The College of Idaho - Caldwell, ID} \newline
+B.A. Psychology - 2013 \newline
+Minor: History; *cum laude* \newline
+
+\textbf{\underline{Professional Experience}}
+
+`Jan 2020 to present`\newline
+**Boise State University, Office of Institutional Research** | Research Analyst
+
+- Develops analysis and ETL code used to support state & federal reporting obligations.
+
+- Maintains and updates office Tableau dashboards each academic term.
+
+- Responds to ad-hoc data requests, and creates & edits project documentation. \newline
+
+`Nov 2015 to Jan 2020`\newline
+**University of Michigan, School of Social Work** | Data Analyst
+
+- Developed an R Shiny dashboard to visualize county and state performance on 7 federal indicators related to foster care and child safety.
+
+- Used logistic regression to model the risk of children experiencing maltreatment while in foster care, using placement data from case management systems.
+
+- Analyzed text files of CPS investigation dispositions and used supervised learning techniques to predict whether a document contained language indicating the investigation contained language related to substance abuse.
+
+- Presented research findings to state leadership in Michigan's Children's Services Administration (CSA) and Michigan's Committee on Juvenile Justice (MCJJ).
+
+- Developed and maintained analysis code, assisted faculty and students in answering research questions, contributed to academic publications and program evaluation reports. \newline
+
+`Jun 2014 to Nov 2015`\newline
+**University of Michigan, Department of Psychology** | Lab Manager & Research Technician
+
+- Trained and supervised undergraduate research assistants in the HAILab, for behavioral and survey research under Dr. Allison Earl.
+
+- Collected and analyzed neurological data (EEG/ERP), using MATLAB and R.
+
+- Assisted honors & thesis students conducting projects within the HAILab. \newline
+
+`Jun 2013 to Jun 2014`\newline
+**University of Michigan, Survey Research Center** | Survey Technician
+
+- Collected data and interviewed respondents on a multi-wave panel study following US Army servicemembers to understand risks and correlates of suicide (Army STARRS).
+
+- Assisted with qualitative coding of time diaries on a daily use of time study, following elderly adults from the PSID survey.
+
+- Logged respondent correspondence, and collected data on cognitive resilience and health for elderly adults (HRS survey, CogUSA survey). \newline
+
+`Jun 2012 to May 2013`\newline
+**The College of Idaho, Department of Psychology** | Lab Manager
+
+- Collected data, managed participant schedules, coordinated lab software and hardware under Dr. Meredith Minear in the Cognitive Plasticity Lab.
+
+- Managed data files/output and performed basic statistical analysis for ongoing projects.
+
+- Performed literature searches and summarized published findings in support of the lab's publication development. \newline
+
+\textbf{\underline{Publications}}
+
+- Perron, B.E., Victor, B.G., Bushman, G., **Moore, A.,** Ryan, J.P., Lu, A.J., & Piellusch, E.K. (2019). Detecting substance-related problems in narrative investigation summaries of child abuse and neglect using text mining and machine learning. *Child Abuse & Neglect,* 98, 104180. doi:10.1016/j.chiabu.2019.104180
+
+- Ryan J.P., Jacob B.A., Gross M., Perron B.E., **Moore A.,** & Ferguson S.M. (2018). Early exposure to child maltreatment and academic outcomes. *Child Maltreatment.* Advance online publication. doi:10.1177/1077559518786815
+
+- Evangelist M., Ryan J.P., Victor B.G., **Moore A.,** Perron B.E. (2017). Disparities at adjudication in the juvenile justice system:  An examination of race, gender and age. *Social Work Research,* 41, 199-212. doi:10.1093/swr/svx017
+
+- Mowbray O., Victor B.G., Ryan J.P., **Moore A.,** Perron B.E. (2017). Parental substance use and foster care re-entry. *Journal of Social Work Practice in the Addictions,* 17, 352-373. doi:10.1080/1533256X.2017.1361832
+
+- Ryan, J.P., Perron, B.E., **Moore, A.,** Victor, B.G., & Park, K. (2017). Timing matters: A randomized control trial of recovery coaches in foster care. *Journal of Substance Abuse Treatment,* 77, 178-184. doi:10.1016/j.jsat.2017.02.006
+
+- Victor, B.G., Ryan, J.P., **Moore, A.,** Mowbray, O., Evangelist, M. & Perron, B.E. (2016). Foster care licensing and the risk of reentry to out of home care following family reunification. *Children and Youth Services Review,* 70, 112-119. doi:10.1016/j.childyouth.2016.09.015
+
+- Ryan, J.P., Victor, B.G., **Moore, A.,** Mowbray, O., & Perron, B.E. (2016). Recovery coaches and the stability of reunification for substance abusing families in child welfare. *Children and Youth Services Review, 70,* 357-363. doi:10.1016/j.childyouth.2016.10.002
+
+- Ryan, J.P., Perron, B.E., **Moore, A.,** Victor, B., & Evangelist, M. (2016). Foster home placements and the probability of family reunification: does licensing matter?. *Child Abuse & Neglect, 59,* 88-99. doi:10.1016/j.chiabu.2016.07.006
+
+- Minear, M., Brasher, F., Guerrero, C.B., Brasher, M., **Moore, A.,** & Sukeena, J. (2016). A simultaneous examination of two forms of working memory training: Evidence for near transfer only. *Memory & Cognition,* 44, 1014-1037. doi:10.3758/s13421-016-0616-9 \newline
+
+\textbf{\underline{Teaching Experience}}
+
+- May 2016 Ann Arbor R User Group: Beginning R Workshop
+
+- April 2016 Ann Arbor R User Group: Beginning R Workshop
+
+- Spring 2015 *PSYCH426:* assisted with data analysis and minor editing/proofreading related to thesis student projects.
+
+- Fall 2015 *PSYCH424:* helped coordinate lab projects with thesis students, including study recruitment and data collection.
+
+- Fall 2012 *PSY206 Social Psychology:* guest lectured on persuasion and social influence, assisted with grading.
+
+- Spring 2012 *PSY101 Introduction to Psychological Science:* facilitated group discussions, assisted students with class projects related to research design. \newline
+
+\textbf{\underline{Community Engagement}}
+
+`2019` **Co-Organizer, Ann Arbor R-User Group**
+
+`2018` **Co-Organizer, Ann Arbor R-User Group**
+
+`2017` **Co-Organizer, Ann Arbor R-User Group**
+
+`2016` **Workshop Instructor, Ann Arbor R-User Group** \newline
+
+\textbf{\underline{Talks \& Posters}}
+
+- **Moore, A.** (2019) An overview of *tidytext*: exploring the October primary debate transcript. Invited presentation at the November meeting of the Ann Arbor R User Group.
+
+- **Moore, A.** (2017) Building bivariate choropleths with leaflet and tidycensus: an illustration using NUFORC data. Invited presentation at the October meeting of the Ann Arbor R User Group.
+
+- **Moore, A.** (2017) Citations in R-Markdown. Invited presentation at the June meeting of the Ann Arbor R User Group.
+
+- **Moore, A.** (2016) Using Packrat: Dependency Management in R. Invited presentation at the August meeting of the Ann Arbor R User Group.
+
+- **Moore, A.** (2015) Tools for Reproducible Research. Invited presentation in the Data-Science Workshops series at the University of Michigan's School of Social Work.
+
+- Minear, M., Brasher, M., **Moore, A.,** Price, M. & Sukeena, J. (2013). Attempting to Improve Attention through Executive Function Training. Poster presented at the 54th Annual Meeting of the Psychonomic Society, Toronto, Ontario.
+
+- **Moore, A.,** Sukeena, J., & Minear, M. (2013). Personality and motivations for playing video games. Poster presented at the 2013 Society for Personality and Social Psychology conference, New Orleans, Louisiana.

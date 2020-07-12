@@ -37,4 +37,4 @@ hrefTargetBlank = true
 
 [params.sections_right]
 "/about/" = "about"
-"https://github.com/mooreaw/cv/" = "cv"
+"/cv/" = "cv"

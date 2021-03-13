@@ -33,7 +33,7 @@ This year, my partner has been working to complete her Masters in Natural Resour
 2. Explain the minimal code needed to fit a regression model in R
 3. Introduce a few commonly-used R packages that can make interpreting and evaluating a regression model easier
 
-For this series, I'm assuming you have a bit of exposure to the R language, ideally know how to make a plot with the `{ggplot2}` package, and can do some basic algebra. The focus of this post will be a big-picture overview of the mathematical problem that linear regression is attempting to solve, but one of the best resources I've encountered on the mechanics of regression is a [blog post](http://chrishenson.net/website/regression.html){target="_blank"} written by Chris Henson. The post is detailed (& a bit lengthy), but if you're curious about the mathematical underpinnings of a regression analysis beyond what I discuss here, it might be of interest to you. Additionally, I don't know if I'll dedicate posts to this subject myself, but I've greatly appreciated Jonas K. Lindelov's initial [twitter thread](https://twitter.com/jonaslindeloev/status/1110907133833502721){target="_blank"} and [website](https://lindeloev.github.io/tests-as-linear/){target="_blank"} that illustrates how common statistical techniques (such as t-tests, ANOVAs, correlations, etc.) are all linear models, drawing on a shared statistical framework.
+For this series, I'm assuming you have a bit of exposure to the R language, ideally know how to make a plot with the `{ggplot2}` package, and can do some basic algebra. The focus of this post will be a big-picture overview of the mathematical problem that linear regression is attempting to solve, but one of the best resources I've encountered on the mechanics of regression is a [blog post](http://chrishenson.net/website/regression.html){target="_blank"} written by Chris Henson. Henson's post is detailed (& a bit lengthy), but if you're curious about the mathematical underpinnings of a regression analysis beyond what I discuss here, it might be of interest to you. Additionally, I don't know if I'll dedicate posts to this subject myself, but I've greatly appreciated Jonas K. Lindelov's initial [twitter thread](https://twitter.com/jonaslindeloev/status/1110907133833502721){target="_blank"} and [website](https://lindeloev.github.io/tests-as-linear/){target="_blank"} that illustrates how common statistical techniques (such as t-tests, ANOVAs, correlations, etc.) are all linear models, drawing on a shared statistical framework.
 
 ## motivation: outcomes & predictors
 
@@ -56,7 +56,7 @@ Right away, we can see a positive assocation; penguins with longer flippers tend
 
 ```{r}
 ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm)) +
-  geom_abline(slope = c(0.2548, .27, 0.23, .3818, 0.3), intercept = c(-7.2649, -7.43, -6.7, -31.31, -17.96), color = "blue") +
+  geom_abline(slope = c(0.2548, 0.27, 0.23, 0.3818, 0.3), intercept = c(-7.2649, -7.43, -6.7, -31.31, -17.96), color = "blue") +
   geom_point() +
   labs(x = "Flipper Length (mm)", y = "Bill Length (mm)")
 ```
@@ -104,8 +104,16 @@ So, to wrap up, some concluding remarks and takeaways:
 
 2. The process of finding optimal values for $\beta_0$ and $\beta_1$ I've described is called *Ordinary Least Squares* (OLS), which takes its name from the quantity that's minimized (i.e. the sum of squared errors). OLS is actually just one approach of many that's been developed to estimate the parameters of a linear regression model. Although this wasn't explicitly stated in my overview, the approach depends on calculating the means for the outcome variable and predictor variable(s), but there are other variations that e.g. rely on predictor/outcome medians.
 
-3. We didn't cover common *assumptions* that one should attend to when evaluating whether a linear regression will provide useful or valid results. These are important to consider, and we'll discuss some of them more deeply in part 2. In the context of what we've discussed here, the most important assumption to consider is whether the predictor variables you're analyzing can be expected to relate *linearly* with your outcome.
-    - Specifically, you need to be able to assume that an increase/decrease of 1 unit of your predictor would result in the same amount of change in your outcome variable, across the entirety of the predictor's range. In practice, this assumption isn't always strictly met by real-world data. However, it's important to understand that this is a built-in aspect of how linear regression models the world.
+```{r, echo = FALSE}
+# f <- function(x) 1.1*x^3 +x^2 + exp(1.03)^(-x) + 2 + x
+# rng <- seq(-5, 4, 0.1)
+
+f <- function(x) exp(1/12)^(x - 8) + sqrt(x) + (1/100000) * x^5
+rng <- seq(0, 20, 0.1)
+```
+
+3. We didn't cover common *assumptions* that one should attend to when evaluating whether a linear regression will provide useful or valid results. These are important to consider, and we'll discuss some of them more deeply in part 2. In the context of what we've discussed here, the most important consideration is whether the predictor variables you're analyzing can be expected to have a *linear* relationship with your outcome.
+    - Specifically, you're assuming that an increase/decrease of 1 unit of your predictor would result in the same amount of change in your outcome variable, across the entirety of the predictor's range. In practice, this assumption isn't always strictly met by real-world data. However, it's important to understand that this is a built-in aspect of how linear regression "sees" the world. In some cases, transforming certain predictors (e.g. applying a square-root or log function to them) can be beneficial, but thinking about what you're actually asking from a model is important. I've found Richard McElreath's likening the pitfalls that statistical models can have to the story of the [golem of Prauge](https://youtu.be/oy7Ks3YfbDg?t=481){target="_blank"} to be helpful for thinking about this issue.
 
 In the [next post](/post/primer-for-linear-regression-pt2), we'll cover the `lm()` function used to fit linear regression models in R, how to use basic diagnostic plots to check whether your model is performing well, and guidance on how to interpret estimated beta coefficients ($\hat{\beta_0}$, $\hat{\beta_1}$, etc.). I hope you found this useful & informative! There are an abundance of good resources for learning about linear regression as a technique, but many of us are exposed to things in piecemeal fashion or find ourselves having to relearn concepts long after we first encounter them. I've found value in seeing this topic described in different ways and by different authors, so perhaps my overview can be a useful stepping stone on whatever journey you're taking.
 

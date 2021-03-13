@@ -26,7 +26,7 @@ theme_set(
 )
 ```
 
-In the [previous post](/post/primer-for-linear-regression-p1) of this series, we covered an overview of the *Ordinary Least Squares* method for estimating the *parameters* of a linear regression model. While I didn't give you a full tour of the mathematical guts underpinning the technique, I've hopefully given you a sense of the problem the model is attempting to solve, as well as some specific vocabulary that describes the contents of a linear regression. In this post, we're going to continue working with the `{palmerpenguins}` data, but we'll actually cover the task of fitting a model in R, and inspecting the results. Some of what we'll cover is basic R, but we'll also use a handful of functions from `{broom}`, which is a really handy package for wrangling information out of the objects that R creates to store linear models.
+In the [previous post](/post/primer-for-linear-regression-pt1) of this series, we covered an overview of the *Ordinary Least Squares* method for estimating the *parameters* of a linear regression model. While I didn't give you a full tour of the mathematical guts underpinning the technique, I've hopefully given you a sense of the problem the model is attempting to solve, as well as some specific vocabulary that describes the contents of a linear regression. In this post, we're going to continue working with the `{palmerpenguins}` data, but we'll actually cover the task of fitting a model in R, and inspecting the results. Some of what we'll cover is basic R, but we'll also use a handful of functions from `{broom}`, which is a really handy package for wrangling information out of the objects that R creates to store linear models.
 
 ## building a model with lm()
 

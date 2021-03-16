@@ -167,7 +167,7 @@ Up to now, we've covered the following:
 3. Covered how to extract output from a regression model in R, using `tidy()` and `glance()`.
     - Here we also talked about the standard error of model coefficients, as well as the overall residual standard deviation, which are important for understanding the uncertainty about the different estimates produced during the analysis.
 
-At this point, I think we're mostly done with introducing significant concepts and terminology. We've worked through most of the components and pieces that comprise a linear regression analysis and the standard kinds of output that R provides. In what I believe will be the <!--[-->final post<!--](/post/primer-for-linear-regression-pt3)-->, we'll turn to the topic of multiple linear regression (i.e., linear regressions that feature more than 1 predictor), and perhaps touch on some high-level questions (such as how to decide what variables to use). 
+At this point, I think we're mostly done with introducing significant concepts and terminology. We've worked through most of the components and pieces that comprise a linear regression analysis and the standard kinds of output that R provides. In what I believe will be the [final post](/post/primer-for-linear-regression-pt3), we'll turn to the topic of multiple linear regression (i.e., linear regressions that feature more than 1 predictor), and focus a bit more closely on how to interpret the estimated coefficients. 
 
 ## references
 

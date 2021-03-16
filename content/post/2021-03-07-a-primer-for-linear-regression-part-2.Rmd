@@ -7,6 +7,7 @@ categories: []
 tags:
   - statistics
   - linear regression
+  - residuals
   - R
 bibliography: [../../static/bib/references-regression-primer-pt2.bib]
 link-citations: true
@@ -118,7 +119,7 @@ Now we'll move on to the next chunk of output, the model coefficients, in this c
 tidy(fit)
 ```
 
-The 3rd column, `std.error` is the *standard error of the coefficients* (sometimes abbreviated "SE"). These represent the level of uncertainty we have for each estimate. @gelman2006data suggests that roughly speaking, "estimates within 2 standard errors of $\hat{\beta}$ are consistent with the data" (p.40).[^2] Applying this heuristic to our table, this means that our intercept could be within [`r str_c(b0_range, collapse = ", ")`] and the coefficient for flipper length could range from [`r str_c(b1_range, collapse = ", ")`]. Aside from special cases in which two (or more) predictors that are highly correlated with each other are each included in the same model, standard errors should decrease as a function of sample size.[^3] Assuming your data is representative of the population you're trying to study, the parameters/coefficients of the model will become more precise as more data is accumulated.
+The 3rd column, `std.error` is the *standard error of the coefficients* (sometimes abbreviated "SE"). These represent the level of uncertainty we have for each estimate. @gelman2006data suggests that roughly speaking, "estimates within 2 standard errors of $\hat{\beta}$ are consistent with the data" (p.40).[^2] Applying this heuristic to our table, this means that our intercept could be within [`r str_c(b0_range, collapse = ", ")`] and the coefficient for flipper length could range from [`r str_c(b1_range, collapse = ", ")`]. @gelman2006data also provide a rule of thumb that coefficients >2 SE from 0 can be considered "statistically significant" (although, it's worth emphasizing as they do, that this is not the same as being "practically significant"). Aside from special cases in which two (or more) predictors that are highly correlated with each other are each included in the same model, standard errors should decrease as a function of sample size.[^3] Thus, assuming your data is representative of the population you're studying, the parameters/coefficients of the model will become more precise as more data is accumulated.
 
 The last two columns, `statistic` and `p.value` are tricky to talk about, and I hope to convince you that they're less interesting than the $\beta$s and SEs. Although practices are changing, there are sometimes impressions that p-values for model coefficients can be seen as markers of statistical (if not scientific) importance. The story of how this impression gained prominence is complex, and in a future post I might explore a narrow set of reasons for why it's misguided. For our purposes I hope I can briefly outline what information they *do* provide. In a single sentence, they're simply summarizing a ratio of the $\beta$s and SEs. This ratio is called a *t-statistic*, and when using linear regression, is computed for each coefficient using the following formula:
 

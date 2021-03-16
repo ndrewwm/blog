@@ -26,7 +26,7 @@ theme_set(
 )
 ```
 
-This year, my partner has been working to complete her Masters in Natural Resources/Land Management, and several of her assignments have required some data analysis. One topic area we covered together was linear regression/multiple linear regression. As techniques, simple linear regression and multiple linear regression are well-known as workhorses for answering statistical questions across many scientific fields. This post is the first in a series, and I have a few objectives I hope to have met when they're completed:
+This year, my partner has been working to complete her Masters in Natural Resources/Land Management, and several of her assignments have required some data analysis. One topic area we covered together was linear regression/multiple linear regression. As techniques, simple linear regression and multiple linear regression are well-known as workhorses for answering statistical questions across many scientific fields. Given their ubiquity, having the requisite working knowledge needed to interpret and evaluate a regression analysis is highly valuable in virtually any professional field that involves the use or consumption of data. This post is the first in a series, and I have a few objectives I hope to have met when they're completed:
 
 1. Summarize the basic overview of linear regression I covered with my partner this year
     - I'd like to have my notes in one place, and maybe placing them where others can find them would be useful
@@ -39,9 +39,13 @@ For this series, I'm assuming you have a bit of exposure to the R language, idea
 
 <!-- discussion of where name of analysis comes from? -->
 
-Fundamentally, linear regression is used when an analyst is interested in modeling the mean of a numeric & *continuous* outcome variable, based on one or more inputs (called *predictor variables*, or *predictors*)[^1]. In our case, we're going to wear the hat of an arctic biologist, studying different characteristics of several different species of Penguins in the south pole. You can follow along, assuming you've installed the R language on your computer, and both the `{tidyverse}` and `{palmerpenguins}` packages.[^2]
+Fundamentally, linear regression is used when an analyst is interested in modeling the mean of a numeric & *continuous* outcome variable, based on one or more inputs (called *predictor variables*, or *predictors*)[^1]. In our case, we're going to wear the hat of an antarctic biologist, studying different characteristics of several different species of Penguins in the south pole. You can follow along, assuming you've installed the R language on your computer, and both the [`{tidyverse}`](https://www.tidyverse.org/) and [`{palmerpenguins}`](https://allisonhorst.github.io/palmerpenguins/) packages.[^2]
 
-Let's assume that the outcome we're interested in is the bill length of the variety of penguins we're able to study in this region. For our research question, perhaps we're interested in how well the length of a penguin's bill can be predicted by the length of its flippers. We'll start by visualizing this relationship as a scatterplot.
+Let's assume that the outcome we're interested in is the bill lengths of the penguins we're able to study in this region, such as the Gentoo (as depicted by @[allison_horst](https://twitter.com/allison_horst/)).
+
+<center>![Artwork by @allison_horst](/img/culmen_depth.png)</center>
+
+For our research question, perhaps we're interested in how well the length of a penguin's bill can be predicted by the length of its flippers. We'll start by visualizing this relationship as a scatterplot.
 
 ```{r}
 library(tidyverse)
@@ -96,7 +100,7 @@ ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm)) +
   labs(x = "Flipper Length (mm)", y = "Bill Length (mm)")
 ```
 
-This is the same scatterplot we've been looking at, but now the differences (orange) between one of my arbitrary lines (blue) has been emphasized. There are `r nrow(penguins)` penguins in our data, so we have a total of `r nrow(penguins)` differences between the actual points and any proposed line. Each of these differences are then squared and summed, with the algorithm repeating this process using new values of $\beta_0$ and $\beta_1$ to search through possible lines until the minimum (i.e. the line with the smallest amount of error across all points) is identified.
+This is the same scatterplot we've been looking at, but now the differences (orange) between one of my arbitrary lines (blue) has been emphasized. There are `r nrow(penguins)` penguins in our data, so we have a total of `r nrow(penguins)` differences between the actual points and any proposed line. Each of these differences are then squared and summed, with the algorithm working through values of $\beta_0$ and $\beta_1$ to search through possible lines until the minimum (i.e. the line with the smallest amount of error across all points) is identified.
 
 So, to wrap up, some concluding remarks and takeaways:
 

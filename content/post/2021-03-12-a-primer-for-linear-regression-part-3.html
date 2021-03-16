@@ -1,0 +1,536 @@
+---
+title: a primer for linear regression (part 3)
+author: Andrew
+date: '2021-03-15'
+slug: primer-for-linear-regression-pt3
+categories: []
+tags:
+  - statistics
+  - linear regression
+  - multiple regression
+  - R
+---
+
+
+
+<p>Now our focus will shift to multiple regression (i.e. linear regression with &gt;1 predictors), as opposed to <em>simple</em> linear regression (linear regression with just 1 predictor). Simple linear regressions have the benefit of being easy to visualize, and this makes it much easier to explain different concepts. However, real-world questions are often complex, and it’s frequently necessary to account for more than one relevant variable in an analysis. As with the <a href="/post/primer-for-linear-regression-pt1">last</a> <a href="/post/primer-for-linear-regression-pt2">two</a> posts, we’ll stick with the Palmer Penguins data, and now that they’ve been introduced, I’ll be using functions from the <code>{broom}</code> package (such as <code>tidy()</code>, <code>glance()</code> and <code>augment()</code>) a bit more freely.</p>
+<div id="updating-our-basic-model" class="section level2">
+<h2>updating our basic model</h2>
+<p>Let’s start by looking at the basic model we’ve been working with up to now.</p>
+<pre class="r"><code>library(tidyverse)
+library(palmerpenguins)
+library(broom)
+
+fit &lt;- lm(bill_length_mm ~ flipper_length_mm, data = penguins)
+
+# check the coefficients
+tidy(fit)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   term              estimate std.error statistic  p.value
+##   &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)         -7.26     3.20       -2.27 2.38e- 2
+## 2 flipper_length_mm    0.255    0.0159     16.0  1.74e-43</code></pre>
+<pre class="r"><code># extract the residual standard deviation
+sigma(fit)</code></pre>
+<pre><code>## [1] 4.125874</code></pre>
+<pre class="r"><code>ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_smooth(method = &quot;lm&quot;) +
+  geom_point() +
+  labs(x = &quot;Flipper Length (mm)&quot;, y = &quot;Bill Length (mm)&quot;)</code></pre>
+<p><img src="/post/2021-03-12-a-primer-for-linear-regression-part-3_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>The plot shows pretty clearly that there’s a positive association between our two variables. However, you can clearly see that our line is missing a little cloud of points in the upper middle of the plot. Additionally, the spread of penguins with bill lengths less than 40mm and flippers between 180 - 200mm also don’t seem to be well explained by our line. Characteristics like this contributes to a higher <em>residual standard deviation</em>, which in this case is about 4.1mm.</p>
+<p>If you’ve already spent some time exploring the penguins dataset on your own, this might not come as a surprise, but the explanation is straightforward: our data actually contains measurements from 3 different species! While there are some outliers (such as the particularly long-nosed fellow up in the top-right, and the adventurous Adelie that’s hanging out with the Gentoo), the groups are pretty distinct, and don’t overlap too much. It also looks like the relationship between our original two variables is still apparent <em>within</em> each of our groups.</p>
+<pre class="r"><code>ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm, color = species)) +
+  geom_point() +
+  theme(legend.position = &quot;top&quot;) +
+  labs(x = &quot;Flipper Length (mm)&quot;, y = &quot;Bill Length (mm)&quot;, color = &quot;&quot;)</code></pre>
+<p><img src="/post/2021-03-12-a-primer-for-linear-regression-part-3_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Now that we’re aware of this relationship, a logical approach would be to introduce an adjustment that accounts for the patterns we’re seeing. For example, the average bill-length of the Chinstrap penguins seems to be about 50mm, compared to the overall mean, which is maybe between 44 and 45mm. Multiple regression allows us to represent this in our model in a straightforward way. We’ll create a new model, adding our new predictor to the formula using a <code>+</code> sign. Then, we’ll take a look at the estimated coefficients.</p>
+<pre class="r"><code>fit2 &lt;- lm(bill_length_mm ~ flipper_length_mm + species, data = penguins)
+
+tidy(fit2)</code></pre>
+<pre><code>## # A tibble: 4 x 5
+##   term              estimate std.error statistic  p.value
+##   &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)         -2.06     4.04      -0.510 6.11e- 1
+## 2 flipper_length_mm    0.215    0.0212    10.1   3.12e-21
+## 3 speciesChinstrap     8.78     0.399     22.0   3.39e-67
+## 4 speciesGentoo        2.86     0.659      4.34  1.90e- 5</code></pre>
+<p>Okay, now we have a few new coefficients in our model, specifically new rows for our Chinstrap and Gentoo groups. Your first question might be: “What about the Adelie? Are they missing?” No, they’re still in our model, but you might say they’re being held as a contrast against the other two species. Under the hood, R is creating <em>indicator variables</em> (columns that give each observation a 0 or 1 based on some criteria) that are then used as predictors in our model. When working with non-numeric data (like the name or group membership of a species of animal), we have to represent that information in a way that our formulas &amp; computers can use. When we put a categorical variable into a formula, like we did here,</p>
+<p><code>bill_length_mm ~ flipper_length_mm + species</code></p>
+<p>R generates the necessary indicator columns automatically, and includes them as predictors.</p>
+<p>Thus, we end up with something like this:</p>
+<p><code>bill_length_mm ~ flipper_length_mm + speciesChinstrap + speciesGentoo</code></p>
+<p>Here’s what these indicator variables look like for 3 penguins (one from each species). Given that we have 3 groups/species, we can identify membership using just 2 columns. Each unique combination of rows corresponds to a different group.</p>
+<pre class="r"><code>contrasts(penguins$species)</code></pre>
+<pre><code>##           Chinstrap Gentoo
+## Adelie            0      0
+## Chinstrap         1      0
+## Gentoo            0      1</code></pre>
+<p>So, to answer “where” the Adelie are, their rows are identified when the <code>speciesChinstrap</code> and <code>speciesGentoo</code> columns are both equal to 0.</p>
+</div>
+<div id="interpreting-the-estimated-coefficients" class="section level2">
+<h2>interpreting the estimated coefficients</h2>
+<p>Until now, I’ve held off on discussing in-depth on how to interpret the results from a regression. In the case of simple linear regression, we’ve been able to talk about <span class="math inline">\(\hat{\beta_1}\)</span> as the slope for the best-fitting line between two variables. This interpretation remains valid for multiple regression, but obviously gets more complex as the number of variables increases. You can represent two variables on an <em>X-Y plane</em>, but when you have 3, 4, 10 different variables &amp; their respective associations? The betas then describe slopes on a multidimensional <em>surface</em> that’s hard (if not impossible) for us to visualize in a sensical way. In our case, it can still be tractable, but first we’re going to focus on the model’s representation as an equation.</p>
+<p>Here’s our simple model:</p>
+<p><span class="math inline">\(\widehat{\text{bill length}} = -7.26 + 0.255(\text{flipper length})\)</span></p>
+<p>And our updated model:</p>
+<p><span class="math inline">\(\widehat{\text{bill length}} = -2.06 + 0.215(\text{flipper length}) + 8.78(\text{speciesChinstrap}) + 2.86(\text{speciesGentoo})\)</span></p>
+<p>Now, let’s imagine feeding these models some new data. Let’s start by thinking about what the intercept is doing in both equations. Is it something that’s directly meaningful? No. If we somehow had a bird with flippers of length 0, our models would predict a bill length of -7.26 and -2.06, respectively. In any regression model, the intercept value will be the model’s prediction if <em>all</em> the predictors in the model were set to 0.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> For the non-intercept terms, if you’re interested in variable <span class="math inline">\(x_k\)</span>, you can read its coefficient <span class="math inline">\(\hat\beta_k\)</span> as the <em>expected change in <span class="math inline">\(\hat{y}\)</span> when increasing (or decreasing) the value of <span class="math inline">\(x_k\)</span> by 1.</em> Note this is the expected change holding all the other variables in the model constant. That is, if I set all the other variables to something pre-specified (such as 0), and only change my input for <span class="math inline">\(x_k\)</span> by 1-unit, I’ll see <span class="math inline">\(\hat{y}\)</span> move in a single increment of <span class="math inline">\(\hat\beta_k\)</span>.</p>
+<p>The idea of holding other variables “constant” might become clearer as we generate predictions for some example penguins. As a practical example, let’s see what our models would predict for an Adelie penguin with a flipper length of 190mm. Plugging in this information gives us:</p>
+<p><span class="math inline">\(41.19 = -7.26 + (0.255*190)\)</span></p>
+<p><span class="math inline">\(38.79 = -2.06 + (0.215*190) + (8.78*0) + (2.86*0)\)</span></p>
+<p>In our first model, we aren’t accounting for the species of the penguin, so we just multiply the flipper length by our coefficient, and sum everything. In our updated model, we account for species. Remember, in our data, Adelie penguins are identified as have a value of <em>0</em> for both <code>speciesChinstrap</code> and <code>speciesGentoo</code>. Because of this, the two terms on the end simply become 0s when everything gets combined. If we looked at a Gentoo penguin with the same flipper length, we’d get the following instead:</p>
+<p><span class="math inline">\(41.65 = -2.06 + (0.215*190) + (8.78*0) + (2.86*1)\)</span></p>
+<p>Now the adjustment for being a member of the Gentoo species is added, as the <code>speciesGentoo</code> indicator variable goes from 0 to 1. We get an additional bump of 2.86mm in bill length, compared to our prediction for an Adelie. Doing this by hand is fine for one or two examples, but you can get R to generate this information for you, using <code>predict()</code>. We’ll put our example birds into a data frame, and compare my calculations to what R produces.</p>
+<pre class="r"><code>example_penguins &lt;- tibble(species = c(&quot;Adelie&quot;, &quot;Gentoo&quot;), flipper_length_mm = 190)
+
+# using our initial (simple) model
+predict(object = fit, newdata = example_penguins)</code></pre>
+<pre><code>##        1        2 
+## 41.14108 41.14108</code></pre>
+<pre class="r"><code># using our updated model, which adjusts for species
+predict(object = fit2, newdata = example_penguins)</code></pre>
+<pre><code>##        1        2 
+## 38.80136 41.65825</code></pre>
+<p>Pretty close, although the results from <code>predict()</code> are slightly different, given that I only used up to two digits of each coefficient/intercept when doing things by hand.</p>
+</div>
+<div id="how-do-the-models-compare" class="section level2">
+<h2>how do the models compare?</h2>
+<p>Okay, we’ve now built an updated model, and discussed how to interpret estimated coefficients. We’ll finish things up by doing our best attempt to visualize the new model, and making a few diagnostic plots to see if/how things have improved.</p>
+<p>Let’s start by adding our regression line (with adjustments) to the scatterplot.</p>
+<pre class="r"><code># create a data-frame with estimated slope, intercept, &amp; adjustments for each species
+species_lines &lt;- tibble(
+  species = c(&quot;Adelie&quot;, &quot;Chinstrap&quot;, &quot;Gentoo&quot;),
+  intercept = c(-2.06, -2.06 + 8.78, -2.06 + 2.86),
+  slope = .215
+)
+
+ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm, color = species)) +
+  geom_abline(
+    data = species_lines,
+    aes(intercept = intercept, slope = slope, color = species),
+    lty = &quot;dashed&quot;
+  ) +
+  geom_point() +
+  theme(legend.position = &quot;top&quot;) +
+  labs(x = &quot;Flipper Length (mm)&quot;, y = &quot;Bill Length (mm)&quot;, color = &quot;&quot;)</code></pre>
+<p><img src="/post/2021-03-12-a-primer-for-linear-regression-part-3_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>As you can see, we have the same slope regardless of which species we’re looking at, but I’ve ensured that each colored line has its y-intercept adjusted based on the estimated coefficients for each species. Visually-speaking, we can see that the model’s predictions can be improved a lot by knowing which species you’re interested in. Let’s take a look at the residuals themselves.</p>
+<pre class="r"><code>aug_fit2 &lt;- augment(fit2)
+
+ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
+  geom_hline(yintercept = 0, lty = &quot;dashed&quot;) +
+  geom_point() +
+  theme(legend.position = &quot;top&quot;) +
+  labs(x = &quot;Fitted (Predicted) Values&quot;, y = &quot;Residual&quot;, color = &quot;&quot;)</code></pre>
+<p><img src="/post/2021-03-12-a-primer-for-linear-regression-part-3_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Here we can see that our fitted values have basically broken into two groups. However, this is a good thing! If you look at the previous scatter plots, you can see that the Adelie tend to have shorter bills on average, whereas the Chinstrap and Gentoo are more similar in this respect. It also seems like most of our predictions were within <span class="math inline">\(\pm5\)</span>mm of the true values for bill length. We can get the specific estimate for residual standard deviation (<span class="math inline">\(\hat\sigma\)</span>) and other information from <code>glance()</code>.</p>
+<pre class="r"><code>bind_rows(Simple = glance(fit), Updated = glance(fit2), .id = &quot;model&quot;) %&gt;%
+  mutate(across(where(is.numeric), round, 2)) %&gt;%
+  gt::gt(rowname_col = &quot;model&quot;)</code></pre>
+<p><style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#kgqixkwuve .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kgqixkwuve .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kgqixkwuve .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kgqixkwuve .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kgqixkwuve .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kgqixkwuve .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kgqixkwuve .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kgqixkwuve .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kgqixkwuve .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kgqixkwuve .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kgqixkwuve .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kgqixkwuve .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kgqixkwuve .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kgqixkwuve .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kgqixkwuve .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kgqixkwuve .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kgqixkwuve .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#kgqixkwuve .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kgqixkwuve .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#kgqixkwuve .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kgqixkwuve .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kgqixkwuve .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kgqixkwuve .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kgqixkwuve .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kgqixkwuve .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#kgqixkwuve .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kgqixkwuve .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#kgqixkwuve .gt_left {
+  text-align: left;
+}
+
+#kgqixkwuve .gt_center {
+  text-align: center;
+}
+
+#kgqixkwuve .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kgqixkwuve .gt_font_normal {
+  font-weight: normal;
+}
+
+#kgqixkwuve .gt_font_bold {
+  font-weight: bold;
+}
+
+#kgqixkwuve .gt_font_italic {
+  font-style: italic;
+}
+
+#kgqixkwuve .gt_super {
+  font-size: 65%;
+}
+
+#kgqixkwuve .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="kgqixkwuve" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">r.squared</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">adj.r.squared</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">sigma</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">statistic</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">p.value</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">df</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">logLik</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">AIC</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">BIC</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">deviance</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">df.residual</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">nobs</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left gt_stub">Simple</td>
+      <td class="gt_row gt_right">0.43</td>
+      <td class="gt_row gt_right">0.43</td>
+      <td class="gt_row gt_right">4.13</td>
+      <td class="gt_row gt_right">257.09</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">1</td>
+      <td class="gt_row gt_right">-968.98</td>
+      <td class="gt_row gt_right">1943.97</td>
+      <td class="gt_row gt_right">1955.47</td>
+      <td class="gt_row gt_right">5787.76</td>
+      <td class="gt_row gt_right">340</td>
+      <td class="gt_row gt_right">342</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">Updated</td>
+      <td class="gt_row gt_right">0.78</td>
+      <td class="gt_row gt_right">0.77</td>
+      <td class="gt_row gt_right">2.60</td>
+      <td class="gt_row gt_right">389.97</td>
+      <td class="gt_row gt_right">0</td>
+      <td class="gt_row gt_right">3</td>
+      <td class="gt_row gt_right">-809.56</td>
+      <td class="gt_row gt_right">1629.12</td>
+      <td class="gt_row gt_right">1648.29</td>
+      <td class="gt_row gt_right">2278.34</td>
+      <td class="gt_row gt_right">338</td>
+      <td class="gt_row gt_right">342</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+<br></p>
+<p>Here I’ve taken the output for <code>glance()</code> from each model and stacked them<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. By basically every criteria that’s reported in this output, our updated model is much preferable to the simple linear regression. Our <span class="math inline">\(R^2\)</span> has increased by a lot, and the values for <code>logLik</code>, <code>AIC</code>, <code>BIC</code>, and <code>deviance</code> are all smaller under the updated model, each suggesting a better fit. Of practical note, our value for <span class="math inline">\(\hat\sigma\)</span> has decreased by about 1.5mm. While there’s still a fair bit of variability in the outcome, cutting down our average error is an improvement.</p>
+</div>
+<div id="wrap-up" class="section level2">
+<h2>wrap-up</h2>
+<p>Whew, we’re done (at least with with what I’d initially planned to cover)! There are perhaps two practical items that I didn’t get to in the main text. The first is the topic of <em>scaling</em> numeric variables, which is often done after they’ve been <em>centered</em> (something I mentioned in my first footnote). Scaling a variable by its standard deviation can be helpful when you have many different predictors that are measured differently, and want to ensure you have the same interpretation for each of the coefficients. The second is the topic of including <em>interactions</em> in a regression equation. In the context of regression, an interaction between two (or more) variables exists when the relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x_a\)</span> depends on <span class="math inline">\(x_b\)</span> (or other <span class="math inline">\(x\)</span>s). This topic is complex, and a whole separate post could be dedicated to defining, interpreting, and visualizing interactions. In the case of this series, I wanted to focus on the fundamentals of linear regression as an approach, of which interactions as a topic falls outside of scope.</p>
+<p>If you’ve stuck with me through all 3 posts, thank you! I hope I’ve built on any prior exposure you’ve had to the topics, and connected your learning to practical tools in the R language. If you have any questions on anything I’ve covered, or spotted any potential errors in something I’ve discussed, please feel free to contact me!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This means that in different contexts, the intercept can be substantively meaningful. However, this depends on whether it makes sense for your research question to have all the values of your variables equal to 0 at the same time. Taking our data for example, it’s nonsensical to think of a penguin with a flipper-length of 0. This is why it’s often common practice to <em>center</em> numeric variables (i.e., taking each observation from a variable and subtracting the variable’s mean). Once done, setting the transformed variable to 0 is equivalent to setting it equal to its mean.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>I’m also printing things a bit more cleanly using the <code>gt()</code> function from the <code>{gt}</code> package.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>

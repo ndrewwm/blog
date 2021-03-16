@@ -6,6 +6,7 @@ slug: lm-case-counts
 tags:
   - covid-19
   - please wear a mask
+  - linear regression
 images:
   - post/20200625-let-the-experts-do-their-jobs_files/figure-html/unnamed-chunk-6-1.png
 ---

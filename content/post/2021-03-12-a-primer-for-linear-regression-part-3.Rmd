@@ -170,7 +170,7 @@ bind_rows(Simple = glance(fit), Updated = glance(fit2), .id = "model") %>%
 ```
 <br>
 
-Here I've taken the output for `glance()` from each model and stacked them[^2]. By basically every criteria that's reported in this output, our updated model is much preferable to the simple linear regression. Our $R^2$ has increased by a lot, and the values for `logLik`, `AIC`, `BIC`, and `deviance` are all smaller under the updated model, each suggesting a better fit. Of practical note, our value for $\hat\sigma$ has decreased by about 1.5mm. While there's still a fair bit of variability in the outcome, cutting down our average error is an improvement.
+Here I've taken the output for `glance()` from each model and stacked them[^2]. By basically every criteria that's reported in this output, our updated model is preferable to the simple linear regression. Our $R^2$ has increased by a lot, and the values for `logLik`, `AIC`, `BIC`, and `deviance` are all smaller under the updated model, each suggesting a better fit. Of practical note, our value for $\hat\sigma$ has decreased by about 1.5mm. While there's still a fair bit of variability in the outcome, cutting down our average error is an improvement.
 
 ## wrap-up
 

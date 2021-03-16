@@ -39,7 +39,7 @@ sigma(fit)</code></pre>
   labs(x = &quot;Flipper Length (mm)&quot;, y = &quot;Bill Length (mm)&quot;)</code></pre>
 <p><img src="/post/2021-03-12-a-primer-for-linear-regression-part-3_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>The plot shows pretty clearly that there’s a positive association between our two variables. However, you can clearly see that our line is missing a little cloud of points in the upper middle of the plot. Additionally, the spread of penguins with bill lengths less than 40mm and flippers between 180 - 200mm also don’t seem to be well explained by our line. Characteristics like this contributes to a higher <em>residual standard deviation</em>, which in this case is about 4.1mm.</p>
-<p>If you’ve already spent some time exploring the penguins dataset on your own, this might not come as a surprise, but the explanation is straightforward: our data actually contains measurements from 3 different species! While there are some outliers (such as the particularly long-nosed fellow up in the top-right, and the adventurous Adelie that’s hanging out with the Gentoo), the groups are pretty distinct, and don’t overlap too much. It also looks like the relationship between our original two variables is still apparent <em>within</em> each of our groups.</p>
+<p>This was something I had alluded to in part 1, but the explanation is straightforward: our data actually contains measurements from 3 different species! While there are some outliers (such as the particularly long-nosed fellow up in the top-right, and the adventurous Adelie that’s hanging out with the Gentoo), the groups are pretty distinct, and don’t overlap too much. It also looks like the relationship between our original two variables is still apparent <em>within</em> each of our groups.</p>
 <pre class="r"><code>ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm, color = species)) +
   geom_point() +
   theme(legend.position = &quot;top&quot;) +
@@ -133,7 +133,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#kgqixkwuve .gt_table {
+#ysydtyuipf .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -158,7 +158,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   border-left-color: #D3D3D3;
 }
 
-#kgqixkwuve .gt_heading {
+#ysydtyuipf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -170,7 +170,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   border-right-color: #D3D3D3;
 }
 
-#kgqixkwuve .gt_title {
+#ysydtyuipf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -180,7 +180,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   border-bottom-width: 0;
 }
 
-#kgqixkwuve .gt_subtitle {
+#ysydtyuipf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -190,13 +190,13 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   border-top-width: 0;
 }
 
-#kgqixkwuve .gt_bottom_border {
+#ysydtyuipf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kgqixkwuve .gt_col_headings {
+#ysydtyuipf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -211,7 +211,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   border-right-color: #D3D3D3;
 }
 
-#kgqixkwuve .gt_col_heading {
+#ysydtyuipf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -231,7 +231,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   overflow-x: hidden;
 }
 
-#kgqixkwuve .gt_column_spanner_outer {
+#ysydtyuipf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -243,15 +243,15 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   padding-right: 4px;
 }
 
-#kgqixkwuve .gt_column_spanner_outer:first-child {
+#ysydtyuipf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kgqixkwuve .gt_column_spanner_outer:last-child {
+#ysydtyuipf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kgqixkwuve .gt_column_spanner {
+#ysydtyuipf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -263,7 +263,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   width: 100%;
 }
 
-#kgqixkwuve .gt_group_heading {
+#ysydtyuipf .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -285,7 +285,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   vertical-align: middle;
 }
 
-#kgqixkwuve .gt_empty_group_heading {
+#ysydtyuipf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -300,15 +300,15 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   vertical-align: middle;
 }
 
-#kgqixkwuve .gt_from_md > :first-child {
+#ysydtyuipf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kgqixkwuve .gt_from_md > :last-child {
+#ysydtyuipf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kgqixkwuve .gt_row {
+#ysydtyuipf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -327,7 +327,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   overflow-x: hidden;
 }
 
-#kgqixkwuve .gt_stub {
+#ysydtyuipf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -339,7 +339,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   padding-left: 12px;
 }
 
-#kgqixkwuve .gt_summary_row {
+#ysydtyuipf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -349,7 +349,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   padding-right: 5px;
 }
 
-#kgqixkwuve .gt_first_summary_row {
+#ysydtyuipf .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -359,7 +359,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   border-top-color: #D3D3D3;
 }
 
-#kgqixkwuve .gt_grand_summary_row {
+#ysydtyuipf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -369,7 +369,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   padding-right: 5px;
 }
 
-#kgqixkwuve .gt_first_grand_summary_row {
+#ysydtyuipf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -379,11 +379,11 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   border-top-color: #D3D3D3;
 }
 
-#kgqixkwuve .gt_striped {
+#ysydtyuipf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kgqixkwuve .gt_table_body {
+#ysydtyuipf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -392,7 +392,7 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   border-bottom-color: #D3D3D3;
 }
 
-#kgqixkwuve .gt_footnotes {
+#ysydtyuipf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -406,13 +406,13 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   border-right-color: #D3D3D3;
 }
 
-#kgqixkwuve .gt_footnote {
+#ysydtyuipf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#kgqixkwuve .gt_sourcenotes {
+#ysydtyuipf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -426,46 +426,46 @@ ggplot(aug_fit2, aes(x = .fitted, y = .resid, color = species)) +
   border-right-color: #D3D3D3;
 }
 
-#kgqixkwuve .gt_sourcenote {
+#ysydtyuipf .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#kgqixkwuve .gt_left {
+#ysydtyuipf .gt_left {
   text-align: left;
 }
 
-#kgqixkwuve .gt_center {
+#ysydtyuipf .gt_center {
   text-align: center;
 }
 
-#kgqixkwuve .gt_right {
+#ysydtyuipf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kgqixkwuve .gt_font_normal {
+#ysydtyuipf .gt_font_normal {
   font-weight: normal;
 }
 
-#kgqixkwuve .gt_font_bold {
+#ysydtyuipf .gt_font_bold {
   font-weight: bold;
 }
 
-#kgqixkwuve .gt_font_italic {
+#ysydtyuipf .gt_font_italic {
   font-style: italic;
 }
 
-#kgqixkwuve .gt_super {
+#ysydtyuipf .gt_super {
   font-size: 65%;
 }
 
-#kgqixkwuve .gt_footnote_marks {
+#ysydtyuipf .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="kgqixkwuve" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="ysydtyuipf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>

@@ -51,7 +51,7 @@ ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm)) +
 
 The plot shows pretty clearly that there's a positive association between our two variables. However, you can clearly see that our line is missing a little cloud of points in the upper middle of the plot. Additionally, the spread of penguins with bill lengths less than 40mm and flippers between 180 - 200mm also don't seem to be well explained by our line. Characteristics like this contributes to a higher *residual standard deviation*, which in this case is about `r round(sigma(fit), 1)`mm.
 
-If you've already spent some time exploring the penguins dataset on your own, this might not come as a surprise, but the explanation is straightforward: our data actually contains measurements from 3 different species! While there are some outliers (such as the particularly long-nosed fellow up in the top-right, and the adventurous Adelie that's hanging out with the Gentoo), the groups are pretty distinct, and don't overlap too much. It also looks like the relationship between our original two variables is still apparent *within* each of our groups. 
+This was something I had alluded to in part 1, but the explanation is straightforward: our data actually contains measurements from 3 different species! While there are some outliers (such as the particularly long-nosed fellow up in the top-right, and the adventurous Adelie that's hanging out with the Gentoo), the groups are pretty distinct, and don't overlap too much. It also looks like the relationship between our original two variables is still apparent *within* each of our groups. 
 
 ```{r}
 ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm, color = species)) +

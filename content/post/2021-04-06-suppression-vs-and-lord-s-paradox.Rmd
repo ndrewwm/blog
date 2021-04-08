@@ -1,0 +1,147 @@
+---
+title: defining variable suppression
+author: Andrew
+date: '2021-04-06'
+slug: suppression-vs-lords-paradox
+categories: []
+tags: []
+bibliography: ["../../static/bib/references-suppression-202104.bib"]
+---
+
+Recently, I've been trying to wrap my head around the *reversal paradox*. This is something that can pop up when one is attempting to model an outcome with two or more predictors that are correlated with each other, in addition to being correlated with the outcome. More specifically, I'm thinking about this in the context of interpreting estimated coefficients from an OLS model (or GLM). Somewhere along the way in our learning bout statistics, most of us learn or hear about *Simpson's Paradox*.
+
+@nickerson2019simpson
+
+***Simpson’s Paradox is suppression, but Lord’s Paradox is neither: clarification of and correction to Tu, Gunnell, and Gilthorpe (2008)***
+
+**Carol A. Nickerson & Nicholas J. L. Brown, 2019**
+
+**The Reversal Paradox**
+
+- in the reversal paradox, the association between an outcome variable and an explanatory (predictor) variable is reversed when another explanatory variable is added to the analysis
+  - Nickerson & Brown working to clarify relationship between reversal paradox and other related phenomena
+    - *suppression*
+    - *Simpson's Paradox*
+    - *Lord's Paradox*
+
+- Consider an OLS with outcome $Y$ and 2 predictors, $X_1$ and $X_2$
+  - All 3 variables are standardized (mean = 0, SD = 1)
+  - the correlation between $X_1$ and $X_2$ is positive ($r_{X_1X_2} > 0$)
+  - $r_{YX_1} > 0$, and
+  - $r_{YX_2}$ can be negative, 0, or positive
+
+To walk through their writing, we'll set up simulated variables just like this, except in our case, I'm going to make the correlation between $Y$ and $X_2$ *positive.*
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(broom)
+library(gt)
+
+set.seed(20210406)
+
+dat <- tibble(
+  y  = scale(rnorm(500, 22, 34))[, 1],
+  x1 = scale(y + rnorm(500, mean = 0, sd = 2))[, 1],
+  x2 = scale(y + x1 + rnorm(500))[, 1]
+)
+
+pairs(dat, upper.panel = NULL)
+```
+
+As can be seen in the pairs plot, $X_2$ has a stronger linear association with $Y$ compared to $X_1$.
+
+Now we'll fit each of the 3 possible regression models, and present the coefficients in a table. Here we can see a sign reversal for $X_1$ in the multiple regression, i.e. when $Y$ is regressed on *both* $X_1$ and $X_2$ in the same model.
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+lst(`y ~ x1` = y ~ x1, `y ~ x2` = y ~ x2, `y ~ x1 + x2` = y ~ x1 + x2) %>%
+  map_df(~tidy(lm(.x, data = dat)), .id = "model") %>%
+  gt(groupname_col = "model", rowname_col = "term") %>%
+  fmt_number(vars(estimate, std.error, statistic, p.value), decimals = 2) %>%
+  cols_merge(vars(estimate, std.error), hide_columns = vars(std.error), pattern = "{1} ({2})") %>%
+  cols_label(
+    estimate  = md("&beta; (S.E.)"),
+    statistic = md("*t*"),
+    p.value   = md("*p*")
+  ) %>%
+  tab_header("Coefficient tables for each model") %>%
+  tab_style(style = cell_text(weight = "bold"), locations = cells_row_groups())
+```
+
+<br>
+
+Nickerson & Brown note that because our variables are standardized, in the simple regressions, the $\beta$s for $X_1$ and $X_2$ are the respective *correlations* between $Y$ and $X_1$ or $X_2$.
+
+```{r}
+summarise(dat, y_x1 = cor(y, x1), y_x2 = cor(y, x2))
+```
+And, the $\beta$s in the multiple regression represent partial correlations between $Y$ and $X_1$ & $X_2$. They can be computed directly using the following:
+
+```{r}
+dat %>%
+  summarise(
+    b1 = (cor(y, x1) - cor(y, x2) * cor(x1, x2)) / (1 - cor(x1, x2)^2),
+    b2 = (cor(y, x2) - cor(y, x1) * cor(x1, x2)) / (1 - cor(x1, x2)^2)
+  )
+```
+
+<!-- not sure if this is right-- seems like in minds of researchers that Nickerson/Brown are describing, independence/redundancy are thought of as diff from suppression? -->
+<!-- Nickerson & Brown discuss the common beliefs around *supression* when using two predictors to model an outcome. They argue that most researchers only consider two situations: -->
+
+Forms of suppression:
+
+- *Independence*
+    - $X_1$ and $X_2$ are uncorrelated; the partial regression coefficient for each of the two variables equal their corresponding simple regression coefficient.
+  
+- *Redundancy*
+    - $X_1$ and $X_2$ are correlated; each partial regression coefficient has the same sign, but a smaller coefficient than the corresponding simple regression coefficient.
+
+- *Reciprocal Suppression* (or cooperative suppression)
+    - $X_1$ and $X_2$ are negatively correlated; each partial regression coefficient is greater than its corresponding simple regression coefficient, but the signs are unchanged.
+
+- *Classical Suppression* (or traditional suppression)
+    - The correlation between $X_2$ and $Y$ is 0 (or nearly 0); the partial regression coefficient for $X_2$ is negative, and the partial coefficient for $X_1$ is larger than its corresponding simple regression coefficient.
+
+- *Negative Suppression* (or net suppression)
+    - Can (but does not necessarily) occur when the correlation between $X_2$ and $Y$ is positive.
+    - Occurs when:
+        - $r_{X_1X_2} > \frac{r_{YX_1}}{r_{YX_2}}$ if $r_{YX_2} > r_{YX_1}$ **or**
+        - $r_{X_1X_2} > \frac{r_{YX_2}}{r_{YX_1}}$ if $r_{YX_1} > r_{YX_2}$
+    - Results in a reversal of signs.
+
+As could be seen in the pairs plot, we're looking at an instance of *negative suppression*. First, the correlation between $Y$ and $X_2$ is stronger than the one between $Y$ and $X_1$. Second, the correlation between $X_1$ and $X_2$ is larger than the ratio of $r_{YX_1}$ and $r_{YX_2}$. Demonstrating with our simulated data:
+
+```{r}
+with(dat, {
+  y_x1  <- cor(y, x1)
+  y_x2  <- cor(y, x2)
+  x1_x2 <- cor(x1, x2)
+  
+  print(y_x2 > y_x1)
+  print(x1_x2 > (y_x1 / y_x2))
+
+  print(c(y_x1, y_x2, x1_x2))
+})
+```
+
+So, in practice, what does this mean? Assuming I'm working to refine a model, and while $X_1$ and $X_2$ are correlated, I would probably still be interested in the value that $X_1$ has in predicting my outcome. While this is a toy scenario where I've specified the relationships, all the tools one might use to check whether $X_1$ improves my model indicate it does. Here are some of the fit statistics to accompany the preceding coefficient table.
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+lst(`y ~ x1` = y ~ x1, `y ~ x2` = y ~ x2, `y ~ x1 + x2` = y ~ x1 + x2) %>%
+  map_df(~glance(lm(.x, data = dat)), .id = "model") %>%
+  select(model, adj.r.squared, sigma, AIC, BIC, deviance) %>%
+  gt(rowname_col = "model") %>%
+  fmt_number(vars(adj.r.squared, sigma, AIC, BIC, deviance), decimals = 2) %>%
+  cols_label(
+    adj.r.squared = md("Adj. R<sup>2</sup>"),
+    sigma         = md("&sigma;"),
+    deviance      = "Deviance"
+  ) %>%
+  tab_style(style = cell_text(weight = "bold"), locations = cells_body(columns = vars(model))) %>%
+  tab_header("Comparisons of Fit")
+```
+
+<br>
+
+So, $X_2$ is doing most of the "work" for predicting the outcome, but when both $X_1$ and $X_2$ are added, there is an improvement in fit (even if it's marginal). Assuming that my specific interest is *prediction*, I should prefer the multiple regression model, assuming we're not missing some $X_3$, $X_4$, etc.
+
+## references

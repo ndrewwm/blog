@@ -1,0 +1,919 @@
+---
+title: defining variable suppression
+author: Andrew
+date: '2021-04-06'
+slug: suppression-vs-lords-paradox
+categories: []
+tags: []
+bibliography: ["../../static/bib/references-suppression-202104.bib"]
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>Recently, I’ve been trying to wrap my head around the <em>reversal paradox</em>. This is something that can pop up when one is attempting to model an outcome with two or more predictors that are correlated with each other, in addition to being correlated with the outcome. More specifically, I’m thinking about this in the context of interpreting estimated coefficients from an OLS model (or GLM). Somewhere along the way in our learning bout statistics, most of us learn or hear about <em>Simpson’s Paradox</em>.</p>
+<p><span class="citation">Nickerson and Brown (2019)</span></p>
+<p><strong><em>Simpson’s Paradox is suppression, but Lord’s Paradox is neither: clarification of and correction to Tu, Gunnell, and Gilthorpe (2008)</em></strong></p>
+<p><strong>Carol A. Nickerson &amp; Nicholas J. L. Brown, 2019</strong></p>
+<p><strong>The Reversal Paradox</strong></p>
+<ul>
+<li>in the reversal paradox, the association between an outcome variable and an explanatory (predictor) variable is reversed when another explanatory variable is added to the analysis
+<ul>
+<li>Nickerson &amp; Brown working to clarify relationship between reversal paradox and other related phenomena
+<ul>
+<li><em>suppression</em></li>
+<li><em>Simpson’s Paradox</em></li>
+<li><em>Lord’s Paradox</em></li>
+</ul></li>
+</ul></li>
+<li>Consider an OLS with outcome <span class="math inline">\(Y\)</span> and 2 predictors, <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>
+<ul>
+<li>All 3 variables are standardized (mean = 0, SD = 1)</li>
+<li>the correlation between <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> is positive (<span class="math inline">\(r_{X_1X_2} &gt; 0\)</span>)</li>
+<li><span class="math inline">\(r_{YX_1} &gt; 0\)</span>, and</li>
+<li><span class="math inline">\(r_{YX_2}\)</span> can be negative, 0, or positive</li>
+</ul></li>
+</ul>
+<p>To walk through their writing, we’ll set up simulated variables just like this, except in our case, I’m going to make the correlation between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X_2\)</span> <em>positive.</em></p>
+<pre class="r"><code>library(tidyverse)
+library(broom)
+library(gt)
+
+set.seed(20210406)
+
+dat &lt;- tibble(
+  y  = scale(rnorm(500, 22, 34))[, 1],
+  x1 = scale(y + rnorm(500, mean = 0, sd = 2))[, 1],
+  x2 = scale(y + x1 + rnorm(500))[, 1]
+)
+
+pairs(dat, upper.panel = NULL)</code></pre>
+<p><img src="/post/2021-04-06-suppression-vs-and-lord-s-paradox_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>As can be seen in the pairs plot, <span class="math inline">\(X_2\)</span> has a stronger linear association with <span class="math inline">\(Y\)</span> compared to <span class="math inline">\(X_1\)</span>.</p>
+<p>Now we’ll fit each of the 3 possible regression models, and present the coefficients in a table. Here we can see a sign reversal for <span class="math inline">\(X_1\)</span> in the multiple regression, i.e. when <span class="math inline">\(Y\)</span> is regressed on <em>both</em> <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> in the same model.</p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#nirsgbnkkr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nirsgbnkkr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nirsgbnkkr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nirsgbnkkr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nirsgbnkkr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nirsgbnkkr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nirsgbnkkr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nirsgbnkkr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nirsgbnkkr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nirsgbnkkr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nirsgbnkkr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nirsgbnkkr .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nirsgbnkkr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nirsgbnkkr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nirsgbnkkr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nirsgbnkkr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nirsgbnkkr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#nirsgbnkkr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nirsgbnkkr .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#nirsgbnkkr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nirsgbnkkr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nirsgbnkkr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nirsgbnkkr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nirsgbnkkr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nirsgbnkkr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#nirsgbnkkr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nirsgbnkkr .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#nirsgbnkkr .gt_left {
+  text-align: left;
+}
+
+#nirsgbnkkr .gt_center {
+  text-align: center;
+}
+
+#nirsgbnkkr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nirsgbnkkr .gt_font_normal {
+  font-weight: normal;
+}
+
+#nirsgbnkkr .gt_font_bold {
+  font-weight: bold;
+}
+
+#nirsgbnkkr .gt_font_italic {
+  font-style: italic;
+}
+
+#nirsgbnkkr .gt_super {
+  font-size: 65%;
+}
+
+#nirsgbnkkr .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="nirsgbnkkr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal" style>Coefficient tables for each model</th>
+    </tr>
+    <tr>
+      <th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">β (S.E.)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><em>t</em></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><em>p</em></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading" style="font-weight: bold;">y ~ x1</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">(Intercept)</td>
+      <td class="gt_row gt_right">&minus;0.00 (0.04)</td>
+      <td class="gt_row gt_right">&minus;0.00</td>
+      <td class="gt_row gt_right">1.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">x1</td>
+      <td class="gt_row gt_right">0.41 (0.04)</td>
+      <td class="gt_row gt_right">9.92</td>
+      <td class="gt_row gt_right">0.00</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading" style="font-weight: bold;">y ~ x2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">(Intercept)</td>
+      <td class="gt_row gt_right">&minus;0.00 (0.03)</td>
+      <td class="gt_row gt_right">&minus;0.00</td>
+      <td class="gt_row gt_right">1.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">x2</td>
+      <td class="gt_row gt_right">0.72 (0.03)</td>
+      <td class="gt_row gt_right">23.32</td>
+      <td class="gt_row gt_right">0.00</td>
+    </tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="4" class="gt_group_heading" style="font-weight: bold;">y ~ x1 + x2</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">(Intercept)</td>
+      <td class="gt_row gt_right">&minus;0.00 (0.03)</td>
+      <td class="gt_row gt_right">&minus;0.00</td>
+      <td class="gt_row gt_right">1.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">x1</td>
+      <td class="gt_row gt_right">&minus;0.22 (0.04)</td>
+      <td class="gt_row gt_right">&minus;5.14</td>
+      <td class="gt_row gt_right">0.00</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">x2</td>
+      <td class="gt_row gt_right">0.88 (0.04)</td>
+      <td class="gt_row gt_right">20.43</td>
+      <td class="gt_row gt_right">0.00</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+<p><br></p>
+<p>Nickerson &amp; Brown note that because our variables are standardized, in the simple regressions, the <span class="math inline">\(\beta\)</span>s for <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are the respective <em>correlations</em> between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X_1\)</span> or <span class="math inline">\(X_2\)</span>.</p>
+<pre class="r"><code>summarise(dat, y_x1 = cor(y, x1), y_x2 = cor(y, x2))</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##    y_x1  y_x2
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1 0.406 0.722</code></pre>
+<p>And, the <span class="math inline">\(\beta\)</span>s in the multiple regression represent partial correlations between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X_1\)</span> &amp; <span class="math inline">\(X_2\)</span>. They can be computed directly using the following:</p>
+<pre class="r"><code>dat %&gt;%
+  summarise(
+    b1 = (cor(y, x1) - cor(y, x2) * cor(x1, x2)) / (1 - cor(x1, x2)^2),
+    b2 = (cor(y, x2) - cor(y, x1) * cor(x1, x2)) / (1 - cor(x1, x2)^2)
+  )</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##       b1    b2
+##    &lt;dbl&gt; &lt;dbl&gt;
+## 1 -0.221 0.880</code></pre>
+<!-- not sure if this is right-- seems like in minds of researchers that Nickerson/Brown are describing, independence/redundancy are thought of as diff from suppression? -->
+<!-- Nickerson & Brown discuss the common beliefs around *supression* when using two predictors to model an outcome. They argue that most researchers only consider two situations: -->
+<p>Forms of suppression:</p>
+<ul>
+<li><em>Independence</em>
+<ul>
+<li><span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are uncorrelated; the partial regression coefficient for each of the two variables equal their corresponding simple regression coefficient.</li>
+</ul></li>
+<li><em>Redundancy</em>
+<ul>
+<li><span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are correlated; each partial regression coefficient has the same sign, but a smaller coefficient than the corresponding simple regression coefficient.</li>
+</ul></li>
+<li><em>Reciprocal Suppression</em> (or cooperative suppression)
+<ul>
+<li><span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are negatively correlated; each partial regression coefficient is greater than its corresponding simple regression coefficient, but the signs are unchanged.</li>
+</ul></li>
+<li><em>Classical Suppression</em> (or traditional suppression)
+<ul>
+<li>The correlation between <span class="math inline">\(X_2\)</span> and <span class="math inline">\(Y\)</span> is 0 (or nearly 0); the partial regression coefficient for <span class="math inline">\(X_2\)</span> is negative, and the partial coefficient for <span class="math inline">\(X_1\)</span> is larger than its corresponding simple regression coefficient.</li>
+</ul></li>
+<li><em>Negative Suppression</em> (or net suppression)
+<ul>
+<li>Can (but does not necessarily) occur when the correlation between <span class="math inline">\(X_2\)</span> and <span class="math inline">\(Y\)</span> is positive.</li>
+<li>Occurs when:
+<ul>
+<li><span class="math inline">\(r_{X_1X_2} &gt; \frac{r_{YX_1}}{r_{YX_2}}\)</span> if <span class="math inline">\(r_{YX_2} &gt; r_{YX_1}\)</span> <strong>or</strong></li>
+<li><span class="math inline">\(r_{X_1X_2} &gt; \frac{r_{YX_2}}{r_{YX_1}}\)</span> if <span class="math inline">\(r_{YX_1} &gt; r_{YX_2}\)</span></li>
+</ul></li>
+<li>Results in a reversal of signs.</li>
+</ul></li>
+</ul>
+<p>As could be seen in the pairs plot, we’re looking at an instance of <em>negative suppression</em>. First, the correlation between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X_2\)</span> is stronger than the one between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X_1\)</span>. Second, the correlation between <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> is larger than the ratio of <span class="math inline">\(r_{YX_1}\)</span> and <span class="math inline">\(r_{YX_2}\)</span>. Demonstrating with our simulated data:</p>
+<pre class="r"><code>with(dat, {
+  y_x1  &lt;- cor(y, x1)
+  y_x2  &lt;- cor(y, x2)
+  x1_x2 &lt;- cor(x1, x2)
+  
+  print(y_x2 &gt; y_x1)
+  print(x1_x2 &gt; (y_x1 / y_x2))
+
+  print(c(y_x1, y_x2, x1_x2))
+})</code></pre>
+<pre><code>## [1] TRUE
+## [1] TRUE
+## [1] 0.4061198 0.7224525 0.7128926</code></pre>
+<p>So, in practice, what does this mean? Assuming I’m working to refine a model, and while <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are correlated, I would probably still be interested in the value that <span class="math inline">\(X_1\)</span> has in predicting my outcome. While this is a toy scenario where I’ve specified the relationships, all the tools one might use to check whether <span class="math inline">\(X_1\)</span> improves my model indicate it does. Here are some of the fit statistics to accompany the preceding coefficient table.</p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#ajnwmkvvib .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ajnwmkvvib .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ajnwmkvvib .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ajnwmkvvib .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ajnwmkvvib .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ajnwmkvvib .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ajnwmkvvib .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ajnwmkvvib .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ajnwmkvvib .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ajnwmkvvib .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ajnwmkvvib .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ajnwmkvvib .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ajnwmkvvib .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ajnwmkvvib .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ajnwmkvvib .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ajnwmkvvib .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ajnwmkvvib .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#ajnwmkvvib .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ajnwmkvvib .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#ajnwmkvvib .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ajnwmkvvib .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ajnwmkvvib .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ajnwmkvvib .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ajnwmkvvib .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ajnwmkvvib .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ajnwmkvvib .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ajnwmkvvib .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#ajnwmkvvib .gt_left {
+  text-align: left;
+}
+
+#ajnwmkvvib .gt_center {
+  text-align: center;
+}
+
+#ajnwmkvvib .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ajnwmkvvib .gt_font_normal {
+  font-weight: normal;
+}
+
+#ajnwmkvvib .gt_font_bold {
+  font-weight: bold;
+}
+
+#ajnwmkvvib .gt_font_italic {
+  font-style: italic;
+}
+
+#ajnwmkvvib .gt_super {
+  font-size: 65%;
+}
+
+#ajnwmkvvib .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="ajnwmkvvib" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="6" class="gt_heading gt_title gt_font_normal" style>Comparisons of Fit</th>
+    </tr>
+    <tr>
+      <th colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Adj. R<sup>2</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">σ</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">AIC</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">BIC</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Deviance</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left gt_stub">y ~ x1</td>
+      <td class="gt_row gt_right">0.16</td>
+      <td class="gt_row gt_right">0.91</td>
+      <td class="gt_row gt_right">1,333.82</td>
+      <td class="gt_row gt_right">1,346.46</td>
+      <td class="gt_row gt_right">416.70</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">y ~ x2</td>
+      <td class="gt_row gt_right">0.52</td>
+      <td class="gt_row gt_right">0.69</td>
+      <td class="gt_row gt_right">1,054.93</td>
+      <td class="gt_row gt_right">1,067.57</td>
+      <td class="gt_row gt_right">238.55</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">y ~ x1 + x2</td>
+      <td class="gt_row gt_right">0.54</td>
+      <td class="gt_row gt_right">0.68</td>
+      <td class="gt_row gt_right">1,031.05</td>
+      <td class="gt_row gt_right">1,047.90</td>
+      <td class="gt_row gt_right">226.52</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+<p><br></p>
+<p>So, <span class="math inline">\(X_2\)</span> is doing most of the “work” for predicting the outcome, but when both <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are added, there is an improvement in fit (even if it’s marginal). Assuming that my specific interest is <em>prediction</em>, I should prefer the multiple regression model, assuming we’re not missing some <span class="math inline">\(X_3\)</span>, <span class="math inline">\(X_4\)</span>, etc.</p>
+<div id="references" class="section level2 unnumbered">
+<h2>references</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-nickerson2019simpson" class="csl-entry">
+Nickerson, Carol A, and Nicholas JL Brown. 2019. <span>“Simpson’s Paradox Is Suppression, but Lord’s Paradox Is Neither: Clarification of and Correction to Tu, Gunnell, and Gilthorpe (2008).”</span> <em>Emerging Themes in Epidemiology</em> 16 (1): 1–11.
+</div>
+</div>
+</div>

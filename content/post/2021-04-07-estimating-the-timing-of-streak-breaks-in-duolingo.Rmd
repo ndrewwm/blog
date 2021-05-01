@@ -131,7 +131,7 @@ ggplot(tibble(s), aes(x = s)) +
   )
 ```
 
-We end up with a fairly normal-looking histogram, as would be expected by the central limit theorem.p[^3] If the model is appropriate, it seems like I should expect between 8 to 13 additional freezes to be accumulated over this time period. The simulation results suggest there's only a `r scales::percent(sum(s < 10) / length(s))` chance that the number of freezes accumulated will be less than 10. Pulling everything together, by the end of August I'll probably be between 34 and 39 streak-freezes deep. This means it'll be at least a month after my starting point before I can truly claim I've met my goal. `r emo::ji("sob")`
+We end up with a fairly normal-looking histogram, as would be expected by the central limit theorem.[^3] If the model is appropriate, it seems like I should expect between 8 to 13 additional freezes to be accumulated over this time period. The simulation results suggest there's only a `r scales::percent(sum(s < 10) / length(s))` chance that the number of freezes accumulated will be less than 10. Pulling everything together, by the end of August I'll probably be between 34 and 39 streak-freezes deep. This means it'll be at least a month after my starting point before I can truly claim I've met my goal. `r emo::ji("sob")`
 
 [^1]: Which I recommend if you're into *noir*, but the tragic & foreshadowed nature of the historical setting is captivating on its own. The soundtrack for each season has been excellent as well.
 

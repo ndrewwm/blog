@@ -1,0 +1,104 @@
+---
+title: guessing how many streak-freezes I'll use over the next 4 months
+author: Andrew
+date: '2021-05-01'
+slug: estimating-streak-freezes-duolingo
+categories: []
+tags: [language learning, statistics, simulation]
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>So, this is a small thing, but something I’m proud of. Over the past year, I’ve been practicing German (🇩🇪 <em>Ich habe Deutsch gelernt!</em>) using Duolingo’s mobile app. I don’t have an especially romantic reason for why I settled on the language, but I had watched the first season of <em>Dark</em> on Netflix in 2018, and don’t really enjoy dubbed foreign film/tv. Listening to the language prompted me to try a few lessons initially, but I settled into routine practice while finishing <em>Babylon Berlin</em><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> last fall. I don’t remember setting an explicit goal to reach a year of daily practice, but we’re coming up on that point. According to the app, I’ve been on a streak of 217 days! <em>Leider habe ich nicht jeden Tag geübt.</em> There were several days where I missed my usual 20-25 minutes of practice, but Duolingo lets you purchase “streak freezes” with in-app currency to preserve your progress. Here’s a snapshot of my streak(s) over the past 8 months.</p>
+<p><img src="/post/2021-04-07-estimating-the-timing-of-streak-breaks-in-duolingo_files/figure-html/step%20plot-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>So, each freeze is a day that I’m “behind” on my goal. If I’ve used 26 freezes now, how many more should I expect over the next 4-ish months? I started right around the end of August, so 17 weeks from now would be close to my 1-year mark of daily practice. When counting the number of freezes on a weekly basis, the distribution looks fairly close to a Poisson distribution.</p>
+<pre class="r"><code># I&#39;ve omitted my prep code-- &#39;dates&#39; is a dataset with 1 row/day,
+# and an indicator 0/1 for whether a streak-freeze was used on a given day.
+data.frame(dates)[1:3, ]</code></pre>
+<pre><code>##         date freeze     mon wk
+## 1 2020-08-31      0 Aug &#39;20  1
+## 2 2020-09-01      0 Sep &#39;20  1
+## 3 2020-09-02      0 Sep &#39;20  1</code></pre>
+<pre class="r"><code>weekly &lt;- dates %&gt;%
+  group_by(wk) %&gt;%
+  tally(freeze)
+
+weekly %&gt;%
+  summarise(wk = max(wk), m = mean(n), v = var(n), min = min(n), max = max(n)) %&gt;%
+  kable(col.names = c(&quot;# Weeks&quot;, &quot;Mean&quot;, &quot;Variance&quot;, &quot;Min.&quot;, &quot;Max.&quot;), digits = 3)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right"># Weeks</th>
+<th align="right">Mean</th>
+<th align="right">Variance</th>
+<th align="right">Min.</th>
+<th align="right">Max.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">36</td>
+<td align="right">0.722</td>
+<td align="right">0.778</td>
+<td align="right">0</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>library(distributions3)
+
+compare_w_poisson &lt;- weekly %&gt;%
+  count(n) %&gt;%
+  mutate(p = nn / sum(nn), poi = pmf(Poisson(0.722), n)) %&gt;%
+  pivot_longer(p:poi)
+
+ggplot(compare_w_poisson, aes(x = n, y = value, fill = name)) +
+  geom_col(position = &quot;dodge&quot;) +
+  geom_text(aes(label = round(value, 2)), position = position_dodge(1), vjust = -0.25) +
+  scico::scale_fill_scico_d(name = &quot;&quot;, palette = &quot;nuuk&quot;, labels = c(&quot;p&quot; = &quot;Observed Proportion&quot;, &quot;poi&quot; = &quot;Poisson Probability (&amp;lambda; = 0.722)&quot;)) +
+  labs(x = &quot;# freezes used during a given week&quot;, y = &quot;&quot;) +
+  theme(legend.position = &quot;top&quot;, legend.text = ggtext::element_markdown())</code></pre>
+<p><img src="/post/2021-04-07-estimating-the-timing-of-streak-breaks-in-duolingo_files/figure-html/distribution-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Maybe my data isn’t a perfect fit to a Poisson distribution with the same mean, but perhaps it’s close enough to serve as a model for what we can expect. So, to be specific, let’s let</p>
+<center>
+<span class="math inline">\(X\)</span> = the number of streak freezes used in a 7-day period, where <span class="math inline">\(X \sim Poisson(\lambda = 0.722)\)</span>.
+</center>
+<p><br></p>
+<p>We can then simulate 17 weeks from <span class="math inline">\(X\)</span> and sum the results, repeating this process say, 10,000 times. Or, more formally, we end up with a vector of sums <span class="math inline">\(\vec{s}\)</span>:</p>
+<center>
+<span class="math inline">\(\vec{s} = \begin{bmatrix}s_1 \\ s_2 \\ \vdots \\ s_j \end{bmatrix} \text{ where } j = 1, 2, 3, \cdots, 10,000, \text{ and } s_j = \sum_{i=1}^{17}[\vec{x}_i]\)</span>, if we let <span class="math inline">\(\vec{x}\)</span> be the <span class="math inline">\(j^{th}\)</span> sample from <span class="math inline">\(X\)</span>.
+</center>
+<p><br></p>
+<p>For this simulation, we’re assuming that the results of each week are independent of each other. This feels reasonable to me; autocorrelation in my tabulated weekly counts seems negligible.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> All that’s left is to set up a loop to collect the simulation results, and then we’ll use a histogram to visualize them. <!-- acf(weekly$n, plot = FALSE) --></p>
+<pre class="r"><code>X &lt;- Poisson(0.722)
+s &lt;- c()
+
+for (b in 1:10000) {
+  x &lt;- random(X, n = 17)
+  s &lt;- c(s, sum(x))
+}
+
+ggplot(tibble(s), aes(x = s)) +
+  geom_histogram(color = &quot;white&quot;, bins = 15) +
+  scale_y_continuous(labels = scales::comma) +
+  theme(plot.caption = ggtext::element_markdown()) +
+  labs(
+    x = &quot;Total # of simulated freezes observed over 17 weeks&quot;, y = &quot;N&quot;,
+    caption = str_glue(
+      &quot;*s*&lt;sub&gt;Mean&lt;/sub&gt; = {round(mean(s), 2)}, *s*&lt;sub&gt;SD&lt;/sub&gt; = {round(sd(s), 2)} &quot;,
+      &quot;Pr(8 &amp;le; *s* &amp;le; 13) = {sum(between(s, 8, 13)) / length(s)}&lt;br&gt;&quot;,
+      &quot;Pr(7 &amp;le; *s* &amp;le; 21) = {sum(between(s, 7, 21)) / length(s)}&quot;
+    )
+  )</code></pre>
+<p><img src="/post/2021-04-07-estimating-the-timing-of-streak-breaks-in-duolingo_files/figure-html/sim-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>We end up with a fairly normal-looking histogram, as would be expected by the central limit theorem.p<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> If the model is appropriate, it seems like I should expect between 8 to 13 additional freezes to be accumulated over this time period. The simulation results suggest there’s only a 22% chance that the number of freezes accumulated will be less than 10. Pulling everything together, by the end of August I’ll probably be between 34 and 39 streak-freezes deep. This means it’ll be at least a month after my starting point before I can truly claim I’ve met my goal. 😭</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Which I recommend if you’re into <em>noir</em>, but the tragic &amp; foreshadowed nature of the historical setting is captivating on its own. The soundtrack for each season has been excellent as well.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Using a lag of up to 15 weeks, the autocorrelations (assessed by <code>acf()</code>) ranged between 0.15 to -0.25, but most were much smaller in terms of their absolute magnitude.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>update/edit: in the process of wrapping up this post, I came across this <a href="https://math.stackexchange.com/a/451996">question/answer</a> on SO, which suggests that my distribution here is actually <em>Poisson</em>, not normal. In theory we’re actually looking at a new Poisson distribution with <span class="math inline">\(\lambda = 0.722 \times 17 = 12.274\)</span>, which lines up close to the sample mean from the simulation (the sample variance is a little off, but this is probably to be expected from the randomness of the simulation). I guess I can save myself a step in the future, but working through things was a good learning experience.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

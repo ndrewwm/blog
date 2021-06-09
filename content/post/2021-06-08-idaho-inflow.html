@@ -1,0 +1,922 @@
+---
+title: idaho inflow
+author: Andrew
+date: '2021-06-08'
+slug: idaho-inflow
+categories: []
+tags:
+  - idaho
+  - migration
+  - housing
+image: "../post/2021-06-08-idaho-inflow_files/figure-html/unnamed-chunk-2-1.png"
+hidden: true
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>A tale as old as time: another county-level choropleth of the USA has been <a href="https://www.reddit.com/r/Idaho/comments/nvb0w0/interesting_post_showing_that_very_conservative/">misleadingly captioned.</a> Despite what the cross-poster says, the map they’re linking to doesn’t shed light on whether conservative <em>rural</em> Californians are migrating to redder pastures in Idaho. Other folks in the comments were quick to point out the numerous flaws of this claim. But after coming across the post myself, I found it difficult to find specific analysis on related aspects of this question, namely what share of Idaho’s increasing population can be attributed to people moving from out of state.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Fair or not, Californian “encroachment” has long been a popular bogeyman in Idaho lore. I remember hearing gripes about invading Californians growing up, but it’s understandable why the topic has loomed larger in the past years. In terms of raw numbers and density, the state of Idaho is small. It’s 39th in the country in terms of population size, overwhelmingly white (89%), and has a population density of around 23 people per square mile. However, by almost any standard, Idaho’s population is growing incredibly fast. Between 2009 and 2019, Idaho’s population increased by 15%, almost double the national rate (8%) over the same period. From 2014 and 2018 alone, it grew by close to 6%.</p>
+<p><img src="/post/2021-06-08-idaho-inflow_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>These statistics don’t paint the whole picture, but they imply numerous other material impacts on the lives of people who live here. In Ada county, the most populous and dense region of the state, this has meant intense pressure on housing availability and affordability, as well as rapid changes in the landscape. Being back for a year, it’s surreal and distressing to see how much development is happening in the Boise foothills.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> Public transit is also in need of greater investment, and traffic congestion has been a consistent complaint. This being the reality, it’s understandable why people are searching for explanations.</p>
+<p>Putting my cards on the table, it seems obvious that at least some of the pressure on (e.g.) Ada’s housing supply is due to an inflow of new tech workers coming from other states with higher costs of living. Land continues to be an incredibly reliable way to store wealth in our country, and you can’t square why housing prices would surge (and sustain their increases) without a new influx of demand (&amp; capital). Within-state migration may be a larger be part of the story, but perhaps things have accelerated faster than they otherwise would’ve due to an inflow of generally wealthier residents. However, I want to move beyond this as an intuition, and see what we can learn from data we have (even if it’s limited, and only descriptive in nature).</p>
+<!-- top 10 counties supply 30% of total movers -->
+<p>Here I’ve taken data from the <a href="https://www.census.gov/data/tables/2018/demo/geographic-mobility/county-to-county-migration-2014-2018.html/">ACS County-to-County Migration Flows</a></p>
+<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#lndwidpbiv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lndwidpbiv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lndwidpbiv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lndwidpbiv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lndwidpbiv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lndwidpbiv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lndwidpbiv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lndwidpbiv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lndwidpbiv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lndwidpbiv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lndwidpbiv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lndwidpbiv .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lndwidpbiv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lndwidpbiv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lndwidpbiv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lndwidpbiv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lndwidpbiv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#lndwidpbiv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lndwidpbiv .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#lndwidpbiv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lndwidpbiv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lndwidpbiv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lndwidpbiv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lndwidpbiv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lndwidpbiv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lndwidpbiv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lndwidpbiv .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lndwidpbiv .gt_left {
+  text-align: left;
+}
+
+#lndwidpbiv .gt_center {
+  text-align: center;
+}
+
+#lndwidpbiv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lndwidpbiv .gt_font_normal {
+  font-weight: normal;
+}
+
+#lndwidpbiv .gt_font_bold {
+  font-weight: bold;
+}
+
+#lndwidpbiv .gt_font_italic {
+  font-style: italic;
+}
+
+#lndwidpbiv .gt_super {
+  font-size: 65%;
+}
+
+#lndwidpbiv .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="lndwidpbiv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal" style>Top 10 US counties contributing to Idaho Population Growth</th>
+    </tr>
+    <tr>
+      <th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Out-of-state moves counted between 2014-2018. Estimates for people aged 1+ years.</th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-family: Roboto; font-size: 18px; font-weight: bold;">State<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-family: Roboto; font-size: 18px; font-weight: bold;">County</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-family: Roboto; font-size: 18px; font-weight: bold;">Est.</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-family: Roboto; font-size: 18px; font-weight: bold;">(MoE.)<sup class="gt_footnote_marks">2</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">California</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Los Angeles</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">2,592</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">776</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Utah</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Utah</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">2,037</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">686</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Arizona</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Maricopa</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">1,990</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">533</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">California</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Orange</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">1,977</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">524</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Washington</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Spokane</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">1,734</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">410</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Utah</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Salt Lake</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">1,709</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">531</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">California</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">San Diego</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">1,691</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">702</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">California</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">San Bernardino</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">1,161</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">487</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Washington</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">King</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">1,075</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">305</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Washington</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Clark</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">1,011</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">414</td>
+    </tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="4">Source: 2014-2018 ACS County-to-County Migration Inflows.<br>Table: Andrew Moore @mooreaw_ 6/8/21</td>
+    </tr>
+  </tfoot>
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="4">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          Prior state/county of residence
+          <br />
+        </p>
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>2</em>
+          </sup>
+           
+          Margin of Error (aggregated)
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+<p>And here is the same table for just Ada county.</p>
+<style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#noenejfhue .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#noenejfhue .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#noenejfhue .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#noenejfhue .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#noenejfhue .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#noenejfhue .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#noenejfhue .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#noenejfhue .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#noenejfhue .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#noenejfhue .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#noenejfhue .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#noenejfhue .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#noenejfhue .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#noenejfhue .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#noenejfhue .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#noenejfhue .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#noenejfhue .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#noenejfhue .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#noenejfhue .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#noenejfhue .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#noenejfhue .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#noenejfhue .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#noenejfhue .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#noenejfhue .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#noenejfhue .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#noenejfhue .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#noenejfhue .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#noenejfhue .gt_left {
+  text-align: left;
+}
+
+#noenejfhue .gt_center {
+  text-align: center;
+}
+
+#noenejfhue .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#noenejfhue .gt_font_normal {
+  font-weight: normal;
+}
+
+#noenejfhue .gt_font_bold {
+  font-weight: bold;
+}
+
+#noenejfhue .gt_font_italic {
+  font-style: italic;
+}
+
+#noenejfhue .gt_super {
+  font-size: 65%;
+}
+
+#noenejfhue .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="noenejfhue" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal" style>Top 10 US counties contributing to Ada County Growth</th>
+    </tr>
+    <tr>
+      <th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Out-of-state moves counted between 2014-2018. Estimates for people aged 1+ years.</th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-family: Roboto; font-size: 18px; font-weight: bold;">State<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-family: Roboto; font-size: 18px; font-weight: bold;">County</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-family: Roboto; font-size: 18px; font-weight: bold;">Est.</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-family: Roboto; font-size: 18px; font-weight: bold;">(MoE.)<sup class="gt_footnote_marks">2</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">California</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">San Diego</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">941</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">649</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Utah</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Utah</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">838</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">559</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">California</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Orange</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">734</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">317</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">California</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Los Angeles</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">698</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">419</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Washington</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Clark</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">452</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">327</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Arizona</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Maricopa</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">435</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">222</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">California</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Riverside</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">373</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">335</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Colorado</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Arapahoe</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">365</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">487</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">California</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">San Bernardino</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">351</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">269</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Florida</td>
+      <td class="gt_row gt_left" style="font-family: Roboto; font-size: 15px;">Polk</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">329</td>
+      <td class="gt_row gt_right" style="font-family: Roboto; font-size: 15px;">494</td>
+    </tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="4">Source: 2014-2018 ACS County-to-County Migration Inflows.<br>Table: Andrew Moore @mooreaw_ 6/8/21</td>
+    </tr>
+  </tfoot>
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="4">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          Prior state/county of residence
+          <br />
+        </p>
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>2</em>
+          </sup>
+           
+          Margin of Error (aggregated)
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Having moved home recently myself, this question feels tantalizing. It’s been incredibly clear how rough the housing shortage has been in Boise, on top of the pandemic’s impact. I just have what I can see, hear, and read on a daily basis, so I’ve been looking for the right time to dive into some of the existing data we have for context.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>And it’s not like they’re building cheap houses up there either!<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

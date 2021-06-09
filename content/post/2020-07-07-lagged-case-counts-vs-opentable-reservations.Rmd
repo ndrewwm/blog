@@ -7,6 +7,7 @@ categories: []
 tags:
   - covid-19
   - you gotta wear a mask
+image: "../post/static/post/2020-07-07-lagged-case-counts-vs-opentable-reservations_files/figure-html/lines-1.png"
 ---
 
 ```{r opts, include = FALSE}

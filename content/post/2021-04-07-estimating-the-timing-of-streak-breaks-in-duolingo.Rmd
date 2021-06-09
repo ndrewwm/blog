@@ -5,6 +5,7 @@ date: '2021-05-01'
 slug: estimating-streak-freezes-duolingo
 categories: []
 tags: [language learning, statistics, simulation]
+image: "../post/2021-04-07-estimating-the-timing-of-streak-breaks-in-duolingo_files/figure-html/distribution-1.png"
 ---
 
 ```{r opts, include = FALSE}

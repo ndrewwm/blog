@@ -1,5 +1,5 @@
 ---
-title: guessing how many streak-freezes I'll use over the next 4 months
+title: using the Poisson distribution to guess how many streak-freezes I'll use over the next 4 months
 author: Andrew
 date: '2021-05-01'
 slug: estimating-streak-freezes-duolingo
@@ -137,4 +137,4 @@ We end up with a fairly normal-looking histogram, as would be expected by the ce
 
 [^2]: Using a lag of up to 15 weeks, the autocorrelations (assessed by `acf()`) ranged between 0.15 to -0.25, but most were much smaller in terms of their absolute magnitude.
 
-[^3]: update/edit: in the process of wrapping up this post, I came across this [question/answer](https://math.stackexchange.com/a/451996) on SO, which suggests that my distribution here is actually *Poisson*, not normal. In theory we're actually looking at a new Poisson distribution with $\lambda = 0.722 \times 17 = 12.274$, which lines up close to the sample mean from the simulation (the sample variance is a little off, but this is probably to be expected from the randomness of the simulation). I guess I can save myself a step in the future, but working through things was a good learning experience.
+[^3]: update/edit: in the process of wrapping up this post, I came across this [question/answer](https://math.stackexchange.com/a/451996) on SO, which suggests that my distribution here is actually *Poisson*, not normal. Theory would say we're looking at a new Poisson distribution with $\lambda = 0.722 \times 17 = 12.274$. The new $\lambda$ is quite close to the sample mean from the simulation (the sample variance is a little off, but this is probably to be expected from the randomness of the simulation). I feel a bit silly about forgetting and then relearning about Poisson processes, but it was interesting to work through things.

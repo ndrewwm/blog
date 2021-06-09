@@ -1,0 +1,45 @@
+---
+title: idaho inflow
+author: Andrew
+date: '2021-06-08'
+slug: idaho-inflow
+categories: []
+tags:
+  - idaho
+  - migration
+  - housing
+---
+
+```{r opts, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center")
+```
+
+```{r}
+# run the analysis script
+source("../../static/data/idaho-inflow/analyze-acs-county-inflow.R")
+```
+
+A tale as old as time: another county-level choropleth of the USA has been [misleadingly captioned.](https://www.reddit.com/r/Idaho/comments/nvb0w0/interesting_post_showing_that_very_conservative/) Despite what the cross-poster says, the map they're linking to doesn't shed light on whether conservative *rural* Californians are migrating to redder pastures in Idaho. Other folks in the comments were quick to point out the numerous flaws of this claim. But after coming across the post myself, I found it difficult to find specific analysis on related aspects of this question, namely what share of Idaho's increasing population can be attributed to people moving from out of state.[^1]
+
+Fair or not, Californian "encroachment" has long been a popular bogeyman in Idaho lore. I remember hearing gripes about invading Californians growing up, but it's understandable why the topic has loomed larger in the past years. In terms of raw numbers and density, the state of Idaho is small. It's 39th in the country in terms of population size, overwhelmingly white (89%), and has a population density of around 23 people per square mile. However, by almost any standard, Idaho's population is growing incredibly fast. Between 2009 and 2019, Idaho's population increased by `r percent(pop_change_09_19)`, almost double the national rate (`r percent(us_pop_change_09_19)`) over the same period. From 2014 and 2018 alone, it grew by close to 6%.
+
+```{r}
+p_id_total_pop
+```
+
+These statistics don't paint the whole picture, but they imply numerous other material impacts on the lives of people who live here. In Ada county, the most populous and dense region of the state, this has meant intense pressure on housing availability and affordability, as well as rapid changes in the landscape.
+
+Here I've taken data from the [ACS County-to-County Migration Flows](https://www.census.gov/data/tables/2018/demo/geographic-mobility/county-to-county-migration-2014-2018.html/)
+
+```{r}
+t_id_top_10
+```
+
+And here is the same table for just Ada county.
+
+```{r}
+t_ada_top_10
+```
+
+
+[^1]: Having moved home recently myself, this question feels tantalizing. It's been incredibly clear how rough the housing shortage has been in Boise, on top of the pandemic's impact. I just have what I can see, hear, and read on a daily basis, so I've been looking for the right time to dive into some of the existing data we have for context.

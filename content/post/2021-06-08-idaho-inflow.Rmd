@@ -8,6 +8,8 @@ tags:
   - idaho
   - migration
   - housing
+image: "../post/2021-06-08-idaho-inflow_files/figure-html/unnamed-chunk-2-1.png"
+hidden: true
 ---
 
 ```{r opts, include = FALSE}
@@ -27,7 +29,11 @@ Fair or not, Californian "encroachment" has long been a popular bogeyman in Idah
 p_id_total_pop
 ```
 
-These statistics don't paint the whole picture, but they imply numerous other material impacts on the lives of people who live here. In Ada county, the most populous and dense region of the state, this has meant intense pressure on housing availability and affordability, as well as rapid changes in the landscape.
+These statistics don't paint the whole picture, but they imply numerous other material impacts on the lives of people who live here. In Ada county, the most populous and dense region of the state, this has meant intense pressure on housing availability and affordability, as well as rapid changes in the landscape. Being back for a year, it's surreal and distressing to see how much development is happening in the Boise foothills.[^2] Public transit is also in need of greater investment, and traffic congestion has been a consistent complaint. This being the reality, it's understandable why people are searching for explanations.
+
+Putting my cards on the table, it seems obvious that at least some of the pressure on (e.g.) Ada's housing supply is due to an inflow of new tech workers coming from other states with higher costs of living. Land continues to be an incredibly reliable way to store wealth in our country, and you can't square why housing prices would surge (and sustain their increases) without a new influx of demand (& capital). Within-state migration may be a larger be part of the story, but perhaps things have accelerated faster than they otherwise would've due to an inflow of generally wealthier residents. However, I want to move beyond this as an intuition, and see what we can learn from data we have (even if it's limited, and only descriptive in nature).
+
+<!-- top 10 counties supply 30% of total movers -->
 
 Here I've taken data from the [ACS County-to-County Migration Flows](https://www.census.gov/data/tables/2018/demo/geographic-mobility/county-to-county-migration-2014-2018.html/)
 
@@ -43,3 +49,5 @@ t_ada_top_10
 
 
 [^1]: Having moved home recently myself, this question feels tantalizing. It's been incredibly clear how rough the housing shortage has been in Boise, on top of the pandemic's impact. I just have what I can see, hear, and read on a daily basis, so I've been looking for the right time to dive into some of the existing data we have for context.
+
+[^2]: And it's not like they're building cheap houses up there either!

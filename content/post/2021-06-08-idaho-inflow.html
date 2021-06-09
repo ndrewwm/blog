@@ -8,6 +8,8 @@ tags:
   - idaho
   - migration
   - housing
+image: "../post/2021-06-08-idaho-inflow_files/figure-html/unnamed-chunk-2-1.png"
+hidden: true
 ---
 
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
@@ -16,7 +18,9 @@ tags:
 <p>A tale as old as time: another county-level choropleth of the USA has been <a href="https://www.reddit.com/r/Idaho/comments/nvb0w0/interesting_post_showing_that_very_conservative/">misleadingly captioned.</a> Despite what the cross-poster says, the map they’re linking to doesn’t shed light on whether conservative <em>rural</em> Californians are migrating to redder pastures in Idaho. Other folks in the comments were quick to point out the numerous flaws of this claim. But after coming across the post myself, I found it difficult to find specific analysis on related aspects of this question, namely what share of Idaho’s increasing population can be attributed to people moving from out of state.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>Fair or not, Californian “encroachment” has long been a popular bogeyman in Idaho lore. I remember hearing gripes about invading Californians growing up, but it’s understandable why the topic has loomed larger in the past years. In terms of raw numbers and density, the state of Idaho is small. It’s 39th in the country in terms of population size, overwhelmingly white (89%), and has a population density of around 23 people per square mile. However, by almost any standard, Idaho’s population is growing incredibly fast. Between 2009 and 2019, Idaho’s population increased by 15%, almost double the national rate (8%) over the same period. From 2014 and 2018 alone, it grew by close to 6%.</p>
 <p><img src="/post/2021-06-08-idaho-inflow_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>These statistics don’t paint the whole picture, but they imply numerous other material impacts on the lives of people who live here. In Ada county, the most populous and dense region of the state, this has meant intense pressure on housing availability and affordability, as well as rapid changes in the landscape.</p>
+<p>These statistics don’t paint the whole picture, but they imply numerous other material impacts on the lives of people who live here. In Ada county, the most populous and dense region of the state, this has meant intense pressure on housing availability and affordability, as well as rapid changes in the landscape. Being back for a year, it’s surreal and distressing to see how much development is happening in the Boise foothills.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> Public transit is also in need of greater investment, and traffic congestion has been a consistent complaint. This being the reality, it’s understandable why people are searching for explanations.</p>
+<p>Putting my cards on the table, it seems obvious that at least some of the pressure on (e.g.) Ada’s housing supply is due to an inflow of new tech workers coming from other states with higher costs of living. Land continues to be an incredibly reliable way to store wealth in our country, and you can’t square why housing prices would surge (and sustain their increases) without a new influx of demand (&amp; capital). Within-state migration may be a larger be part of the story, but perhaps things have accelerated faster than they otherwise would’ve due to an inflow of generally wealthier residents. However, I want to move beyond this as an intuition, and see what we can learn from data we have (even if it’s limited, and only descriptive in nature).</p>
+<!-- top 10 counties supply 30% of total movers -->
 <p>Here I’ve taken data from the <a href="https://www.census.gov/data/tables/2018/demo/geographic-mobility/county-to-county-migration-2014-2018.html/">ACS County-to-County Migration Flows</a></p>
 <style>@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -24,7 +28,7 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#nscidlkmnr .gt_table {
+#lndwidpbiv .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -49,7 +53,7 @@ html {
   border-left-color: #D3D3D3;
 }
 
-#nscidlkmnr .gt_heading {
+#lndwidpbiv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -61,7 +65,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#nscidlkmnr .gt_title {
+#lndwidpbiv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -71,7 +75,7 @@ html {
   border-bottom-width: 0;
 }
 
-#nscidlkmnr .gt_subtitle {
+#lndwidpbiv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -81,13 +85,13 @@ html {
   border-top-width: 0;
 }
 
-#nscidlkmnr .gt_bottom_border {
+#lndwidpbiv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nscidlkmnr .gt_col_headings {
+#lndwidpbiv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -102,7 +106,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#nscidlkmnr .gt_col_heading {
+#lndwidpbiv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -122,7 +126,7 @@ html {
   overflow-x: hidden;
 }
 
-#nscidlkmnr .gt_column_spanner_outer {
+#lndwidpbiv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -134,15 +138,15 @@ html {
   padding-right: 4px;
 }
 
-#nscidlkmnr .gt_column_spanner_outer:first-child {
+#lndwidpbiv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nscidlkmnr .gt_column_spanner_outer:last-child {
+#lndwidpbiv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nscidlkmnr .gt_column_spanner {
+#lndwidpbiv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -154,7 +158,7 @@ html {
   width: 100%;
 }
 
-#nscidlkmnr .gt_group_heading {
+#lndwidpbiv .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -176,7 +180,7 @@ html {
   vertical-align: middle;
 }
 
-#nscidlkmnr .gt_empty_group_heading {
+#lndwidpbiv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -191,15 +195,15 @@ html {
   vertical-align: middle;
 }
 
-#nscidlkmnr .gt_from_md > :first-child {
+#lndwidpbiv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nscidlkmnr .gt_from_md > :last-child {
+#lndwidpbiv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nscidlkmnr .gt_row {
+#lndwidpbiv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -218,7 +222,7 @@ html {
   overflow-x: hidden;
 }
 
-#nscidlkmnr .gt_stub {
+#lndwidpbiv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -230,7 +234,7 @@ html {
   padding-left: 12px;
 }
 
-#nscidlkmnr .gt_summary_row {
+#lndwidpbiv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -240,7 +244,7 @@ html {
   padding-right: 5px;
 }
 
-#nscidlkmnr .gt_first_summary_row {
+#lndwidpbiv .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -250,7 +254,7 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#nscidlkmnr .gt_grand_summary_row {
+#lndwidpbiv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -260,7 +264,7 @@ html {
   padding-right: 5px;
 }
 
-#nscidlkmnr .gt_first_grand_summary_row {
+#lndwidpbiv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -270,11 +274,11 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#nscidlkmnr .gt_striped {
+#lndwidpbiv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nscidlkmnr .gt_table_body {
+#lndwidpbiv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -283,7 +287,7 @@ html {
   border-bottom-color: #D3D3D3;
 }
 
-#nscidlkmnr .gt_footnotes {
+#lndwidpbiv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -297,13 +301,13 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#nscidlkmnr .gt_footnote {
+#lndwidpbiv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#nscidlkmnr .gt_sourcenotes {
+#lndwidpbiv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -317,46 +321,46 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#nscidlkmnr .gt_sourcenote {
+#lndwidpbiv .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#nscidlkmnr .gt_left {
+#lndwidpbiv .gt_left {
   text-align: left;
 }
 
-#nscidlkmnr .gt_center {
+#lndwidpbiv .gt_center {
   text-align: center;
 }
 
-#nscidlkmnr .gt_right {
+#lndwidpbiv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nscidlkmnr .gt_font_normal {
+#lndwidpbiv .gt_font_normal {
   font-weight: normal;
 }
 
-#nscidlkmnr .gt_font_bold {
+#lndwidpbiv .gt_font_bold {
   font-weight: bold;
 }
 
-#nscidlkmnr .gt_font_italic {
+#lndwidpbiv .gt_font_italic {
   font-style: italic;
 }
 
-#nscidlkmnr .gt_super {
+#lndwidpbiv .gt_super {
   font-size: 65%;
 }
 
-#nscidlkmnr .gt_footnote_marks {
+#lndwidpbiv .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="nscidlkmnr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="lndwidpbiv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   <thead class="gt_header">
     <tr>
       <th colspan="4" class="gt_heading gt_title gt_font_normal" style>Top 10 US counties contributing to Idaho Population Growth</th>
@@ -470,7 +474,7 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rcwmyxivpv .gt_table {
+#noenejfhue .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -495,7 +499,7 @@ html {
   border-left-color: #D3D3D3;
 }
 
-#rcwmyxivpv .gt_heading {
+#noenejfhue .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -507,7 +511,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#rcwmyxivpv .gt_title {
+#noenejfhue .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -517,7 +521,7 @@ html {
   border-bottom-width: 0;
 }
 
-#rcwmyxivpv .gt_subtitle {
+#noenejfhue .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -527,13 +531,13 @@ html {
   border-top-width: 0;
 }
 
-#rcwmyxivpv .gt_bottom_border {
+#noenejfhue .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rcwmyxivpv .gt_col_headings {
+#noenejfhue .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -548,7 +552,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#rcwmyxivpv .gt_col_heading {
+#noenejfhue .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -568,7 +572,7 @@ html {
   overflow-x: hidden;
 }
 
-#rcwmyxivpv .gt_column_spanner_outer {
+#noenejfhue .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -580,15 +584,15 @@ html {
   padding-right: 4px;
 }
 
-#rcwmyxivpv .gt_column_spanner_outer:first-child {
+#noenejfhue .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rcwmyxivpv .gt_column_spanner_outer:last-child {
+#noenejfhue .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rcwmyxivpv .gt_column_spanner {
+#noenejfhue .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -600,7 +604,7 @@ html {
   width: 100%;
 }
 
-#rcwmyxivpv .gt_group_heading {
+#noenejfhue .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -622,7 +626,7 @@ html {
   vertical-align: middle;
 }
 
-#rcwmyxivpv .gt_empty_group_heading {
+#noenejfhue .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -637,15 +641,15 @@ html {
   vertical-align: middle;
 }
 
-#rcwmyxivpv .gt_from_md > :first-child {
+#noenejfhue .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rcwmyxivpv .gt_from_md > :last-child {
+#noenejfhue .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rcwmyxivpv .gt_row {
+#noenejfhue .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -664,7 +668,7 @@ html {
   overflow-x: hidden;
 }
 
-#rcwmyxivpv .gt_stub {
+#noenejfhue .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -676,7 +680,7 @@ html {
   padding-left: 12px;
 }
 
-#rcwmyxivpv .gt_summary_row {
+#noenejfhue .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -686,7 +690,7 @@ html {
   padding-right: 5px;
 }
 
-#rcwmyxivpv .gt_first_summary_row {
+#noenejfhue .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -696,7 +700,7 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#rcwmyxivpv .gt_grand_summary_row {
+#noenejfhue .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -706,7 +710,7 @@ html {
   padding-right: 5px;
 }
 
-#rcwmyxivpv .gt_first_grand_summary_row {
+#noenejfhue .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -716,11 +720,11 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#rcwmyxivpv .gt_striped {
+#noenejfhue .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rcwmyxivpv .gt_table_body {
+#noenejfhue .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -729,7 +733,7 @@ html {
   border-bottom-color: #D3D3D3;
 }
 
-#rcwmyxivpv .gt_footnotes {
+#noenejfhue .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -743,13 +747,13 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#rcwmyxivpv .gt_footnote {
+#noenejfhue .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#rcwmyxivpv .gt_sourcenotes {
+#noenejfhue .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -763,46 +767,46 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#rcwmyxivpv .gt_sourcenote {
+#noenejfhue .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#rcwmyxivpv .gt_left {
+#noenejfhue .gt_left {
   text-align: left;
 }
 
-#rcwmyxivpv .gt_center {
+#noenejfhue .gt_center {
   text-align: center;
 }
 
-#rcwmyxivpv .gt_right {
+#noenejfhue .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rcwmyxivpv .gt_font_normal {
+#noenejfhue .gt_font_normal {
   font-weight: normal;
 }
 
-#rcwmyxivpv .gt_font_bold {
+#noenejfhue .gt_font_bold {
   font-weight: bold;
 }
 
-#rcwmyxivpv .gt_font_italic {
+#noenejfhue .gt_font_italic {
   font-style: italic;
 }
 
-#rcwmyxivpv .gt_super {
+#noenejfhue .gt_super {
   font-size: 65%;
 }
 
-#rcwmyxivpv .gt_footnote_marks {
+#noenejfhue .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="rcwmyxivpv" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="noenejfhue" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   <thead class="gt_header">
     <tr>
       <th colspan="4" class="gt_heading gt_title gt_font_normal" style>Top 10 US counties contributing to Ada County Growth</th>
@@ -913,5 +917,6 @@ html {
 <hr />
 <ol>
 <li id="fn1"><p>Having moved home recently myself, this question feels tantalizing. It’s been incredibly clear how rough the housing shortage has been in Boise, on top of the pandemic’s impact. I just have what I can see, hear, and read on a daily basis, so I’ve been looking for the right time to dive into some of the existing data we have for context.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>And it’s not like they’re building cheap houses up there either!<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>

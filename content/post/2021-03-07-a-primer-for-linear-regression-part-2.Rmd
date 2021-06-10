@@ -9,6 +9,7 @@ tags:
   - linear regression
   - residuals
   - R
+image: "../post/2021-03-07-a-primer-for-linear-regression-part-2_files/figure-html/unnamed-chunk-1-1.png"
 bibliography: [../../static/bib/references-regression-primer-pt2.bib]
 link-citations: true
 ---

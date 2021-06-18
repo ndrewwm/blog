@@ -62,7 +62,7 @@ p_id_total_pop <- ggplot() +
 
 # prep county-county inflow data ------------------------------------------
 
-fp <- dir("/Users/andrew/Downloads/", pattern = "county-to-county", full.names = TRUE)
+fp <- dir("../../static/data/idaho-inflow/", pattern = "xlsx", full.names = TRUE)
 
 id <- read_excel(fp, sheet = "Idaho", skip = 3)
 

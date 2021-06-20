@@ -1,0 +1,489 @@
+---
+title: estimating the potential of "Tasha's Hideous Laughter"
+author: andrew
+date: '2021-06-18'
+slug: 17lands-tashas-hideous-laughter
+categories: []
+tags:
+  - mtg
+  - '17lands'
+  - statistics
+  - random sampling
+  - scRyfall
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>While I don’t think I’ve previously posted about it here, I’ve been a long-time player of the trading card game <em>Magic: the Gathering</em>, primarily enjoying the “limited” format. I keep up with developments in the game largely via Twitter. Last week, an interesting card from an upcoming set was previewed.</p>
+<center>
+<img src="/img/afr-78-tasha-s-hideous-laughter.png" />
+</center>
+<p>Lots of potential variation! For the uninitiated, cards have a “mana value” to reflect their cost to play, usually ranging from 0 to 8. <em>Tasha’s Hideous Laughter</em> (THL) uses this attribute to <em>exile</em> cards from a player’s deck. You’d put this in a deck where you’d want to make your opponent(s) run out of cards (if a player has to draw from an empty deck, they lose!).</p>
+<p>So, how good is it in a limited format, where most decks should contain 40 cards? This card has a higher rarity which means that in a limited deck, you’re unlikely to get multiple copies. So, you’ll probably only get to cast it once; ideally, it should seal your opponent’s fate of running out of cards. I came across a tweet from <span class="citation">@ajlvi</span>, who had set up a quick simulation using an archetypal limited deck to examine this question.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>{{% tweet "1403439840666992643" %}}</p>
+<p>As far as a standard curve in a limited deck, this looks reasonable to me. You can expect to exile 10-13 cards, which is something like 40% of your opponent’s deck if you get to cast THL on turn 3.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<div id="thought-experiment-what-if-thl-was-in-the-strixhaven-format" class="section level3">
+<h3>thought experiment: what if THL was in the Strixhaven format?</h3>
+<p>Going beyond a fixed curve seemed interesting and I wondered what the results would look like with real decklists. We don’t have the full set of cards from the upcoming set, so we can’t speculate on what decks from the future format will look like. However, we could imagine inserting THL into the most recent limited format, Strixhaven. We’re fortunate enough that <a href="https://www.17lands.com/" target="_blank">17lands.com</a> provides game data, from which we can pull the cards that were listed in a player’s deck. Here I’ll be using games from the Premier Draft queues, gathered between 4/15/21 and 5/12/21. As a note on the format, it’s possible to build decks that can decide a game in the first 4-5 turns (e.g. decks built with cards from the Silverquill college). These “aggro” builds include more cards with lower mana values, which would push the expected number of hits from THL up. But, based on my experience with the format, I would say that the deck archetypes are generally diverse in strategies.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+</div>
+<div id="prepping-the-17lands-data" class="section level3">
+<h3>prepping the 17lands data</h3>
+<p>I’m very grateful that the folks at 17lands are generously sharing the data, but these are large files, which pose certain challenges. For the <em>games</em> file, its structure is essentially a wide matrix, with columns dedicated to where a card was seen (e.g., Opening Hand, Deck, Sideboard, etc.). For my purposes, I need to get counts for the number of copies of each card that a player included in their deck. I also need to merge a CMC (mana value) onto each card. The latter step is much easier when each individual card is represented as a row, i.e. storing the data in a <a href="https://www.jstatsoft.org/article/view/v059i10/" target="_blank">tidy</a> form.</p>
+<p>Even if I’m pulling out only the draft ID/date, and <code>deck_</code> columns, I still need to transpose 343 cards. Given that there were 465,319 games available, this means we end up with a dataset that has 159,604,417 rows, which is a bit much for my poor laptop… 😭</p>
+<p>Instead of tediously transforming all of the data (and melting my computer), I’m going to lean on the trusted technique of random sampling. We’ll draw out 100,000 random games, which should make the transformations more feasible and speedy on my machine. Here I’ve defined a function to facilitate the sampling.</p>
+<pre class="r"><code>library(tidyverse)
+
+decks &lt;- vroom::vroom(&quot;../../static/data/tashas-hideous-laughter/deck_data_public_17lands_stx_premierdraft.csv.zip&quot;)
+
+# from the decks file, take a sample of size N games
+# then, go from a wide matrix to a &quot;tall&quot; file of cards
+# we&#39;ll keep cards where at least 1 copy was seen in the deck
+# then, we&#39;ll purposefully duplicate rows based on the # of copies recorded
+sample_decks &lt;- function(decks, n = 1) {
+  decks %&gt;%
+    slice_sample(n = n) %&gt;%
+    mutate(game_id = 1:n()) %&gt;%
+    pivot_longer(contains(&quot;deck_&quot;)) %&gt;%
+    filter(value &gt; 0) %&gt;%
+    transmute(
+      draft_id, game_id,
+      name = str_remove(name, &quot;deck_&quot;),   # to enable merging w/ scryfall data
+      copies = value
+    ) %&gt;%
+    uncount(copies)
+}</code></pre>
+<p>Next we’ll get mana values for each card from <a href="https://scryfall.com/" target="_blank">Scryfall’s</a> API. Here I’m using a <a href="https://github.com/mooreaw/scRyfall/" target="_blank">package</a> I’m developing that makes working with Scryfall data easier in R. It’s not quite finished, but should be functional for my purposes here.</p>
+<pre class="r"><code># keep both the standard set, as well as the Mystical Archive cards from STX
+stx_cards &lt;- scRyfall::search_cards(q = &quot;set:sta or (set:stx is:booster)&quot;)</code></pre>
+</div>
+<div id="assumptions-analysis" class="section level3">
+<h3>assumptions &amp; analysis</h3>
+<p>Okay, now that everything’s mostly in place, we can proceed with the analysis. My hope is to enrich <span class="citation">@ajlvi</span>’s findings by accounting for natural variability in the “curves” of mana values found in a given deck. For example, here are 8 histograms for random decks pulled from the dataset. All of these decks except one include 17 lands (which have a mana value of 0), but show some meaningful variation otherwise. For example, THL would seem optimal against Decks #1 and #2.</p>
+<p><img src="/post/2021-06-20-estimating-the-potential-of-tasha-s-hideous-laughter_files/figure-html/mana-curves-1.png" width="672" style="display: block; margin: auto;" /></p>
+<!--
+# ASSUMPTIONS:
+# 1. Player casting is on the play
+# 2. Player casting will cast it on turn 3
+# 3. Defending player doesn't cast a cantrip or drawspell in their first 2 turns
+# 4. Defending player hasn't mulligan'd
+-->
+<p>Now we’ll pull the full sample of decks, and perform our experiment. Let’s state the assumptions that we’ll apply to the 100,000 decks:</p>
+<ol style="list-style-type: decimal">
+<li><p>We’ll assume the player <em>casting</em> THL chose to go first (player 1). This means that the defending player (player 2) will have drawn 1 additional card on their first turn.</p></li>
+<li><p>Player 2 doesn’t mulligan<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> their opening hand.</p></li>
+<li><p>Player 1 casts THL on turn 3.</p></li>
+<li><p>In the first two turns, Player 2 casts no spells that would let them draw a card.</p></li>
+</ol>
+<p>This means we’ll shuffle each of the 100,000 decks, exclude the first 9 cards seen (opening hand of 7, plus cards drawn for 2 turns), and then count the number of cards in order drawn until the cumulative mana value exceeds 20.</p>
+<pre class="r"><code>set.seed(20210620)
+
+deck &lt;- sample_decks(decks, n = 100000)
+
+deck &lt;- stx_cards %&gt;%
+  transmute(cmc, name = str_remove(name, &quot; //.*$&quot;)) %&gt;%   # 17lands drops DFC card names
+  right_join(deck, by = &quot;name&quot;)
+
+thl_hits &lt;- deck %&gt;%
+  group_by(draft_id, game_id) %&gt;%
+  slice(sample(1:n())) %&gt;%
+  slice(9:n()) %&gt;%
+  mutate(is_20 = cumsum(cumsum(cmc) &gt;= 20)) %&gt;%
+  filter(is_20 &lt;= 1) %&gt;%
+  count(name = &quot;hits&quot;)</code></pre>
+<p>Now we’ll look at the observed distribution. Immediately, you can see that despite the additional assumptions and differences in the curves utilized, the results are substantively the same as what <span class="citation">@ajlvi</span> shows initially. Theory (re: limited deck construction) seems to carry the day with evaluating this card.</p>
+<p><img src="/post/2021-06-20-estimating-the-potential-of-tasha-s-hideous-laughter_files/figure-html/observed-dist-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>To summarize a bit more, here are some estimated proportions for specific ranges of hits, along with standard errors.</p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#dpfhfmapmr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dpfhfmapmr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dpfhfmapmr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dpfhfmapmr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dpfhfmapmr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dpfhfmapmr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dpfhfmapmr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dpfhfmapmr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dpfhfmapmr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dpfhfmapmr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dpfhfmapmr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dpfhfmapmr .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dpfhfmapmr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dpfhfmapmr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dpfhfmapmr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dpfhfmapmr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dpfhfmapmr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#dpfhfmapmr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dpfhfmapmr .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#dpfhfmapmr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dpfhfmapmr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dpfhfmapmr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dpfhfmapmr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dpfhfmapmr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dpfhfmapmr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dpfhfmapmr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dpfhfmapmr .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#dpfhfmapmr .gt_left {
+  text-align: left;
+}
+
+#dpfhfmapmr .gt_center {
+  text-align: center;
+}
+
+#dpfhfmapmr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dpfhfmapmr .gt_font_normal {
+  font-weight: normal;
+}
+
+#dpfhfmapmr .gt_font_bold {
+  font-weight: bold;
+}
+
+#dpfhfmapmr .gt_font_italic {
+  font-style: italic;
+}
+
+#dpfhfmapmr .gt_super {
+  font-size: 65%;
+}
+
+#dpfhfmapmr .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="dpfhfmapmr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style>Estimated Proportions for Specific Ranges</th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Proportion</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">SE</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left gt_stub">Hits &lt; 10</td>
+      <td class="gt_row gt_right">0.254</td>
+      <td class="gt_row gt_right">0.0014</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">10 &lt;= Hits &lt;= 15</td>
+      <td class="gt_row gt_right">0.618</td>
+      <td class="gt_row gt_right">0.0015</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">Hits &gt; 15</td>
+      <td class="gt_row gt_right">0.129</td>
+      <td class="gt_row gt_right">0.0011</td>
+    </tr>
+  </tbody>
+  
+  
+</table></div>
+</div>
+<div id="limitations-conclusions" class="section level3">
+<h3>limitations &amp; conclusions</h3>
+<ol style="list-style-type: decimal">
+<li><p>Assuming the STX format is comparable to AFR, this card seems to have slightly higher upside than <a href="https://scryfall.com/card/znr/67/maddening-cacophony" target="_blank">Maddening Cacophany</a> (from a recent standard set), but with the cost of greater variability in the effect. If there’s support for mill in the upcoming <em>Adventures in the Forgotten Realms</em> set, this could be worth building around, but it’s not likely to give you free-wins on its own.</p></li>
+<li><p>For each of the trials, I didn’t check whether the opening hand was worth keeping. This decision is subjective, requiring context and skill, but I could’ve at least ensured that opening hands had &gt;1 and &lt;6 lands.</p></li>
+<li><p>I’ve sampled games from across the whole range of available days– if there was a significant shift in the 17lands metagame that would have strong implications for the kinds of mana curves we’d expect to observe, this could have an effect on the results. I also sampled games freely, i.e. I’ve allowed the same deck to be potentially represented more than once in the sample. This could mean that more successful decks are represented a bit more prominently in the results.</p></li>
+<li><p>Two of the colleges (draft archetypes) in the format encourage building decks with high mana values. Specifically, I’m referring to Quandrix (Blue-Green) and Prismari (Blue-Red). This incentive is more pronounced for Prismari, but I didn’t check the sample to see if this was problematically over-represented. I think this is a marginal consideration, but thought it worth noting.</p></li>
+<li><p>Wrapping up this post, I wonder how much the results of this analysis depend on THL being cast immediately on turn 3. Phrased differently, is it actually optimal to wait to cast THL until later in the game? I’m inclined to think it’s better to cast THL early, given that most mana curves tend to be centered between 2 and 3. Generally speaking, one is more likely to draw cards with smaller mana-values, which would push down the maximum number of hits you can expect with THL. This is my intuition at least, but maybe I’m missing something!</p></li>
+</ol>
+<p><br></p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>They’re a good follow if you’re interested in number-crunching re: MtG!<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>This is probably not enough to win the game with THL on its own. But it’s powerful, especially if you have other cards that “mill” your opponent, or can guarantee your ability to survive enough time for your opponent to draw the remainder of their deck before you.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>This seems to line up with a quick look at the distribution of turns recorded across the games dataset I’d downloaded. The mean and median # of turns was 10 (with a standard deviation of 3) across 465,319 games.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>This is an action any player can take when looking at their opening hand. If the player would like a different starting hand, they “mulligan” and shuffle their entire deck and re-draw 7 new cards. Once satisfied, they place N many cards on the bottom of their deck, where N is the number of times they took a mulligan.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

@@ -9,7 +9,6 @@ tags:
   - mtg
   - '17lands'
   - statistics
-  - random sampling
   - scRyfall
 ---
 
@@ -49,16 +48,14 @@ Going beyond a fixed curve seemed interesting and I wondered what the results wo
 
 ### prepping the 17lands data
 
-I'm very grateful that the folks at 17lands are generously sharing the data, but these are large files, which pose certain challenges. For the *games* file, its structure is essentially a wide matrix, with columns dedicated to where a card was seen (e.g., Opening Hand, Deck, Sideboard, etc.). For my purposes, I need to get counts for the number of copies of each card that a player included in their deck. I also need to merge a CMC (mana value) onto each card. The latter step is much easier when each individual card is represented as a row, i.e. storing the data in a [tidy](https://www.jstatsoft.org/article/view/v059i10/){target="_blank"} form.
+I'm very grateful that the folks at 17lands are generously sharing the data, but they require a bit of transformation before use. For the *games* file, its structure is essentially a wide matrix, with columns dedicated to where a card was seen (e.g., Opening Hand, Deck, Sideboard, etc.). For my purposes, I need to get counts for the number of copies of each card that a player included in their deck. I also need to merge a CMC (mana value) onto each card. The latter step is much easier when each individual card is represented as a row, i.e. storing the data in a [tidy](https://www.jstatsoft.org/article/view/v059i10/){target="_blank"} form.
 
-Even if I'm pulling out only the draft ID/date, and `deck_` columns, I still need to transpose 343 cards. Given that there were 465,319 games available, this means we end up with a dataset that has 159,604,417 rows, which is a bit much for my poor laptop... `r emo::ji("sob")`
-
-Instead of tediously transforming all of the data (and melting my computer), I'm going to lean on the trusted technique of random sampling. We'll draw out 100,000 random games, which should make the transformations more feasible and speedy on my machine. Here I've defined a function to facilitate the sampling.
+I previously deduplicated the games data to get unique decks, but didn't reshape it. Here I'll import it, and define a function that will do the transposing.
 
 ```{r import}
 library(tidyverse)
 
-decks <- vroom::vroom("../../static/data/tashas-hideous-laughter/deck_data_public_17lands_stx_premierdraft.csv.zip")
+decks <- vroom::vroom("../../static/data/tashas-hideous-laughter/deck_data_public_17lands_stx_premierdraft.csv.gz")
 
 # from the decks file, take a sample of size N games
 # then, go from a wide matrix to a "tall" file of cards
@@ -79,7 +76,7 @@ sample_decks <- function(decks, n = 1) {
 }
 ```
 
-Next we'll get mana values for each card from [Scryfall's](https://scryfall.com/){target="_blank"} API. Here I'm using a [package](https://github.com/mooreaw/scRyfall/){target="_blank"} I'm developing that makes working with Scryfall data easier in R. It's not quite finished, but should be functional for my purposes here.
+In total, we have `r scales::comma(nrow(decks))` unique decks. Next we'll get mana values for each card from [Scryfall's](https://scryfall.com/){target="_blank"} API. Here I'm using a [package](https://github.com/mooreaw/scRyfall/){target="_blank"} I'm developing that makes working with Scryfall data easier in R. It's not quite finished, but should be functional for my purposes here.
 
 ```{r}
 # keep both the standard set, as well as the Mystical Archive cards from STX
@@ -88,7 +85,7 @@ stx_cards <- scRyfall::search_cards(q = "set:sta or (set:stx is:booster)")
 
 ### assumptions & analysis
 
-Okay, now that everything's mostly in place, we can proceed with the analysis. My hope is to enrich @ajlvi's findings by accounting for natural variability in the "curves" of mana values found in a given deck. For example, here are 8 histograms for random decks pulled from the dataset. All of these decks except one include 17 lands (which have a mana value of 0), but show some meaningful variation otherwise. For example, THL would seem optimal against Decks #1 and #2.
+Okay, now that everything's mostly in place, we can proceed with the analysis. My hope is to enrich @ajlvi's findings by accounting for natural variability in the "curves" of mana values found in a given deck. For example, here are 8 histograms for random decks pulled from the dataset. All of these decks except one include 17 lands (which have a mana value of 0), but show some meaningful variation otherwise. For example, THL would seem optimal against Decks #2 and #5.
 
 ```{r mana-curves, echo = FALSE}
 set.seed(20210620)
@@ -115,7 +112,7 @@ exa_curves %>%
 # 4. Defending player hasn't mulligan'd
 -->
 
-Now we'll pull the full sample of decks, and perform our experiment. Let's state the assumptions that we'll apply to the 100,000 decks:
+Now we'll pull the full sample of decks, and perform our experiment. Let's state the assumptions that we'll apply to the `r scales::comma(nrow(decks))` decks:
 
 1. We'll assume the player *casting* THL chose to go first (player 1). This means that the defending player (player 2) will have drawn 1 additional card on their first turn.
 
@@ -125,12 +122,12 @@ Now we'll pull the full sample of decks, and perform our experiment. Let's state
 
 4. In the first two turns, Player 2 casts no spells that would let them draw a card.
 
-This means we'll shuffle each of the 100,000 decks, exclude the first 9 cards seen (opening hand of 7, plus cards drawn for 2 turns), and then count the number of cards in order drawn until the cumulative mana value exceeds 20.
+This means we'll shuffle each of the decks, exclude the first 9 cards seen (opening hand of 7, plus cards drawn for 2 turns), and then count the number of cards in order drawn until the cumulative mana value exceeds 20.
 
 ```{r pull}
 set.seed(20210620)
 
-deck <- sample_decks(decks, n = 100000)
+deck <- sample_decks(decks, n = nrow(decks))
 
 deck <- stx_cards %>%
   transmute(cmc, name = str_remove(name, " //.*$")) %>%   # 17lands drops DFC card names
@@ -189,7 +186,7 @@ tibble(
 
 2. For each of the trials, I didn't check whether the opening hand was worth keeping. This decision is subjective, requiring context and skill, but I could've at least ensured that opening hands had >1 and <6 lands.
 
-3. I've sampled games from across the whole range of available days-- if there was a significant shift in the 17lands metagame that would have strong implications for the kinds of mana curves we'd expect to observe, this could have an effect on the results. I also sampled games freely, i.e. I've allowed the same deck to be potentially represented more than once in the sample. This could mean that more successful decks are represented a bit more prominently in the results.
+3. I've sampled games from across the whole range of available days-- if there was a significant shift in the 17lands metagame that would have implications for the kinds of mana curves we'd expect to observe, this could have an effect on the results.
 
 4. Two of the colleges (draft archetypes) in the format encourage building decks with high mana values. Specifically, I'm referring to Quandrix (Blue-Green) and Prismari (Blue-Red). This incentive is more pronounced for Prismari, but I didn't check the sample to see if this was problematically over-represented. I think this is a marginal consideration, but thought it worth noting.
 

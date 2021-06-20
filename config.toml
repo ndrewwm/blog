@@ -4,7 +4,6 @@ author = "Andrew Moore"
 languageCode = "en"
 theme = "kiss"
 publishDir = "public/"
-googleAnalytics = "UA-108115849-1"
 
 enableRobotsTXT = true
 

@@ -475,6 +475,44 @@ thl_hits &lt;- deck %&gt;%
 <li><p>Two of the colleges (draft archetypes) in the format encourage building decks with high mana values. Specifically, I’m referring to Quandrix (Blue-Green) and Prismari (Blue-Red). This incentive is more pronounced for Prismari, but I didn’t check the sample to see if this was problematically over-represented. I think this is a marginal consideration, but thought it worth noting.</p></li>
 <li><p>Wrapping up this post, I wonder how much the results of this analysis depend on THL being cast immediately on turn 3. Phrased differently, is it actually optimal to wait to cast THL until later in the game? I’m inclined to think it’s better to cast THL early, given that most mana curves tend to be centered between 2 and 3. Generally speaking, one is more likely to draw cards with smaller mana-values, which would push down the maximum number of hits you can expect with THL. This is my intuition at least, but maybe I’m missing something!</p></li>
 </ol>
+</div>
+<div id="addendum-what-if-the-format-includes-kicker-or-foretell" class="section level3">
+<h3>addendum: what if the format includes <em>kicker,</em> or <em>foretell?</em></h3>
+<p>{{% tweet "1403441241438699524" %}}</p>
+<pre class="r"><code>ggplot(znr_thl_hits, aes(x = hits)) +
+  geom_histogram(binwidth = 1, color = &quot;white&quot;, aes(y = stat(width*density))) +
+  scale_x_continuous(breaks = seq(0, 25, 5)) +
+  scale_y_continuous(labels = scales::percent) +
+  theme(plot.caption = ggtext::element_markdown()) +
+  labs(
+    x = &quot;Hits (Cards exiled by THL)&quot;,
+    y = &quot;N&quot;,
+    caption = str_glue(
+      &quot;*Hits*&lt;sub&gt;Mean&lt;/sub&gt; = {round(mean(znr_h), 1)}, *Hits*&lt;sub&gt;SD&lt;/sub&gt; = {round(sd(h), 1)}&quot;
+    )
+  )</code></pre>
+<p><img src="/post/2021-06-20-estimating-the-potential-of-tasha-s-hideous-laughter_files/figure-html/plot%20znr-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>stx_h_b &lt;- numeric()
+znr_h_b &lt;- numeric()
+
+for (b in 1:10000) {
+  s_i &lt;- sample(h, length(h), replace = TRUE)
+  z_i &lt;- sample(znr_h, length(znr_h), replace = TRUE)
+  
+  stx_h_b &lt;- c(stx_h_b, mean(s_i))
+  znr_h_b &lt;- c(znr_h_b, mean(z_i))
+}
+
+tibble(stx_h_b, znr_h_b) %&gt;%
+  pivot_longer(everything()) %&gt;%
+  mutate(name = factor(name, labels = c(&quot;STX&quot;, &quot;ZNR&quot;))) %&gt;%
+  ggplot(aes(x = value, fill = name)) +
+  geom_density(alpha = .75) +
+  scico::scale_fill_scico_d(name = &quot;&quot;, palette = &quot;nuuk&quot;) +
+  theme(axis.text.y = element_blank(), panel.grid.major.y = element_blank(),
+        legend.position = &quot;top&quot;) +
+  labs(x = &quot;Hits (Mean)&quot;, y = &quot;&quot;, title = &quot;10k bootstrapped means for # Hits from SHL&quot;)</code></pre>
+<p><img src="/post/2021-06-20-estimating-the-potential-of-tasha-s-hideous-laughter_files/figure-html/plot%20znr-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 <div class="footnotes">

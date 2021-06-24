@@ -192,6 +192,99 @@ tibble(
 
 5. Wrapping up this post, I wonder how much the results of this analysis depend on THL being cast immediately on turn 3. Phrased differently, is it actually optimal to wait to cast THL until later in the game? I'm inclined to think it's better to cast THL early, given that most mana curves tend to be centered between 2 and 3. Generally speaking, one is more likely to draw cards with smaller mana-values, which would push down the maximum number of hits you can expect with THL. This is my intuition at least, but maybe I'm missing something!
 
+### addendum: what if the format includes *kicker,* or *foretell?*
+
+```{r, echo = FALSE}
+blogdown::shortcode("tweet", "1403441241438699524")
+```
+
+```{r get-znr, echo = FALSE}
+znr <- vroom::vroom("/Users/andrew/Downloads/card-win-rates-2020-11-08.csv.gz")
+
+znr_decks <- znr %>%
+  select(draft_time, starts_with("deck_")) %>%
+  distinct() %>%
+  mutate(draft_id = 1:n(), game_id = 1:n()) %>%
+  pivot_longer(starts_with("deck_")) %>%
+  filter(value > 0) %>%
+  transmute(
+    draft_id, game_id,
+    name = str_remove(name, "deck_"),
+    copies = value
+  ) %>%
+  uncount(copies)
+
+znr_cards <- scRyfall::search_cards("set:ZNR in:booster")
+
+znr_decks <- znr_cards %>%
+  transmute(cmc, name = str_remove(name, " //.*$")) %>%   # 17lands drops DFC card names
+  right_join(znr_decks, by = "name")
+
+znr_thl_hits <- znr_decks %>%
+  group_by(draft_id, game_id) %>%
+  slice(sample(1:n())) %>%
+  slice(9:n()) %>%
+  mutate(is_20 = cumsum(cumsum(cmc) >= 20)) %>%
+  filter(is_20 <= 1) %>%
+  count(name = "hits")
+
+znr_h <- pull(znr_thl_hits, hits)
+```
+
+```{r get-khm, echo = FALSE, eval = FALSE}
+# has embedded nulls :/
+khm <- vroom::vroom("/Users/andrew/Downloads/game-data.KHM.PremierDraft.tar.gz", delim = ",")
+
+khm_decks <- khm %>%
+  select(draft_time, starts_with("deck_")) %>%
+  distinct() %>%
+  mutate(draft_id = 1:n(), game_id = 1:n()) %>%
+  pivot_longer(starts_with("deck_")) %>%
+  filter(value > 0) %>%
+  transmute(
+    draft_id, game_id,
+    name = str_remove(name, "deck_"),
+    copies = value
+  ) %>%
+  uncount(copies)
+```
+
+```{r plot znr}
+ggplot(znr_thl_hits, aes(x = hits)) +
+  geom_histogram(binwidth = 1, color = "white", aes(y = stat(width*density))) +
+  scale_x_continuous(breaks = seq(0, 25, 5)) +
+  scale_y_continuous(labels = scales::percent) +
+  theme(plot.caption = ggtext::element_markdown()) +
+  labs(
+    x = "Hits (Cards exiled by THL)",
+    y = "N",
+    caption = str_glue(
+      "*Hits*<sub>Mean</sub> = {round(mean(znr_h), 1)}, *Hits*<sub>SD</sub> = {round(sd(h), 1)}"
+    )
+  )
+
+stx_h_b <- numeric()
+znr_h_b <- numeric()
+
+for (b in 1:10000) {
+  s_i <- sample(h, length(h), replace = TRUE)
+  z_i <- sample(znr_h, length(znr_h), replace = TRUE)
+  
+  stx_h_b <- c(stx_h_b, mean(s_i))
+  znr_h_b <- c(znr_h_b, mean(z_i))
+}
+
+tibble(stx_h_b, znr_h_b) %>%
+  pivot_longer(everything()) %>%
+  mutate(name = factor(name, labels = c("STX", "ZNR"))) %>%
+  ggplot(aes(x = value, fill = name)) +
+  geom_density(alpha = .75) +
+  scico::scale_fill_scico_d(name = "", palette = "nuuk") +
+  theme(axis.text.y = element_blank(), panel.grid.major.y = element_blank(),
+        legend.position = "top") +
+  labs(x = "Hits (Mean)", y = "", title = "10k bootstrapped means for # Hits from SHL")
+```
+
 <br>
 
 [^1]: They're a good follow if you're interested in number-crunching re: MtG!

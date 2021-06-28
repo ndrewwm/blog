@@ -38,11 +38,13 @@ B.A. Psychology, minor History; *cum laude*
 `Jan 2020 to present`<br>
 **Boise State University, Office of Institutional Research** | Research Analyst
 
-- Develops analysis and ETL code used to support state & federal reporting obligations.
+- Refines predictive models for undergraduate retention & graduation, and builds data analysis process flows to facilitate improved documentation, and analytic reproducibility
+
+- Develops custom reports for campus stakeholders using SQL and SAS
 
 - Maintains and updates office Tableau dashboards each academic term.
 
-- Responds to ad-hoc data requests, and creates & edits project documentation.
+- Contributes to project documentation, assists with data requests, analyzes and summarizes survey responses as-needed
 
 `Nov 2015 to Jan 2020`<br>
 **University of Michigan, School of Social Work** | Data Analyst
@@ -85,6 +87,8 @@ B.A. Psychology, minor History; *cum laude*
 - Performed literature searches and summarized published findings in support of the lab's publication development.
 
 ## Publications
+
+- Schweinsberg, M., Feldman, M., Staub, N., [and 176 others, including **Moore, A.**] (2021). Same data, different conclusions: Radical dispersion in empirical results when independent analysts operationalize and test the same hypothesis. *Organizational Behavior and Human Decision Processes.* doi:10.1016/j.obhdp.2021.02.003
 
 - Perron, B.E., Victor, B.G., Bushman, G., **Moore, A.,** Ryan, J.P., Lu, A.J., & Piellusch, E.K. (2019). Detecting substance-related problems in narrative investigation summaries of child abuse and neglect using text mining and machine learning. *Child Abuse & Neglect,* 98, 104180. doi:10.1016/j.chiabu.2019.104180
 
@@ -134,9 +138,11 @@ B.A. Psychology, minor History; *cum laude*
 
 ## Talks & Posters
 
-- **Moore, A.** (2019) An overview of *tidytext*: exploring the October primary debate transcript. Invited presentation at the November meeting of the Ann Arbor R User Group.
+- **Moore, A.** (2021) "Intro to `dplyr`". Invited presentation to the February meeting of the Boise State Data Visualization Group. ([slides](https://cdn.statically.io/gh/mooreaw/intro-to-dplyr/main/R/slides.html))
 
-- **Moore, A.** (2017) Building bivariate choropleths with leaflet and tidycensus: an illustration using NUFORC data. Invited presentation at the October meeting of the Ann Arbor R User Group.
+- **Moore, A.** (2019) An overview of *tidytext*: exploring the October primary debate transcript. Invited presentation at the November meeting of the Ann Arbor R User Group. ([blog post](https://semidocumentedlife.com/post/tidytext-overview/))
+
+- **Moore, A.** (2017) Building bivariate choropleths with leaflet and tidycensus: an illustration using NUFORC data. Invited presentation at the October meeting of the Ann Arbor R User Group. ([git repository](https://github.com/mooreaw/ufo-sightings))
 
 - **Moore, A.** (2017) Citations in R-Markdown. Invited presentation at the June meeting of the Ann Arbor R User Group.
 

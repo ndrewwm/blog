@@ -144,7 +144,7 @@ B.A. Psychology, minor History; *cum laude*
 
 - **Moore, A.** (2017) Building bivariate choropleths with leaflet and tidycensus: an illustration using NUFORC data. Invited presentation at the October meeting of the Ann Arbor R User Group. ([git repository](https://github.com/mooreaw/ufo-sightings))
 
-- **Moore, A.** (2017) Citations in R-Markdown. Invited presentation at the June meeting of the Ann Arbor R User Group.
+- **Moore, A.** (2017) Citations in R-Markdown. Invited presentation at the June meeting of the Ann Arbor R User Group. ([slides](https://cdn.statically.io/gh/AnnArborRUserGroup/Presentations/master/2017-06/rmd-citations/rmd-citations.html))
 
 - **Moore, A.** (2016) Using Packrat: Dependency Management in R. Invited presentation at the August meeting of the Ann Arbor R User Group.
 

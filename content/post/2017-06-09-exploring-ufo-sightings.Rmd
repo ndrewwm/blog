@@ -3,12 +3,12 @@ title: exploring NUFORC sightings
 author: Andrew
 date: '2017-07-08'
 slug: exploring-nuforc-sightings
-categories: ["R"]
+categories:
 tags: ["R", "data analysis", "data viz", "UFOs", "kaggle"]
 ---
 
 ```{r opts, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.align = "center")
 ```
 
 ```{r init}
@@ -43,7 +43,7 @@ us <- scrubbed %>%
 us <- filter(us, year_sighted < 2014)
 ```
 
-<!-- *R code used for each of the graphics is available [here.](https://github.com/mooreaw/ufo-sightings)* -->
+*R code used for each of the graphics is available [here.](https://github.com/mooreaw/ufo-sightings)*
 
 <!-- https://www.kaggle.com/NUFORC/ufo-sightings -->
 
@@ -59,7 +59,7 @@ For a short blurb, these takeaways are tidy, but for a piece titled "Everything 
 
 Each row in the data is an individually reported sighting, archived by the National UFO Research Center in Washingon [(NUFORC)](http://www.nuforc.org/). Over 80,000 events are recorded, going all the way back to the early 1900s. In addition to listing the date/time that a sighting was reported, the shape of the object, city, state, country, and latitude/longitude coordinates are all recorded. Most of the reports are from the US (`r percent(nrow(us) / nrow(scrubbed))`), so I decided to keep my focus there.
 
-### The number of sightings reported is increasing
+### the number of sightings reported is increasing
 
 As far as I know, national excitement about UFOs was strongest during the Cold war. [Project Blue Book](https://en.wikipedia.org/wiki/Project_Blue_Book) was set up by the US Airforce in the 50s, and aimed to collect evidence and explain different sightings being reported. It was ultimately shut down due to inconclusive findings. I expected to see more documented sightings between the 50s-70s, but this definitely isn't reflected in the file. This is a good point to consider the limitations of what we're working with. NUFORC was started in 1974, so perhaps it's surprising they've taken the time to record anything earlier than that at all. Someone would have to be pretty motivated to call-in about an experience they had years after it happened. Second, even closer to the present, it seems safe to say that NUFORC's data doesn't capture all the events that might be called sightings on an annual basis.
 
@@ -83,11 +83,11 @@ ggplotly(by_year_boxplot)
 ```
 *(The outliers from each year reliably include a handful of states from the west, like Washington and California.)*
 
-### What people report seeing
+### what people report seeing
 
 One of the things I was most curious about that went unmentioned in the *Economist* piece was what people say they're seeing! The next chart looks at the composition of all US sightings reported during each year. The thicker the color band, the higher the percentage of a year's sightings can be attributed to a set of shapes. Across the whole time span, the most common kind of UFO are lights (maybe looking something like [this?](https://youtu.be/qxLEnqsUYS4)), but this wasn't always the case. Earlier sightings were much more likely to report the classic saucer/disk shape. The fact that we don't have as many reports from the 60s and 70s is a little disappointing. Because we're simply seeing thousands more sightings in recent years, it's hard to say why the disk shape has fallen out of favor. Air travel has also become increasingly ubiquitous since the 70s, so perhaps the increasing share of "lights" sightings can be attributed to that.
 
-```{r shapes, fig.height=8.5, fig.width=9.5, fig.align="center"}
+```{r shapes, fig.height=8.5, fig.width=10.5}
 shape_lut <- c(
   "cylinder"  = "cylinders, cigars, crescents, cigars, crosses",
   "circle"    = "circles, spheres, ovals, teardrops, eggs, round",
@@ -142,26 +142,27 @@ shapes <- shapes_frame %>%
   geom_area(aes(fill = shape_simp, group = shape_simp), alpha = .8) +
   theme_minimal(base_size = 15) +
   scale_y_continuous(label = percent) +
+  guides(fill = guide_legend(nrow = 4)) +
   theme(
     panel.grid.minor = element_blank(),
     legend.title     = element_blank(),
     legend.position  = "bottom"
   ) +
   labs(
-    x = "", 
-    y = "", 
+    x = "", y = "", 
     title = "USA: UFO Shapes by Year, 1950 - 2013", 
-    caption = "* 1995 & 1996 excluded due to high levels of missing data.") +
+    caption = "* 1995 & 1996 excluded due to high levels of missing data."
+  ) +
   scale_fill_brewer(palette = 16)
 
 shapes
 ```
 
-### Seasonal differences
+### seasonal differences
 
 Next, I wanted to know whether there's a particular "season" for spotting UFOs. To get there, I created a rate of sightings per million people in the US population. This is a point where we can get a grip on just how rare sightings are, per-person-- even in 2013 we're only seeing 1-2 sightings each month per million people. You can see sightings become more common as we move toward the present, but there are also defined portions of the year that people are most likely to report sightings-- namely during the summer and fall. This lines up with what the *Economist* reported (i.e. sightings happen most frequently during evenings and weekends), given that these parts of the year tend to be when people spend the most time outside.
 
-```{r usa-yr-month, fig.height=5.5, fig.width=10, fig.align="center"}
+```{r usa-yr-month, fig.height=5.5, fig.width=10}
 # dataset from tidyr
 data(population)
 
@@ -185,7 +186,7 @@ p2 <- us %>%
 ggplotly(p2)
 ```
 
-### Where are sightings most likely to happen?
+### where are sightings most likely to happen?
 
 As I mentioned above, the *Economist* piece suggests that sightings tend to spurn big cities, rationale being that light pollution drives down reports. They also suggested that sightings favor the US/Canada border, and other rural areas. I'm not sure if I've reached the same conclusions... The map below reflects two pieces of data for each county in the US during 2013: population density (people/km^2), and sightings reported. The little grid below reflects how I've categorized each county. The top-left (dark-grey) represents counties with a really high population density but low numbers of sightings. The bottom right (deep brown) represents counties with a low population density but really high sighting count. Up in the top right we have counties whose number of sightings tracks well with their population size. 
  
@@ -291,7 +292,7 @@ bv_choro
 ```
 </center>
 
-```{r print-legend, fig.height=1.5, fig.width=1.5, fig.align='center'}
+```{r print-legend, fig.height=1.5, fig.width=1.5}
 legend_p
 ```
 
@@ -511,7 +512,7 @@ sightings_est <- sightings_pois %>%
   arrange(desc(abs(1 - estimate)))
 ```
 
-```{r fitted-values-plot, fig.align='center'}
+```{r fitted-values-plot}
 p_fitted <- augment(sightings_pois, type.predict = "response") %>%
   ggplot(aes(x = .fitted, y = sightings)) +
   geom_abline(slope = 1, intercept = 0, lty = "dashed") +
@@ -550,6 +551,6 @@ tidy(sightings_pois, conf.int = TRUE) %>%
   labs(x = "", y = "IRR (& 95% CIs)", title = "Estimated IRRs for each predictor")
 ```
 
-Okay, last plot, I promise! A major benefit of a regression model is that we can see how individual variables contribute to the outcome we're interested in. The figure above shows *Incident Rate Ratios* (IRR) for each of the predictors included in the model. This estimate shows the *multiplicative* change in the dependent variable, for each 1-unit increase in a predictor. If we imagine we could pluck out an "average" state, and magically increase its median age by 1 year, we'd expect the number of sightings to increase by 10%. What we're seeing is that income, rent, and population size appear to be related with our outcome. Everything else looks pretty negligible.
+Okay, last plot, I promise! A major benefit of a regression model is that we can see how individual variables contribute to the outcome we're interested in. The figure above shows *Incident Rate Ratios* (IRR) for each of the predictors included in the model. This estimate shows the *multiplicative* change in the dependent variable, for each 1-unit increase in a predictor. If we imagine we could pluck out an "average" state, and magically increase its median age by 1 year, we'd expect its number of sightings to increase by 10%. What we're seeing is that income, rent, and population size appear to be related with our outcome. Everything else looks pretty negligible.
 
 Wrapping up, we have to use a lot of caution given our unit of analysis. Sightings are experienced by persons, not states. I wanted to see if a state-level summary of alcohol (over) consumption was related to a state's recorded count of sightings, and even though the estimated association is basically nil, this doesn't rule out the notion that intoxicated people are more likely to experience sightings. It could be that the population of people logging onto NUFORC's website to report sightings tend to drink more, but we don't have any information about this group at-hand. That said, I think that we can see from both the choropleth and this higher level of aggregation that population-size seems to matter. There seem to be regional differences, and rural areas don't appear to be created equally in terms of the frequency of sightings. In any case, I hope you enjoyed this blog post! This dataset is quirky and fun to explore. It might make a good addition to any future workshops on data visualization. `r emo::ji("smile")`

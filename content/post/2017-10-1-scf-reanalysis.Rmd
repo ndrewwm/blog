@@ -4,6 +4,7 @@ author: Andrew
 date: '2017-10-01'
 slug: climbing-into-the-crater
 tags: ["R", "data analysis", "public data"]
+hidden: true
 ---
 
 Matt Bruenig at the [People's Policy Project](http://peoplespolicyproject.org/) (PPP) published a [post](http://peoplespolicyproject.org/2017/09/27/new-fed-data-black-wealth-cratered-under-obama/) at the end of September, looking at 2016 data for family net worth as reported by the [Survey of Consumer Finance (SCF).](https://www.federalreserve.gov/econres/scfindex.htm) Using the 2007 and 2016 waves of the survey, Bruenig grouped family net worth into percentiles, and took the difference between each point. Bruenig broke the results down by race/ethnicity, but generally speaking, aside from the wealthiest Americans, most families still haven't recovered to their pre-recession level of household net worth. Bruenig presented the results as line graphs, which didn't strike me as particularly problematic when I read the post, but a friend pointed out that the tweet announcing the post had stacked up a bunch of crabby comments.

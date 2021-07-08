@@ -1,8 +1,8 @@
 ---
-title: estimating the potential of "Tasha's Hideous Laughter"
+title: estimating the potential of THL in AFR limited
 author: andrew
 date: '2021-06-20'
-slug: 17lands-tashas-hideous-laughter
+slug: 17lands-thl-afr
 image: "../img/afr-78-tasha-s-hideous-laughter.jpeg"
 categories: []
 tags:
@@ -26,13 +26,13 @@ theme_set(
 )
 ```
 
-While I don't think I've previously posted about it here, I've been a long-time player of the trading card game *Magic: the Gathering*, primarily enjoying the "limited" format. I keep up with developments in the game largely via Twitter. Last week, an interesting card from an upcoming set was previewed.
+While I don't think I've previously posted about it here, I've been a long-time player of the trading card game *Magic: the Gathering*, primarily enjoying the "limited" format. I keep up with developments in the game largely via Twitter. Last week, an interesting card from the upcoming set, *Adventures in the Forgotten Realms* (AFR) was previewed.
 
 <center>
 ![](/img/afr-78-tasha-s-hideous-laughter.jpeg)
 </center>
 
-Lots of potential variation! For those unfamiliar, cards have a "mana value" to reflect their cost to play, usually ranging from 0 to 8. This card's mana value for example is 3; the two droplet symbols each count as 1. *Tasha's Hideous Laughter* (THL) uses this attribute to *exile* cards from a player's deck. You'd put this in a deck where you'd want to make your opponent(s) run out of cards (if a player has to draw from an empty deck, they lose!).
+Lots of potential variation! For those unfamiliar, cards have a "mana value" to reflect their cost to play, usually ranging from 0 to 8. This card's mana value for example is 3; the two droplet symbols in the top-right corner each count as 1. *Tasha's Hideous Laughter* (THL) uses this attribute to *exile* cards from a player's deck. You'd put this in a deck where you'd want to make your opponent(s) run out of cards (if a player has to draw from an empty deck, they lose!).
 
 So, how good is it in a limited format, where most decks should contain 40 cards? This card has a higher rarity which means that in a limited deck, you're unlikely to get multiple copies. You'll probably only get to cast it once; ideally, it should seal your opponent's fate of running out of cards. I came across a tweet from @ajlvi, who had set up a quick simulation using an archetypal limited deck to examine this question.[^1]
 
@@ -182,7 +182,7 @@ tibble(
 
 ### limitations & conclusions
 
-1. Assuming the STX format is comparable to AFR, this card seems to have slightly higher upside than [Maddening Cacophany](https://scryfall.com/card/znr/67/maddening-cacophony){target="_blank"} (from a recent standard set), but with the cost of greater variability in the effect. If there's support for mill in the upcoming *Adventures in the Forgotten Realms* set, this could be worth building around, but it's not likely to give you free-wins on its own.
+1. Assuming the STX format is comparable to AFR, this card seems comparable to [Maddening Cacophany](https://scryfall.com/card/znr/67/maddening-cacophony){target="_blank"} (from a recent standard set). If there's support for mill in the upcoming *Adventures in the Forgotten Realms* set, this could be worth building around, but it's not likely to give you free-wins on its own.
 
 2. For each of the trials, I didn't check whether the opening hand was worth keeping. This decision is subjective, requiring context and skill, but I could've at least ensured that opening hands had >1 and <6 lands.
 

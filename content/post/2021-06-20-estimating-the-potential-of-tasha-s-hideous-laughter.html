@@ -1,8 +1,8 @@
 ---
-title: estimating the potential of "Tasha's Hideous Laughter"
+title: estimating the potential of THL in AFR limited
 author: andrew
 date: '2021-06-20'
-slug: 17lands-tashas-hideous-laughter
+slug: 17lands-thl-afr
 image: "../img/afr-78-tasha-s-hideous-laughter.jpeg"
 categories: []
 tags:
@@ -15,11 +15,11 @@ tags:
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<p>While I don’t think I’ve previously posted about it here, I’ve been a long-time player of the trading card game <em>Magic: the Gathering</em>, primarily enjoying the “limited” format. I keep up with developments in the game largely via Twitter. Last week, an interesting card from an upcoming set was previewed.</p>
+<p>While I don’t think I’ve previously posted about it here, I’ve been a long-time player of the trading card game <em>Magic: the Gathering</em>, primarily enjoying the “limited” format. I keep up with developments in the game largely via Twitter. Last week, an interesting card from the upcoming set, <em>Adventures in the Forgotten Realms</em> (AFR) was previewed.</p>
 <center>
 <img src="/img/afr-78-tasha-s-hideous-laughter.jpeg" />
 </center>
-<p>Lots of potential variation! For those unfamiliar, cards have a “mana value” to reflect their cost to play, usually ranging from 0 to 8. This card’s mana value for example is 3; the two droplet symbols each count as 1. <em>Tasha’s Hideous Laughter</em> (THL) uses this attribute to <em>exile</em> cards from a player’s deck. You’d put this in a deck where you’d want to make your opponent(s) run out of cards (if a player has to draw from an empty deck, they lose!).</p>
+<p>Lots of potential variation! For those unfamiliar, cards have a “mana value” to reflect their cost to play, usually ranging from 0 to 8. This card’s mana value for example is 3; the two droplet symbols in the top-right corner each count as 1. <em>Tasha’s Hideous Laughter</em> (THL) uses this attribute to <em>exile</em> cards from a player’s deck. You’d put this in a deck where you’d want to make your opponent(s) run out of cards (if a player has to draw from an empty deck, they lose!).</p>
 <p>So, how good is it in a limited format, where most decks should contain 40 cards? This card has a higher rarity which means that in a limited deck, you’re unlikely to get multiple copies. You’ll probably only get to cast it once; ideally, it should seal your opponent’s fate of running out of cards. I came across a tweet from <span class="citation">@ajlvi</span>, who had set up a quick simulation using an archetypal limited deck to examine this question.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>{{% tweet "1403439840666992643" %}}</p>
 <p>As far as a standard curve in a limited deck, this looks reasonable to me. You can expect to exile 10-13 cards, which is something like 40% of your opponent’s deck if you get to cast THL on turn 3.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
@@ -469,7 +469,7 @@ thl_hits &lt;- deck %&gt;%
 <div id="limitations-conclusions" class="section level3">
 <h3>limitations &amp; conclusions</h3>
 <ol style="list-style-type: decimal">
-<li><p>Assuming the STX format is comparable to AFR, this card seems to have slightly higher upside than <a href="https://scryfall.com/card/znr/67/maddening-cacophony" target="_blank">Maddening Cacophany</a> (from a recent standard set), but with the cost of greater variability in the effect. If there’s support for mill in the upcoming <em>Adventures in the Forgotten Realms</em> set, this could be worth building around, but it’s not likely to give you free-wins on its own.</p></li>
+<li><p>Assuming the STX format is comparable to AFR, this card seems comparable to <a href="https://scryfall.com/card/znr/67/maddening-cacophony" target="_blank">Maddening Cacophany</a> (from a recent standard set). If there’s support for mill in the upcoming <em>Adventures in the Forgotten Realms</em> set, this could be worth building around, but it’s not likely to give you free-wins on its own.</p></li>
 <li><p>For each of the trials, I didn’t check whether the opening hand was worth keeping. This decision is subjective, requiring context and skill, but I could’ve at least ensured that opening hands had &gt;1 and &lt;6 lands.</p></li>
 <li><p>I’ve sampled games from across the whole range of available days– if there was a significant shift in the 17lands metagame that would have implications for the kinds of mana curves we’d expect to observe, this could have an effect on the results.</p></li>
 <li><p>Two of the colleges (draft archetypes) in the format encourage building decks with high mana values. Specifically, I’m referring to Quandrix (Blue-Green) and Prismari (Blue-Red). This incentive is more pronounced for Prismari, but I didn’t check the sample to see if this was problematically over-represented. I think this is a marginal consideration, but thought it worth noting.</p></li>

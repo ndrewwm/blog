@@ -1,5 +1,5 @@
-baseurl = "https://www.semidocumentedlife.com/"
-title = "semi documented life"
+baseurl = "https://www.ndrewwm.com/"
+title = "andrew w. moore // blog"
 author = "Andrew Moore"
 languageCode = "en"
 theme = "kiss"
@@ -26,14 +26,17 @@ related = true # Includes related articles at the bottom of the article
 page = "" # Twitter Page username. If not set, params.social.twitter will be used.
 
 [params.social]
-twitter = "mooreaw_"
-github = "mooreaw"
-email = "moore.andrew09@gmail.com"
-instagram = "amateurthoughts"
+twitter = "ndrewwm"
+github = "ndrewwm"
+email = "hello@ndrewwm.com"
+# instagram = "amateurthoughts"
+linkedin = "ndrewwm"
 
 [blackfriday]
 hrefTargetBlank = true
 
 [params.sections_right]
 "/about/" = "about"
+"/now/" = "now"
 "/cv/" = "cv"
+"/blog/" = "blog"

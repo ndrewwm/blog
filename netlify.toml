@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "https://semidocumentedlife.com/*"
+  to = "https://ndrewwm.com/"
+  force = true

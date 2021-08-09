@@ -1,6 +1,6 @@
 baseurl = "https://www.ndrewwm.com/"
-title = "andrew w. moore // blog"
-author = "Andrew Moore"
+title = "andrew w. moore"
+author = "Andrew W. Moore"
 languageCode = "en"
 theme = "kiss"
 publishDir = "public/"
@@ -24,6 +24,9 @@ related = true # Includes related articles at the bottom of the article
 
 [params.opengraph.twitter]
 page = "" # Twitter Page username. If not set, params.social.twitter will be used.
+
+[params.social.config]
+platforms = ["email", "github", "twitter", "instagram", "linkedin"]
 
 [params.social]
 twitter = "ndrewwm"

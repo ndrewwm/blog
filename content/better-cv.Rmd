@@ -12,11 +12,11 @@ h1, h4 {
 
 <center>Data Science Professional & Developer **in** Boise, ID</center>
 
-<center>[moore.andrew09@gmail.com](mailto:moore.andrew09@gmail.com) | github: <a href="https://github.com/mooreaw/">@mooreaw</a> | twitter: <a href="https://twitter.com/mooreaw_">@mooreaw_</a></center><br>
+<center>[moore.andrew09@gmail.com](mailto:moore.andrew09@gmail.com) | github: <a href="https://github.com/mooreaw/">@ndrewwm</a> | twitter: <a href="https://twitter.com/ndrewwm">@ndrewwm</a></center><br>
 
 **Currently**
 
-Institutional Research Analyst in the Office of Institutional Research, at Boise State University.
+Data Warehouse Developer in the Office of Information Technology at Boise State University.
 
 **Research & Professional Interests**
 
@@ -24,27 +24,27 @@ Statistical methods, information design, data science education, social/structur
 
 **Technical Skills**
 
-R & R-Shiny, Leaflet, Git/GitHub, SQL, SAS, MATLAB, MS Excel, Tableau, Markdown, Hugo, Qualtrics
-
-## Education
-
-`2009 to 2013`<br>
-**The College of Idaho | Caldwell, ID**
-
-B.A. Psychology, minor History; *cum laude*
+SQL & PL-SQL, R & R-Shiny, Leaflet, Git/GitHub, SAS, MATLAB, MS Excel, Tableau, Markdown, Hugo, Qualtrics
 
 ## Professional Experience
 
-`Jan 2020 to present`<br>
+<!-- fill in -->
+
+`July 2021 to present`<br>
+**Boise State University, Office of Information Technology** | Data Warehouse Developer
+
+<!-- overhaul -->
+
+`Jan 2020 to July 2021`<br>
 **Boise State University, Office of Institutional Research** | Research Analyst
 
-- Refines predictive models for undergraduate retention & graduation, and builds data analysis process flows to facilitate improved documentation, and analytic reproducibility
+- Refined predictive models for undergraduate retention & graduation, and builds data analysis process flows to facilitate improved documentation, and analytic reproducibility.
 
-- Develops custom reports for campus stakeholders using SQL and SAS
+- Developed custom reports for campus stakeholders using SQL and SAS.
 
-- Maintains and updates office Tableau dashboards each academic term.
+- Maintained and updated office Tableau dashboards regularly each academic term.
 
-- Contributes to project documentation, assists with data requests, analyzes and summarizes survey responses as-needed
+- Contributed to project documentation, assists with data requests, analyzes and summarizes survey responses as-needed.
 
 `Nov 2015 to Jan 2020`<br>
 **University of Michigan, School of Social Work** | Data Analyst
@@ -85,6 +85,13 @@ B.A. Psychology, minor History; *cum laude*
 - Managed data files/output and performed basic statistical analysis for ongoing projects.
 
 - Performed literature searches and summarized published findings in support of the lab's publication development.
+
+## Education
+
+`2009 to 2013`<br>
+**The College of Idaho | Caldwell, ID**
+
+B.A. Psychology, minor History; *cum laude*
 
 ## Publications
 

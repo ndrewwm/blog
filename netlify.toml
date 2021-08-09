@@ -1,4 +1,4 @@
 [[redirects]]
   from = "https://semidocumentedlife.com/*"
-  to = "https://ndrewwm.com/"
+  to = "https://ndrewwm.com/:splat"
   force = true

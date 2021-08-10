@@ -42,4 +42,4 @@ hrefTargetBlank = true
 "/about/" = "about"
 "/now/" = "now"
 "/cv/" = "cv"
-"/blog/" = "blog"
+"/" = "blog"

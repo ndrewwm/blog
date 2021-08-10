@@ -12,7 +12,7 @@ h1, h4 {
 
 <center>Data Science Professional & Developer **in** Boise, ID</center>
 
-<center>[moore.andrew09@gmail.com](mailto:moore.andrew09@gmail.com) | github: <a href="https://github.com/mooreaw/">@ndrewwm</a> | twitter: <a href="https://twitter.com/ndrewwm">@ndrewwm</a></center><br>
+<center>[moore.andrew09@gmail.com](mailto:moore.andrew09@gmail.com) | github: <a href="https://github.com/ndrewwm/">@ndrewwm</a> | twitter: <a href="https://twitter.com/ndrewwm">@ndrewwm</a></center><br>
 
 **Currently**
 
@@ -28,15 +28,17 @@ SQL & PL-SQL, R & R-Shiny, Leaflet, Git/GitHub, SAS, MATLAB, MS Excel, Tableau, 
 
 ## Professional Experience
 
-<!-- fill in -->
-
-`July 2021 to present`<br>
+`Jul 2021 to present`<br>
 **Boise State University, Office of Information Technology** | Data Warehouse Developer
 
-<!-- overhaul -->
+- Designs and implements ETL procedures to store and and deliver university data to staff and faculty.
 
-`Jan 2020 to July 2021`<br>
-**Boise State University, Office of Institutional Research** | Research Analyst
+- Works with stakeholders to develop reporting tools and platforms to support data-driven decision making.
+
+- Assists with production support and provides troubleshooting for reporting and analytics products used by university staff.
+
+`Jan 2020 to Jul 2021`<br>
+**Boise State University, Office of Institutional Research** | Institutional Research Analyst
 
 - Refined predictive models for undergraduate retention & graduation, and builds data analysis process flows to facilitate improved documentation, and analytic reproducibility.
 

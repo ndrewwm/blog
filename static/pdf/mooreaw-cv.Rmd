@@ -10,15 +10,15 @@ output:
 \textbf{Andrew W. Moore} \break
 Data Science Professional \& Developer \textbf{in} Boise, ID \break
 \href{mailto:moore.andrew09@gmail.com}{moore.andrew09@gmail.com} \break
-\url{https://semidocumentedlife.com/} \break
-github: \href{https://github.com/mooreaw/}{@mooreaw} \break
+\url{https://ndrewwm.com/} \break
+github: \href{https://github.com/ndrewwm/}{@ndrewwm} \break
 \end{center}
 
 ------
 
 **Currently**
 
-Institutional Research Analyst in the Office of Institutional Research, at Boise State University.
+Data Warehouse Developer in the Office of Information Technology at Boise State University.
 
 **Research & Professional Interests**
 
@@ -26,18 +26,21 @@ Statistical methods, information design, data science education, social/structur
 
 **Technical Skills**
 
-R & R-Shiny, Leaflet, Git/GitHub, SQL, SAS, MATLAB, MS Excel, Tableau, Markdown, Hugo, Qualtrics \newline
-
-\textbf{\underline{Education}}
-
-\textbf{The College of Idaho - Caldwell, ID} \newline
-B.A. Psychology - 2013 \newline
-Minor: History; *cum laude* \newline
+SQL & PL-SQL, R & R-Shiny, Leaflet, Git/GitHub, SAS, MATLAB, MS Excel, Tableau, Markdown, Hugo, Qualtrics \newline
 
 \textbf{\underline{Professional Experience}}
 
-`Jan 2020 to present`\newline
-**Boise State University, Office of Institutional Research** | Research Analyst
+`Jul 2021 to present`\newline
+**Boise State University, Office of Information Technology** | Data Warehouse Developer
+
+- Designs and implements ETL procedures to store and and deliver university data to staff and faculty.
+
+- Works with stakeholders to develop reporting tools and platforms to support data-driven decision making.
+
+- Assists with production support and provides troubleshooting for reporting and analytics products used by university staff.\newline
+
+`Jan 2020 to Jul 2021`\newline
+**Boise State University, Office of Institutional Research** | Institutional Research Analyst
 
 - Refines predictive models for undergraduate retention & graduation, and builds data analysis process flows to facilitate improved documentation, and analytic reproducibility
 
@@ -86,6 +89,12 @@ Minor: History; *cum laude* \newline
 - Managed data files/output and performed basic statistical analysis for ongoing projects.
 
 - Performed literature searches and summarized published findings in support of the lab's publication development. \newline
+
+\textbf{\underline{Education}}
+
+\textbf{The College of Idaho - Caldwell, ID} \newline
+B.A. Psychology - 2013 \newline
+Minor: History; *cum laude* \newline
 
 \textbf{\underline{Publications}}
 

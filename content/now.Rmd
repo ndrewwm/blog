@@ -13,4 +13,4 @@ Unlike an *about* page, this page is meant to give a sense of what I'm doing & w
 
 - When I have time, I'm participating in the weekly [#tidytuesday](https://github.com/rfordatascience/tidytuesday) event that's hosted by the R4DS community. I'm glad to have an event like this to keep my plotting and data-analysis skills sharp. It's also been good to stretch on presentation and design. You can find my contributions on [twitter.](https://twitter.com/search?q=%23tidytuesday%20(from%3Amooreaw_%20OR%20from%3Andrewwm)&src=typed_query&f=live){target="_blank"}
 
-- I'm teaching myself CSS/HTML on freecodecamp.com. These languages have been a bit of a weak point for me, even though I've needed to apply them when working on Shiny applications or managing my websites/blog.
+- I'm teaching myself CSS/HTML on freecodecamp.com. Both languages come up frequently when working with meant-for-web content, and I've been below where I've wanted to be in terms of my comfort in using them.

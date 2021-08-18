@@ -46,8 +46,28 @@ dates <- tibble(date = as.Date(mdy("8/31/20"):mdy("4/30/21"), origin = "1970-1-1
   )
 ```
 
+```{r updates}
+updates <- tibble(date = as.Date(mdy("8/31/20"):mdy("8/17/21"), origin = "1970-1-1")) %>%
+  left_join(
+    tibble(
+      date   = mdy(c("10/1/20", "10/4/20", "10/15/20", "10/18/20", "10/20/20", "10/21/20", "10/25/20", "11/3/20", "11/25/20", "12/23/20", "12/25/20", "1/1/21", "1/2/21", "1/12/21", "1/17/21", "1/19/21", "1/27/21", "2/7/21", "2/16/21", "2/20/21", "2/23/21", "2/25/21", "3/4/21", "3/12/21", "3/14/21", "4/14/21", "5/3/21", "5/10/21", "5/22/21", "5/25/21", "6/1/21", "6/4/21", "6/11/21", "6/28/21", "7/14/21", "7/16/21", "7/17/21", "7/19/21", "7/21/21", "7/26/21")),
+      freeze = 1L
+    ),
+    by = "date"
+  ) %>%
+  mutate(
+    freeze = replace_na(freeze, 0L),
+    mon = factor(format(date, "%b '%y")),
+    wk = case_when(
+      date == first(date) ~ 1L,
+      date == last(date)  ~ 51L,
+      TRUE ~ cumsum(lead(week(date)) != week(date))
+    )
+  )
+```
+
 ```{r step plot}
-ggplot(dates, aes(x = date, y = cumsum(freeze))) +
+p_step <- ggplot(dates, aes(x = date, y = cumsum(freeze))) +
   geom_step(color = scico::scico(1, palette = "nuuk")) +
   geom_point(
    data = tibble(date = mdy(c("10/20/20", "12/23/20", "1/17/21", "2/20/21", "3/14/21")), freeze = seq(5, 25, 5)),
@@ -61,6 +81,8 @@ ggplot(dates, aes(x = date, y = cumsum(freeze))) +
   annotate("text", x = mdy("12/6/20"), y = 4, label = "Extra motivated?\nkeine Ahnung") +
   annotate("text", x = mdy("1/1/21"), y = 20, label = "Distracted, 11 freezes\naccumulated during\nJan. & Feb.") +
   annotate("text", x = mdy("4/20/21"), y = 23, label = 'Finishing "Dark"\non Netflix')
+
+p_step
 ```
 
 So, each freeze is a day that I'm "behind" on my goal. If I've used `r sum(dates$freeze)` freezes now, how many more should I expect over the next 4-ish months? I started right around the end of August, so 17 weeks from now would be close to my 1-year mark of daily practice. When counting the number of freezes on a weekly basis, the distribution looks fairly close to a Poisson distribution.

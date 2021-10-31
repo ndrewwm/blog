@@ -7,7 +7,7 @@ hidden: true
 
 Unlike an *about* page, this page is meant to give a sense of what I'm doing & working on *now*. If we haven't run into each other recently, here's what I might say to catch you up:
 
-- I've mostly settled into my new role in OIT, working as a data warehouse developer. I've been building new skills with Oracle technologies, specifically PL/SQL, ODI, and OAC/OBIEE. I'm currently assisting with production support, redesigning dashboards on enrollment information, and working with two teammates to centralize our documentation in a team wiki.
+- I'm settling into my new role in OIT, working as a data warehouse developer. I've been building new skills with Oracle technologies, specifically PL/SQL, ODI, and OAC/OBIEE. I'm currently assisting with production support, redesigning dashboards on enrollment information, and working with two teammates to centralize our documentation in a team wiki.
 
 - My part-time classes are going well; I'm done with my first exams for MATH-287 (Mathematical Proofs & Methods) and MATH-471 (Data Analysis). I've been enjoying learning more LaTeX in 287, and definitely feel like I'm getting the experience I wanted as far as proof-writing practice.
 

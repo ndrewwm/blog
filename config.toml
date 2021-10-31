@@ -25,15 +25,15 @@ related = true # Includes related articles at the bottom of the article
 [params.opengraph.twitter]
 page = "" # Twitter Page username. If not set, params.social.twitter will be used.
 
-[params.social.config]
-platforms = ["email", "github", "twitter", "instagram", "linkedin"]
+# [params.social.config]
+# platforms = ["email", "github", "twitter", "instagram", "linkedin"]
 
-[params.social]
-twitter = "ndrewwm"
-github = "ndrewwm"
-email = "hello@ndrewwm.com"
+# [params.social]
+# twitter = "ndrewwm"
+# github = "ndrewwm"
+# email = "hello@ndrewwm.com"
 # instagram = "amateurthoughts"
-linkedin = "ndrewwm"
+# linkedin = "ndrewwm"
 
 [blackfriday]
 hrefTargetBlank = true

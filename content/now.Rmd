@@ -3,14 +3,14 @@ title: "now"
 hidden: true
 ---
 
-*Last updated:* 8/5/2021
+*Last updated:* 10/15/2021
 
 Unlike an *about* page, this page is meant to give a sense of what I'm doing & working on *now*. If we haven't run into each other recently, here's what I might say to catch you up:
 
-- I changed roles at Boise State! My home is now in the Office of Information Technology (OIT), rather than Institutional Research (IR). I'll be leveraging my existing knowledge of our student data warehouse to help improve our ETL, and build capacity in our cloud-based warehouse environments.
+- I've mostly settled into my new role in OIT, working as a data warehouse developer. I've been building new skills with Oracle technologies, specifically PL/SQL, ODI, and OAC/OBIEE. I'm currently assisting with production support, redesigning dashboards on enrollment information, and working with two teammates to centralize our documentation in a team wiki.
 
-- I'm taking classes part-time. While I'm formally a non-degree-seeking student at Boise State, I'm basically following the core curriculum for a math major. Last year I completed multivarible calculus and an intro to linear algebra course. This fall I intend to take MATH-287 ("Mathematical Proofs & Methods"), which is a prerequisite for MATH-401 ("Intro to Real Analysis"), offered in the spring.
+- My part-time classes are going well; I'm done with my first exams for MATH-287 (Mathematical Proofs & Methods) and MATH-471 (Data Analysis). I've been enjoying learning more LaTeX in 287, and definitely feel like I'm getting the experience I wanted as far as proof-writing practice.
 
-- When I have time, I'm participating in the weekly [#tidytuesday](https://github.com/rfordatascience/tidytuesday) event that's hosted by the R4DS community. I'm glad to have an event like this to keep my plotting and data-analysis skills sharp. It's also been good to stretch on presentation and design. You can find my contributions on [twitter.](https://twitter.com/search?q=%23tidytuesday%20(from%3Amooreaw_%20OR%20from%3Andrewwm)&src=typed_query&f=live){target="_blank"}
+<!-- - I've been too busy recently to focus on the weekly [#tidytuesday](https://github.com/rfordatascience/tidytuesday) event that's hosted by the R4DS community. You can find my contributions on [twitter.](https://twitter.com/search?q=%23tidytuesday%20(from%3Amooreaw_%20OR%20from%3Andrewwm)&src=typed_query&f=live){target="_blank"} -->
 
-- I'm teaching myself CSS/HTML on freecodecamp.com. Both languages come up frequently when working with meant-for-web content, and I've been below where I've wanted to be in terms of my comfort in using them.
+- I don't have much time for side-projects currently, but I'm hoping I can consolidate some materials into a more coherent portfolio (perhaps a Shiny app or two) to share with folks. I'd also like to make some progress on my `scRyfall` [package.](https://github.com/ndrewwm/scRyfall/)

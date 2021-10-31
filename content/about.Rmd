@@ -3,10 +3,8 @@ title: "about me"
 hidden: true
 ---
 
-Hi! I'm Andrew. I live in Boise ID, and work at Boise State University as a Data Warehouse Developer (within the Office of Information Technology, on the Business Intelligence and Reporting Services team). From 2015-2019, I lived/worked in Ann Arbor MI, where I served as a data analyst in the Child & Adolescent Data Lab at UM's School of Social Work. Some of the publications and projects I've worked on can be found in [my CV](/cv/).
+**Hi! I'm Andrew.**
 
-Although I use it less frequently in my day job, I'm a big fan of the `R` programming language and other open-source software, so I like to keep tabs on new packages and updates from the community. From 2015-2019 I helped out with the Ann Arbor's [R User Group](https://annarborrusergroup.github.io/) as a co-organizer (usually as a workshop instructor, but occasionally giving talks). I'm also interested in open science and the reproducibility movement that's being expressed in various forms across scientific communities.
+I'm a data warehouse developer in Boise, ID.
 
-Aside from my academic interests, I like looking at analog/handmade data visualizations and maps, language-learning, making cocktails, traveling, playing strategy games (such as Go), and battling an ever-expanding reading list.
-
-I've started this page/blog as a way to curate thoughts, and explore different datasets and methods that I'm trying to learn about. I hope at the very least I'll have some interesting (if not useful) things for you to read. In that vein, any views expressed here are solely mine and not those of my employer or colleagues. If you want to get in touch, feel free to send me a DM on twitter, or send an email to hello@ndrewwm.com!
+This is my personal page where I explore topics I'm trying to learn about, and visualize data. If you want to get in touch, find me on [twitter](https://twitter.com/ndrewwm/), or send an email to hello@ndrewwm.com.
